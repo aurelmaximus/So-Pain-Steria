@@ -54,6 +54,46 @@ public class Commande {
 	public void setPrixTTC(double prixTTC) {
 		this.prixTTC = prixTTC;
 	}
+	
+	public Integer getNumero() {
+		return numero;
+	}
+
+	public void setNumero(Integer numero) {
+		this.numero = numero;
+	}
+
+	public boolean isTermine() {
+		return termine;
+	}
+
+	public void setTermine(boolean termine) {
+		this.termine = termine;
+	}
+
+	public LocalTime getHeure() {
+		return heure;
+	}
+
+	public void setHeure(LocalTime heure) {
+		this.heure = heure;
+	}
+
+	public LocalTime getMinute() {
+		return minute;
+	}
+
+	public void setMinute(LocalTime minute) {
+		this.minute = minute;
+	}
+
+	public static Client getClient() {
+		return client;
+	}
+
+	public static void setClient(Client client) {
+		Commande.client = client;
+	}
 
 	public static void Commande() {
 
