@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le : lun. 16 jan. 2023 à 08:32
+-- Généré le : mar. 17 jan. 2023 à 16:40
 -- Version du serveur :  5.7.34
 -- Version de PHP : 7.4.21
 
@@ -18,8 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `sopain steria`
+-- Base de données : `sopain_steria`
 --
+CREATE DATABASE IF NOT EXISTS `sopain_steria` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `sopain_steria`;
 
 -- --------------------------------------------------------
 
