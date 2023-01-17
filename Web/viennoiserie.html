@@ -147,34 +147,6 @@
           transform: translate(-50%,-50%);
           -webkit-overflow-scrolling: touch;
         }
-/* for animation */
-        figure {
-          position: relative;
-        }
-
-        figcaption {
-          position: absolute;
-          inset: 2px;
-          display: none;
-        }
-
-        figure:hover figcaption {
-          display: flex;
-        }
-
-
-/* for visualization only */
-        figure {
-          display: inline-block;
-        }
-
-        figcaption {
-          padding: 1em;
-          justify-content: center;
-          align-items: center;
-          background-color: rgba(255, 255, 255, 0.3);
-        }
-
 
       </style>
 
@@ -201,7 +173,7 @@ Sa signature ? Des cuissons marquées qui donnent de belles croûtes caramélis�
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
           <div class="col">
             <div class="card shadow-sm">
-              <figure><div class="bg-image hover-zoom"><img src="C:\Users\Formation\eclipse-workspace\So-Pain-Steria\Web\images\pexels-mariana-kurnyk-1775039.jpg" class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.</div></div><figcaption>Baguette Classique</figcaption></figure>
+              <div class="bg-image hover-zoom"><img src="C:\Users\Formation\eclipse-workspace\So-Pain-Steria\Web\images\pexels-mariana-kurnyk-1775039.jpg" class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.</div></div>
               <div class="card-body">
                 <p class="card-text">Notre baguette classique est cuite dans notre four à sole comme tous les autres pains.<br>Elle a une mie blanche, plus compacte et plus dense que la baguette 6 céréales et sa croûte est plus fine.</p>
                 <div class="d-flex justify-content-between align-items-center">
@@ -217,7 +189,7 @@ Sa signature ? Des cuissons marquées qui donnent de belles croûtes caramélis�
 
           <div class="col">
             <div class="card shadow-sm">
-              <figure><div class="bg-image hover-zoom"><img src="C:\Users\Formation\eclipse-workspace\So-Pain-Steria\Web\images\pexels-mariana-kurnyk-1775035.jpg" class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.</div></div><figcaption>Baguette 6 Céréales</figcaption></figure>
+              <div class="bg-image hover-zoom"><img src="C:\Users\Formation\eclipse-workspace\So-Pain-Steria\Web\images\pexels-mariana-kurnyk-1775035.jpg" class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.</div></div>
               <div class="card-body">
                 <p class="card-text">La délicieuse baguette 6 Céréales, <br>agrémentée de graines de sésame, pavot, millet, lin blond et lin brun.<br></p>
                 <div class="d-flex justify-content-between align-items-center">
@@ -233,9 +205,7 @@ Sa signature ? Des cuissons marquées qui donnent de belles croûtes caramélis�
 
           <div class="col">
             <div class="card shadow-sm">
-              <figure><div class="bg-image hover-zoom"><img src="C:\Users\Formation\eclipse-workspace\So-Pain-Steria\Web\images\tradition.jpeg"
-                class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.
-                </div></div><figcaption>Baguette Tradition</figcaption></figure>
+              <div class="bg-image hover-zoom"><img src="C:\Users\Formation\eclipse-workspace\So-Pain-Steria\Web\images\pexels-mariana-kurnyk-1775043.jpg" class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.</div></div>
               <div class="card-body">
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
@@ -251,17 +221,45 @@ Sa signature ? Des cuissons marquées qui donnent de belles croûtes caramélis�
 
           <div class="col">
             <div class="card shadow-sm">
-              <figure><div class="bg-image hover-zoom"><img src="C:\Users\Formation\eclipse-workspace\So-Pain-Steria\Web\images\pexels-mariana-kurnyk-1775043.jpg"
-                class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.
-                </div></div><figcaption>Pain Campagne</figcaption></figure>
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
               <div class="card-body">
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                   </div>
-                  <small class="text-muted">1,70 €</small>
+                  <small class="text-muted">9 mins</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              <div class="card-body">
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-muted">9 mins</small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card shadow-sm">
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+              <div class="card-body">
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  </div>
+                  <small class="text-muted">9 mins</small>
                 </div>
               </div>
             </div>
@@ -269,75 +267,52 @@ Sa signature ? Des cuissons marquées qui donnent de belles croûtes caramélis�
 
           <div class="col">
             <div class="card shadow-sm">
-              <figure><div class="bg-image hover-zoom"><img src="C:\Users\Formation\eclipse-workspace\So-Pain-Steria\Web\images\complet.jpg"
-                class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.
-                </div></div><figcaption>Pain Complet</figcaption></figure>
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
               <div class="card-body">
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                   </div>
-                  <small class="text-muted">1,70 €</small>
+                  <small class="text-muted">9 mins</small>
                 </div>
               </div>
             </div>
           </div>
-
           <div class="col">
             <div class="card shadow-sm">
-              <figure><div class="bg-image hover-zoom"><img src="C:\Users\Formation\eclipse-workspace\So-Pain-Steria\Web\images\sesame.jpg"
-                class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false">
-                <div class="centered"></div></div><figcaption>Baguette Sésame</figcaption></figure>
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
               <div class="card-body">
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                   </div>
-                  <small class="text-muted">1,70 €</small>
+                  <small class="text-muted">9 mins</small>
                 </div>
               </div>
             </div>
           </div>
-
           <div class="col">
             <div class="card shadow-sm">
-              <figure><div class="bg-image hover-zoom"><img src="C:\Users\Formation\eclipse-workspace\So-Pain-Steria\Web\images\burger.jpg"
-                class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="true"><div class="centered">.
-                </div></div><figcaption>Pain Burger</figcaption></figure>
+              <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
               <div class="card-body">
                 <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                   </div>
-                  <small class="text-muted">1,70 €</small>
+                  <small class="text-muted">9 mins</small>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="col">
-            <div class="card shadow-sm">
-              <figure><div class="bg-image hover-zoom"><img src="C:\Users\Formation\eclipse-workspace\So-Pain-Steria\Web\images\pexels-mariana-kurnyk-1775043.jpg" class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.</div></div><figcaption>Pain aux Noix</figcaption></figure>
-              <div class="card-body">
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
-                  </div>
-                  <small class="text-muted">1,70 €</small>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
+        </div>
+      </div>
+    </div>
 
   </main>
 
