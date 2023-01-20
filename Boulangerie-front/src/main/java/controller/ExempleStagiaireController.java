@@ -14,7 +14,7 @@ import model.Filiere;
 import model.Stagiaire;
 
 @WebServlet("/stagiaire")
-public class StagiaireController extends HttpServlet {
+public class ExempleStagiaireController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getParameter("id")!=null) 
 		{

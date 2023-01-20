@@ -24,7 +24,8 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-	</dependencies>
+
+  </dependencies>
 
 	<properties>
 		<maven.compiler.target>17</maven.compiler.target>
