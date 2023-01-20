@@ -7,9 +7,9 @@ import dao.DAOProduit;
 
 public class Singleton {
 
-	private DAOCommande daoMCommande = new DAOCommande();
+	private DAOCommande daoCommande = new DAOCommande();
 	private DAOCompte daoCompte = new DAOCompte();
-	private DAOIngredient daoIngredien = new DAOIngredient();
+	private DAOIngredient daoIngredient = new DAOIngredient();
 	private DAOProduit daoProduit = new DAOProduit();
 	private static Singleton instance;
 	
@@ -26,14 +26,14 @@ public class Singleton {
 
 
 
-	public DAOCommande getDaoMCommande() {
-		return daoMCommande;
+	public DAOCommande getDaoCommande() {
+		return daoCommande;
 	}
 
 
 
-	public void setDaoMCommande(DAOCommande daoMCommande) {
-		this.daoMCommande = daoMCommande;
+	public void setDaoCommande(DAOCommande daoCommande) {
+		this.daoCommande = daoCommande;
 	}
 
 
@@ -50,14 +50,14 @@ public class Singleton {
 
 
 
-	public DAOIngredient getDaoIngredien() {
-		return daoIngredien;
+	public DAOIngredient getDaoIngredient() {
+		return daoIngredient;
 	}
 
 
 
-	public void setDaoIngredien(DAOIngredient daoIngredien) {
-		this.daoIngredien = daoIngredien;
+	public void setDaoIngredient(DAOIngredient daoIngredien) {
+		this.daoIngredient = daoIngredien;
 	}
 
 
@@ -71,8 +71,8 @@ public class Singleton {
 	public void setDaoProduit(DAOProduit daoProduit) {
 		this.daoProduit = daoProduit;
 	}
-	
-	
+
+
 
 	
 	

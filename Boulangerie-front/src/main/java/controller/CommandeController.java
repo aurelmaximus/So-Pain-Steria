@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import context.Singleton;
-import model.Filiere;
-import model.Stagiaire;
+import model.Client;
+import model.Commande;
 
-@WebServlet("/stagiaire")
+@WebServlet("/commande")
 public class CommandeController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getParameter("id")!=null) 
@@ -21,28 +21,26 @@ public class CommandeController extends HttpServlet {
 			if(request.getParameter("delete")!=null) 
 			{
 				Integer id = Integer.parseInt(request.getParameter("id"));
-				Singleton.getInstance().getDaoStagiaire().delete(id);
-				response.sendRedirect("stagiaire");
+				Singleton.getInstance().getDaoCommande().delete(id);
+				response.sendRedirect("commande");
 			}
 			else 
 			{
 				Integer id = Integer.parseInt(request.getParameter("id"));
-				Stagiaire s = Singleton.getInstance().getDaoStagiaire().findById(id);
-				List<Filiere> filieres = Singleton.getInstance().getDaoFiliere().findAll();
+				Commande cmd = Singleton.getInstance().getDaoCommande().findById(id);
+				
 
-				request.setAttribute("stagiaire", s);
+				request.setAttribute("commande", cmd);
 				request.setAttribute("filieres", filieres);
 				
-				this.getServletContext().getRequestDispatcher("/WEB-INF/updateStagiaire.jsp").forward(request, response);
+				this.getServletContext().getRequestDispatcher("/WEB-INF/updateCommande.jsp").forward(request, response);
 			}
 		}
 		else 
 		{
-			List<Stagiaire> stagiaires = Singleton.getInstance().getDaoStagiaire().findAll();
-			List<Filiere> filieres = Singleton.getInstance().getDaoFiliere().findAll();
-			request.setAttribute("stagiaires", stagiaires);
-			request.setAttribute("filieres", filieres);
-			this.getServletContext().getRequestDispatcher("/WEB-INF/stagiaires.jsp").forward(request, response);
+			List<Commande> commandes = Singleton.getInstance().getDaoCommande().findAll();
+			request.setAttribute("commandes", commandes);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/commandes.jsp").forward(request, response);
 		}
 		
 		
@@ -57,26 +55,24 @@ public class CommandeController extends HttpServlet {
 			String prenom = request.getParameter("prenom");
 			String nom = request.getParameter("nom");
 			String email= request.getParameter("email");
-			Integer idFiliere = Integer.parseInt(request.getParameter("filiere"));
-			Filiere f = Singleton.getInstance().getDaoFiliere().findById(idFiliere);
-					
-			Stagiaire s = new Stagiaire(nom,prenom,email,f);
-			Singleton.getInstance().getDaoStagiaire().insert(s);
+			Integer idFiliere = Integer.parseInt(request.getParameter("filiere"));					
+			Commande cmd = new Commande(nom,prenom,email,f);
+			Singleton.getInstance().getDaoCommande().insert(cmd);
 		}
 		else 
 		{
 			Integer id = Integer.parseInt(request.getParameter("id"));
 			
-			String prenom = request.getParameter("prenom");
+			Integer idClient = Integer.parseInt(request.getParameter("client"));
+			Client client = Singleton.getInstance().getDaoCompte().findById(idClient);
+			
 			String nom = request.getParameter("nom");
 			String email= request.getParameter("email");
-			Integer idFiliere = Integer.parseInt(request.getParameter("filiere"));
-			Filiere f = Singleton.getInstance().getDaoFiliere().findById(idFiliere);
 					
-			Stagiaire s = new Stagiaire(id,nom,prenom,email,f);
-			Singleton.getInstance().getDaoStagiaire().update(s);
+			Commande cmd = new Commande(id,client,heure,minute);
+			Singleton.getInstance().getDaoCommande().update(cmd);
 		}
 		
-		response.sendRedirect("stagiaire");
+		response.sendRedirect("commande");
 	}
 }
