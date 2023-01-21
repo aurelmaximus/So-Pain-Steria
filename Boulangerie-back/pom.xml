@@ -6,8 +6,6 @@
   
   
   
-  
-  
   	<dependencies>
 		<dependency>
 			<groupId>mysql</groupId>

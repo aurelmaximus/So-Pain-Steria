@@ -22,6 +22,13 @@ public class Commande {
 		this.minute = minute;
 		this.client = client;
 	}
+	
+	public Commande(Client client, LocalTime heure, LocalTime minute, boolean termine) {
+		this.prixTTC = prixTTC;
+		this.heure = heure;
+		this.minute = minute;
+		this.client = client;
+	}
 
 	public static String saisieString(String msg) {
 		Scanner sc = new Scanner(System.in);
