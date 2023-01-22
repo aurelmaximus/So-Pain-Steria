@@ -14,6 +14,12 @@ public class Ligne_Commande extends Commande{
 		this.qte = qte;
 		this.total = total;
 	}
+	
+	public Ligne_Commande(Client client, LocalTime heure, LocalTime minute, boolean termine,Integer qte, double total) {
+		super(client, heure, minute, termine);
+		this.qte = qte;
+		this.total = total;
+	}
 
 
 	public int getQte() {
@@ -35,12 +41,10 @@ public class Ligne_Commande extends Commande{
 		this.total = total;
 	}
 
-
 	@Override
 	public String toString() {
 		return "Ligne_Commande [qte=" + qte + ", total=" + total + "]";
 	}
-	
-	
+
 	
 }

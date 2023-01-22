@@ -12,12 +12,11 @@ public class Client extends Compte {
 
 	}
 
+	
 	public String toString() {
 		return "Client [login=" + login + ", password=" + password + ", nom=" + nom + ", prenom=" + prenom
 				+ ", adresse=" + adresse + "]";
 	}
 
-
-	
 	
 }

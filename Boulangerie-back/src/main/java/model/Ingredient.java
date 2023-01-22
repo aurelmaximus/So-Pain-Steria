@@ -46,7 +46,9 @@ public class Ingredient extends Composition {
 
 	@Override
 	public String toString() {
-		return "Ingredient [allergene=" + allergene + "]";
+		return "Ingredient [id=" + id + ", allergene=" + allergene + ", libelle=" + libelle + "]";
 	}
+
+
 
 }

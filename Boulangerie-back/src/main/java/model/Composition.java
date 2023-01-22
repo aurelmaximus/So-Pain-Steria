@@ -8,19 +8,22 @@ public class Composition {
 		super();
 		this.qte = qte;
 	}
+	
 
-	
-	
+	public Composition(Integer qte) {
+		super();
+		this.qte = qte;
+	}
+
+
 	public int getQte() {
 		return qte;
 	}
 
 
-
 	public void setQte(int qte) {
 		this.qte = qte;
 	}
-
 
 
 	@Override
