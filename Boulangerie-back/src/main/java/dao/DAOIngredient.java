@@ -7,11 +7,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Adresse;
-import model.Compte;
-import model.Employe;
 import model.Ingredient;
-import model.Metier;
+
 
 public class DAOIngredient implements IDAO<Ingredient, Integer> {
 
@@ -32,7 +29,7 @@ public class DAOIngredient implements IDAO<Ingredient, Integer> {
 			while (rs.next()) 
 			{
 
-			i = new Ingredient ((Integer)rs.getInt("id"), rs.getString("libelle"),rs.getInt("qte"),rs.getBoolean("allergene"));
+			i = new Ingredient ((Integer)rs.getInt("id"), rs.getString("libelle_ing"),rs.getInt("qte"),rs.getBoolean("allergene"));
 				
 			}
 

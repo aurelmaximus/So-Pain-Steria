@@ -114,7 +114,7 @@ public class DAOCompte implements IDAO<Compte, Integer> {
 
 			Connection conn = DriverManager.getConnection(urlBdd, loginBdd, passwordBdd);
 
-			PreparedStatement ps = conn.prepareStatement("INSERT INTO compte (login,password,nom,prenom,numero,voie,ville,cp,metier,type_compte) VALUES(?,?,?,?,?,?,?,?,?,?)");
+			PreparedStatement ps = conn.prepareStatement("INSERT INTO compte (login,password,nom,prenom,numero,voie,ville,cp,type_compte,metier) VALUES(?,?,?,?,?,?,?,?,?,?)");
 
 			ps.setString(1, c.getLogin());
 			ps.setString(2, c.getPassword());
@@ -124,14 +124,13 @@ public class DAOCompte implements IDAO<Compte, Integer> {
 			ps.setString(6, c.getAdresse().getVoie());
 			ps.setString(7, c.getAdresse().getVille());
 			ps.setString(8, c.getAdresse().getCp());
-
+			ps.setString(9, c.getClass().getSimpleName());
+			
 			if (c instanceof Employe) {
-				ps.setString(9, ((Employe) c).getMetier().toString());
+				ps.setString(10, ((Employe) c).getMetier().toString());
 			} else {
-				ps.setString(9, null);
+				ps.setString(10, null);
 			}
-
-			ps.setString(11, c.getClass().getSimpleName());
 
 			ps.executeUpdate();
 

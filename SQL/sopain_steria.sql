@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : sam. 21 jan. 2023 à 16:59
+-- Généré le : dim. 22 jan. 2023 à 13:17
 -- Version du serveur : 5.7.40
 -- Version de PHP : 8.0.26
 
@@ -29,18 +29,18 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `commande`;
 CREATE TABLE IF NOT EXISTS `commande` (
-  `id_commande` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_client` int(11) NOT NULL,
   `total` double NOT NULL,
   `date_commande` date NOT NULL,
-  PRIMARY KEY (`id_commande`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `commande`
 --
 
-INSERT INTO `commande` (`id_commande`, `id_client`, `total`, `date_commande`) VALUES
+INSERT INTO `commande` (`id`, `id_client`, `total`, `date_commande`) VALUES
 (1, 5, 9.3, '2023-01-18');
 
 -- --------------------------------------------------------
@@ -54,11 +54,12 @@ CREATE TABLE IF NOT EXISTS `compte` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `login` varchar(35) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `type_compte` enum('Employe','Client') NOT NULL,
   `numero` varchar(10) DEFAULT NULL,
   `voie` varchar(30) DEFAULT NULL,
   `ville` varchar(50) DEFAULT NULL,
   `cp` varchar(15) DEFAULT NULL,
+  `type_compte` enum('Employe','Client') NOT NULL,
+  `metier` enum('Serveur','Boulangerie','Patissier','Apprenti') DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
@@ -66,12 +67,12 @@ CREATE TABLE IF NOT EXISTS `compte` (
 -- Déchargement des données de la table `compte`
 --
 
-INSERT INTO `compte` (`id`, `login`, `password`, `type_compte`, `numero`, `voie`, `ville`, `cp`) VALUES
-(1, 'aurelien.bulme@gmail.com', 'Croki19', 'Employe', '4', 'Rue du dragon blanc', 'Bordeaux', '33000'),
-(2, 'cedric.devillers@gmail.com', 'cedric', 'Employe', '8', 'Rue du magicien', 'Bordeaux', '69000'),
-(3, 'farah.benaissa@gmail.com', 'farah', 'Employe', '12', 'Rue cyber', 'Lyon', NULL),
-(4, 'youssef.talmat@gmail.com', 'youssef', 'Employe', '7bis', 'Rue ignister', 'Lyon', '69000'),
-(5, 'prune.pommier@gmail.com', 'peche', 'Client', '25', 'Rue de verger', 'Rennes', '35000');
+INSERT INTO `compte` (`id`, `login`, `password`, `numero`, `voie`, `ville`, `cp`, `type_compte`, `metier`) VALUES
+(1, 'aurelien.bulme@gmail.com', 'Croki19', '4', 'Rue du dragon blanc', 'Bordeaux', '33000', 'Employe', 'Patissier'),
+(2, 'cedric.devillers@gmail.com', 'cedric', '8', 'Rue du magicien', 'Bordeaux', '69000', 'Employe', 'Boulangerie'),
+(3, 'farah.benaissa@gmail.com', 'farah', '12', 'Rue cyber', 'Lyon', NULL, 'Employe', 'Patissier'),
+(4, 'youssef.talmat@gmail.com', 'youssef', '7bis', 'Rue ignister', 'Lyon', '69000', 'Employe', 'Serveur'),
+(5, 'prune.pommier@gmail.com', 'peche', '25', 'Rue de verger', 'Rennes', '35000', 'Client', NULL);
 
 -- --------------------------------------------------------
 
@@ -81,17 +82,17 @@ INSERT INTO `compte` (`id`, `login`, `password`, `type_compte`, `numero`, `voie`
 
 DROP TABLE IF EXISTS `ingredient`;
 CREATE TABLE IF NOT EXISTS `ingredient` (
-  `id_ing` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `libelle_ing` varchar(200) NOT NULL,
   `allergene_ing` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id_ing`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `ingredient`
 --
 
-INSERT INTO `ingredient` (`id_ing`, `libelle_ing`, `allergene_ing`) VALUES
+INSERT INTO `ingredient` (`id`, `libelle_ing`, `allergene_ing`) VALUES
 (1, 'Farine_T55', 1),
 (2, 'Farine_T65', 1),
 (3, 'Oeuf', 1),
@@ -129,20 +130,20 @@ INSERT INTO `ingredient` (`id_ing`, `libelle_ing`, `allergene_ing`) VALUES
 
 DROP TABLE IF EXISTS `prodfinis`;
 CREATE TABLE IF NOT EXISTS `prodfinis` (
-  `id_pf` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `libelle_pf` varchar(150) NOT NULL,
   `cat_pf` enum('pain','gateau','viennoiserie','boisson') NOT NULL,
   `type_pf` enum('maison','importe') NOT NULL,
   `prix_pf` decimal(5,2) NOT NULL,
   `nb_allergene_pf` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id_pf`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `prodfinis`
 --
 
-INSERT INTO `prodfinis` (`id_pf`, `libelle_pf`, `cat_pf`, `type_pf`, `prix_pf`, `nb_allergene_pf`) VALUES
+INSERT INTO `prodfinis` (`id`, `libelle_pf`, `cat_pf`, `type_pf`, `prix_pf`, `nb_allergene_pf`) VALUES
 (1, 'Expresso', 'boisson', 'importe', '2.00', 0),
 (2, 'Coca', 'boisson', 'importe', '2.00', 0),
 (3, 'Cristalline', 'boisson', 'importe', '1.50', 0),
