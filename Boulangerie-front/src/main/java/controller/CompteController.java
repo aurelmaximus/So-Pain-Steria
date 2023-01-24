@@ -10,39 +10,48 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import context.Singleton;
-import model.Filiere;
-import model.Stagiaire;
+import model.Adresse;
+import model.Client;
+import model.Compte;
+import model.Employe;
+import model.Metier;
 
-@WebServlet("/stagiaire")
+//A faire
+@WebServlet("/compte")
 public class CompteController extends HttpServlet {
+	
+	
+	//findById/findAll/insert/update/delete
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//findById/findAll/delete
+		
+		
 		if(request.getParameter("id")!=null) 
 		{
+			//Si on recoit un param ID => findById ou delete
 			if(request.getParameter("delete")!=null) 
 			{
+				//delete
 				Integer id = Integer.parseInt(request.getParameter("id"));
-				Singleton.getInstance().getDaoStagiaire().delete(id);
-				response.sendRedirect("stagiaire");
+				Singleton.getInstance().getDaoCompte().delete(id);
+				response.sendRedirect("compte");
 			}
 			else 
 			{
+				//findById
 				Integer id = Integer.parseInt(request.getParameter("id"));
-				Stagiaire s = Singleton.getInstance().getDaoStagiaire().findById(id);
-				List<Filiere> filieres = Singleton.getInstance().getDaoFiliere().findAll();
-
-				request.setAttribute("stagiaire", s);
-				request.setAttribute("filieres", filieres);
+				Compte c = Singleton.getInstance().getDaoCompte().findById(id);
+				request.setAttribute("compte", c);
 				
-				this.getServletContext().getRequestDispatcher("/WEB-INF/updateStagiaire.jsp").forward(request, response);
+				this.getServletContext().getRequestDispatcher("/WEB-INF/compte.jsp").forward(request, response);
 			}
 		}
 		else 
 		{
-			List<Stagiaire> stagiaires = Singleton.getInstance().getDaoStagiaire().findAll();
-			List<Filiere> filieres = Singleton.getInstance().getDaoFiliere().findAll();
-			request.setAttribute("stagiaires", stagiaires);
-			request.setAttribute("filieres", filieres);
-			this.getServletContext().getRequestDispatcher("/WEB-INF/stagiaires.jsp").forward(request, response);
+			List<Compte> comptes = Singleton.getInstance().getDaoCompte().findAll();
+			request.setAttribute("listComptes", comptes);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/updateComptes.jsp").forward(request, response);
 		}
 		
 		
@@ -54,29 +63,63 @@ public class CompteController extends HttpServlet {
 		
 		if(request.getParameter("id")==null) 
 		{
-			String prenom = request.getParameter("prenom");
+			String login = request.getParameter("login");
+			String password = request.getParameter("password");
 			String nom = request.getParameter("nom");
-			String email= request.getParameter("email");
-			Integer idFiliere = Integer.parseInt(request.getParameter("filiere"));
-			Filiere f = Singleton.getInstance().getDaoFiliere().findById(idFiliere);
-					
-			Stagiaire s = new Stagiaire(nom,prenom,email,f);
-			Singleton.getInstance().getDaoStagiaire().insert(s);
+			String prenom = request.getParameter("prenom");
+			String numero = request.getParameter("numero");
+			String voie = request.getParameter("voie");
+			String ville = request.getParameter("ville");
+			String cp = request.getParameter("cp");
+			String metier_str = request.getParameter("metier");
+			Compte c ;
+			
+			if(request.getParameter("typeCompte").equals("Employe"))
+			{
+				Metier metier = Metier.valueOf(metier_str);
+				Adresse adresse = new Adresse(numero, voie, ville, cp);
+				c = new Employe(login,password,nom,prenom,adresse,metier);
+			}
+			else 
+			{
+				Adresse adresse = new Adresse(numero, voie, ville, cp);
+				c = new Client (login,password,nom,prenom,adresse);
+			}
+			
+			Singleton.getInstance().getDaoCompte().insert(c);
 		}
 		else 
 		{
 			Integer id = Integer.parseInt(request.getParameter("id"));
 			
-			String prenom = request.getParameter("prenom");
+			String login = request.getParameter("login");
+			String password = request.getParameter("password");
 			String nom = request.getParameter("nom");
-			String email= request.getParameter("email");
-			Integer idFiliere = Integer.parseInt(request.getParameter("filiere"));
-			Filiere f = Singleton.getInstance().getDaoFiliere().findById(idFiliere);
-					
-			Stagiaire s = new Stagiaire(id,nom,prenom,email,f);
-			Singleton.getInstance().getDaoStagiaire().update(s);
+			String prenom = request.getParameter("prenom");
+			String numero = request.getParameter("numero");
+			String voie = request.getParameter("voie");
+			String ville = request.getParameter("ville");
+			String cp = request.getParameter("cp");
+			String metier_str = request.getParameter("metier");
+			Compte c ;
+			
+			if(request.getParameter("typeCompte").equals("Medecin"))
+			{
+				Metier metier = Metier.valueOf(metier_str);
+				Adresse adresse = new Adresse(numero, voie, ville, cp);
+				c = new Employe(login,password,nom,prenom,adresse,metier);
+			}
+			else 
+			{
+				Adresse adresse = new Adresse(numero, voie, ville, cp);
+				c = new Client (login,password,nom,prenom,adresse);
+			}
+			
+			Singleton.getInstance().getDaoCompte().update(c);
 		}
 		
-		response.sendRedirect("stagiaire");
+		response.sendRedirect("compte");
 	}
+	
+
 }
