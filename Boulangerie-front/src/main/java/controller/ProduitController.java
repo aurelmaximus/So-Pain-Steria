@@ -10,10 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import context.Singleton;
-import model.Filiere;
-import model.Stagiaire;
+import model.Produit;
 
-@WebServlet("/stagiaire")
+@WebServlet("/produit")
 public class ProduitController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getParameter("id")!=null) 
@@ -21,28 +20,24 @@ public class ProduitController extends HttpServlet {
 			if(request.getParameter("delete")!=null) 
 			{
 				Integer id = Integer.parseInt(request.getParameter("id"));
-				Singleton.getInstance().getDaoStagiaire().delete(id);
-				response.sendRedirect("stagiaire");
+				Singleton.getInstance().getDaoProduit().delete(id);
+				response.sendRedirect("produit");
 			}
 			else 
 			{
 				Integer id = Integer.parseInt(request.getParameter("id"));
-				Stagiaire s = Singleton.getInstance().getDaoStagiaire().findById(id);
-				List<Filiere> filieres = Singleton.getInstance().getDaoFiliere().findAll();
-
-				request.setAttribute("stagiaire", s);
-				request.setAttribute("filieres", filieres);
+				Produit p = Singleton.getInstance().getDaoProduit().findById(id);
+			
+				request.setAttribute("produit", p);
 				
-				this.getServletContext().getRequestDispatcher("/WEB-INF/updateStagiaire.jsp").forward(request, response);
+				this.getServletContext().getRequestDispatcher("/WEB-INF/updateProduit.jsp").forward(request, response);
 			}
 		}
 		else 
 		{
-			List<Stagiaire> stagiaires = Singleton.getInstance().getDaoStagiaire().findAll();
-			List<Filiere> filieres = Singleton.getInstance().getDaoFiliere().findAll();
-			request.setAttribute("stagiaires", stagiaires);
-			request.setAttribute("filieres", filieres);
-			this.getServletContext().getRequestDispatcher("/WEB-INF/stagiaires.jsp").forward(request, response);
+			List<Produit> produits = Singleton.getInstance().getDaoProduit().findAll();
+			request.setAttribute("produits", produits);
+			this.getServletContext().getRequestDispatcher("/WEB-INF/produits.jsp").forward(request, response);
 		}
 		
 		
@@ -54,29 +49,26 @@ public class ProduitController extends HttpServlet {
 		
 		if(request.getParameter("id")==null) 
 		{
-			String prenom = request.getParameter("prenom");
-			String nom = request.getParameter("nom");
-			String email= request.getParameter("email");
-			Integer idFiliere = Integer.parseInt(request.getParameter("filiere"));
-			Filiere f = Singleton.getInstance().getDaoFiliere().findById(idFiliere);
+			Double prix = Double.parseDouble(request.getParameter("prix"));
+			Integer stock = Integer.parseInt(request.getParameter("stock"));
+			String libelle= request.getParameter("libelle");
 					
-			Stagiaire s = new Stagiaire(nom,prenom,email,f);
-			Singleton.getInstance().getDaoStagiaire().insert(s);
+			Produit s = new Produit(prix, stock, libelle);
+			Singleton.getInstance().getDaoProduit().insert(s);
 		}
 		else 
 		{
 			Integer id = Integer.parseInt(request.getParameter("id"));
 			
-			String prenom = request.getParameter("prenom");
-			String nom = request.getParameter("nom");
-			String email= request.getParameter("email");
-			Integer idFiliere = Integer.parseInt(request.getParameter("filiere"));
-			Filiere f = Singleton.getInstance().getDaoFiliere().findById(idFiliere);
+			Double prix = Double.parseDouble(request.getParameter("prix"));
+			Integer stock = Integer.parseInt(request.getParameter("stock"));
+			String libelle= request.getParameter("libelle");
 					
-			Stagiaire s = new Stagiaire(id,nom,prenom,email,f);
-			Singleton.getInstance().getDaoStagiaire().update(s);
+
+			Produit s = new Produit(id, prix, stock, libelle);
+			Singleton.getInstance().getDaoProduit().update(s);
 		}
 		
-		response.sendRedirect("stagiaire");
+		response.sendRedirect("produit");
 	}
 }

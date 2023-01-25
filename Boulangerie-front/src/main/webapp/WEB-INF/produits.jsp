@@ -11,14 +11,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Gestion Stagiaire</title>
+<title>Gestion des produits</title>
 </head>
 <body>
 
 
 
 <div id="content">
-<h1>Liste des Stagiaires</h1>
+<h1>Liste des Produits</h1>
      <input id="btnAddStagiaire" type="button" class ="btn btn-success" value="Ajouter">
      <a href="index.html"><input type="button" class ="btn btn-info" value="Retour"></a>
 
@@ -26,10 +26,9 @@
        <thead>
          <tr>
            <th>Id</th>
-           <th>Nom</th>
-           <th>Prenom</th>
-           <th>Email</th>
-           <th>Filiere</th>
+           <th>Prix</th>
+           <th>Stock</th>
+           <th>Libelle</th>
            <th>Actions</th>
            </tr>
        </thead>
@@ -40,10 +39,9 @@
            <td>${stagiaire.nom}</td>
            <td>${stagiaire.prenom}</td>
            <td>${stagiaire.email}</td>
-           <td>${stagiaire.filiere.id} - ${stagiaire.filiere.libelle}</td>
            <td>
-             <a href="stagiaire?id=${stagiaire.id}"><input type="button" class ="btn btn-warning" value="Modifier"></a>
-             <a href="stagiaire?id=${stagiaire.id}&delete"><input type="button" class ="btn btn-danger" value="Supprimer"></a>
+             <a href="produit?id=${produit.id}"><input type="button" class ="btn btn-warning" value="Modifier"></a>
+             <a href="produit?id=${produit.id}&delete"><input type="button" class ="btn btn-danger" value="Supprimer"></a>
            </td>
          </tr>
        </c:forEach>
@@ -55,21 +53,13 @@
 
 
 
-     <div id="addFormStagiaire" class="formAjout">
-            <h3>Ajouter Stagiaire</h3>
-            <form action="stagiaire" method="post">
-            Nom :<input name="nom" type="text" placeholder="Saisir votre nom"><br>
-            Prenom :<input name="prenom" type="text" placeholder="Saisir votre prenm"><br>
-            Email :<input name="email" type="email" placeholder="Saisir votre email"><br>
-            Filiere
-              <select name="filiere">
-              <c:forEach items="${filieres}" var="filiere">
-              
-               	<option value="${filiere.id}" >${filiere.id} - ${filiere.libelle}</option>
-              
-              </c:forEach>
-                 
-              </select><br>
+     <div id="addFormProduit" class="formAjout">
+            <h3>Ajouter Produit</h3>
+            <form action="produit" method="post">
+            Prix :<input name="prix" type="number" min="0" step="0.01" placeholder="Saisir prix"><br>
+            Stock initial :<input name="stock" type="number" min="0" step="1" placeholder="Saisir stock"><br>
+            Libelle :<input name="libelle" type="text" placeholder="Saisir libellé"><br>
+ 
               <input class ="btn btn-success" type="submit" value="Ajouter">
             </form>
         </div>
@@ -83,9 +73,9 @@
 
 <script>
 
-btnAddStagiaire.onclick=function()
+btnAddProduit.onclick=function()
 {
-  addFormStagiaire.style.display="block";
+  addFormProduit.style.display="block";
 }
 
 </script>
