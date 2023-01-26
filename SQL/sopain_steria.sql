@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : dim. 22 jan. 2023 à 13:17
+-- Généré le : jeu. 26 jan. 2023 à 16:22
 -- Version du serveur : 5.7.40
 -- Version de PHP : 8.0.26
 
@@ -52,6 +52,8 @@ INSERT INTO `commande` (`id`, `id_client`, `total`, `date_commande`) VALUES
 DROP TABLE IF EXISTS `compte`;
 CREATE TABLE IF NOT EXISTS `compte` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(50) NOT NULL,
+  `prenom` varchar(50) NOT NULL,
   `login` varchar(35) NOT NULL,
   `password` varchar(100) NOT NULL,
   `numero` varchar(10) DEFAULT NULL,
@@ -67,12 +69,12 @@ CREATE TABLE IF NOT EXISTS `compte` (
 -- Déchargement des données de la table `compte`
 --
 
-INSERT INTO `compte` (`id`, `login`, `password`, `numero`, `voie`, `ville`, `cp`, `type_compte`, `metier`) VALUES
-(1, 'aurelien.bulme@gmail.com', 'Croki19', '4', 'Rue du dragon blanc', 'Bordeaux', '33000', 'Employe', 'Patissier'),
-(2, 'cedric.devillers@gmail.com', 'cedric', '8', 'Rue du magicien', 'Bordeaux', '69000', 'Employe', 'Boulangerie'),
-(3, 'farah.benaissa@gmail.com', 'farah', '12', 'Rue cyber', 'Lyon', NULL, 'Employe', 'Patissier'),
-(4, 'youssef.talmat@gmail.com', 'youssef', '7bis', 'Rue ignister', 'Lyon', '69000', 'Employe', 'Serveur'),
-(5, 'prune.pommier@gmail.com', 'peche', '25', 'Rue de verger', 'Rennes', '35000', 'Client', NULL);
+INSERT INTO `compte` (`id`, `nom`, `prenom`, `login`, `password`, `numero`, `voie`, `ville`, `cp`, `type_compte`, `metier`) VALUES
+(1, 'Bulme', 'Aurélien', 'aurelien.bulme@gmail.com', 'Croki19', '4', 'Rue du dragon blanc', 'Bordeaux', '33000', 'Employe', 'Patissier'),
+(2, 'Devillers', 'Cedric', 'cedric.devillers@gmail.com', 'cedric', '8', 'Rue du magicien', 'Bordeaux', '69000', 'Employe', 'Boulangerie'),
+(3, 'Benaissa', 'Farah', 'farah.benaissa@gmail.com', 'farah', '12', 'Rue cyber', 'Lyon', '33000', 'Employe', 'Patissier'),
+(4, 'Talmat', 'Youssef', 'youssef.talmat@gmail.com', 'youssef', '7bis', 'Rue ignister', 'Lyon', '69000', 'Employe', 'Serveur'),
+(5, 'pommier', 'prune', 'prune.pommier@gmail.com', 'peche', '25', 'Rue de verger', 'Rennes', '35000', 'Client', NULL);
 
 -- --------------------------------------------------------
 
