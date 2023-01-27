@@ -39,7 +39,7 @@ public class Commande {
 	private EtatCommande etatcommande;
 	
 	@OneToMany(mappedBy = "Command")
-	private List<Ligne_Commande> LigneCommandes = new ArrayList<>();
+	private List<LigneCommande> LigneCommandes = new ArrayList<>();
 	
 	@ManyToOne
 	@JoinColumn(name = "Customer_id")

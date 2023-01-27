@@ -3,7 +3,7 @@ package model;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-public class Ligne_Ingredient {
+public class LigneIngredient {
 	
 	
 	@ManyToOne
@@ -18,7 +18,7 @@ public class Ligne_Ingredient {
 
 	
 	
-	public Ligne_Ingredient() {
+	public LigneIngredient() {
 		super();
 	}
 

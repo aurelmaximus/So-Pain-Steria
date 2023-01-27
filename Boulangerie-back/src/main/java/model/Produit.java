@@ -15,9 +15,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -44,10 +42,10 @@ public  abstract class Produit {
 	private ArticleFavoris articlefavoris;
 	
 	@OneToOne(mappedBy = "Produit", fetch = FetchType.LAZY)
-	private Ligne_Commande ligne_commande;
+	private LigneCommande ligne_commande;
 	
 	@OneToMany(mappedBy = "Ingredient")
-	private List<Ligne_Ingredient> LigneIngredient= new ArrayList<>();
+	private List<LigneIngredient> ligneIngredients= new ArrayList<>();
 	
 	public Produit() {
 		super();
@@ -112,26 +110,24 @@ public  abstract class Produit {
 	}
 
 
-	public Ligne_Commande getLigne_commande() {
+	public LigneCommande getLigne_commande() {
 		return ligne_commande;
 	}
 
 
-	public void setLigne_commande(Ligne_Commande ligne_commande) {
+	public void setLigne_commande(LigneCommande ligne_commande) {
 		this.ligne_commande = ligne_commande;
 	}
 
 
-	public List<Ingredient> getListeIngredients() {
-		return listeIngredients;
+	public List<LigneIngredient> getLigneIngredients() {
+		return ligneIngredients;
 	}
 
 
-	public void setListeIngredients(List<Ingredient> listeIngredients) {
-		this.listeIngredients = listeIngredients;
+	public void setLigneIngredients(List<LigneIngredient> ligneIngredients) {
+		this.ligneIngredients = ligneIngredients;
 	}
-
-
 
 	
 	
