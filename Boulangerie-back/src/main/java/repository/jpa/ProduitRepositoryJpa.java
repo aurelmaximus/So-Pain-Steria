@@ -3,22 +3,20 @@ package repository.jpa;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Ingredient;
-import boulangerie.context.Application;
-import repository.IRepository;
-import repository.IIngredientRepository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-public class IngredientRepositoryJpa implements IRepository<Ingredient, Integer> {
+import boulangerie.context.Application;
+import model.Produit;
+import repository.IRepository;
+
+public class ProduitRepositoryJpa implements IRepository<Produit, Integer>{
 
 
-	
-	public Ingredient findById(Integer id) {
+public Produit findById(Integer id) {
 		
-		Ingredient ingredient = null;
+		Produit produit = null;
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -27,7 +25,7 @@ public class IngredientRepositoryJpa implements IRepository<Ingredient, Integer>
 			tx = em.getTransaction();
 			tx.begin();
 
-			ingredient = em.find(Ingredient.class, id);
+			produit = em.find(Produit.class, id);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -41,16 +39,16 @@ public class IngredientRepositoryJpa implements IRepository<Ingredient, Integer>
 			}
 		}
 
-		return ingredient;
+		return produit;
 	}
 		
 
 	
 	@Override
-	public List<Ingredient> findAll() {
+	public List<Produit> findAll() {
 		
-		List<Ingredient> ingredients = new ArrayList();
-		Ingredient i = null;
+		List<Produit> produits = new ArrayList();
+		Produit i = null;
 		
 
 		EntityManager em = null;
@@ -62,9 +60,9 @@ public class IngredientRepositoryJpa implements IRepository<Ingredient, Integer>
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Ingredient> query = em.createQuery("select i from Ingredient i", Ingredient.class);
+			TypedQuery<Produit> query = em.createQuery("select p from Produit p", Produit.class);
 
-			ingredients = query.getResultList();
+			produits = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -78,13 +76,13 @@ public class IngredientRepositoryJpa implements IRepository<Ingredient, Integer>
 			}
 		}
 
-		return ingredients;
+		return produits;
 	}
 	
 
 	
 	@Override 
-	public Ingredient save(Ingredient ingredient) {
+	public Produit save(Produit produit) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -93,7 +91,7 @@ public class IngredientRepositoryJpa implements IRepository<Ingredient, Integer>
 			tx = em.getTransaction();
 			tx.begin();
 
-			ingredient = em.merge(ingredient);
+			produit = em.merge(produit);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -107,7 +105,7 @@ public class IngredientRepositoryJpa implements IRepository<Ingredient, Integer>
 			}
 		}
 
-		return ingredient;
+		return produit;
 	}
 	
 
@@ -121,7 +119,7 @@ public class IngredientRepositoryJpa implements IRepository<Ingredient, Integer>
 				tx = em.getTransaction();
 				tx.begin();
 
-				TypedQuery<Ingredient> query = em.createQuery("delete from Ingredient i where i.id = ?1", Ingredient.class);
+				TypedQuery<Produit> query = em.createQuery("delete from Produit p where p.id = ?1", Produit.class);
 				query.setParameter("id", id);
 
 				query.executeUpdate();
@@ -142,7 +140,7 @@ public class IngredientRepositoryJpa implements IRepository<Ingredient, Integer>
 	
 
 		@Override
-		public void delete(Ingredient ingredient) {
+		public void delete(Produit produit) {
 			EntityManager em = null;
 			EntityTransaction tx = null;
 
@@ -151,7 +149,7 @@ public class IngredientRepositoryJpa implements IRepository<Ingredient, Integer>
 				tx = em.getTransaction();
 				tx.begin();
 
-				em.remove(em.merge(ingredient));
+				em.remove(em.merge(produit));
 
 				tx.commit();
 			} catch (Exception e) {
@@ -167,5 +165,7 @@ public class IngredientRepositoryJpa implements IRepository<Ingredient, Integer>
 			
 	}
 
-	
+		
 }
+	
+	
