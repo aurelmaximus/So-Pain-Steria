@@ -11,9 +11,9 @@ import java.util.List;
 import model.Client;
 import model.Commande;
 import model.Ingredient;
-import repository.IDAO;
+import repository.IRepository;
 
-public class DAOCommande implements IDAO<Commande, Integer> {
+public class DAOCommande implements IRepository<Commande, Integer> {
 
 	@Override
 	public Commande findById(Integer id) {

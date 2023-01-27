@@ -4,7 +4,7 @@ import java.util.List;
 
 import model.Produit;
 
-public interface IDAOProduit extends IDAO<Produit,Integer>{
+public interface IDAOProduit extends IRepository<Produit,Integer>{
 
 	public Produit findById(Integer id);
 	public List<Produit> findAll();

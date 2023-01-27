@@ -11,9 +11,9 @@ import java.util.Scanner;
 
 import model.Ingredient;
 import model.Produit;
-import repository.IDAO;
+import repository.IRepository;
 
-public class DAOProduit implements IDAO<Produit, Integer>{
+public class DAOProduit implements IRepository<Produit, Integer>{
 
 
 	public Produit findById(Integer id) {

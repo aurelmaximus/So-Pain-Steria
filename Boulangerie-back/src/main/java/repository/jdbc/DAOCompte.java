@@ -10,9 +10,9 @@ import model.Adresse;
 import model.Compte;
 import model.Employe;
 import model.Metier;
-import repository.IDAO;
+import repository.IRepository;
 
-public class DAOCompte implements IDAO<Compte, Integer> {
+public class DAOCompte implements IRepository<Compte, Integer> {
 
 	public Compte findById(Integer id) {
 
