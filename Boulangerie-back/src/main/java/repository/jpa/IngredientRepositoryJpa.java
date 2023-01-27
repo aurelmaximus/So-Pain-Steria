@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Ingredient;
+import model.Produit;
 import boulangerie.context.Application;
 import repository.IRepository;
 import repository.IIngredientRepository;
@@ -12,7 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-public class IngredientRepositoryJpa implements IRepository<Ingredient, Integer> {
+public class IngredientRepositoryJpa implements IIngredientRepository {
 
 
 	
@@ -167,5 +168,45 @@ public class IngredientRepositoryJpa implements IRepository<Ingredient, Integer>
 			
 	}
 
+
+
+		@Override
+		public List<Ingredient> findAllByLibelleProduit(String libelle) {
+			List<Ingredient> ingredients = new ArrayList<>();
+
+			EntityManager em = null;
+			EntityTransaction tx = null;
+
+			try {
+				em = Application.getInstance().getEmf().createEntityManager();
+				tx = em.getTransaction();
+				tx.begin();
+
+				TypedQuery<Ingredient> query = em.createQuery("select distinct i from Ingredient i join fetch i.lignesIngredients l where l.produit.libelle = ?1", Ingredient.class);
+
+				query.setParameter(1, libelle);
+				
+				ingredients = query.getResultList();
+
+				tx.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+				if (tx != null && tx.isActive()) {
+					tx.rollback();
+				}
+			} finally {
+				if (em != null) {
+					em.close();
+				}
+			}
+
+			return ingredients;		}
+
+
+
+	
+		
+
+		
 	
 }
