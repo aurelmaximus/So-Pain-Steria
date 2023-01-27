@@ -103,7 +103,7 @@ public class CommandeRepository implements ICommandeRepository {
 	}
 
 	@Override
-	public void deleteById(Integer id) {
+	public void deleteById(Integer numero) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -112,8 +112,8 @@ public class CommandeRepository implements ICommandeRepository {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Commande> query = em.createQuery("delete from Commande c where c.id = ?1", Commande.class);
-			query.setParameter(1, id);
+			TypedQuery<Commande> query = em.createQuery("delete from Commande c where c.numero = ?1", Commande.class);
+			query.setParameter(1, numero);
 
 			query.executeUpdate();
 
@@ -203,8 +203,41 @@ public class CommandeRepository implements ICommandeRepository {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Commande> query = em.createQuery("select c from Commande c where c.etatCommande = :et", Commande.class);
+			TypedQuery<Commande> query = em.createQuery("select c from Commande c where  c.etatCommande = :et", Commande.class);
+			
+			query.setParameter("et", etatC);
+			
+			commandes = query.getResultList();
 
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+
+		return commandes;
+	}
+
+	@Override
+	public List<Commande> findAllByClientAndEtatCommande(Client client, EtatCommande etatC) {
+		List<Commande> commandes = new ArrayList<>();
+
+		EntityManager em = null;
+		EntityTransaction tx = null;
+
+		try {
+			em = Application.getInstance().getEmf().createEntityManager();
+			tx = em.getTransaction();
+			tx.begin();
+
+			TypedQuery<Commande> query = em.createQuery("select c from Commande c where c.client = :cl and c.etatCommande = :et", Commande.class);
+			query.setParameter("cl", client);
 			query.setParameter("et", etatC);
 			
 			commandes = query.getResultList();

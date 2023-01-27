@@ -13,4 +13,6 @@ public interface ICommandeRepository extends IRepository<Commande,Integer> {
 	
 	List<Commande> findAllByEtatCommande(EtatCommande etatC);
 	
+	List<Commande> findAllByClientAndEtatCommande(Client client, EtatCommande etatC);
+	
 }

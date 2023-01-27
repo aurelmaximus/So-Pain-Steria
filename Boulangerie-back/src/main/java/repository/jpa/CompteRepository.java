@@ -252,5 +252,104 @@ public class CompteRepository implements ICompteRepository {
 		return clients;
 	}
 
+	@Override
+	public Employe findEmployeById(Integer id) {
+		Employe employe = null;
+
+		EntityManager em = null;
+		EntityTransaction tx = null;
+
+		try {
+			em = Application.getInstance().getEmf().createEntityManager();
+			tx = em.getTransaction();
+			tx.begin();
+
+			TypedQuery<Employe> query = em.createQuery("select emp from Employe emp where emp.id = :id", Employe.class);
+
+			query.setParameter("id", id);
+			
+			employe = query.getSingleResult();
+
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+
+		return employe;
+	}
+
+	@Override
+	public Client findClientById(Integer id) {
+		Client client = null;
+
+		EntityManager em = null;
+		EntityTransaction tx = null;
+
+		try {
+			em = Application.getInstance().getEmf().createEntityManager();
+			tx = em.getTransaction();
+			tx.begin();
+
+			TypedQuery<Client> query = em.createQuery("select cl from Client cl where cl.id = :id", Client.class);
+
+			query.setParameter("id", id);
+			
+			client = query.getSingleResult();
+
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+
+		return client;
+	}
+
+	@Override
+	public Client findClientByIdWithArticlesFavoris(Integer id) {
+		Client client = null;
+
+		EntityManager em = null;
+		EntityTransaction tx = null;
+
+		try {
+			em = Application.getInstance().getEmf().createEntityManager();
+			tx = em.getTransaction();
+			tx.begin();
+
+			TypedQuery<Client> query = em.createQuery("select distinct cl from Client cl join fetch cl.articlesFavoris where cl.id = :id", Client.class);
+
+			query.setParameter("id", id);
+			
+			client = query.getSingleResult();
+
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+
+		return client;
+	}
+
 
 }
