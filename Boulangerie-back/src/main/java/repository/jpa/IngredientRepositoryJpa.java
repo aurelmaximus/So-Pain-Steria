@@ -11,7 +11,11 @@ import model.Ingredient;
 import repository.IRepository;
 
 
+<<<<<<< Updated upstream
 public class DAOIngredient implements IRepository<Ingredient, Integer> {
+=======
+public class IngredientRepositoryJpa implements IDAO<Ingredient, Integer> {
+>>>>>>> Stashed changes
 
 	
 	public Ingredient findById(Integer id) {
