@@ -15,9 +15,9 @@ public class Application {
 	//private DAOIngredient daoIngredient = new DAOIngredient();
 	//private DAOProduit daoProduit = new DAOProduit();
 	//private static Application instance;
-	
-	
-	
+
+
+
 	private Application() {
 	}
 
@@ -29,6 +29,10 @@ public class Application {
 		return instance;
 	}
 
+
+	public EntityManagerFactory getEmf() {
+		return emf;
 	}
+}
 
 
