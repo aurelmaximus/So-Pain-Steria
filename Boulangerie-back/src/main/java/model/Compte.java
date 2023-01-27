@@ -10,6 +10,12 @@ public abstract class Compte {
 	protected Adresse adresse;
 	
 	
+	
+	public Compte() {
+		super();
+	}
+
+
 	public Compte(String login, String password, String nom, String prenom, Adresse adresse) {
 		this.login = login;
 		this.password = password;
@@ -18,17 +24,6 @@ public abstract class Compte {
 		this.adresse = adresse;
 	}
 	
-
-	public Compte(Integer id,String login, String password, String nom, String prenom, Adresse adresse) {
-		this.id=id;
-		this.login = login;
-		this.password = password;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.adresse = adresse;
-	}
-	
-
 
 	public Integer getId() {
 		return id;
@@ -89,12 +84,6 @@ public abstract class Compte {
 		this.adresse = adresse;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Compte [id=" + id + ", login=" + login + ", password=" + password + ", nom=" + nom + ", prenom="
-				+ prenom + ", adresse=" + adresse + "]";
-	}
 
 	
 }

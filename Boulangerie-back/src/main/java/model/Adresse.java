@@ -56,9 +56,5 @@ public class Adresse {
 		this.cp = cp;
 	}
 
-	public String toString() {
-		return "Adresse [numero=" + numero + ", voie=" + voie + ", ville=" + ville + ", cp=" + cp + "]";
-	}
-	
-	
+
 }
