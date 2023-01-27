@@ -2,14 +2,14 @@ package repository;
 
 import java.util.List;
 
+import model.Client;
 import model.Commande;
-import model.Compte;
 import model.EtatCommande;
 
 
 public interface ICommandeRepository extends IRepository<Commande,Integer> {
 
-	public List<Commande> findAllByClient(Integer idClient);
+	List<Commande> findAllByClient(Client client);
 	
 	public List<Commande> findAllByEtatCommande(EtatCommande etatC);
 	
