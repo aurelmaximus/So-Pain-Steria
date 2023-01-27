@@ -1,5 +1,7 @@
 package model;
 
+
+//Pret pour Mapping
 public class Client extends Compte {
 
 	

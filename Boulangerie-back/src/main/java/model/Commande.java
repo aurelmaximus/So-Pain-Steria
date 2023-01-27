@@ -1,58 +1,46 @@
 package model;
 
 import java.time.LocalTime;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "Command")
 public class Commande {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer numero;
-	private boolean termine;
-	protected LocalTime heure;
+	
+	@Column(name = "Hour")
+	private LocalTime heure;
+	
+	@Column(name = "Minute")
 	private LocalTime minute;
-	protected Client client;
+	
+	@Column(name = "Command_status)
+	private EtatCommande etatcommande;
+	
+	
+	private Client client;
 
 	
-	public Commande(Client client, LocalTime heure, LocalTime minute, boolean termine) {
+	public Commande() {
+		super();
+	}
+
+
+	public Commande(LocalTime heure, LocalTime minute, EtatCommande etatcommande) {
+		super();
 		this.heure = heure;
 		this.minute = minute;
-		this.client = client;
+		this.etatcommande = etatcommande;
 	}
 
 	
-	public Commande(Integer numero, Client client, LocalTime heure, LocalTime minute, boolean termine) {
-		this.numero = numero;
-		this.heure = heure;
-		this.minute = minute;
-		this.client = client;
-	}
-	
-	
-	public static String saisieString(String msg) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println(msg);
-		return sc.nextLine();
-	}
-
-	public static int saisieInt(String msg) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println(msg);
-		return sc.nextInt();
-	}
-
-	public static double saisieDouble(String msg) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println(msg);
-		return sc.nextDouble();
-	}
-
-	public static boolean saisieBoolean(String msg) {
-		Scanner sc = new Scanner(System.in);
-		System.out.println(msg);
-		return sc.nextBoolean();
-	}
-
 	public Integer getNumero() {
 		return numero;
 	}
@@ -61,13 +49,6 @@ public class Commande {
 		this.numero = numero;
 	}
 
-	public boolean isTermine() {
-		return termine;
-	}
-
-	public void setTermine(boolean termine) {
-		this.termine = termine;
-	}
 
 	public LocalTime getHeure() {
 		return heure;
@@ -85,6 +66,16 @@ public class Commande {
 		this.minute = minute;
 	}
 
+	
+	public EtatCommande getEtatcommande() {
+		return etatcommande;
+	}
+
+
+	public void setEtatcommande(EtatCommande etatcommande) {
+		this.etatcommande = etatcommande;
+	}
+
 
 	public Client getClient() {
 		return client;
@@ -95,12 +86,6 @@ public class Commande {
 		this.client = client;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Commande [numero=" + numero + ", termine=" + termine + ", heure=" + heure + ", minute=" + minute
-				+ ", client=" + client + "]";
-	}
 
 
 }
