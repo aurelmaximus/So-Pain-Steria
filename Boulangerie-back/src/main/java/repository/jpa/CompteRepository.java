@@ -9,15 +9,15 @@ import javax.persistence.TypedQuery;
 
 import boulangerie.context.Application;
 import model.Client;
-import model.Commande;
-import model.EtatCommande;
-import repository.ICommandeRepository;
+import model.Compte;
+import model.Employe;
+import repository.ICompteRepository;
 
-public class CommandeRepository implements ICommandeRepository {
+public class CompteRepository implements ICompteRepository {
 
 	@Override
-	public List<Commande> findAll() {
-		List<Commande> commandes = new ArrayList<>();
+		public List<Compte> findAll() {
+		List<Compte> comptes = new ArrayList<>();
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -27,9 +27,9 @@ public class CommandeRepository implements ICommandeRepository {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Commande> query = em.createQuery("select c from Commande c", Commande.class);
+			TypedQuery<Compte> query = em.createQuery("select com from Compte com", Compte.class);
 
-			commandes = query.getResultList();
+			comptes = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -43,12 +43,12 @@ public class CommandeRepository implements ICommandeRepository {
 			}
 		}
 
-		return commandes;
+		return comptes;
 	}
 
 	@Override
-	public Commande findById(Integer id) {
-		Commande commande = null;
+	public Compte findById(Integer id) {
+		Compte compte = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -58,7 +58,7 @@ public class CommandeRepository implements ICommandeRepository {
 			tx = em.getTransaction();
 			tx.begin();
 
-			commande = em.find(Commande.class, id);
+			compte = em.find(Compte.class, id);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -72,11 +72,11 @@ public class CommandeRepository implements ICommandeRepository {
 			}
 		}
 
-		return commande;
+		return compte;
 	}
 
 	@Override
-	public Commande save(Commande commande) {
+	public Compte save(Compte compte) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -85,7 +85,7 @@ public class CommandeRepository implements ICommandeRepository {
 			tx = em.getTransaction();
 			tx.begin();
 
-			commande = em.merge(commande);
+			compte = em.merge(compte);
 
 			tx.commit();
 		} catch (Exception e) {
@@ -99,7 +99,7 @@ public class CommandeRepository implements ICommandeRepository {
 			}
 		}
 
-		return commande;
+		return compte;
 	}
 
 	@Override
@@ -112,8 +112,8 @@ public class CommandeRepository implements ICommandeRepository {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Commande> query = em.createQuery("delete from Commande c where c.id = ?1", Commande.class);
-			query.setParameter(1, id);
+			TypedQuery<Compte> query = em.createQuery("delete from Compte com where com.id = ?1", Compte.class);
+			query.setParameter("id", id);
 
 			query.executeUpdate();
 
@@ -132,7 +132,7 @@ public class CommandeRepository implements ICommandeRepository {
 	}
 
 	@Override
-	public void delete(Commande commande) {
+	public void delete(Compte compte) {
 		EntityManager em = null;
 		EntityTransaction tx = null;
 
@@ -141,7 +141,7 @@ public class CommandeRepository implements ICommandeRepository {
 			tx = em.getTransaction();
 			tx.begin();
 
-			em.remove(em.merge(commande));
+			em.remove(em.merge(compte));
 
 			tx.commit();
 		} catch (Exception e) {
@@ -157,9 +157,10 @@ public class CommandeRepository implements ICommandeRepository {
 		
 	}
 
+
 	@Override
-	public List<Commande> findAllByClient(Client client) {
-		List<Commande> commandes = new ArrayList<>();
+	public Compte findByEmailAndPassword(String email, String password) {
+		Compte compte = null;
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -169,11 +170,10 @@ public class CommandeRepository implements ICommandeRepository {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Commande> query = em.createQuery("select c from Commande c where c.client = :cl", Commande.class);
-
-			query.setParameter("cl", client);
-			
-			commandes = query.getResultList();
+			TypedQuery<Compte> query = em.createQuery("select com from Compte com where com.email= :pass and com.password= :pass", Compte.class);
+			query.setParameter("pass", email);
+			query.setParameter("pass", password);
+			compte = query.getSingleResult();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -187,13 +187,12 @@ public class CommandeRepository implements ICommandeRepository {
 			}
 		}
 
-		return commandes;
+		return compte;
 	}
 
-
 	@Override
-	public List<Commande> findAllByEtatCommande(EtatCommande etatC) {
-		List<Commande> commandes = new ArrayList<>();
+	public List<Employe> findAllEmploye() {
+		List<Employe> employes = new ArrayList<>();
 
 		EntityManager em = null;
 		EntityTransaction tx = null;
@@ -203,11 +202,9 @@ public class CommandeRepository implements ICommandeRepository {
 			tx = em.getTransaction();
 			tx.begin();
 
-			TypedQuery<Commande> query = em.createQuery("select c from Commande c where c.etatCommande = :et", Commande.class);
+			TypedQuery<Employe> query = em.createQuery("select emp from Employe emp", Employe.class);
 
-			query.setParameter("et", etatC);
-			
-			commandes = query.getResultList();
+			employes = query.getResultList();
 
 			tx.commit();
 		} catch (Exception e) {
@@ -221,11 +218,39 @@ public class CommandeRepository implements ICommandeRepository {
 			}
 		}
 
-		return commandes;
+		return employes;
 	}
 
-	
+	@Override
+	public List<Client> findAllClient() {
+		List<Client> clients = new ArrayList<>();
 
+		EntityManager em = null;
+		EntityTransaction tx = null;
+
+		try {
+			em = Application.getInstance().getEmf().createEntityManager();
+			tx = em.getTransaction();
+			tx.begin();
+
+			TypedQuery<Client> query = em.createQuery("select cl from Client cl", Client.class);
+
+			clients = query.getResultList();
+
+			tx.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+		} finally {
+			if (em != null) {
+				em.close();
+			}
+		}
+
+		return clients;
+	}
 
 
 }
