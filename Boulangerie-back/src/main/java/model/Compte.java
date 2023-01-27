@@ -9,27 +9,35 @@ import javax.persistence.DiscriminatorType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Enumerated;
-import javax.persistence.EnumType;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.persistence.Version;
 
 @Entity
-@Table(name = "person", uniqueConstraints = @UniqueConstraint(columnNames = { "last_name", "first_name" }))
+@Table(name = "Account", uniqueConstraints = @UniqueConstraint(columnNames = { "Last_name", "First_name" }))
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
 public abstract class Compte {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(name="login")
-	private String login;
-	@Column(name="password")
+	
+	@Version
+	private Integer version;
+	
+	@Column(name="Email")
+	private String email;
+	
+	@Column(name="Password")
 	private String password;
-	@Column(name="last_name")
+	
+	@Column(name="Last_name")
 	private String nom;
-	@Column(name="first_name")
+	
+	@Column(name="First_name")
 	private String prenom;
+	
 	@Embedded
 	private Adresse adresse;
 	
@@ -40,8 +48,8 @@ public abstract class Compte {
 	}
 
 
-	public Compte(String login, String password, String nom, String prenom, Adresse adresse) {
-		this.login = login;
+	public Compte(String email, String password, String nom, String prenom, Adresse adresse) {
+		this.email = email;
 		this.password = password;
 		this.nom = nom;
 		this.prenom = prenom;
@@ -59,13 +67,23 @@ public abstract class Compte {
 	}
 
 
-	public String getLogin() {
-		return login;
+	public Integer getVersion() {
+		return version;
 	}
 
 
-	public void setLogin(String login) {
-		this.login = login;
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 

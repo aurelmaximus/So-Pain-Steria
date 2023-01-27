@@ -1,28 +1,61 @@
 package model;
 
+import java.util.ArrayList;
 
-//Pret pour Mapping
-public class Produit {
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Version;
+import java.util.List;
 
+@Entity
+@Table(name = "Product")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
+public  abstract class Produit {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Version
+	private Integer version;
+	
+	
+	@Column(name = "Price", length = 4)
 	private double prix;
-	private Integer stock;
+	
+	@Column(name = "Label", length = 25)
 	private String libelle;
-	private Categorie categorie;
 	
+	@OneToOne(mappedBy = "Produit", fetch = FetchType.LAZY)
+	private ArticleFavoris articlefavoris;
 	
+	@OneToOne(mappedBy = "Produit", fetch = FetchType.LAZY)
+	private LigneCommande ligne_commande;
+	
+	@OneToMany(mappedBy = "Ingredient")
+	private List<LigneIngredient> ligneIngredients= new ArrayList<>();
 	
 	public Produit() {
 		super();
 	}
 
 	
-	public Produit(double prix, Integer stock, String libelle, Categorie categorie) {
+	public Produit(double prix, String libelle, Categorie categorie) {
 		super();
 		this.prix = prix;
-		this.stock = stock;
 		this.libelle = libelle;
-		this.categorie = categorie;
 	}
 
 
@@ -31,13 +64,11 @@ public class Produit {
 		return id;
 	}
 
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public void setStock(Integer stock) {
-		this.stock = stock;
-	}
 
 	public double getPrix() {
 		return prix;
@@ -46,16 +77,6 @@ public class Produit {
 
 	public void setPrix(double prix) {
 		this.prix = prix;
-	}
-
-
-	public int getStock() {
-		return stock;
-	}
-
-
-	public void setStock(int stock) {
-		this.stock = stock;
 	}
 
 
@@ -69,13 +90,43 @@ public class Produit {
 	}
 
 
-	public Categorie getCategorie() {
-		return categorie;
+	public Integer getVersion() {
+		return version;
 	}
 
 
-	public void setCategorie(Categorie categorie) {
-		this.categorie = categorie;
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
+
+	public ArticleFavoris getArticlefavoris() {
+		return articlefavoris;
+	}
+
+
+	public void setArticlefavoris(ArticleFavoris articlefavoris) {
+		this.articlefavoris = articlefavoris;
+	}
+
+
+	public LigneCommande getLigne_commande() {
+		return ligne_commande;
+	}
+
+
+	public void setLigne_commande(LigneCommande ligne_commande) {
+		this.ligne_commande = ligne_commande;
+	}
+
+
+	public List<LigneIngredient> getLigneIngredients() {
+		return ligneIngredients;
+	}
+
+
+	public void setLigneIngredients(List<LigneIngredient> ligneIngredients) {
+		this.ligneIngredients = ligneIngredients;
 	}
 
 	
