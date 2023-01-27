@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.Ingredient;
-import repository.IDAO;
+import repository.IRepository;
 
 
-public class DAOIngredient implements IDAO<Ingredient, Integer> {
+public class DAOIngredient implements IRepository<Ingredient, Integer> {
 
 	
 	public Ingredient findById(Integer id) {

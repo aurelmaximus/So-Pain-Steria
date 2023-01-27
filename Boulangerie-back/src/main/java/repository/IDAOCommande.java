@@ -6,8 +6,10 @@ import model.Commande;
 import model.Compte;
 
 
-public interface IDAOCommande extends IDAO<Compte,Integer> {
+public interface IDAOCommande extends IRepository<Compte,Integer> {
 
 	public List<Commande> findAllByClient(Integer idClient);
+	
+	public List<Commande> findAllByEtatCommande(EtatCommande etatC);
 	
 }

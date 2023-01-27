@@ -1,25 +1,32 @@
 package model;
 
-import java.time.LocalTime;
 
+//Pret pour mapping
 public class Ligne_Commande extends Commande{
 
+	private Integer id;
 	private int qte;
 	private double total;
+	private Commande commande;
+	private Produit produit;
+
 	
-	
-	
-	public Ligne_Commande(Client client, LocalTime heure, LocalTime minute, boolean termine, int qte, double total) {
-		super(client, heure, minute, termine);
-		this.qte = qte;
-		this.total = total;
+	public Ligne_Commande() {
+		super();
 	}
+
 	
-	public Ligne_Commande(Client client, LocalTime heure, LocalTime minute, boolean termine,Integer qte, double total) {
-		super(client, heure, minute, termine);
-		this.qte = qte;
-		this.total = total;
+
+	public Integer getId() {
+		return id;
 	}
+
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 
 
 	public int getQte() {
@@ -41,10 +48,26 @@ public class Ligne_Commande extends Commande{
 		this.total = total;
 	}
 
-	@Override
-	public String toString() {
-		return "Ligne_Commande [qte=" + qte + ", total=" + total + "]";
+
+	public Commande getCommande() {
+		return commande;
 	}
+
+
+	public void setCommande(Commande commande) {
+		this.commande = commande;
+	}
+
+
+	public Produit getProduit() {
+		return produit;
+	}
+
+
+	public void setProduit(Produit produit) {
+		this.produit = produit;
+	}
+	
 
 	
 }

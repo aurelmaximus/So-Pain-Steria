@@ -1,28 +1,32 @@
 package model;
 
+
+//Pret pour Mapping
 public class Produit {
 
 	private Integer id;
 	private double prix;
 	private Integer stock;
 	private String libelle;
+	private Categorie categorie;
 	
 	
-	public Produit(double prix, int stock, String libelle) {
+	
+	public Produit() {
 		super();
-		this.prix = prix;
-		this.stock = stock;
-		this.libelle = libelle;
-	}
-	
-	public Produit(Integer id, double prix, Integer stock, String libelle) {
-		super();
-		this.prix = prix;
-		this.stock = stock;
-		this.libelle = libelle;
 	}
 
 	
+	public Produit(double prix, Integer stock, String libelle, Categorie categorie) {
+		super();
+		this.prix = prix;
+		this.stock = stock;
+		this.libelle = libelle;
+		this.categorie = categorie;
+	}
+
+
+
 	public Integer getId() {
 		return id;
 	}
@@ -65,11 +69,15 @@ public class Produit {
 	}
 
 
-	@Override
-	public String toString() {
-		return "Produit [prix=" + prix + ", stock=" + stock + ", libelle=" + libelle + "]";
+	public Categorie getCategorie() {
+		return categorie;
 	}
-	
+
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
 	
 	
 }

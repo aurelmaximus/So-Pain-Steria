@@ -1,19 +1,26 @@
 package model;
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
 
+
+@Entity
+@DiscriminatorValue("employe")
 public class Employe extends Compte{
+	@Column(name="job")
+	private Metier metier;
+	
+	
+	public Employe() {
+		super();
+	}
 
-	protected Metier metier;
-
+	
 	public Employe(String login, String password, String nom, String prenom, Adresse adresse, Metier metier) {
 		super(login, password, nom, prenom, adresse);
 		this.metier = metier;
 	}
 	
-	
-	public Employe(Integer id,String login, String password, String nom, String prenom, Adresse adresse, Metier metier) {
-		super(login, password, nom, prenom, adresse);
-		this.metier = metier;
-	}
 	
 	
 	public Metier getMetier() {
@@ -23,13 +30,6 @@ public class Employe extends Compte{
 	
 	public void setMetier(Metier metier) {
 		this.metier = metier;
-	}
-
-	
-	@Override
-	public String toString() {
-		return "Employe [metier=" + metier + ", login=" + login + ", password=" + password + ", nom=" + nom
-				+ ", prenom=" + prenom + ", adresse=" + adresse + "]";
 	}
 
 

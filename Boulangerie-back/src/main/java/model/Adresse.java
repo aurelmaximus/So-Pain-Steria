@@ -1,10 +1,18 @@
 package model;
 
-public class Adresse {
+import javax.persistence.Embeddable;
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
 
+@Embeddable
+public class Adresse {
+	@Column(name="number", length =255)
 	private String numero;
+	@Column(name="street", length =255)
 	private String voie;
+	@Column(name="city", length =255)
 	private String ville;
+	@Column(name="zip_code", length =255)
 	private String cp;
 	
 	
