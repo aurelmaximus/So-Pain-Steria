@@ -13,7 +13,7 @@ import javax.persistence.Version;
 
 @Entity
 @Table(name = "Command_line")
-public class Ligne_Commande extends Commande{
+public class LigneCommande extends Commande{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,7 +37,7 @@ public class Ligne_Commande extends Commande{
 	private Produit produit;
 
 	
-	public Ligne_Commande() {
+	public LigneCommande() {
 		super();
 	}
 

@@ -32,7 +32,7 @@ public class Ingredient  {
 	
 
 	@OneToMany(mappedBy = "Ingredient")
-	private List<Ligne_Ingredient> LigneIngredient= new ArrayList<>();
+	private List<LigneIngredient> ligneIngredients= new ArrayList<>();
 	
 	
 	public Ingredient() {
@@ -76,7 +76,16 @@ public class Ingredient  {
 		this.libelle = libelle;
 	}
 
-	
+
+	public List<LigneIngredient> getLigneIngredients() {
+		return ligneIngredients;
+	}
+
+
+	public void setLigneIngredients(List<LigneIngredient> ligneIngredients) {
+		this.ligneIngredients = ligneIngredients;
+	}
+
 
 
 }

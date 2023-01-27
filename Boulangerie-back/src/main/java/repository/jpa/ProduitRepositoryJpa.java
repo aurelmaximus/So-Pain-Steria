@@ -9,9 +9,10 @@ import javax.persistence.TypedQuery;
 
 import boulangerie.context.Application;
 import model.Produit;
+import repository.IProduitRepository;
 import repository.IRepository;
 
-public class ProduitRepositoryJpa implements IRepository<Produit, Integer>{
+public class ProduitRepositoryJpa implements IProduitRepository{
 
 
 public Produit findById(Integer id) {
@@ -164,6 +165,41 @@ public Produit findById(Integer id) {
 			}
 			
 	}
+
+
+
+		@Override
+		public List<Produit> findAllByLibelleIngredient(String libelle) {
+			List<Produit> produits = new ArrayList<>();
+
+			EntityManager em = null;
+			EntityTransaction tx = null;
+
+			try {
+				em = Application.getInstance().getEmf().createEntityManager();
+				tx = em.getTransaction();
+				tx.begin();
+
+				TypedQuery<Produit> query = em.createQuery("select distinct p from Produit p join fetch p.lignesIngredients l where l.ingredient.libelle = ?1", Produit.class);
+				
+				query.setParameter(1, libelle );
+				
+				produits = query.getResultList();
+
+				tx.commit();
+			} catch (Exception e) {
+				e.printStackTrace();
+				if (tx != null && tx.isActive()) {
+					tx.rollback();
+				}
+			} finally {
+				if (em != null) {
+					em.close();
+				}
+			}
+
+			return produits;
+		}
 
 		
 }
