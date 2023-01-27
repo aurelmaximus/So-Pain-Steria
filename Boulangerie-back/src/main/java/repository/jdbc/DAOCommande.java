@@ -1,4 +1,4 @@
-package dao;
+package repository.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,6 +11,7 @@ import java.util.List;
 import model.Client;
 import model.Commande;
 import model.Ingredient;
+import repository.IDAO;
 
 public class DAOCommande implements IDAO<Commande, Integer> {
 

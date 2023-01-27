@@ -1,35 +1,38 @@
-package dao;
+package repository.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 import model.Ingredient;
+import model.Produit;
+import repository.IDAO;
+
+public class DAOProduit implements IDAO<Produit, Integer>{
 
 
-public class DAOIngredient implements IDAO<Ingredient, Integer> {
-
+	public Produit findById(Integer id) {
 	
-	public Ingredient findById(Integer id) {
-		
-		Ingredient i = null;
+		Produit p = null;
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
 			Connection conn = DriverManager.getConnection(urlBdd, loginBdd, passwordBdd);
 
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ingredient where id=? ");
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM Produit where id=? ");
 			ps.setInt(1, id);
 
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) 
 			{
 
-			i = new Ingredient ((Integer)rs.getInt("id"), rs.getString("libelle_ing"),rs.getInt("qte"),rs.getBoolean("allergene"));
+			p = new Produit ((Integer)rs.getInt("id"),rs.getDouble("prix"), rs.getInt("stock"),rs.getString("libelle"));
 				
 			}
 
@@ -40,28 +43,27 @@ public class DAOIngredient implements IDAO<Ingredient, Integer> {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		return i;
+		return p;
 	}
-
 	
-	@Override
-	public List<Ingredient> findAll() {
-		
-		List<Ingredient> ingredient = new ArrayList();
-		Ingredient i = null;
+	
+	public List<Produit> findAll(){
+	
+	List<Produit> produit = new ArrayList();
+	Produit p = null;
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
 			Connection conn = DriverManager.getConnection(urlBdd, loginBdd, passwordBdd);
 
-			PreparedStatement ps = conn.prepareStatement("SELECT * FROM ingredient");
-			
+			PreparedStatement ps = conn.prepareStatement("SELECT * FROM Produit");
+
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) 
 			{
-			i = new Ingredient ((Integer)rs.getInt("id"), rs.getString("libelle"),rs.getInt("qte"),rs.getBoolean("allergene"));
-			ingredient.add(i);
+			p = new Produit ((Integer)rs.getInt("id"),rs.getDouble("prix"), rs.getInt("stock"),rs.getString("libelle"));
+			produit.add(p);
 			}
 
 			rs.close();
@@ -71,25 +73,24 @@ public class DAOIngredient implements IDAO<Ingredient, Integer> {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-		return ingredient;
+		return produit;
 		
 	}
 
 	
-	@Override 
-	public void insert(Ingredient i) {
-
+	public void insert(Produit p) {
+	
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
 			Connection conn = DriverManager.getConnection(urlBdd, loginBdd, passwordBdd);
 
-			PreparedStatement ps = conn.prepareStatement("INSERT INTO ingredient (id,libelle,qte,allergene) VALUES(?,?,?,?)");
+			PreparedStatement ps = conn.prepareStatement("INSERT INTO Produit (id,prix,stock,libelle) VALUES(?,?,?,?)");
 			
-			ps.setInt(1, i.getId());
-			ps.setString(2, i.getLibelle());
-			ps.setInt(3, i.getQte());
-			ps.setBoolean(4, i.isAllergene());
+			ps.setInt(1, p.getId());
+			ps.setDouble(2, p.getPrix());
+			ps.setInt(3, p.getStock());
+			ps.setString(4, p.getLibelle());
 		
 
 			ps.executeUpdate();
@@ -100,25 +101,23 @@ public class DAOIngredient implements IDAO<Ingredient, Integer> {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-
-
+		
 	}
 
 	
-	@Override
-	public void update(Ingredient i) {
+	public void update(Produit p) {
 		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
 			Connection conn = DriverManager.getConnection(urlBdd, loginBdd, passwordBdd);
 
-			PreparedStatement ps = conn.prepareStatement("Update ingredient set libelle=?, qte=?, allerge=? where id=?");
+			PreparedStatement ps = conn.prepareStatement("Update Produit set  prix=?, stock=?, libelle=? where id=?");
 
-			ps.setString(1, i.getLibelle());
-			ps.setInt(2, i.getQte());
-			ps.setBoolean(3, i.isAllergene());
-			ps.setInt(4, i.getId());
+			ps.setDouble(1, p.getPrix());
+			ps.setInt(2, p.getStock());
+			ps.setString(3, p.getLibelle());
+			ps.setInt(4, p.getId());
 			
 			ps.executeUpdate();
 			ps.close();
@@ -128,17 +127,18 @@ public class DAOIngredient implements IDAO<Ingredient, Integer> {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
-
+		
 	}
 
 	
 	public void delete(Integer id) {
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 
 			Connection conn = DriverManager.getConnection(urlBdd, loginBdd,passwordBdd);
 
-			PreparedStatement ps = conn.prepareStatement("DELETE from Ingredient where id=?");
+			PreparedStatement ps = conn.prepareStatement("DELETE from Produit where id=?");
 
 			ps.setInt(1,id);
 			ps.executeUpdate();
@@ -151,6 +151,8 @@ public class DAOIngredient implements IDAO<Ingredient, Integer> {
 			ex.printStackTrace();
 		}
 	}
-
-	
+		
+		
 }
+	
+	

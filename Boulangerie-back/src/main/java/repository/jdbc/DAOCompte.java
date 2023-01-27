@@ -1,4 +1,4 @@
-package dao;
+package repository.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,6 +10,7 @@ import model.Adresse;
 import model.Compte;
 import model.Employe;
 import model.Metier;
+import repository.IDAO;
 
 public class DAOCompte implements IDAO<Compte, Integer> {
 

@@ -1,9 +1,9 @@
 package context;
 
-import dao.DAOCommande;
-import dao.DAOCompte;
-import dao.DAOIngredient;
-import dao.DAOProduit;
+import repository.jdbc.DAOCommande;
+import repository.jdbc.DAOCompte;
+import repository.jdbc.DAOIngredient;
+import repository.jdbc.DAOProduit;
 
 public class Singleton {
 
