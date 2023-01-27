@@ -1,11 +1,38 @@
 package model;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
-//Pret pour Mapping
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Table;
+import javax.persistence.Version;
+
+@Entity
+@Table(name ="Ingredient")
+
 public class Ingredient  {
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Version
+	private int version;
+	
+	@Column(name="Allergen")
 	private boolean allergene;
+	
+	@Column(name="Libelle")
 	private String libelle;
+	
+
+	@OneToMany(mappedBy = "Ingredient")
+	private List<Ligne_Ingredient> LigneIngredient= new ArrayList<>();
 	
 	
 	public Ingredient() {

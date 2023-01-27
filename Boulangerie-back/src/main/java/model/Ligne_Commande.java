@@ -1,13 +1,39 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.Version;
 
-//Pret pour mapping
+@Entity
+@Table(name = "Command_line")
 public class Ligne_Commande extends Commande{
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Version
+	private int version;
+	
+	@Column(name = "Quantity" , length = 4)
 	private int qte;
+	
+	@Column(name = "Total" ,length = 10)
 	private double total;
+	
+	@ManyToOne
+	@JoinColumn(name = "Command_id")
 	private Commande commande;
+	
+	@OneToOne
+	@JoinColumn(name = "Product_id")
 	private Produit produit;
 
 	

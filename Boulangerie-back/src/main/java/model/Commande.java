@@ -1,12 +1,19 @@
 package model;
 
 import java.time.LocalTime;
-
+import java.util.ArrayList;
+import java.util.List;
+import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Version;
 
 @Entity
 @Table(name = "Command")
@@ -15,16 +22,27 @@ public class Commande {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer numero;
 	
-	@Column(name = "Hour")
-	private LocalTime heure;
+	@Version
+	private Integer version;
 	
-	@Column(name = "Minute")
-	private LocalTime minute;
+	@Column(name = "Arrived_date")
+	private LocalDate dateArrivee;
 	
-	@Column(name = "Command_status)
+	@Column(name = "Arrived_hour")
+	private LocalTime heureArrive;
+	
+	@Column(name="on_site")
+	private boolean surPlace;
+	
+	
+	@Column(name = "Command_status)")
 	private EtatCommande etatcommande;
 	
+	@OneToMany(mappedBy = "Command")
+	private List<Ligne_Commande> LigneCommandes = new ArrayList<>();
 	
+	@ManyToOne
+	@JoinColumn(name = "Customer_id")
 	private Client client;
 
 	
@@ -33,14 +51,17 @@ public class Commande {
 	}
 
 
-	public Commande(LocalTime heure, LocalTime minute, EtatCommande etatcommande) {
+	public Commande(int version, LocalDate dateArrivee, LocalTime heureArrive, EtatCommande etatcommande,
+			boolean surPlace) {
 		super();
-		this.heure = heure;
-		this.minute = minute;
+		this.version = version;
+		this.dateArrivee = dateArrivee;
+		this.heureArrive = heureArrive;
 		this.etatcommande = etatcommande;
+		this.surPlace = surPlace;
 	}
 
-	
+
 	public Integer getNumero() {
 		return numero;
 	}
@@ -50,23 +71,7 @@ public class Commande {
 	}
 
 
-	public LocalTime getHeure() {
-		return heure;
-	}
 
-	public void setHeure(LocalTime heure) {
-		this.heure = heure;
-	}
-
-	public LocalTime getMinute() {
-		return minute;
-	}
-
-	public void setMinute(LocalTime minute) {
-		this.minute = minute;
-	}
-
-	
 	public EtatCommande getEtatcommande() {
 		return etatcommande;
 	}
@@ -84,6 +89,46 @@ public class Commande {
 
 	public void setClient(Client client) {
 		this.client = client;
+	}
+
+
+	public int getVersion() {
+		return version;
+	}
+
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
+
+	public LocalDate getDateArrivee() {
+		return dateArrivee;
+	}
+
+
+	public void setDateArrivee(LocalDate dateArrivee) {
+		this.dateArrivee = dateArrivee;
+	}
+
+
+	public LocalTime getHeureArrive() {
+		return heureArrive;
+	}
+
+
+	public void setHeureArrive(LocalTime heureArrive) {
+		this.heureArrive = heureArrive;
+	}
+
+
+	public boolean isSurPlace() {
+		return surPlace;
+	}
+
+
+	public void setSurPlace(boolean surPlace) {
+		this.surPlace = surPlace;
 	}
 
 

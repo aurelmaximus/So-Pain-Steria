@@ -2,18 +2,18 @@ package model;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Column;
-import javax.persistence.Embeddable;
 
 @Embeddable
 public class Adresse {
-	@Column(name="number", length =255)
+	@Column(name="Number", length =255)
 	private String numero;
-	@Column(name="street", length =255)
+	@Column(name="Street", length =255)
 	private String voie;
-	@Column(name="city", length =255)
+	@Column(name="City", length =255)
 	private String ville;
-	@Column(name="zip_code", length =255)
+	@Column(name="Zip_code", length =255)
 	private String cp;
+	
 	
 	
 	public Adresse(String numero, String voie, String ville, String cp) {
@@ -22,6 +22,9 @@ public class Adresse {
 		this.voie = voie;
 		this.ville = ville;
 		this.cp = cp;
+	}
+	public Adresse() {
+		super();
 	}
 
 
