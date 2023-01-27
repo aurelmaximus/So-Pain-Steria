@@ -6,7 +6,7 @@ import model.Commande;
 import model.Compte;
 
 
-public interface IDAOCommande extends IRepository<Compte,Integer> {
+public interface ICommandeRepository extends IRepository<Compte,Integer> {
 
 	public List<Commande> findAllByClient(Integer idClient);
 	
