@@ -5,13 +5,17 @@ import javax.persistence.Column;
 
 @Embeddable
 public class Adresse {
-	@Column(name="Number", length =255)
+	
+	@Column(name="number", length =255)
 	private String numero;
-	@Column(name="Street", length =255)
+	
+	@Column(name="street", length =255)
 	private String voie;
-	@Column(name="City", length =255)
+	
+	@Column(name="city", length =255)
 	private String ville;
-	@Column(name="Zip_code", length =255)
+	
+	@Column(name="zip_code", length =255)
 	private String cp;
 	
 	

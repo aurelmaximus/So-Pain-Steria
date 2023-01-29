@@ -14,7 +14,7 @@ import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
 @Entity
-@Table(name = "Account", uniqueConstraints = @UniqueConstraint(columnNames = { "Last_name", "First_name" }))
+@Table(name = "account", uniqueConstraints = @UniqueConstraint(columnNames = { "last_name", "first_name" }))
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
 public abstract class Compte {
@@ -26,16 +26,16 @@ public abstract class Compte {
 	@Version
 	private Integer version;
 	
-	@Column(name="Email")
+	@Column(name="email")
 	private String email;
 	
-	@Column(name="Password")
+	@Column(name="password")
 	private String password;
 	
-	@Column(name="Last_name")
+	@Column(name="last_name")
 	private String nom;
 	
-	@Column(name="First_name")
+	@Column(name="first_name")
 	private String prenom;
 	
 	@Embedded

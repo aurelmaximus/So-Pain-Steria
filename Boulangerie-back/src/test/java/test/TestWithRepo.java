@@ -4,7 +4,7 @@ import boulangerie.context.Application;
 import repository.IIngredientRepository;
 import repository.IProduitRepository;
 
-public class test {
+public class TestWithRepo {
 
 	public static void main(String[] args) {
 		

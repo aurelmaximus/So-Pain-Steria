@@ -12,47 +12,63 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
-@Table(name = "Command_line")
-public class LigneCommande extends Commande{
+@Table(name = "command_line")
+public class LigneCommande{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
 	@Version
-	private int version;
+	private Integer version;
 	
-	@Column(name = "Quantity" , length = 4)
+	@Column(name = "quantity" , length = 4)
 	private int qte;
 	
-	@Column(name = "Total" ,length = 10)
+	@Column(name = "total" ,length = 10)
 	private double total;
 	
 	@ManyToOne
-	@JoinColumn(name = "Command_id")
+	@JoinColumn(name = "command_id")
 	private Commande commande;
 	
 	@OneToOne
-	@JoinColumn(name = "Product_id")
+	@JoinColumn(name = "product_id")
 	private Produit produit;
 
 	
 	public LigneCommande() {
 		super();
 	}
-
 	
+
+	public LigneCommande(int qte, double total) {
+		super();
+		this.qte = qte;
+		this.total = total;
+	}
+
+
+
 
 	public Integer getId() {
 		return id;
 	}
 
 
-
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
+
+	public Integer getVersion() {
+		return version;
+	}
+
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
 
 
 	public int getQte() {
@@ -93,6 +109,7 @@ public class LigneCommande extends Commande{
 	public void setProduit(Produit produit) {
 		this.produit = produit;
 	}
+
 	
 
 	

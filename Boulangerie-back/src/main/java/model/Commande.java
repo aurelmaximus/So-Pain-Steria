@@ -16,7 +16,7 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
-@Table(name = "Command")
+@Table(name = "command")
 public class Commande {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,24 +25,24 @@ public class Commande {
 	@Version
 	private Integer version;
 	
-	@Column(name = "Arrived_date")
+	@Column(name = "arrived_date")
 	private LocalDate dateArrivee;
 	
-	@Column(name = "Arrived_hour")
+	@Column(name = "arrived_hour")
 	private LocalTime heureArrive;
 	
 	@Column(name="on_site")
 	private boolean surPlace;
 	
 	
-	@Column(name = "Command_status)")
+	@Column(name = "command_status")
 	private EtatCommande etatcommande;
 	
-	@OneToMany(mappedBy = "Command")
+	@OneToMany(mappedBy = "commande")
 	private List<LigneCommande> LigneCommandes = new ArrayList<>();
 	
 	@ManyToOne
-	@JoinColumn(name = "Customer_id")
+	@JoinColumn(name = "customer_id")
 	private Client client;
 
 	
@@ -51,10 +51,9 @@ public class Commande {
 	}
 
 
-	public Commande(int version, LocalDate dateArrivee, LocalTime heureArrive, EtatCommande etatcommande,
+	public Commande(LocalDate dateArrivee, LocalTime heureArrive, EtatCommande etatcommande,
 			boolean surPlace) {
 		super();
-		this.version = version;
 		this.dateArrivee = dateArrivee;
 		this.heureArrive = heureArrive;
 		this.etatcommande = etatcommande;
@@ -92,7 +91,7 @@ public class Commande {
 	}
 
 
-	public int getVersion() {
+	public Integer getVersion() {
 		return version;
 	}
 

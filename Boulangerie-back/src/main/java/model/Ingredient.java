@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
-@Table(name ="Ingredient")
+@Table(name ="ingredient")
 
 public class Ingredient  {
 	
@@ -22,16 +22,16 @@ public class Ingredient  {
 	private Integer id;
 	
 	@Version
-	private int version;
+	private Integer version;
 	
-	@Column(name="Allergen")
+	@Column(name="allergen")
 	private boolean allergene;
 	
-	@Column(name="Libelle")
+	@Column(name="label")
 	private String libelle;
 	
 
-	@OneToMany(mappedBy = "Ingredient")
+	@OneToMany(mappedBy = "ingredient")
 	private List<LigneIngredient> ligneIngredients= new ArrayList<>();
 	
 	
@@ -40,7 +40,7 @@ public class Ingredient  {
 	}
 
 
-	public Ingredient(boolean allergene, String libelle) {
+	public Ingredient(String libelle,boolean allergene) {
 		super();
 		this.allergene = allergene;
 		this.libelle = libelle;
@@ -84,6 +84,16 @@ public class Ingredient  {
 
 	public void setLigneIngredients(List<LigneIngredient> ligneIngredients) {
 		this.ligneIngredients = ligneIngredients;
+	}
+
+
+	public Integer getVersion() {
+		return version;
+	}
+
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 

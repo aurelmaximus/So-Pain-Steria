@@ -3,48 +3,36 @@ package model;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.Version;
+
 
 @Entity
-@DiscriminatorValue("Elaborate")
-public class Elabore {
+@DiscriminatorValue("elaborate")
+public class Elabore extends Produit {
 
-	@Column(name = "Share_Number)")
-	private int NbParts;
+	@Column(name = "share_number")
+	private Integer NbParts;
 	
-	@Version
-	private Integer version;
 
 	public Elabore() {
 		super();
 	}
 
-	
-	public Elabore(int nbParts) {
-		super();
-		NbParts = nbParts;
+
+	public Elabore(double prix, String libelle, Integer NbParts) {
+		super(prix, libelle);
+		this.NbParts=NbParts;
 	}
 
-	
-	public int getNbParts() {
+
+	public Integer getNbParts() {
 		return NbParts;
 	}
 
-	
-	public void setNbParts(int nbParts) {
+
+	public void setNbParts(Integer nbParts) {
 		NbParts = nbParts;
 	}
 
-	
-	public int getVersion() {
-		return version;
-	}
 
-	
-	public void setVersion(Integer version) {
-		this.version = version;
-	}
-	
-	
 	
 }

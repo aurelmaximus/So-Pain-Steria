@@ -2,6 +2,9 @@ package model;
 
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -10,32 +13,60 @@ import javax.persistence.Version;
 
 
 @Entity
-@Table(name ="Favorite_Articles")
+@Table(name ="favorite_articles")
 public class ArticleFavoris {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Integer id;
 
 	@Version
 	private Integer version;
 
 	@ManyToOne
-	@JoinColumn(name = "Customer_id")
+	@JoinColumn(name = "customer_id")
 	private Client client;
 
 	
 	@OneToOne
-	@JoinColumn(name = "Product_id")
+	@JoinColumn(name = "product_id")
 	private Produit produit;
 
 	public ArticleFavoris() {
 		super();
 	}
 	
+	
 
-	public ArticleFavoris(Client client) {
+	public Integer getId() {
+		return id;
+	}
+
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+
+	public Produit getProduit() {
+		return produit;
+	}
+
+
+
+	public void setProduit(Produit produit) {
+		this.produit = produit;
+	}
+
+
+
+	public ArticleFavoris(Client client, Produit produit) {
 		super();
 		this.client = client;
+		this.produit = produit;
 	}
-	
 
 	public Client getClient() {
 		return client;

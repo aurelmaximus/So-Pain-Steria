@@ -14,17 +14,17 @@ import javax.persistence.OneToMany;
 
 
 @Entity
-@DiscriminatorValue("Customer")
+@DiscriminatorValue("customer")
 public class Client extends Compte {
 
 	
-	@Column(name="Points")
+	@Column(name="points")
 	private int points;
 	
-	@OneToMany(mappedBy = "Customer")
+	@OneToMany(mappedBy = "client")
 	private List<Commande> commandes = new ArrayList<>();
 	
-	@OneToMany(mappedBy = "Customer")
+	@OneToMany(mappedBy = "client")
 	private List<ArticleFavoris> ArticlesFavoris = new ArrayList<>();
 
 	public Client() {

@@ -11,47 +11,49 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-
+@Entity
+@Table(name = "withtout_account")
 public class SansCompte {
 
-	@Entity
-	@Table(name = "Withtout_Account")
-	public abstract class Compte {
 		
 		@Id
 		@GeneratedValue(strategy = GenerationType.IDENTITY)
 		private Integer id;
 		
 		@Version
-		private int version;
+		private Integer version;
 		
-		@Column(name="Email")
+		@Column(name="email")
 		private String email;
 		
 		
-		@Column(name="Last_name")
+		@Column(name="last_name")
 		private String nom;
 		
-		@Column(name="First_name")
+		@Column(name="first_name")
 		private String prenom;
 		
 		@OneToOne
-		@JoinColumn(name = "Command_numero")
+		@JoinColumn(name = "command_numero")
 		private Commande commande;
 
 		
-		public Compte() {
+
+		public SansCompte() {
 			super();
 		}
 
+		
+		
 
-		public Compte(String email, String nom, String prenom,Commande commande) {
+		public SansCompte(String email, String nom, String prenom) {
 			super();
 			this.email = email;
 			this.nom = nom;
 			this.prenom = prenom;
-			this.commande =commande;
 		}
+
+
 
 
 		public Integer getId() {
@@ -64,14 +66,17 @@ public class SansCompte {
 		}
 
 
-		public int getVersion() {
+
+		public Integer getVersion() {
 			return version;
 		}
 
 
-		public void setVersion(int version) {
+
+		public void setVersion(Integer version) {
 			this.version = version;
 		}
+
 
 
 		public String getEmail() {
@@ -114,5 +119,4 @@ public class SansCompte {
 		
 	}	
 		
-	
-}
+
