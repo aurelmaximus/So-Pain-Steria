@@ -182,7 +182,7 @@ public class IngredientRepositoryJpa implements IIngredientRepository {
 				tx = em.getTransaction();
 				tx.begin();
 
-				TypedQuery<Ingredient> query = em.createQuery("select distinct i from Ingredient i join fetch i.lignesIngredients l where l.produit.libelle = ?1", Ingredient.class);
+				TypedQuery<Ingredient> query = em.createQuery("select li.ingredient from LigneIngredient li where li.produit.libelle = ?1", Ingredient.class);
 
 				query.setParameter(1, libelle);
 				

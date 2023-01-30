@@ -60,6 +60,9 @@ public class Test {
 		List<LigneIngredient> ingredientsGateauRepo = ligneIngredientRepo.findAllByLibelleProduit(gateauRepo.getLibelle());
 		System.out.println("Composition de " + gateauRepo.getLibelle() + " : " + ingredientsGateauRepo);
 		
+		List<Ingredient> ingredientsGateauRepo2 = ingredientRepo.findAllByLibelleProduit(gateauRepo.getLibelle());
+		System.out.println("Composition de " + gateauRepo.getLibelle() + " : " + ingredientsGateauRepo2);
+		
 		System.out.println("client:"+cl1);
 		System.out.println("crem:"+creme);
 		System.out.println("feuille  d'or:"+feuille_or);
