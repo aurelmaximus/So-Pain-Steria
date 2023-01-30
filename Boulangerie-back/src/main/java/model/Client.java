@@ -32,8 +32,8 @@ public class Client extends Compte {
 	}
 	
 	
-	public Client(String login, String password, String nom, String prenom, Adresse adresse) {
-		super(login, password, nom, prenom, adresse);
+	public Client(String email, String password, String nom, String prenom, Adresse adresse) {
+		super(email, password, nom, prenom, adresse);
 
 	}
 

@@ -2,6 +2,7 @@ package model;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import javax.persistence.Version;
 @Entity
 @Table(name ="ingredient")
 
-public class Ingredient  {
+public class Ingredient implements Serializable   {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,7 +25,7 @@ public class Ingredient  {
 	@Version
 	private Integer version;
 	
-	@Column(name="allergen")
+	@Column(name="allergen", columnDefinition = "tinyint(1) default 0")
 	private boolean allergene;
 	
 	@Column(name="label")

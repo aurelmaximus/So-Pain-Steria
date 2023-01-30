@@ -53,7 +53,7 @@ public class TestWithoutRepo {
 			
 			Ingredient ingredient5 = new Ingredient ("Framboise",false);		
 			em.persist(ingredient5);
-			
+		
 			
 			Basique basique1 = new Basique (2.80,"Religieuse",Categorie.Viennoiserie);
 			em.persist(basique1);
@@ -78,18 +78,13 @@ public class TestWithoutRepo {
 			
 			
 			Adresse adresse1 = new Adresse ("1","Rue de la victoire","Bordeaux","33000");
-			Client client1 = new Client("aa","aa","aa","bb",adresse1);
+			Client client1 = new Client("prune.pommier@gmail.com","peche","prune","pommier",adresse1);
 			em.persist(client1);
+			
 			
 			Adresse adresse2 = new Adresse ("2","Rue de Pelegrin","Bordeaux","33000");
 			Client client2 = new Client("bb","bb","bb","cc",adresse2);
 			em.persist(client2);
-			
-			
-			SansCompte client3 = new SansCompte("gg","hh","ii");
-			client3.setCommande(commande1);
-			em.persist(client3);
-			
 			
 			Adresse adresse3 = new Adresse ("3","Avenue Victor Hugo","Paris","75000");
 			Employe employe1 = new Employe("cc","cc","cc","dd",adresse3);
@@ -99,6 +94,10 @@ public class TestWithoutRepo {
 			Employe employe2 = new Employe("ee","ee","ee","ff",adresse4);
 			em.persist(employe2);
 			
+			
+			SansCompte client3 = new SansCompte("gg","hh","ii");
+			client3.setCommande(commande1);
+			em.persist(client3);
 			
 			ArticleFavoris favoris1 = new ArticleFavoris ();
 			favoris1.setClient(client1);
@@ -116,7 +115,7 @@ public class TestWithoutRepo {
 			lc1.setProduit(elobore1);
 			em.persist(lc1);
 			
-			
+	
 			LigneIngredient li1 = new LigneIngredient ();		
 			li1.setIngredient(ingredient4);
 			li1.setProduit(elobore1);
@@ -126,7 +125,7 @@ public class TestWithoutRepo {
 			li2.setIngredient(ingredient3);
 			li2.setProduit(elobore1);
 			em.persist(li2);
-			
+		
 			
 		
 			tx.commit();

@@ -21,12 +21,11 @@ public class LigneIngredient {
 	private Integer version;
 	
 	@ManyToOne
-	@JoinColumn(name = "ingredient_id")
+	@JoinColumn(name = "ingredient_label", referencedColumnName = "label")
 	private Ingredient ingredient;
 	
-	
 	@ManyToOne
-	@JoinColumn(name = "product_id")
+	@JoinColumn(name = "product_label", referencedColumnName = "label")
 	private Produit produit;
 
 
