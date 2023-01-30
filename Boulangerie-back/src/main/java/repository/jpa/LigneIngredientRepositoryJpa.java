@@ -170,8 +170,8 @@ public class LigneIngredientRepositoryJpa implements ILigneIngredientRepository 
 
 
 		@Override
-		public List<Ingredient> findAllByLibelleProduit(String libelle) {
-			List<Ingredient> ingredients = new ArrayList<>();
+		public List<LigneIngredient> findAllByLibelleProduit(String libelle) {
+			List<LigneIngredient> ingredients = new ArrayList<>();
 
 			EntityManager em = null;
 			EntityTransaction tx = null;
@@ -181,7 +181,7 @@ public class LigneIngredientRepositoryJpa implements ILigneIngredientRepository 
 				tx = em.getTransaction();
 				tx.begin();
 
-				TypedQuery<Ingredient> query = em.createQuery("select distinct i from LigneIngredient l join fetch l.ingredient i where l.produit.libelle = ?1", Ingredient.class);
+				TypedQuery<LigneIngredient> query = em.createQuery("select li from LigneIngredient li join li.produit p where p.libelle = ?1", LigneIngredient.class);
 
 				query.setParameter(1, libelle);
 				

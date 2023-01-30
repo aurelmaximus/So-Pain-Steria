@@ -2,17 +2,16 @@ package test;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 import boulangerie.context.Application;
 import model.Adresse;
 import model.Client;
 import model.Commande;
-import model.Compte;
 import model.Elabore;
 import model.EtatCommande;
 import model.Ingredient;
 import model.LigneIngredient;
-import model.Produit;
 import repository.ICommandeRepository;
 import repository.ICompteRepository;
 import repository.IIngredientRepository;
@@ -48,11 +47,18 @@ public class Test {
 		gateauRepoCreme.setIngredient(creme);
 		gateauRepoCreme = ligneIngredientRepo.save(gateauRepoCreme);
 		
+		LigneIngredient gateauRepoFeuilleOr = new LigneIngredient();
+		gateauRepoFeuilleOr.setProduit(gateauRepo);
+		gateauRepoFeuilleOr.setIngredient(feuille_or);
+		gateauRepoFeuilleOr = ligneIngredientRepo.save(gateauRepoFeuilleOr);
+		
 		Commande cmd = new Commande(LocalDate.parse("2023-02-03"), LocalTime.parse("13:00"), EtatCommande.EnCours, false);
 		cmd.setClient(cl1);
 		cmd = commandeRepo.save(cmd);
 		
 		System.out.println(gateauRepo);
+		List<LigneIngredient> ingredientsGateauRepo = ligneIngredientRepo.findAllByLibelleProduit(gateauRepo.getLibelle());
+		System.out.println("Composition de " + gateauRepo.getLibelle() + " : " + ingredientsGateauRepo);
 		
 		System.out.println("client:"+cl1);
 		System.out.println("crem:"+creme);
