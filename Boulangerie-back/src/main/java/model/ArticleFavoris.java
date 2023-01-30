@@ -86,6 +86,14 @@ public class ArticleFavoris {
 	public void setVersion(Integer version) {
 		this.version = version;
 	}
+
+
+
+	@Override
+	public String toString() {
+		return "ArticleFavoris [produit=" + produit + "]";
+	}
+	
 	
 
 }

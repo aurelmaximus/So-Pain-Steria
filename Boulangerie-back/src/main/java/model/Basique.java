@@ -3,6 +3,7 @@ package model;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 
 @Entity
 @DiscriminatorValue("basic")
@@ -10,6 +11,7 @@ public class Basique extends Produit{
 
 	
 	@Column(name = "category")
+	@Enumerated
 	private Categorie categorie;
 	
 	
@@ -36,6 +38,14 @@ public class Basique extends Produit{
 	
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
+	}
+
+
+
+
+	@Override
+	public String toString() {
+		return "Basique : "+ super.getLibelle() +" "+ super.getPrix() + " [categorie=" + categorie + "]";
 	}
 	
 	

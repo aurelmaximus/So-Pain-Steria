@@ -34,5 +34,10 @@ public class Elabore extends Produit {
 	}
 
 
-	
+	@Override
+	public String toString() {
+		return "Elabore : "+ super.getLibelle() +" "+ super.getPrix() + " [NbParts=" + NbParts + "]";
+	}
+
+
 }

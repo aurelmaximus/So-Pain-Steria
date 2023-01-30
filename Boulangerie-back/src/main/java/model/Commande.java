@@ -6,6 +6,7 @@ import java.util.List;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -36,6 +37,7 @@ public class Commande {
 	
 	
 	@Column(name = "command_status")
+	@Enumerated
 	private EtatCommande etatcommande;
 	
 	@OneToMany(mappedBy = "commande")
@@ -129,6 +131,16 @@ public class Commande {
 	public void setSurPlace(boolean surPlace) {
 		this.surPlace = surPlace;
 	}
+
+
+	@Override
+	public String toString() {
+		return "Commande [numero=" + numero + ", dateArrivee=" + dateArrivee + ", heureArrive=" + heureArrive
+				+ ", surPlace=" + surPlace + ", etatcommande=" + etatcommande + ", LigneCommandes=" + LigneCommandes
+				+ ", client=" + client + "]";
+	}
+	
+	
 
 
 

@@ -77,6 +77,13 @@ public class LigneIngredient {
 	}
 
 
+	@Override
+	public String toString() {
+		return "LigneIngredient [id=" + id + ", version=" + version + ", ingredient=" + ingredient + ", produit="
+				+ produit + "]";
+	}
+
+
 
 	
 

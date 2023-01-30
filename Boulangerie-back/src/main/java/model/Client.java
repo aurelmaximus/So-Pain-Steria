@@ -68,5 +68,11 @@ public class Client extends Compte {
 	}
 
 
+	@Override
+	public String toString() {
+		return "Client : "+ super.getPrenom() + " " + super.getNom() + " [points=" + points + "]";
+	}
+
+
 	
 }

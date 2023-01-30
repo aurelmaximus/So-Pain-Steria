@@ -110,6 +110,13 @@ public class LigneCommande{
 		this.produit = produit;
 	}
 
+
+	@Override
+	public String toString() {
+		return "LigneCommande [id=" + id + ", version=" + version + ", qte=" + qte + ", total=" + total + ", commande="
+				+ commande + ", produit=" + produit + "]";
+	}
+
 	
 
 	
