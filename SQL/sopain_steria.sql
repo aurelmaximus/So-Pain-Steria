@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 30 jan. 2023 à 17:45
+-- Généré le : mar. 31 jan. 2023 à 19:29
 -- Version du serveur : 5.7.40
 -- Version de PHP : 8.0.26
 
@@ -20,7 +20,7 @@ SET time_zone = "+00:00";
 --
 -- Base de données : `sopain_steria`
 --
-CREATE DATABASE IF NOT EXISTS `sopain_steria` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE IF NOT EXISTS `sopain_steria` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `sopain_steria`;
 
 -- --------------------------------------------------------
@@ -33,19 +33,19 @@ DROP TABLE IF EXISTS `account`;
 CREATE TABLE IF NOT EXISTS `account` (
   `type` varchar(31) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `zip_code` varchar(255) DEFAULT NULL,
-  `number` varchar(255) DEFAULT NULL,
-  `city` varchar(255) DEFAULT NULL,
-  `street` varchar(255) DEFAULT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `last_name` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `first_name` varchar(255) DEFAULT NULL,
+  `zip_code` varchar(10) DEFAULT NULL,
+  `number` varchar(10) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `street` varchar(50) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `last_name` varchar(25) DEFAULT NULL,
+  `password` varchar(25) DEFAULT NULL,
+  `first_name` varchar(25) DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
   `points` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UKravrcdl4ml7ghtfxdr2nx9hyw` (`last_name`,`first_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `account`
@@ -56,7 +56,7 @@ INSERT INTO `account` (`type`, `id`, `zip_code`, `number`, `city`, `street`, `em
 ('Employe', 2, '69000', '8', 'Lyon', 'Rue du magicien', 'cedric.devillers@gmail.com', 'Cedric', 'cedric', 'Devillers', 0, 0),
 ('Employe', 3, '33000', '12', 'Bordeaux', 'Rue cyber', 'farah.benaissa@gmail.com', 'Farah', 'farah', 'Benaissa', 0, 0),
 ('Employe', 4, '69000', '7bis', 'Lyon', 'Rue ignister', 'youssef.talmat@gmail.com', 'Youssef', 'youssef', 'Talmat', 0, 0),
-('customer', 7, '33000', '1', 'Bordeaux', 'Rue de la victoire', 'prune.pommier@gmail.com', 'prune', 'peche', 'pommier', 0, 0);
+('customer', 5, '33000', '1', 'Bordeaux', 'Rue de la victoire', 'prune.pommier@gmail.com', 'prune', 'peche', 'pommier', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -68,23 +68,22 @@ DROP TABLE IF EXISTS `command`;
 CREATE TABLE IF NOT EXISTS `command` (
   `numero` int(11) NOT NULL AUTO_INCREMENT,
   `arrived_date` date DEFAULT NULL,
-  `command_status` int(11) DEFAULT NULL,
+  `command_status` varchar(25) DEFAULT NULL,
   `arrived_hour` time DEFAULT NULL,
-  `on_site` bit(1) DEFAULT NULL,
+  `on_site` tinyint(1) DEFAULT '0',
   `version` int(11) DEFAULT NULL,
   `customer_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`numero`),
   KEY `FK4adexdu0ttc9l217n3ydn7199` (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `command`
 --
 
 INSERT INTO `command` (`numero`, `arrived_date`, `command_status`, `arrived_hour`, `on_site`, `version`, `customer_id`) VALUES
-(1, '2023-01-31', 2, '14:30:00', b'0', 0, 5),
-(4, '2023-01-27', 0, '16:55:00', b'0', 0, NULL),
-(5, '2023-01-27', 2, '17:10:00', b'0', 0, NULL);
+(1, '2023-01-31', '2', '14:30:00', 0, 0, 5),
+(2, '2023-01-27', '0', '16:55:00', 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -96,21 +95,21 @@ DROP TABLE IF EXISTS `command_line`;
 CREATE TABLE IF NOT EXISTS `command_line` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `quantity` int(11) DEFAULT NULL,
-  `total` double DEFAULT NULL,
+  `total` decimal(5,2) DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
   `command_id` int(11) DEFAULT NULL,
-  `product_id` int(11) DEFAULT NULL,
+  `product_label` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK63wx5vtqo2p1upm623em6aic` (`command_id`),
-  KEY `FKexibn53w35ucgmrpyu3nt47dx` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  KEY `FKlkg0ltfcvxcdcn6ww7dse6qem` (`product_label`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `command_line`
 --
 
-INSERT INTO `command_line` (`id`, `quantity`, `total`, `version`, `command_id`, `product_id`) VALUES
-(1, 2, 6, 0, 4, 7);
+INSERT INTO `command_line` (`id`, `quantity`, `total`, `version`, `command_id`, `product_label`) VALUES
+(1, 2, '2.40', 0, 2, 'Chocolatine');
 
 -- --------------------------------------------------------
 
@@ -123,19 +122,19 @@ CREATE TABLE IF NOT EXISTS `favorite_articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `version` int(11) DEFAULT NULL,
   `customer_id` int(11) DEFAULT NULL,
-  `product_id` int(11) DEFAULT NULL,
+  `product_label` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKjx8inxsdb180t84o3uj97rm5y` (`customer_id`),
-  KEY `FK8ymrqp3evp7dvak8g2vjw7ne` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  KEY `FKp5dp4oi1xmj3i1i7dt7e03ii2` (`product_label`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `favorite_articles`
 --
 
-INSERT INTO `favorite_articles` (`id`, `version`, `customer_id`, `product_id`) VALUES
-(1, 0, 7, 7),
-(2, 0, 7, 8);
+INSERT INTO `favorite_articles` (`id`, `version`, `customer_id`, `product_label`) VALUES
+(1, 0, 1, 'Chocolatine'),
+(2, 0, 1, 'Croissant');
 
 -- --------------------------------------------------------
 
@@ -147,10 +146,11 @@ DROP TABLE IF EXISTS `ingredient`;
 CREATE TABLE IF NOT EXISTS `ingredient` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `allergen` tinyint(1) DEFAULT '0',
-  `label` varchar(255) DEFAULT NULL,
+  `label` varchar(25) DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_tnhfvr29l1fykbohmss0lwlb9` (`label`)
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `ingredient`
@@ -196,12 +196,12 @@ DROP TABLE IF EXISTS `ingredient_line`;
 CREATE TABLE IF NOT EXISTS `ingredient_line` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `version` int(11) DEFAULT NULL,
-  `ingredient_id` int(11) DEFAULT NULL,
-  `product_id` int(11) DEFAULT NULL,
+  `ingredient_label` varchar(25) DEFAULT NULL,
+  `product_label` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FKfw602n9nfuq3hifulp8e58gwl` (`ingredient_id`),
-  KEY `FKdu629s77exd2v9d7sfv157g4m` (`product_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `FKk7fgi9mw6vpy4u928quqru5rd` (`ingredient_label`),
+  KEY `FKnbyonsb9ecj93iosvmj1fs4aw` (`product_label`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -211,45 +211,46 @@ CREATE TABLE IF NOT EXISTS `ingredient_line` (
 
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE IF NOT EXISTS `product` (
-  `type` varchar(31) CHARACTER SET utf8 NOT NULL,
+  `type` varchar(31) NOT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `label` varchar(25) CHARACTER SET utf8 DEFAULT NULL,
-  `price` double DEFAULT NULL,
+  `label` varchar(25) DEFAULT NULL,
+  `price` decimal(5,2) DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
   `share_number` int(11) DEFAULT NULL,
-  `category` enum('Pain','Gateau','Viennoiserie','Boisson') DEFAULT NULL,
+  `category` varchar(25) DEFAULT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `UK_cs1mwlnde9i5eg2a8bh44lkpn` (`label`),
   UNIQUE KEY `UKlkl5hm0ed36aan92yhhquksjt` (`price`,`label`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `product`
 --
 
 INSERT INTO `product` (`type`, `id`, `label`, `price`, `version`, `share_number`, `category`) VALUES
-('basic', 1, 'Choux Crème', 2.9, 0, NULL, 'Gateau'),
-('basic', 2, 'Religieuse', 2.8, 0, NULL, 'Viennoiserie'),
-('basic', 3, 'Mille Feuille', 2.8, 0, NULL, 'Gateau'),
-('basic', 4, 'Tartelette Framboise', 3, 0, NULL, 'Gateau'),
-('basic', 5, 'Macaron', 0.5, 0, NULL, 'Gateau'),
-('basic', 6, 'Croissant', 1.1, 0, NULL, 'Viennoiserie'),
-('basic', 7, 'Chocolatine', 1.2, 0, NULL, 'Viennoiserie'),
-('basic', 8, 'Pain aux Raisins', 1.4, 0, NULL, 'Viennoiserie'),
-('basic', 9, 'Fraisier', 3.1, 0, NULL, 'Gateau'),
-('basic', 10, 'Chausson aux pommes', 1.8, 0, NULL, 'Viennoiserie'),
-('basic', 11, 'Brioche Suisse', 1.8, 0, NULL, 'Viennoiserie'),
-('basic', 12, 'Briochette au Chocolat', 1.4, 0, NULL, 'Viennoiserie'),
-('basic', 13, 'Canelé', 1.6, 0, NULL, 'Viennoiserie'),
-('basic', 14, 'Baguette Classique', 1, 0, NULL, 'Pain'),
-('basic', 15, 'Baguette Tradition', 1.2, 0, NULL, 'Pain'),
-('basic', 16, 'Pain Campagne', 2.2, 0, NULL, 'Pain'),
-('basic', 17, 'Pain Complet', 2.2, 0, NULL, 'Pain'),
-('basic', 18, 'Pain 6 Céréales', 2.2, 0, NULL, 'Pain'),
-('basic', 19, 'Baguette Sésame', 1.8, 0, NULL, 'Pain'),
-('basic', 20, 'Pain Burger', 1.5, 0, NULL, 'Pain'),
-('basic', 21, 'Pain aux noix', 3, 0, NULL, 'Pain'),
-('basic', 22, 'Eclair', 2.7, 0, NULL, 'Gateau'),
-('basic', 23, 'Paris Brest', 2.8, 0, NULL, 'Gateau');
+('basic', 1, 'Choux Crème', '2.90', 0, NULL, 'Gateau'),
+('basic', 2, 'Religieuse', '2.80', 0, NULL, 'Viennoiserie'),
+('basic', 3, 'Mille Feuille', '2.80', 0, NULL, 'Gateau'),
+('basic', 4, 'Tartelette Framboise', '3.00', 0, NULL, 'Gateau'),
+('basic', 5, 'Macaron', '0.50', 0, NULL, 'Gateau'),
+('basic', 6, 'Croissant', '1.10', 0, NULL, 'Viennoiserie'),
+('basic', 7, 'Chocolatine', '1.20', 0, NULL, 'Viennoiserie'),
+('basic', 8, 'Pain aux Raisins', '1.40', 0, NULL, 'Viennoiserie'),
+('basic', 9, 'Fraisier', '3.10', 0, NULL, 'Gateau'),
+('basic', 10, 'Chausson aux pommes', '1.80', 0, NULL, 'Viennoiserie'),
+('basic', 11, 'Brioche Suisse', '1.80', 0, NULL, 'Viennoiserie'),
+('basic', 12, 'Briochette au Chocolat', '1.40', 0, NULL, 'Viennoiserie'),
+('basic', 13, 'Canelé', '1.60', 0, NULL, 'Viennoiserie'),
+('basic', 14, 'Baguette Classique', '1.00', 0, NULL, 'Pain'),
+('basic', 15, 'Baguette Tradition', '1.20', 0, NULL, 'Pain'),
+('basic', 16, 'Pain Campagne', '2.20', 0, NULL, 'Pain'),
+('basic', 17, 'Pain Complet', '2.20', 0, NULL, 'Pain'),
+('basic', 18, 'Pain 6 Céréales', '2.20', 0, NULL, 'Pain'),
+('basic', 19, 'Baguette Sésame', '1.80', 0, NULL, 'Pain'),
+('basic', 20, 'Pain Burger', '1.50', 0, NULL, 'Pain'),
+('basic', 21, 'Pain aux noix', '3.00', 0, NULL, 'Pain'),
+('basic', 22, 'Eclair', '2.70', 0, NULL, 'Gateau'),
+('basic', 23, 'Paris Brest', '2.80', 0, NULL, 'Gateau');
 
 -- --------------------------------------------------------
 
@@ -260,21 +261,21 @@ INSERT INTO `product` (`type`, `id`, `label`, `price`, `version`, `share_number`
 DROP TABLE IF EXISTS `withtout_account`;
 CREATE TABLE IF NOT EXISTS `withtout_account` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) DEFAULT NULL,
-  `last_name` varchar(255) DEFAULT NULL,
-  `first_name` varchar(255) DEFAULT NULL,
+  `email` varchar(50) DEFAULT NULL,
+  `last_name` varchar(25) DEFAULT NULL,
+  `first_name` varchar(25) DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
   `command_numero` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKdob2ycgta2211ce6fe41oy7mc` (`command_numero`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `withtout_account`
 --
 
 INSERT INTO `withtout_account` (`id`, `email`, `last_name`, `first_name`, `version`, `command_numero`) VALUES
-(1, 'odin.ragnar@hotmail.fr', 'Odin', 'Ragnar', 0, 4);
+(2, 'odin.ragnar@hotmail.fr', 'Odin', 'Ragnar', 0, 2);
 
 --
 -- Contraintes pour les tables déchargées
@@ -291,21 +292,21 @@ ALTER TABLE `command`
 --
 ALTER TABLE `command_line`
   ADD CONSTRAINT `FK63wx5vtqo2p1upm623em6aic` FOREIGN KEY (`command_id`) REFERENCES `command` (`numero`),
-  ADD CONSTRAINT `FKexibn53w35ucgmrpyu3nt47dx` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
+  ADD CONSTRAINT `FKlkg0ltfcvxcdcn6ww7dse6qem` FOREIGN KEY (`product_label`) REFERENCES `product` (`label`);
 
 --
 -- Contraintes pour la table `favorite_articles`
 --
 ALTER TABLE `favorite_articles`
-  ADD CONSTRAINT `FK8ymrqp3evp7dvak8g2vjw7ne` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
-  ADD CONSTRAINT `FKjx8inxsdb180t84o3uj97rm5y` FOREIGN KEY (`customer_id`) REFERENCES `account` (`id`);
+  ADD CONSTRAINT `FKjx8inxsdb180t84o3uj97rm5y` FOREIGN KEY (`customer_id`) REFERENCES `account` (`id`),
+  ADD CONSTRAINT `FKp5dp4oi1xmj3i1i7dt7e03ii2` FOREIGN KEY (`product_label`) REFERENCES `product` (`label`);
 
 --
 -- Contraintes pour la table `ingredient_line`
 --
 ALTER TABLE `ingredient_line`
-  ADD CONSTRAINT `FKdu629s77exd2v9d7sfv157g4m` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
-  ADD CONSTRAINT `FKfw602n9nfuq3hifulp8e58gwl` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredient` (`id`);
+  ADD CONSTRAINT `FKk7fgi9mw6vpy4u928quqru5rd` FOREIGN KEY (`ingredient_label`) REFERENCES `ingredient` (`label`),
+  ADD CONSTRAINT `FKnbyonsb9ecj93iosvmj1fs4aw` FOREIGN KEY (`product_label`) REFERENCES `product` (`label`);
 
 --
 -- Contraintes pour la table `withtout_account`

@@ -29,7 +29,7 @@ public class ArticleFavoris {
 
 	
 	@OneToOne
-	@JoinColumn(name = "product_id")
+	@JoinColumn(name = "product_label", referencedColumnName = "label")
 	private Produit produit;
 
 	public ArticleFavoris() {

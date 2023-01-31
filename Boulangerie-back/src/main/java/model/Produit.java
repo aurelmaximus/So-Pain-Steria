@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 
 import javax.persistence.Column;
@@ -32,8 +33,8 @@ public abstract class Produit implements Serializable {
 	@Version
 	private Integer version;
 	
-	@Column(name = "price", length = 4)
-	private double prix;
+	@Column(name = "price", precision=5, scale=2)
+	private BigDecimal prix;
 	
 	@Column(name = "label", length = 25)
 	private String libelle;
@@ -52,13 +53,12 @@ public abstract class Produit implements Serializable {
 		super();
 	}
 
-	
-	public Produit(double prix, String libelle) {
+
+	public Produit(BigDecimal prix, String libelle) {
 		super();
 		this.prix = prix;
 		this.libelle = libelle;
 	}
-
 
 
 	public Integer getId() {
@@ -71,12 +71,13 @@ public abstract class Produit implements Serializable {
 	}
 
 
-	public double getPrix() {
+	public BigDecimal getPrix() {
 		return prix;
 	}
 
 
-	public void setPrix(double prix) {
+
+	public void setPrix(BigDecimal prix) {
 		this.prix = prix;
 	}
 

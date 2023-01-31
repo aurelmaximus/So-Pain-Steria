@@ -26,16 +26,16 @@ public abstract class Compte {
 	@Version
 	private Integer version;
 	
-	@Column(name="email")
+	@Column(name="email", length =50)
 	private String email;
 	
-	@Column(name="password")
+	@Column(name="password", length =25)
 	private String password;
 	
-	@Column(name="last_name")
+	@Column(name="last_name", length =25)
 	private String nom;
 	
-	@Column(name="first_name")
+	@Column(name="first_name", length =25)
 	private String prenom;
 	
 	@Embedded

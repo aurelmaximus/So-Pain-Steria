@@ -1,5 +1,7 @@
 package model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,15 +27,15 @@ public class LigneCommande{
 	@Column(name = "quantity" , length = 4)
 	private int qte;
 	
-	@Column(name = "total" ,length = 10)
-	private double total;
+	@Column(name = "total" , precision=5, scale=2)
+	private BigDecimal total;
 	
 	@ManyToOne
 	@JoinColumn(name = "command_id")
 	private Commande commande;
 	
 	@OneToOne
-	@JoinColumn(name = "product_id")
+	@JoinColumn(name = "product_label", referencedColumnName = "label")
 	private Produit produit;
 
 	
@@ -42,13 +44,11 @@ public class LigneCommande{
 	}
 	
 
-	public LigneCommande(int qte, double total) {
+	public LigneCommande(int qte, BigDecimal total) {
 		super();
 		this.qte = qte;
 		this.total = total;
 	}
-
-
 
 
 	public Integer getId() {
@@ -81,12 +81,12 @@ public class LigneCommande{
 	}
 
 
-	public double getTotal() {
+	public BigDecimal getTotal() {
 		return total;
 	}
 
 
-	public void setTotal(double total) {
+	public void setTotal(BigDecimal total) {
 		this.total = total;
 	}
 
