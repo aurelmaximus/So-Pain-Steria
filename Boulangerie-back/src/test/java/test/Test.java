@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import boulangerie.context.Application;
 import model.Adresse;
 import model.Client;
@@ -19,15 +21,27 @@ import repository.ILigneIngredientRepository;
 import repository.IProduitRepository;
 
 public class Test {
+	
+	@Autowired
+	private IProduitRepository produitRepo;
+	@Autowired
+	private ICommandeRepository commandeRepo;
+	@Autowired
+	private ILigneIngredientRepository ligneIngredientRepo;
+	@Autowired
+	private ICompteRepository compteRepo;
+	@Autowired
+	private IIngredientRepository ingredientRepo;
+	
 
-	public static void main(String[] args) {
+	public void run(String[] args) {
 
 
-		ICommandeRepository commandeRepo = Application.getInstance().getCommandeRepo();
-		IIngredientRepository ingredientRepo = Application.getInstance().getIngredientRepo();
-		ILigneIngredientRepository ligneIngredientRepo = Application.getInstance().getLigneCommandeRepo();
-		IProduitRepository produitRepo = Application.getInstance().getProduitRepo();
-		ICompteRepository compteRepo = Application.getInstance().getCompteRepo();
+		//ICommandeRepository commandeRepo = Application.getInstance().getCommandeRepo();
+		//IIngredientRepository ingredientRepo = Application.getInstance().getIngredientRepo();
+		//ILigneIngredientRepository ligneIngredientRepo = Application.getInstance().getLigneCommandeRepo();
+		//IProduitRepository produitRepo = Application.getInstance().getProduitRepo();
+		//ICompteRepository compteRepo = Application.getInstance().getCompteRepo();
 
 		
 		Client cl1 = new Client("cl1@oui.fr", "secret", "Moi", "Moche", new Adresse("12", "Rue des Papayes", "Ouiouiville", "112234") );

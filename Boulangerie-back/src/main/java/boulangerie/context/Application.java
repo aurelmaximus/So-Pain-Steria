@@ -1,7 +1,6 @@
 package boulangerie.context;
 
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import repository.ILigneIngredientRepository;
 import repository.jpa.CommandeRepository;
@@ -10,11 +9,12 @@ import repository.jpa.IngredientRepositoryJpa;
 import repository.jpa.LigneIngredientRepositoryJpa;
 import repository.jpa.ProduitRepositoryJpa;
 
+
 public class Application {
 
 	private static Application instance = null;
 
-	private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("boulangerie");
+	//private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("boulangerie");
 	private CommandeRepository commandeRepo = new CommandeRepository();
 	private ILigneIngredientRepository ligneCommandeRepo = new LigneIngredientRepositoryJpa();
 	private IngredientRepositoryJpa ingredientRepo = new IngredientRepositoryJpa();
@@ -68,9 +68,9 @@ public class Application {
 		this.compteRepo = compteRepo;
 	}
 
-	public EntityManagerFactory getEmf() {
-		return emf;
-	}
+//	public EntityManagerFactory getEmf() {
+//		return emf;
+//	}
 
 	public static void setInstance(Application instance) {
 		Application.instance = instance;

@@ -3,210 +3,94 @@ package repository.jpa;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Ingredient;
-import model.Produit;
-import boulangerie.context.Application;
-import repository.IRepository;
-import repository.IIngredientRepository;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
 
+import org.springframework.stereotype.Repository;
+
+import boulangerie.context.Application;
+import model.Ingredient;
+import repository.IIngredientRepository;
+
+@Repository
 public class IngredientRepositoryJpa implements IIngredientRepository {
 
+	@PersistenceContext
+	private EntityManager em;
 
-	
 	public Ingredient findById(Integer id) {
-		
+
 		Ingredient ingredient = null;
-		EntityManager em = null;
-		EntityTransaction tx = null;
 
-		try {
-			em = Application.getInstance().getEmf().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
-			ingredient = em.find(Ingredient.class, id);
-
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
-
+		ingredient = em.find(Ingredient.class, id);
 		return ingredient;
 	}
-		
 
-	
+
+
 	@Override
 	public List<Ingredient> findAll() {
-		
-		List<Ingredient> ingredients = new ArrayList();
-		Ingredient i = null;
-		
 
-		EntityManager em = null;
-		EntityTransaction tx = null;
+		List<Ingredient> ingredients = new ArrayList<>();
 
-		
-		try {
-			em = Application.getInstance().getEmf().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
-			TypedQuery<Ingredient> query = em.createQuery("select i from Ingredient i", Ingredient.class);
-
-			ingredients = query.getResultList();
-
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
+		TypedQuery<Ingredient> query = em.createQuery("select i from Ingredient i", Ingredient.class);
+		ingredients = query.getResultList();
 
 		return ingredients;
 	}
-	
 
-	
-	@Override 
+
+
+	@Override
+	@Transactional
 	public Ingredient save(Ingredient ingredient) {
-		EntityManager em = null;
-		EntityTransaction tx = null;
 
-		try {
-			em = Application.getInstance().getEmf().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
-			ingredient = em.merge(ingredient);
-
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
+		ingredient = em.merge(ingredient);
 
 		return ingredient;
 	}
-	
+
 
 	@Override
+	@Transactional
 	public void deleteById(Integer id) {
-			EntityManager em = null;
-			EntityTransaction tx = null;
 
-			try {
-				em = Application.getInstance().getEmf().createEntityManager();
-				tx = em.getTransaction();
-				tx.begin();
+		TypedQuery<Ingredient> query = em.createQuery("delete from Ingredient i where i.id = ?1", Ingredient.class);
+		query.setParameter("id", id);
 
-				TypedQuery<Ingredient> query = em.createQuery("delete from Ingredient i where i.id = ?1", Ingredient.class);
-				query.setParameter("id", id);
+		query.executeUpdate();
 
-				query.executeUpdate();
+	}
 
-				tx.commit();
-			} catch (Exception e) {
-				e.printStackTrace();
-				if (tx != null && tx.isActive()) {
-					tx.rollback();
-				}
-			} finally {
-				if (em != null) {
-					em.close();
-				}
-			}
 
-		}
-	
+	@Override
+	@Transactional
+	public void delete(Ingredient ingredient) {
 
-		@Override
-		public void delete(Ingredient ingredient) {
-			EntityManager em = null;
-			EntityTransaction tx = null;
+		em.remove(em.merge(ingredient));
 
-			try {
-				em = Application.getInstance().getEmf().createEntityManager();
-				tx = em.getTransaction();
-				tx.begin();
-
-				em.remove(em.merge(ingredient));
-
-				tx.commit();
-			} catch (Exception e) {
-				e.printStackTrace();
-				if (tx != null && tx.isActive()) {
-					tx.rollback();
-				}
-			} finally {
-				if (em != null) {
-					em.close();
-				}
-			}
-			
 	}
 
 
 
-		@Override
-		public List<Ingredient> findAllByLibelleProduit(String libelle) {
-			List<Ingredient> ingredients = new ArrayList<>();
+	@Override
+	public List<Ingredient> findAllByLibelleProduit(String libelle) {
 
-			EntityManager em = null;
-			EntityTransaction tx = null;
+		List<Ingredient> ingredients = new ArrayList<>();
 
-			try {
-				em = Application.getInstance().getEmf().createEntityManager();
-				tx = em.getTransaction();
-				tx.begin();
+		TypedQuery<Ingredient> query = em.createQuery("select li.ingredient from LigneIngredient li where li.produit.libelle = ?1", Ingredient.class);
+		query.setParameter(1, libelle);
+		ingredients = query.getResultList();
 
-				TypedQuery<Ingredient> query = em.createQuery("select li.ingredient from LigneIngredient li where li.produit.libelle = ?1", Ingredient.class);
 
-				query.setParameter(1, libelle);
-				
-				ingredients = query.getResultList();
+		return ingredients;		
 
-				tx.commit();
-			} catch (Exception e) {
-				e.printStackTrace();
-				if (tx != null && tx.isActive()) {
-					tx.rollback();
-				}
-			} finally {
-				if (em != null) {
-					em.close();
-				}
-			}
-
-			return ingredients;		}
+	}
 
 
 
-	
-		
 
-		
-	
 }

@@ -5,203 +5,89 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Repository;
 
 import boulangerie.context.Application;
 import model.Produit;
 import repository.IProduitRepository;
-import repository.IRepository;
 
+@Repository
 public class ProduitRepositoryJpa implements IProduitRepository{
 
+	@PersistenceContext
+	private EntityManager em;
 
-public Produit findById(Integer id) {
-		
+	public Produit findById(Integer id) {
+
 		Produit produit = null;
-		EntityManager em = null;
-		EntityTransaction tx = null;
-
-		try {
-			em = Application.getInstance().getEmf().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
-			produit = em.find(Produit.class, id);
-
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
+		produit = em.find(Produit.class, id);
 
 		return produit;
 	}
-		
 
-	
+
+
 	@Override
 	public List<Produit> findAll() {
-		
-		List<Produit> produits = new ArrayList();
-		Produit i = null;
-		
 
-		EntityManager em = null;
-		EntityTransaction tx = null;
+		List<Produit> produits = new ArrayList<>();
 
-		
-		try {
-			em = Application.getInstance().getEmf().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
-			TypedQuery<Produit> query = em.createQuery("select p from Produit p", Produit.class);
-
-			produits = query.getResultList();
-
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
+		TypedQuery<Produit> query = em.createQuery("select p from Produit p", Produit.class);
+		produits = query.getResultList();
 
 		return produits;
 	}
-	
 
-	
-	@Override 
+
+
+	@Override
+	@Transactional
 	public Produit save(Produit produit) {
-		EntityManager em = null;
-		EntityTransaction tx = null;
 
-		try {
-			em = Application.getInstance().getEmf().createEntityManager();
-			tx = em.getTransaction();
-			tx.begin();
-
-			produit = em.merge(produit);
-
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-		} finally {
-			if (em != null) {
-				em.close();
-			}
-		}
+		produit = em.merge(produit);
 
 		return produit;
 	}
-	
+
 
 	@Override
+	@Transactional
 	public void deleteById(Integer id) {
-			EntityManager em = null;
-			EntityTransaction tx = null;
 
-			try {
-				em = Application.getInstance().getEmf().createEntityManager();
-				tx = em.getTransaction();
-				tx.begin();
+		TypedQuery<Produit> query = em.createQuery("delete from Produit p where p.id = ?1", Produit.class);
+		query.setParameter("id", id);
 
-				TypedQuery<Produit> query = em.createQuery("delete from Produit p where p.id = ?1", Produit.class);
-				query.setParameter("id", id);
+		query.executeUpdate();
 
-				query.executeUpdate();
+	}
 
-				tx.commit();
-			} catch (Exception e) {
-				e.printStackTrace();
-				if (tx != null && tx.isActive()) {
-					tx.rollback();
-				}
-			} finally {
-				if (em != null) {
-					em.close();
-				}
-			}
 
-		}
-	
+	@Override
+	@Transactional
+	public void delete(Produit produit) {
 
-		@Override
-		public void delete(Produit produit) {
-			EntityManager em = null;
-			EntityTransaction tx = null;
+		em.remove(em.merge(produit));
 
-			try {
-				em = Application.getInstance().getEmf().createEntityManager();
-				tx = em.getTransaction();
-				tx.begin();
-
-				em.remove(em.merge(produit));
-
-				tx.commit();
-			} catch (Exception e) {
-				e.printStackTrace();
-				if (tx != null && tx.isActive()) {
-					tx.rollback();
-				}
-			} finally {
-				if (em != null) {
-					em.close();
-				}
-			}
-			
 	}
 
 
 
-		@Override
-		public List<Produit> findAllByLibelleIngredient(String libelle) {
-			List<Produit> produits = new ArrayList<>();
+	@Override
+	public List<Produit> findAllByLibelleIngredient(String libelle) {
 
-			EntityManager em = null;
-			EntityTransaction tx = null;
+		List<Produit> produits = new ArrayList<>();
 
-			try {
-				em = Application.getInstance().getEmf().createEntityManager();
-				tx = em.getTransaction();
-				tx.begin();
+		TypedQuery<Produit> query = em.createQuery("select distinct p from Produit p join fetch p.lignesIngredients l where l.ingredient.libelle = ?1", Produit.class);
+		query.setParameter(1, libelle );
+		produits = query.getResultList();
 
-				TypedQuery<Produit> query = em.createQuery("select distinct p from Produit p join fetch p.lignesIngredients l where l.ingredient.libelle = ?1", Produit.class);
-				
-				query.setParameter(1, libelle );
-				
-				produits = query.getResultList();
+		return produits;
+	}
 
-				tx.commit();
-			} catch (Exception e) {
-				e.printStackTrace();
-				if (tx != null && tx.isActive()) {
-					tx.rollback();
-				}
-			} finally {
-				if (em != null) {
-					em.close();
-				}
-			}
 
-			return produits;
-		}
-
-		
 }
-	
-	
+
