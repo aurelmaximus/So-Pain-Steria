@@ -1,5 +1,7 @@
 package model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -18,7 +20,7 @@ public class Elabore extends Produit {
 	}
 
 
-	public Elabore(double prix, String libelle, Integer NbParts) {
+	public Elabore(BigDecimal prix, String libelle, Integer NbParts) {
 		super(prix, libelle);
 		this.NbParts=NbParts;
 	}

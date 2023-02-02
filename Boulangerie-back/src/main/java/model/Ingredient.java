@@ -28,7 +28,7 @@ public class Ingredient implements Serializable   {
 	@Column(name="allergen", columnDefinition = "tinyint(1) default 0")
 	private boolean allergene;
 	
-	@Column(name="label")
+	@Column(name="label", length = 25)
 	private String libelle;
 	
 

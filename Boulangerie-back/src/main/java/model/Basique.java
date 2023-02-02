@@ -1,17 +1,21 @@
 package model;
 
+import java.math.BigDecimal;
+
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
 @Entity
 @DiscriminatorValue("basic")
 public class Basique extends Produit{
 
+
 	
-	@Column(name = "category")
-	@Enumerated
+	@Enumerated(EnumType.STRING)
+	@Column(name = "category", length = 25)
 	private Categorie categorie;
 	
 	
@@ -22,7 +26,7 @@ public class Basique extends Produit{
 
 
 	
-	public Basique(double prix, String libelle,Categorie categorie) {
+	public Basique(BigDecimal prix, String libelle,Categorie categorie) {
 		super(prix, libelle);
 		this.categorie=categorie;
 		

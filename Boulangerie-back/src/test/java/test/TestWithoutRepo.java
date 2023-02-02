@@ -1,5 +1,6 @@
 package test;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -55,17 +56,20 @@ public class TestWithoutRepo {
 			em.persist(ingredient5);
 		
 			
-			Basique basique1 = new Basique (2.80,"Religieuse",Categorie.Viennoiserie);
+			BigDecimal bd2 = new BigDecimal("2.80");
+			Basique basique1 = new Basique (bd2,"Religieuse",Categorie.Viennoiserie);
 			em.persist(basique1);
 			
-			Basique basique2 = new Basique (2.70,"Eclair",Categorie.Viennoiserie);
+			BigDecimal bd3 = new BigDecimal("2.70");
+			Basique basique2 = new Basique (bd3,"Eclair",Categorie.Viennoiserie);
 			em.persist(basique2);
 			
-			
-			Elabore elobore1 = new Elabore (22,"Fraisier",6);
+			BigDecimal bd4 = new BigDecimal("22.00");
+			Elabore elobore1 = new Elabore (bd4,"Fraisier",6);
 			em.persist(elobore1);
 			
-			Elabore elobore2 = new Elabore (25,"Tarte_Framboise",4);
+			BigDecimal bd5 = new BigDecimal("25.00");
+			Elabore elobore2 = new Elabore (bd5 ,"Tarte_Framboise",4);
 			em.persist(elobore2);
 			
 			
@@ -109,8 +113,8 @@ public class TestWithoutRepo {
 			favoris2.setProduit(elobore2);
 			em.persist(favoris2);
 			
-			
-			LigneCommande lc1 = new LigneCommande (2,6.00);
+			BigDecimal bd1 = new BigDecimal("6.00");
+			LigneCommande lc1 = new LigneCommande (2,bd1);
 			lc1.setCommande(commande1);
 			lc1.setProduit(elobore1);
 			em.persist(lc1);

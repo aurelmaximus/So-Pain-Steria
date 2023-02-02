@@ -6,6 +6,7 @@ import java.util.List;
 import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -32,12 +33,11 @@ public class Commande {
 	@Column(name = "arrived_hour")
 	private LocalTime heureArrive;
 	
-	@Column(name="on_site")
+	@Column(name="on_site",  columnDefinition = "tinyint(1) default 0")
 	private boolean surPlace;
 	
-	
-	@Column(name = "command_status")
-	@Enumerated
+	@Enumerated(EnumType.STRING)
+	@Column(name = "command_status", length = 25)
 	private EtatCommande etatcommande;
 	
 	@OneToMany(mappedBy = "commande")

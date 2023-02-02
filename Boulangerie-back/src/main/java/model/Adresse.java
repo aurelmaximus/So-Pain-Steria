@@ -6,16 +6,16 @@ import javax.persistence.Column;
 @Embeddable
 public class Adresse {
 	
-	@Column(name="number", length =255)
+	@Column(name="number", length =10)
 	private String numero;
 	
-	@Column(name="street", length =255)
+	@Column(name="street", length =50)
 	private String voie;
 	
-	@Column(name="city", length =255)
+	@Column(name="city", length =50)
 	private String ville;
 	
-	@Column(name="zip_code", length =255)
+	@Column(name="zip_code", length =10)
 	private String cp;
 	
 	
