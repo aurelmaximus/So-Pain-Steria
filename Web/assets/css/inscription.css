@@ -1,0 +1,133 @@
+#header
+{
+  height:60px;
+  background-color:#f4cd80;
+  display:flex;
+  align-items:end;
+  justify-content:space-evenly;
+  text-transform: uppercase;
+  font-size:14px;
+  font-family: Georgia, serif;
+}
+
+#content
+{
+  width:60%;
+  display:flex;
+  font-size:14px;
+  height:970px;
+  background-color:white;
+  margin-left: 20%;
+  margin-right: : 20%;
+  margin-top:-124.7px;
+  margin-bottom:105px;
+  padding-top:110px;
+  border-radius: 5%;
+  justify-content:center;
+  align-items:start;
+}
+
+#content2
+{
+  width:50%;
+  display:flex;
+  font-size:14px;
+  height:465px;
+  background-color:white;
+  margin-left: 25%;
+  margin-right: : 25%;
+  margin-top:-124.7px;
+  margin-bottom:105px;
+  padding-top:110px;
+  border-radius: 5%;
+  justify-content:center;
+  align-items:start;
+}
+
+#footer
+{
+  display:flex;
+  justify-content:center;
+  align-items:end;
+  height:60px;
+  background-color:#edebe1;
+  font-family: Times New Roman, serif;
+  margin-top:-20px;
+  margin-bottom:45px;
+}
+
+a
+{
+  color:#53301c;
+  text-decoration:none;
+}
+
+body
+{
+  background-image: url("../images/croissant2.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  margin:0;
+}
+
+.btn
+{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  border: none;
+}
+
+.form2
+{
+  width:70%;
+}
+
+.form
+{
+  height: 60px;
+  width:100%;
+  border-radius:1.3rem;
+  padding-left: 35px;
+  border : 1px solid gray;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin-bottom: 1.7rem;
+}
+
+.logo
+{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  top: 100px;
+  left: 0;
+  right: 0;
+  margin-top:1.5%;
+}
+
+
+h3
+{
+  font-size: 2.5rem;
+  font-family: "Dancing Script",cursive;
+  color:#53301c;
+  display:flex;
+  justify-content:center;
+}
+
+.icon
+{
+  position: absolute;
+  right: 31%;
+  top:1064px;
+  cursor:pointer;
+  color:#999;
+  font-size: 19px;
+}
+
+.fa-eye
+{
+  color:black;
+}

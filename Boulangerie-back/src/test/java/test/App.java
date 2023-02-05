@@ -10,7 +10,7 @@ public class App {
 		ClassPathXmlApplicationContext ctx =new ClassPathXmlApplicationContext("application-context.xml");
 		System.out.println(ctx);
 		
-		Test principal = ctx.getBeanFactory().createBean(Test.class);
+		TestWithRepo principal = ctx.getBeanFactory().createBean(TestWithRepo.class);
 		principal.run(args);
 		
 		ctx.close();

@@ -10,8 +10,8 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
-import model.LigneIngredient;
-import repository.ILigneIngredientRepository;
+import boulangerie.model.LigneIngredient;
+import boulangerie.repository.ILigneIngredientRepository;
 
 @Repository
 public class LigneIngredientRepositoryJpa implements ILigneIngredientRepository {

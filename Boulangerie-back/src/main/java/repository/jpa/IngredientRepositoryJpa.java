@@ -12,8 +12,8 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import boulangerie.context.Application;
-import model.Ingredient;
-import repository.IIngredientRepository;
+import boulangerie.model.Ingredient;
+import boulangerie.repository.IIngredientRepository;
 
 @Repository
 public class IngredientRepositoryJpa implements IIngredientRepository {

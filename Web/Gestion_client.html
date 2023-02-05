@@ -1,219 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<meta charset="UTF-8">
+<title>Gestion des clients</title>
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-<title>Inscription</title>
-
-<style>
-
-  #header
-  {
-    height:60px;
-    background-color:#f4cd80;
-    display:flex;
-    align-items:end;
-    justify-content:space-evenly;
-    text-transform: uppercase;
-    font-size:14px;
-    font-family: Georgia, serif;
-  }
-
-  #content
-  {
-    width:60%;
-    display:flex;
-    font-size:14px;
-    height:970px;
-    background-color:white;
-    margin-left: 20%;
-    margin-right: : 20%;
-    margin-top:-149.5px;
-    margin-bottom:105px;
-    padding-top:100px;
-    border-radius: 5%;
-    justify-content:center;
-    align-items:start;
-  }
-
-  #footer
-  {
-    display:flex;
-    justify-content:center;
-    align-items:end;
-    height:60px;
-    background-color:#edebe1;
-    font-family: Times New Roman, serif;
-    margin-top:-20px;
-    margin-bottom:45px;
-  }
-
-  a
-  {
-    color:#53301c;
-    text-decoration:none;
-  }
-
-  .background
-  {
-    background-image: url(images/croissant2.jpg);
-    background-attachment: fixed;
-    background-size: cover;
-  }
-
-  body
-  {
-    margin:0;
-  }
-
-  .btn
-  {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    border: none;
-  }
-
-  .form2
-  {
-    width:70%;
-  }
-
-  .form
-  {
-    height: 60px;
-    width:100%;
-    border-radius:1.3rem;
-    padding-left: 35px;
-    border : 1px solid gray;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    margin-bottom: 1.7rem;
-  }
-
-  .logo
-  {
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    top: 100px;
-    left: 0;
-    right: 0;
-    margin-top:1.5%;
-  }
 
 
-  h3
-  {
-    font-size: 2.5rem;
-    font-family: "Dancing Script",cursive;
-    color:#53301c;
-    display:flex;
-    justify-content:center;
-  }
+<link	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"	rel="stylesheet"integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"	crossorigin="anonymous">
+<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"	integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"	crossorigin="anonymous"></script>
 
-  .icon
-  {
-    position: absolute;
-    right: 31%;
-    top:1064px;
-    cursor:pointer;
-    color:#999;
-    font-size: 19px;
-  }
+<link rel="stylesheet" type="text/css" href="assets/css/header.css"/>
+<link rel="stylesheet" type="text/css" href="assets/css/gestion.css"/>
+<link rel="stylesheet" type="text/css" href="assets/css/footer.css"/>
 
-  .fa-eye
-  {
-    color:black;
-  }
+<body>
+  <div id = "header">
 
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
 
-</style>
+      <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+        <img id="logo" src="assets\images\Logosansfond.png">
+      </a>
 
-<body class="background">
+      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+        <li><a href="accueil.html" class="nav-link px-2 link-secondary">Accueil</a></li>
+        <li><a href="#" class="nav-link px-2 link-dark">Pâtisseries</a></li>
+        <li><a href="pain.html" class="nav-link px-2 link-dark">Pains</a></li>
+        <li><a href="#" class="nav-link px-2 link-dark">Viennoiserie</a></li>
+        <li><a href="#" class="nav-link px-2 link-dark">La Maison</a></li>
+      </ul>
 
-
-  <div id="header">
-
-
-    <p>  <a target="_blank"  href="https://www.google.fr" >Connexion</a></p>
-    <p> | </p>
-    <p>  <a target="_blank"  href="https://www.google.fr" >Inscription </a></p>
-    <p> | </p>
-    <p>  <a target="_blank"  href="https://www.google.fr" > Accès au site </a></p>
-
-  </div>
-
-  <div class="logo" >
-    <a> <img width="300" height="300" alt="Logo So'Pain Steria" src="images\logosansfond.png"></a>
-  </div>
-
-  <div id="content">
-
-    <div class="form2">
-
-      <form>
-        <br>
-        <h3>Inscription</h3>
-        <br>
-
-        <div><input  required placeholder="Nom *" id="Nom" type="text" title="Nom" class="form" /></div>
-
-        <div><input  required placeholder="Prenom *" id="Prenom" type="text" title="Prenom" class="form"/></div>
-
-        <div><input  placeholder="Numero " id="Numero" type="number" title="Numero" class="form"/></div>
-
-        <div><input  required placeholder="Voie *" id="Voie" type="text" title="Voie" class="form"/></div>
-
-        <div><input  required placeholder="Ville *" id="Ville" type="text" title="Ville" class="form"/></div>
-
-        <div><input  required placeholder="Code Postal *" id="Code Postal" type="number" title="Code Postal" pattern="[0-9]{5}" class="form"/></div>
-
-        <div><input  required placeholder="Email *" id="Email" type="email" title="Email" class="form"/></div>
-
-        <div><input  required  pattern="[A-z0-9!@#$&*?-]{8-25}" placeholder="Mot de passe *" id="Mot de passe" type="password" title="8 caractères minimum" class="form"/>
-          <span >
-            <i class="fa fa-eye-slash icon" id="show-password" onclick="DemasquePassword() "></i>
-          </span>
+      <div class="d-inline-flex">
+        <div class="d-flex"><form class="w-100 me-3" role="search">
+          <input type="search" class="form-control" placeholder="Search..." aria-label="Search"></form></div>
+          <div class="d-flex"> <button type="button" onclick="window.location.href = 'connexion.html';" class="btn btn-outline-dark me-2">Login</button>
+            <button type="button" onclick="window.location.href = 'Inscription_client.html';" class="btn btn-dark">Sign-up</button></div>
+          </div>
         </div>
 
-        <div class="btn">
-          <button  type="submit" class="btn btn-secondary">Je m'inscris</button>
+      </div>
+
+      <div class="background" >
+        <div id="content">
+          <h1 align="center">Liste des clients</h1>
+          <table class="table"  align="center">
+            <thead>
+              <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Email</th>
+                <th>Mot de passe</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <c:forEach var="c" items="${clients}">
+              <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><a
+                  href="client/delete?id=${f.id}"
+                  class="bouton   btn btn-outline-danger "> suppression</a></td>
+                </tr>
+              </c:forEach>
+            </tbody>
+          </table>
         </div>
-
-      </form>
-    </div>
-
-  </div>
+      </div>
 
 
-  <div id="footer">
+      <div id="footer">
 
 
-    <p>Copyright So'Pain Steria - Tous droits réservés - 2023 </p>
+        <p>Copyright So'Pain Steria - Tous droits réservés - 2023 </p>
 
 
-  </div>
+      </div>
 
 
-</body>
+    </body>
 
-
-<script charset="utf-8">
-
-  function DemasquePassword() {
-    var x = document.getElementById("Mot de passe");
-    var y = document.getElementById("show-password");
-
-    if (x.type === "password") {
-      x.type = "text";
-      y.classList.remove("fa-eye-slash");
-      y.classList.add("fa-eye");
-    } else {
-      x.type = "password";
-      y.classList.remove("fa-eye");
-      y.classList.add("fa-eye-slash");
-    }
-  }
-
-</script>
+    </html>

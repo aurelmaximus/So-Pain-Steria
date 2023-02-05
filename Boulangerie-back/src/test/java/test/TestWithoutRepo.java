@@ -9,19 +9,19 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-import model.Adresse;
-import model.ArticleFavoris;
-import model.Basique;
-import model.Categorie;
-import model.Client;
-import model.Commande;
-import model.Elabore;
-import model.Employe;
-import model.EtatCommande;
-import model.Ingredient;
-import model.LigneCommande;
-import model.LigneIngredient;
-import model.SansCompte;
+import boulangerie.model.Adresse;
+import boulangerie.model.ArticleFavoris;
+import boulangerie.model.Basique;
+import boulangerie.model.Categorie;
+import boulangerie.model.Client;
+import boulangerie.model.Commande;
+import boulangerie.model.Elabore;
+import boulangerie.model.Employe;
+import boulangerie.model.EtatCommande;
+import boulangerie.model.Ingredient;
+import boulangerie.model.LigneCommande;
+import boulangerie.model.LigneIngredient;
+import boulangerie.model.SansCompte;
 
 
 public class TestWithoutRepo {

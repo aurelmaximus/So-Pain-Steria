@@ -12,10 +12,10 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import boulangerie.context.Application;
-import model.Client;
-import model.Compte;
-import model.Employe;
-import repository.ICompteRepository;
+import boulangerie.model.Client;
+import boulangerie.model.Compte;
+import boulangerie.model.Employe;
+import boulangerie.repository.ICompteRepository;
 
 @Repository
 public class CompteRepository implements ICompteRepository {

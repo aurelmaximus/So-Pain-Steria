@@ -2,7 +2,7 @@ package boulangerie.context;
 
 import javax.persistence.EntityManagerFactory;
 
-import repository.ILigneIngredientRepository;
+import boulangerie.repository.ILigneIngredientRepository;
 import repository.jpa.CommandeRepository;
 import repository.jpa.CompteRepository;
 import repository.jpa.IngredientRepositoryJpa;

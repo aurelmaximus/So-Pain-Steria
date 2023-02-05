@@ -12,10 +12,10 @@ import javax.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 import boulangerie.context.Application;
-import model.Client;
-import model.Commande;
-import model.EtatCommande;
-import repository.ICommandeRepository;
+import boulangerie.model.Client;
+import boulangerie.model.Commande;
+import boulangerie.model.EtatCommande;
+import boulangerie.repository.ICommandeRepository;
 
 @Repository
 public class CommandeRepository implements ICommandeRepository {

@@ -1,0 +1,33 @@
+
+#content
+{
+  width:80%;
+  font-size:14px;
+  height:600px;
+  margin-left: 10%;
+  margin-right: : 10%;
+  margin-top:0px;
+  margin-bottom:105px;
+  padding-top:15px;
+  background-color: white;
+  border-radius: 5%;
+
+
+}
+
+.background
+{
+  padding-top:50px;
+  height:700px;
+  background-color: #d2c9ff;
+}
+
+.table
+{
+  width:80%;
+}
+
+.bouton
+{
+margin-right: : -84px;
+}
