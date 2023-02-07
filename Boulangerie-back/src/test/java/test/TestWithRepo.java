@@ -14,7 +14,7 @@ import boulangerie.model.Elabore;
 import boulangerie.model.EtatCommande;
 import boulangerie.model.Ingredient;
 import boulangerie.model.LigneIngredient;
-import boulangerie.repository.ICommandeRepository;
+import boulangerie.repository.CommandeRepository;
 import boulangerie.repository.ICompteRepository;
 import boulangerie.repository.IIngredientRepository;
 import boulangerie.repository.ILigneIngredientRepository;
@@ -25,7 +25,7 @@ public class TestWithRepo {
 	@Autowired
 	private IProduitRepository produitRepo;
 	@Autowired
-	private ICommandeRepository commandeRepo;
+	private CommandeRepository commandeRepo;
 	@Autowired
 	private ILigneIngredientRepository ligneIngredientRepo;
 	@Autowired

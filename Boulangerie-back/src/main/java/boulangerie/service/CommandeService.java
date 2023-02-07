@@ -1,4 +1,4 @@
-package repository.jpa;
+package boulangerie.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import boulangerie.model.EtatCommande;
 import boulangerie.repository.CommandeRepository;
 
 @Repository
-public class CommandeRepository implements CommandeService {
+public class CommandeService implements CommandeService {
 
 	@PersistenceContext
 	private EntityManager em;
