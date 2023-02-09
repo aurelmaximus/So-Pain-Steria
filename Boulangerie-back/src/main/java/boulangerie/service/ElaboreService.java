@@ -7,29 +7,32 @@ import org.springframework.stereotype.Service;
 
 import boulangerie.exception.IdException;
 import boulangerie.exception.ElaboreException;
-import boulangerie.model.Produit;
+import boulangerie.model.Elabore;
+
 import boulangerie.repository.ElaboreRepository;
+
 
 
 @Service
 public class ElaboreService {
 
 	@Autowired
-	private ElaboreRepository produitRepo;
+	private ElaboreRepository elaboreRepo;
 	
-
-	private void checkConstraint(Produit produit) {
-		if (produit.getPrix() == null) {
+	
+	private void checkConstraint(Elabore elabore) {
+		if (elabore.getPrix() == null) {
 			throw new ElaboreException("prix obligatoire");
 		}
-		if (produit.getLibelle() == null || produit.getLibelle().isEmpty()) {
+		if (elabore.getLibelle() == null || elabore.getLibelle().isEmpty()) {
 			throw new ElaboreException("libelle obligatoire");
 		}
 	}
 
-	private void checkNotNull(Produit produit) {
-		if (produit == null) {
-			throw new ElaboreException("produit obligatoire");
+
+	private void checkNotNull(Elabore elabore) {
+		if (elabore == null) {
+			throw new ElaboreException("elabore obligatoire");
 		}
 	}
 	
@@ -39,44 +42,47 @@ public class ElaboreService {
 		}
 	}
 	
-	public Produit findById(Integer id) {
+	
+	public Elabore findById(Integer id) {
 		checkId(id);
-		return produitRepo.findById(id).orElseThrow(ElaboreException::new);
+		return elaboreRepo.findById(id).orElseThrow(ElaboreException::new);
 	}
 
-	private void checkExist(Produit produit) {
-		checkId(produit.getId());
-		findById(produit.getId());
+	private void checkExist(Elabore elabore) {
+		checkId(elabore.getId());
+		findById(elabore.getId());
 	}
 	
 	
-	public Produit create(Produit produit) {
-		checkNotNull(produit);
-		if (produit.getId() != null) {
+	public Elabore create(Elabore elabore) {
+		checkNotNull(elabore);
+		if (elabore.getId() != null) {
 			throw new IdException();
 		}
-		checkConstraint(produit);
-		return produitRepo.save(produit);
+		checkConstraint(elabore);
+		return elaboreRepo.save(elabore);
 	}
 
-	public Produit update(Produit produit) {
-		checkNotNull(produit);
-		checkExist(produit);
-		checkConstraint(produit);
-		Produit produitEnBase = findById(produit.getId());
-		produitEnBase.setPrix(produit.getPrix());
-		produitEnBase.setLibelle(produit.getLibelle());
+	public Elabore update(Elabore elabore) {
+		checkNotNull(elabore);
+		checkExist(elabore);
+		checkConstraint(elabore);
+		Elabore elaboreEnBase = findById(elabore.getId());
+		elaboreEnBase.setPrix(elabore.getPrix());
+		elaboreEnBase.setLibelle(elabore.getLibelle());
+		elaboreEnBase.setNbParts(elabore.getNbParts());
 		
-		return produitRepo.save(produitEnBase);
+		return elaboreRepo.save(elaboreEnBase);
 	}
 	
-	public List<Produit> findAll() {
-		return produitRepo.findAll();
+	
+	public List<Elabore> findAll() {
+		return elaboreRepo.findAll();
 	}
 	
-	public void delete(Produit produit) {
-		checkExist(produit);
-		produitRepo.delete(produit);
+	public void delete(Elabore elabore) {
+		checkExist(elabore);
+		elaboreRepo.delete(elabore);
 	}
 
 	public void delete(Integer id) {

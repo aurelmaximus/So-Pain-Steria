@@ -1,4 +1,4 @@
-package test;
+package boulangerie.test;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

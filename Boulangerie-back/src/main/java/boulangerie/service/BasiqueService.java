@@ -6,30 +6,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import boulangerie.exception.IdException;
-import boulangerie.exception.ElaboreException;
-import boulangerie.model.Produit;
-import boulangerie.repository.ElaboreRepository;
+import boulangerie.exception.BasiqueException;
+import boulangerie.model.Basique;
+import boulangerie.repository.BasiqueRepository;
+
 
 
 @Service
 public class BasiqueService {
 
 	@Autowired
-	private ElaboreRepository produitRepo;
+	private BasiqueRepository basiqueRepo;
 	
-
-	private void checkConstraint(Produit produit) {
-		if (produit.getPrix() == null) {
-			throw new ElaboreException("prix obligatoire");
+	
+	private void checkConstraint(Basique basique) {
+		if (basique.getPrix() == null) {
+			throw new BasiqueException("prix obligatoire");
 		}
-		if (produit.getLibelle() == null || produit.getLibelle().isEmpty()) {
-			throw new ElaboreException("libelle obligatoire");
+		if (basique.getLibelle() == null || basique.getLibelle().isEmpty()) {
+			throw new BasiqueException("libelle obligatoire");
 		}
 	}
 
-	private void checkNotNull(Produit produit) {
-		if (produit == null) {
-			throw new ElaboreException("produit obligatoire");
+	
+	private void checkNotNull(Basique basique) {
+		if (basique == null) {
+			throw new BasiqueException("basique obligatoire");
 		}
 	}
 	
@@ -39,44 +41,47 @@ public class BasiqueService {
 		}
 	}
 	
-	public Produit findById(Integer id) {
+	public Basique findById(Integer id) {
 		checkId(id);
-		return produitRepo.findById(id).orElseThrow(ElaboreException::new);
+		return basiqueRepo.findById(id).orElseThrow(BasiqueException::new);
 	}
 
-	private void checkExist(Produit produit) {
-		checkId(produit.getId());
-		findById(produit.getId());
+	private void checkExist(Basique basique) {
+		checkId(basique.getId());
+		findById(basique.getId());
 	}
 	
 	
-	public Produit create(Produit produit) {
-		checkNotNull(produit);
-		if (produit.getId() != null) {
+	public Basique create(Basique basique) {
+		checkNotNull(basique);
+		if (basique.getId() != null) {
 			throw new IdException();
 		}
-		checkConstraint(produit);
-		return produitRepo.save(produit);
+		checkConstraint(basique);
+		return basiqueRepo.save(basique);
 	}
-
-	public Produit update(Produit produit) {
-		checkNotNull(produit);
-		checkExist(produit);
-		checkConstraint(produit);
-		Produit produitEnBase = findById(produit.getId());
-		produitEnBase.setPrix(produit.getPrix());
-		produitEnBase.setLibelle(produit.getLibelle());
+	
+	
+	public Basique update(Basique basique) {
+		checkNotNull(basique);
+		checkExist(basique);
+		checkConstraint(basique);
+		Basique basiqueEnBase = findById(basique.getId());
+		basiqueEnBase.setPrix(basique.getPrix());
+		basiqueEnBase.setLibelle(basique.getLibelle());
+		basiqueEnBase.setCategorie(basique.getCategorie() == null ? basiqueEnBase.getCategorie() : basique.getCategorie());
 		
-		return produitRepo.save(produitEnBase);
+		return basiqueRepo.save(basiqueEnBase);
 	}
 	
-	public List<Produit> findAll() {
-		return produitRepo.findAll();
+	
+	public List<Basique> findAll() {
+		return basiqueRepo.findAll();
 	}
 	
-	public void delete(Produit produit) {
-		checkExist(produit);
-		produitRepo.delete(produit);
+	public void delete(Basique basique) {
+		checkExist(basique);
+		basiqueRepo.delete(basique);
 	}
 
 	public void delete(Integer id) {

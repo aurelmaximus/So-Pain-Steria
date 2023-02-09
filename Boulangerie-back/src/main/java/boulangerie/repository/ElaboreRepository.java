@@ -1,17 +1,11 @@
 package boulangerie.repository;
 
-import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
+import boulangerie.model.Elabore;
 
-import boulangerie.model.Ingredient;
-import boulangerie.model.Produit;
-
-
-public interface ElaboreRepository extends JpaRepository<Produit,Integer>{
+//A voir si la query est bonne
+public interface ElaboreRepository extends JpaRepository<Elabore,Integer>{
 	
-	@Query("select distinct p from Produit p join fetch p.lignesIngredients l where l.ingredient.libelle=:libelle")
-	List<Produit> findAllByLibelleIngredient(@Param("libelle")Ingredient libelle);
-	
+
 }

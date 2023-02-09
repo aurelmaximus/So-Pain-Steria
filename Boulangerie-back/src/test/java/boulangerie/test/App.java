@@ -1,4 +1,4 @@
-package test;
+package boulangerie.test;
 
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
