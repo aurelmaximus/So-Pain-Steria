@@ -1,7 +1,4 @@
 package boulangerie.model;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +7,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
@@ -33,7 +32,7 @@ public class Ingredient implements Serializable   {
 	
 
 	@OneToMany(mappedBy = "ingredient")
-	private List<LigneIngredient> ligneIngredients= new ArrayList<>();
+	private List<LigneIngredient> lignesIngredient= new ArrayList<>();
 	
 	
 	public Ingredient() {
@@ -79,12 +78,12 @@ public class Ingredient implements Serializable   {
 
 
 	public List<LigneIngredient> getLigneIngredients() {
-		return ligneIngredients;
+		return lignesIngredient;
 	}
 
 
 	public void setLigneIngredients(List<LigneIngredient> ligneIngredients) {
-		this.ligneIngredients = ligneIngredients;
+		this.lignesIngredient = ligneIngredients;
 	}
 
 
