@@ -65,26 +65,26 @@ class IngredientServiceTest {
 
 	}
 	
-	@Test
-	void testFindByLignesingredientProduit() {
-		assertTrue(ingredientSrv.findAll().isEmpty());
-		Ingredient ingredient = new Ingredient("Chocolat", true);
-		ingredientSrv.create(ingredient);
-		
-		LigneIngredient lignesIngredient = new LigneIngredient();
-		BigDecimal prix = new BigDecimal("3.5");
-		Basique basique = new Basique(prix, "Tarte", Categorie.Gateau);
-		
-		lignesIngredient.setProduit(basique);
-		lignesIngredient.setIngredient(ingredient);
-		basiqueSrv.create(basique);
-		lignesIngredientSrv.create(lignesIngredient);
-		
-		ingredientSrv.findByLignesingredientProduit(basique);
-
-		assertEquals(1, ingredientSrv.findAll().size());
-
-	}
+//	@Test
+//	void testFindByLignesingredientProduit() {
+//		assertTrue(ingredientSrv.findAll().isEmpty());
+//		Ingredient ingredient = new Ingredient("Chocolat", true);
+//		ingredientSrv.create(ingredient);
+//		
+//		LigneIngredient lignesIngredient = new LigneIngredient();
+//		BigDecimal prix = new BigDecimal("3.5");
+//		Basique basique = new Basique(prix, "Tarte", Categorie.Gateau);
+//		
+//		lignesIngredient.setProduit(basique);
+//		lignesIngredient.setIngredient(ingredient);
+//		basiqueSrv.create(basique);
+//		lignesIngredientSrv.create(lignesIngredient);
+//		
+//		ingredientSrv.findByLignesingredientProduit(basique);
+//
+//		assertEquals(1, ingredientSrv.findAll().size());
+//
+//	}
 
 	@Test
 	void testDeleteIngredient() {

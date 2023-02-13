@@ -76,13 +76,13 @@ public class IngredientService {
 		return ingredientRepo.findAll();
 	}
 	
-	public List<Ingredient> findByLignesingredientProduit(Produit produit) {
-		return ingredientRepo.findByLignesingredientProduitLibelle(produit.getLibelle());
-	}
+//	public List<Ingredient> findByLignesingredientProduit(Produit produit) {
+//		return ingredientRepo.findByLignesingredientProduitLibelle(produit.getLibelle());
+//	}
 	
-	public List<Ingredient> findByLignesingredientProduit(String produitLibelle) {
-		return findByLignesingredientProduit(produitLibelle);
-	}
+//	public List<Ingredient> findByLignesingredientProduit(String produitLibelle) {
+//		return findByLignesingredientProduit(produitLibelle);
+//	}
 	
 	public void delete(Ingredient ingredient) {
 		checkExist(ingredient);
