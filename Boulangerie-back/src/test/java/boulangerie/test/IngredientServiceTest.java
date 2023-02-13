@@ -50,8 +50,12 @@ class IngredientServiceTest {
 	void testUpdate() {
 		Ingredient ingredient = new Ingredient("Chocolat", true);
 		ingredientSrv.create(ingredient);
+		
+		ingredient.setAllergene(false);
 		ingredientSrv.update(ingredient);
 		ingredient = ingredientSrv.findById(ingredient.getId());
+		assertEquals(false, ingredient.isAllergene());
+		
 		
 	}
 

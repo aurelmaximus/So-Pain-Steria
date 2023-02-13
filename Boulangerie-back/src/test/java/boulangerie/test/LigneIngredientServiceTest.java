@@ -39,7 +39,18 @@ class LigneIngredientServiceTest {
 	@Test
 	void testCreate() {
 		LigneIngredient lignesIngredient = new LigneIngredient();
+		Ingredient ingredient = new Ingredient("Chocolat", true);
+		ingredientSrv.create(ingredient);
+		
+		BigDecimal prix = new BigDecimal("3.5");
+		Basique basique = new Basique(prix, "Tarte", Categorie.Gateau);
+		basiqueSrv.create(basique);
+		
+		lignesIngredient.setIngredient(ingredient);
+		lignesIngredient.setProduit(basique);
+		
 		lignesIngredientSrv.create(lignesIngredient);
+		
 		assertNotNull(ingredientSrv.findById(lignesIngredient.getId()));
 		assertThrows(LigneIngredientException.class, () -> {
 			lignesIngredientSrv.create(new LigneIngredient());
@@ -49,9 +60,26 @@ class LigneIngredientServiceTest {
 	@Test
 	void testUpdate() {
 		LigneIngredient lignesIngredient = new LigneIngredient();
+		Ingredient ingredient = new Ingredient("Chocolat", true);
+		ingredientSrv.create(ingredient);
+		
+		BigDecimal prix = new BigDecimal("3.5");
+		Basique basique = new Basique(prix, "Tarte", Categorie.Gateau);
+		basiqueSrv.create(basique);
+		
+		lignesIngredient.setIngredient(ingredient);
+		lignesIngredient.setProduit(basique);
+		
 		lignesIngredientSrv.create(lignesIngredient);
+		
+		Ingredient ingredient2 = new Ingredient("Vanille", false);
+		ingredientSrv.create(ingredient2);
+		lignesIngredient.setIngredient(ingredient2);		
+		
 		lignesIngredientSrv.update(lignesIngredient);
 		lignesIngredient = lignesIngredientSrv.findById(lignesIngredient.getId());
+		
+		assertEquals("Vanille", lignesIngredient.getIngredient().getLibelle());
 		
 	}
 
@@ -59,6 +87,16 @@ class LigneIngredientServiceTest {
 	void testFindAll() {
 		assertTrue(lignesIngredientSrv.findAll().isEmpty());
 		LigneIngredient lignesIngredient = new LigneIngredient();
+		
+		Ingredient ingredient = new Ingredient("Chocolat", true);
+		ingredientSrv.create(ingredient);
+		
+		BigDecimal prix = new BigDecimal("3.5");
+		Basique basique = new Basique(prix, "Tarte", Categorie.Gateau);
+		basiqueSrv.create(basique);
+		
+		lignesIngredient.setIngredient(ingredient);
+		lignesIngredient.setProduit(basique);
 		lignesIngredientSrv.create(lignesIngredient);
 
 		assertEquals(1, lignesIngredientSrv.findAll().size());
@@ -82,7 +120,7 @@ class LigneIngredientServiceTest {
 		
 		lignesIngredientSrv.delete(lignesIngredient);
 		assertThrows(LigneIngredientException.class, () -> {
-			ingredientSrv.findById(lignesIngredient.getId());
+			lignesIngredientSrv.findById(lignesIngredient.getId());
 		});
 	}
 
