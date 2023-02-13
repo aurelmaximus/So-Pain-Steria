@@ -9,16 +9,9 @@ import org.springframework.data.repository.query.Param;
 import boulangerie.model.Client;
 import boulangerie.model.Commande;
 import boulangerie.model.EtatCommande;
+import boulangerie.model.LigneCommande;
 
 
-public interface LigneCommandeRepository extends JpaRepository<Commande,Integer> {
-
-	List<Commande> findAllByClient(Client client);
-	
-	@Query("select c from Commande c where  c.etatCommande = :et")
-	List<Commande> findAllByEtatCommande(@Param("et") EtatCommande etatC);
-	
-	@Query("select c from Commande c where c.client = :cl and c.etatCommande = :et")
-	List<Commande> findAllByClientAndEtatCommande(@Param("cl") Client client, @Param("et") EtatCommande etatC);
+public interface LigneCommandeRepository extends JpaRepository<LigneCommande,Integer> {
 	
 }
