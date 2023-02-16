@@ -66,7 +66,7 @@ class CommandeServiceTest {
 	}
 
 	@Test
-	void testDeleteFormateur() {
+	void testDeleteCommande() {
 		Commande commande = new Commande(LocalDate.of(2022, 02, 10),LocalTime.of(12,33),EtatCommande.Prete,true);
 		commandeSrv.create(commande);
 		commandeSrv.delete(commande);
