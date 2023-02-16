@@ -28,7 +28,7 @@ public abstract class Compte {
 	
 	@Version
 	@JsonView(Views.ViewBase.class)
-	private Integer version;
+	private int version;
 	
 	@Column(name="email", length =50)
 	@JsonView(Views.ViewBase.class)

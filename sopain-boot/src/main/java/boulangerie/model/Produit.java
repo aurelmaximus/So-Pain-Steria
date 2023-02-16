@@ -36,7 +36,7 @@ public abstract class Produit implements Serializable {
 	
 	@Version
 	@JsonView(Views.ViewBase.class)
-	private Integer version;
+	private int version;
 	
 	@Column(name = "price", precision=5, scale=2)
 	@JsonView(Views.ViewBase.class)

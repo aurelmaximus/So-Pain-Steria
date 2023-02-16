@@ -15,10 +15,10 @@ public interface CommandeRepository extends JpaRepository<Commande,Integer> {
 
 //	List<Commande> findAllByClient(Client client);
 //	
-//	@Query("select c from Commande c where  c.etatCommande ")
-//	List<Commande> findAllByEtatCommande();
+//	@Query("select c from Commande c where  c.etatCommande = :et")
+//	List<Commande> findAllByEtatCommande(@Param("et") EtatCommande etatC);
 //	
-//	@Query("SELECT c FROM Commande c WHERE c.client = :client AND c.etatCommande = :etatCommande")
-//	List<Commande> findAllByClientAndEtatCommande(@Param("cl") Client client, @Param("et") EtatCommande etatCommande);
+//	@Query("select c from Commande c where c.client = :cl and c.etatCommande = :et")
+//	List<Commande> findAllByClientAndEtatCommande(@Param("cl") Client client, @Param("et") EtatCommande etatC);
 //	
 }

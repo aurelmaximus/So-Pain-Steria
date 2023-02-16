@@ -22,7 +22,7 @@ public class LigneCommande{
 	private Integer id;
 	
 	@Version
-	private Integer version;
+	private int version;
 	
 	@Column(name = "quantity" , length = 4)
 	private int qte;

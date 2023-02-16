@@ -9,23 +9,29 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "ingredient_line")
 public class LigneIngredient {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
 	
 	@Version
-	private Integer version;
+	@JsonView(Views.ViewBase.class)
+	private int version;
 	
 	@ManyToOne
-	@JoinColumn(name = "ingredient_label", referencedColumnName = "label")
+	@JoinColumn(name = "ingredient_id", referencedColumnName = "id")
+	@JsonView(Views.ViewBase.class)
 	private Ingredient ingredient;
 	
 	@ManyToOne
-	@JoinColumn(name = "product_label", referencedColumnName = "label")
+	@JoinColumn(name = "product_id", referencedColumnName = "id")
+	@JsonView(Views.ViewBase.class)
 	private Produit produit;
 
 

@@ -31,7 +31,7 @@ public class Commande {
 	
 	@Version
 	@JsonView(Views.ViewBase.class)
-	private Integer version;
+	private int version;
 	
 	@Column(name = "arrived_date")
 	@JsonView(Views.ViewBase.class)

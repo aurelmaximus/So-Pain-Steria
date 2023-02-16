@@ -21,7 +21,7 @@ public class ArticleFavoris {
 	private Integer id;
 
 	@Version
-	private Integer version;
+	private int version;
 
 	@ManyToOne
 	@JoinColumn(name = "customer_id")

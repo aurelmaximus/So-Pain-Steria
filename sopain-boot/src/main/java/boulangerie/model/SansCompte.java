@@ -21,7 +21,7 @@ public class SansCompte {
 		private Integer id;
 		
 		@Version
-		private Integer version;
+		private int version;
 		
 		@Column(name="email", length =50)
 		private String email;

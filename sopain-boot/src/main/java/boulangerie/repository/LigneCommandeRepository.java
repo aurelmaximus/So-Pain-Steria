@@ -20,5 +20,5 @@ public interface LigneCommandeRepository extends JpaRepository<Commande,Integer>
 //	
 //	@Query("select c from Commande c where c.client = :cl and c.etatCommande = :et")
 //	List<Commande> findAllByClientAndEtatCommande(@Param("cl") Client client, @Param("et") EtatCommande etatC);
-	
+//	
 }

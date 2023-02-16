@@ -26,7 +26,7 @@ public class Ingredient implements Serializable   {
 	
 	@Version
 	@JsonView(Views.ViewBase.class)
-	private Integer version;
+	private int version;
 	
 	@Column(name="allergen", columnDefinition = "tinyint(1) default 0")
 	@JsonView(Views.ViewIngredient.class)
