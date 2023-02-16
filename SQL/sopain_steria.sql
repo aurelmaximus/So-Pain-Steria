@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 08 fév. 2023 à 17:13
+-- Généré le : jeu. 16 fév. 2023 à 20:24
 -- Version du serveur : 5.7.40
 -- Version de PHP : 8.0.26
 
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `account` (
   `last_name` varchar(25) DEFAULT NULL,
   `password` varchar(25) DEFAULT NULL,
   `first_name` varchar(25) DEFAULT NULL,
-  `version` int(11) DEFAULT NULL,
+  `version` int(11) NOT NULL,
   `points` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UKravrcdl4ml7ghtfxdr2nx9hyw` (`last_name`,`first_name`)
@@ -56,7 +56,7 @@ INSERT INTO `account` (`type`, `id`, `zip_code`, `number`, `city`, `street`, `em
 ('Employe', 2, '69000', '8', 'Lyon', 'Rue du magicien', 'cedric.devillers@gmail.com', 'Cedric', 'cedric', 'Devillers', 0, 0),
 ('Employe', 3, '33000', '12', 'Bordeaux', 'Rue cyber', 'farah.benaissa@gmail.com', 'Farah', 'farah', 'Benaissa', 0, 0),
 ('Employe', 4, '69000', '7bis', 'Lyon', 'Rue ignister', 'youssef.talmat@gmail.com', 'Youssef', 'youssef', 'Talmat', 0, 0),
-('customer', 5, '33000', '1', 'Bordeaux', 'Rue de la victoire', 'prune.pommier@gmail.com', 'prune', 'peche', 'pommier', 0, 0);
+('Customer', 5, '33000', '1', 'Bordeaux', 'Rue de la victoire', 'prune.pommier@gmail.com', 'prune', 'peche', 'pommier', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `command` (
   `command_status` varchar(25) DEFAULT NULL,
   `arrived_hour` time DEFAULT NULL,
   `on_site` tinyint(1) DEFAULT '0',
-  `version` int(11) DEFAULT NULL,
+  `version` int(11) NOT NULL,
   `customer_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`numero`),
   KEY `FK4adexdu0ttc9l217n3ydn7199` (`customer_id`)
@@ -82,8 +82,8 @@ CREATE TABLE IF NOT EXISTS `command` (
 --
 
 INSERT INTO `command` (`numero`, `arrived_date`, `command_status`, `arrived_hour`, `on_site`, `version`, `customer_id`) VALUES
-(1, '2023-01-31', '2', '14:30:00', 0, 0, 5),
-(2, '2023-01-27', '0', '16:55:00', 0, 0, NULL);
+(1, '2023-01-31', 'Termine', '14:30:00', 0, 0, 5),
+(2, '2023-01-27', 'EnCours', '16:55:00', 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -96,20 +96,20 @@ CREATE TABLE IF NOT EXISTS `command_line` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `quantity` int(11) DEFAULT NULL,
   `total` decimal(5,2) DEFAULT NULL,
-  `version` int(11) DEFAULT NULL,
+  `version` int(11) NOT NULL,
   `command_id` int(11) DEFAULT NULL,
-  `product_label` varchar(25) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK63wx5vtqo2p1upm623em6aic` (`command_id`),
-  KEY `FKlkg0ltfcvxcdcn6ww7dse6qem` (`product_label`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+  KEY `FKexibn53w35ucgmrpyu3nt47dx` (`product_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `command_line`
 --
 
-INSERT INTO `command_line` (`id`, `quantity`, `total`, `version`, `command_id`, `product_label`) VALUES
-(1, 2, '2.40', 0, 2, 'Chocolatine');
+INSERT INTO `command_line` (`id`, `quantity`, `total`, `version`, `command_id`, `product_id`) VALUES
+(2, 2, '2.40', 0, 2, 7);
 
 -- --------------------------------------------------------
 
@@ -120,21 +120,21 @@ INSERT INTO `command_line` (`id`, `quantity`, `total`, `version`, `command_id`, 
 DROP TABLE IF EXISTS `favorite_articles`;
 CREATE TABLE IF NOT EXISTS `favorite_articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `version` int(11) DEFAULT NULL,
+  `version` int(11) NOT NULL,
   `customer_id` int(11) DEFAULT NULL,
-  `product_label` varchar(25) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKjx8inxsdb180t84o3uj97rm5y` (`customer_id`),
-  KEY `FKp5dp4oi1xmj3i1i7dt7e03ii2` (`product_label`)
+  KEY `FK8ymrqp3evp7dvak8g2vjw7ne` (`product_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `favorite_articles`
 --
 
-INSERT INTO `favorite_articles` (`id`, `version`, `customer_id`, `product_label`) VALUES
-(1, 0, 1, 'Chocolatine'),
-(2, 0, 1, 'Croissant');
+INSERT INTO `favorite_articles` (`id`, `version`, `customer_id`, `product_id`) VALUES
+(1, 0, 1, 7),
+(2, 0, 1, 6);
 
 -- --------------------------------------------------------
 
@@ -147,9 +147,8 @@ CREATE TABLE IF NOT EXISTS `ingredient` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `allergen` tinyint(1) DEFAULT '0',
   `label` varchar(25) DEFAULT NULL,
-  `version` int(11) DEFAULT '0',
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_tnhfvr29l1fykbohmss0lwlb9` (`label`)
+  `version` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
 
 --
@@ -204,200 +203,200 @@ INSERT INTO `ingredient` (`id`, `allergen`, `label`, `version`) VALUES
 DROP TABLE IF EXISTS `ingredient_line`;
 CREATE TABLE IF NOT EXISTS `ingredient_line` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `version` int(11) DEFAULT '0',
-  `ingredient_label` varchar(25) DEFAULT NULL,
-  `product_label` varchar(25) DEFAULT NULL,
+  `version` int(11) NOT NULL,
+  `ingredient_id` int(11) DEFAULT NULL,
+  `product_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `FKk7fgi9mw6vpy4u928quqru5rd` (`ingredient_label`),
-  KEY `FKnbyonsb9ecj93iosvmj1fs4aw` (`product_label`)
-) ENGINE=InnoDB AUTO_INCREMENT=215 DEFAULT CHARSET=utf8;
+  KEY `FKfw602n9nfuq3hifulp8e58gwl` (`ingredient_id`),
+  KEY `FKdu629s77exd2v9d7sfv157g4m` (`product_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `ingredient_line`
 --
 
-INSERT INTO `ingredient_line` (`id`, `version`, `ingredient_label`, `product_label`) VALUES
-(1, 0, 'Farine_T55', 'Croissant'),
-(2, 0, 'Oeuf', 'Croissant'),
-(3, 0, 'Lait', 'Croissant'),
-(4, 0, 'Sucre', 'Croissant'),
-(5, 0, 'Sel', 'Croissant'),
-(6, 0, 'Levure_boulangerie', 'Croissant'),
-(7, 0, 'Beurre', 'Croissant'),
-(8, 0, 'Farine_T55', 'Chocolatine'),
-(9, 0, 'Oeuf', 'Chocolatine'),
-(10, 0, 'Lait', 'Chocolatine'),
-(11, 0, 'Sucre', 'Chocolatine'),
-(12, 0, 'Sel', 'Chocolatine'),
-(13, 0, 'Levure_boulangerie', 'Chocolatine'),
-(14, 0, 'Beurre', 'Chocolatine'),
-(15, 0, 'Chocolat', 'Chocolatine'),
-(16, 0, 'Farine_T55', 'Pain_aux_Raisins'),
-(17, 0, 'Oeuf', 'Pain_aux_Raisins'),
-(18, 0, 'Lait', 'Pain_aux_Raisins'),
-(19, 0, 'Sucre', 'Pain_aux_Raisins'),
-(20, 0, 'Sel', 'Pain_aux_Raisins'),
-(21, 0, 'Levure_boulangerie', 'Pain_aux_Raisins'),
-(22, 0, 'Beurre', 'Pain_aux_Raisins'),
-(23, 0, 'Raisin_sec', 'Pain_aux_Raisins'),
-(24, 0, 'Vanille', 'Pain_aux_Raisins'),
-(25, 0, 'Pommes', 'Chausson_aux_pommes'),
-(26, 0, 'Oeuf', 'Chausson_aux_pommes'),
-(27, 0, 'Sucre_glace', 'Chausson_aux_pommes'),
-(28, 0, 'Sucre', 'Chausson_aux_pommes'),
-(29, 0, 'Canelle', 'Chausson_aux_pommes'),
-(30, 0, 'Beurre', 'Chausson_aux_pommes'),
-(31, 0, 'Farine_T55', 'Chausson_aux_pommes'),
-(32, 0, 'Sel', 'Chausson_aux_pommes'),
-(33, 0, 'Farine_T55', 'Brioche_Suisse'),
-(34, 0, 'Oeuf', 'Brioche_Suisse'),
-(35, 0, 'Lait', 'Brioche_Suisse'),
-(36, 0, 'Sucre', 'Brioche_Suisse'),
-(37, 0, 'Sel', 'Brioche_Suisse'),
-(38, 0, 'Levure_boulangerie', 'Brioche_Suisse'),
-(39, 0, 'Beurre', 'Brioche_Suisse'),
-(40, 0, 'Vanille', 'Brioche_Suisse'),
-(41, 0, 'Farine_T55', 'Briochette_au_Chocolat'),
-(42, 0, 'Oeuf', 'Briochette_au_Chocolat'),
-(43, 0, 'Lait', 'Briochette_au_Chocolat'),
-(44, 0, 'Sucre', 'Briochette_au_Chocolat'),
-(45, 0, 'Sel', 'Briochette_au_Chocolat'),
-(46, 0, 'Levure_boulangerie', 'Briochette_au_Chocolat'),
-(47, 0, 'Beurre', 'Briochette_au_Chocolat'),
-(48, 0, 'Vanille', 'Briochette_au_Chocolat'),
-(49, 0, 'Farine_T55', 'Canele'),
-(50, 0, 'Oeuf', 'Canele'),
-(51, 0, 'Lait', 'Canele'),
-(52, 0, 'Sucre', 'Canele'),
-(53, 0, 'Sel', 'Canele'),
-(54, 0, 'Rhum', 'Canele'),
-(55, 0, 'Beurre', 'Canele'),
-(56, 0, 'Vanille', 'Canele'),
-(57, 0, 'Farine_T55', 'Baguette_Classique'),
-(58, 0, 'Sel', 'Baguette_Classique'),
-(59, 0, 'Levure_boulangerie', 'Baguette_Classique'),
-(60, 0, 'Farine_T65', 'Baguette_Tradition'),
-(61, 0, 'Sel', 'Baguette_Tradition'),
-(62, 0, 'Levure_boulangerie', 'Baguette_Tradition'),
-(63, 0, 'Farine_T55', 'Pain_Campagne'),
-(64, 0, 'Sel', 'Pain_Campagne'),
-(65, 0, 'Levure_boulangerie', 'Pain_Campagne'),
-(91, 0, 'Farine_T55', 'Baguette_Sésame'),
-(92, 0, 'Sel', 'Baguette_Sésame'),
-(93, 0, 'Levure_boulangerie', 'Baguette_Sésame'),
-(94, 0, 'Graines_bio', 'Baguette_Sésame'),
-(95, 0, 'Farine_T55', 'Pain_6_Céréales'),
-(96, 0, 'Sel', 'Pain_6_Céréales'),
-(97, 0, 'Levure_boulangerie', 'Pain_6_Céréales'),
-(98, 0, 'Graines_bio', 'Pain_6_Céréales'),
-(99, 0, 'Huile_noix', 'Pain_6_Céréales'),
-(100, 0, 'Farine_T55', 'Pain_Burger'),
-(101, 0, 'Oeuf', 'Pain_Burger'),
-(102, 0, 'Lait', 'Pain_Burger'),
-(103, 0, 'Sucre', 'Pain_Burger'),
-(104, 0, 'Sel', 'Pain_Burger'),
-(105, 0, 'Levure_boulangerie', 'Pain_Burger'),
-(106, 0, 'Beurre', 'Pain_Burger'),
-(107, 0, 'Graines_bio', 'Pain_Burger'),
-(108, 0, 'Farine_T55', 'Pain_aux_noix'),
-(109, 0, 'Sel', 'Pain_aux_noix'),
-(110, 0, 'Levure_boulangerie', 'Pain_aux_noix'),
-(111, 0, 'Huile_noix', 'Pain_aux_noix'),
-(112, 0, 'Noix', 'Pain_aux_noix'),
-(113, 0, 'Farine_T65', 'Eclair'),
-(114, 0, 'Oeuf', 'Eclair'),
-(115, 0, 'Sucre', 'Eclair'),
-(116, 0, 'Sel', 'Eclair'),
-(117, 0, 'Beurre', 'Eclair'),
-(119, 0, 'Lait', 'Eclair'),
-(121, 0, 'Chocolat', 'Eclair'),
-(122, 0, 'Farine_T55', 'Paris_Brest'),
-(123, 0, 'Oeuf', 'Paris_Brest'),
-(124, 0, 'Lait', 'Paris_Brest'),
-(125, 0, 'Sucre', 'Paris_Brest'),
-(126, 0, 'Sel', 'Paris_Brest'),
-(127, 0, 'Beurre', 'Paris_Brest'),
-(128, 0, 'Amande_effilee', 'Paris_Brest'),
-(129, 0, 'Praline', 'Paris_Brest'),
-(130, 0, 'Maizena', 'Paris_Brest'),
-(131, 0, 'Farine_T55', 'Tartelette_Framboise'),
-(132, 0, 'Oeuf', 'Tartelette_Framboise'),
-(133, 0, 'Lait', 'Tartelette_Framboise'),
-(134, 0, 'Sucre', 'Tartelette_Framboise'),
-(135, 0, 'Sel', 'Tartelette_Framboise'),
-(136, 0, 'Beurre', 'Tartelette_Framboise'),
-(137, 0, 'Vanille', 'Tartelette_Framboise'),
-(138, 0, 'Framboise ', 'Tartelette_Framboise'),
-(139, 0, 'Sucre', 'Fraisier'),
-(140, 0, 'Beurre', 'Fraisier'),
-(141, 0, 'Lait', 'Fraisier'),
-(142, 0, 'Oeuf', 'Fraisier'),
-(143, 0, 'Maizena', 'Fraisier'),
-(144, 0, 'Fraise', 'Fraisier'),
-(145, 0, 'Sucre_glace', 'Fraisier'),
-(146, 0, 'Pate_amande ', 'Fraisier'),
-(147, 0, 'Sirop_sucre ', 'Fraisier'),
-(148, 0, 'Kirsch ', 'Fraisier'),
-(149, 0, 'Farine_T55', 'Fraisier'),
-(150, 0, 'Levure_boulangerie', 'Fraisier'),
-(151, 0, 'Sel', 'Fraisier'),
-(152, 0, 'Farine_T55', 'Mille_Feuille'),
-(153, 0, 'Sucre_glace', 'Mille_Feuille'),
-(154, 0, 'Chocolat', 'Mille_Feuille'),
-(155, 0, 'Sucre', 'Mille_Feuille'),
-(156, 0, 'Sel', 'Mille_Feuille'),
-(157, 0, 'Beurre', 'Mille_Feuille'),
-(158, 0, 'Farine_T65', 'Mille_Feuille'),
-(159, 0, 'Oeuf', 'Mille_Feuille'),
-(160, 0, 'Lait', 'Mille_Feuille'),
-(161, 0, 'Vanille', 'Mille_Feuille'),
-(162, 0, 'Farine_T55', 'Choux_Crème'),
-(163, 0, 'Oeuf', 'Choux_Crème'),
-(164, 0, 'Lait', 'Choux_Crème'),
-(165, 0, 'Sucre', 'Choux_Crème'),
-(166, 0, 'Sel', 'Choux_Crème'),
-(167, 0, 'Vanille', 'Choux_Crème'),
-(168, 0, 'Beurre', 'Choux_Crème'),
-(169, 0, 'Sucre_glace', 'Macaron'),
-(170, 0, 'Oeuf', 'Macaron'),
-(171, 0, 'Amande ', 'Macaron'),
-(172, 0, 'Sucre', 'Macaron'),
-(173, 0, 'Lait', 'Religieuse'),
-(174, 0, 'Sucre', 'Religieuse'),
-(175, 0, 'Sucre_glace', 'Religieuse'),
-(176, 0, 'Farine_T65', 'Religieuse'),
-(177, 0, 'Oeuf', 'Religieuse'),
-(178, 0, 'Chocolat', 'Religieuse'),
-(179, 0, 'Beurre', 'Religieuse'),
-(180, 0, 'Farine_T55', 'Religieuse'),
-(181, 0, 'Sel', 'Religieuse'),
-(182, 0, 'Farine_T55', 'Pain_Complet'),
-(183, 0, 'Farine_ble_complet', 'Pain_Complet'),
-(184, 0, 'Sel', 'Pain_Complet'),
-(185, 0, 'Levure_boulangerie', 'Pain_Complet'),
-(186, 0, 'Graines_bio', 'Pain_Complet'),
-(187, 0, 'Farine_T55', 'Chouquette'),
-(188, 0, 'Oeuf', 'Chouquette'),
-(189, 0, 'Sucre', 'Chouquette'),
-(190, 0, 'Sel', 'Chouquette'),
-(191, 0, 'Levure_boulangerie', 'Chouquette'),
-(192, 0, 'Beurre', 'Chouquette'),
-(199, 0, 'Fraise', 'Jus_Fruits'),
-(200, 0, 'Orange', 'Jus_Fruits'),
-(201, 0, 'Banane', 'Jus_Fruits'),
-(202, 0, 'Kiwi', 'Jus_Fruits'),
-(203, 0, 'Pommes', 'Jus_Fruits'),
-(204, 0, 'Poires', 'Jus_Fruits'),
-(205, 0, 'The_vert', 'The_glace'),
-(206, 0, 'Menthe', 'The_glace'),
-(207, 0, 'Citron', 'The_glace'),
-(208, 0, 'Sucre', 'The_glace'),
-(209, 0, 'The_exotique', 'The_glace'),
-(210, 0, 'The_vert', 'The_Menthe'),
-(211, 0, 'Menthe', 'The_Menthe'),
-(212, 0, 'Sucre', 'The_Menthe'),
-(213, 0, 'Lait', 'Expresso'),
-(214, 0, 'Grain_cafe', 'Expresso');
+INSERT INTO `ingredient_line` (`id`, `version`, `ingredient_id`, `product_id`) VALUES
+(1, 0, 1, 8),
+(2, 0, 3, 8),
+(3, 0, 4, 8),
+(4, 0, 5, 8),
+(5, 0, 14, 8),
+(6, 0, 8, 8),
+(7, 0, 9, 8),
+(8, 0, 1, 7),
+(9, 0, 3, 7),
+(10, 0, 4, 7),
+(11, 0, 5, 7),
+(12, 0, 14, 7),
+(13, 0, 8, 7),
+(14, 0, 9, 7),
+(15, 0, 10, 7),
+(16, 0, 1, 8),
+(17, 0, 3, 8),
+(18, 0, 4, 8),
+(19, 0, 5, 8),
+(20, 0, 14, 8),
+(21, 0, 8, 8),
+(22, 0, 9, 8),
+(23, 0, 15, 8),
+(24, 0, 12, 8),
+(25, 0, 17, 10),
+(26, 0, 3, 10),
+(27, 0, 27, 10),
+(28, 0, 5, 10),
+(29, 0, 19, 10),
+(30, 0, 9, 10),
+(31, 0, 1, 10),
+(32, 0, 14, 10),
+(33, 0, 1, 11),
+(34, 0, 3, 11),
+(35, 0, 4, 11),
+(36, 0, 5, 11),
+(37, 0, 14, 11),
+(38, 0, 8, 11),
+(39, 0, 9, 11),
+(40, 0, 12, 11),
+(41, 0, 1, 12),
+(42, 0, 3, 12),
+(43, 0, 4, 12),
+(44, 0, 5, 12),
+(45, 0, 14, 12),
+(46, 0, 8, 12),
+(47, 0, 9, 12),
+(48, 0, 12, 12),
+(49, 0, 1, 13),
+(50, 0, 3, 13),
+(51, 0, 4, 13),
+(52, 0, 5, 13),
+(53, 0, 14, 13),
+(54, 0, 21, 13),
+(55, 0, 9, 13),
+(56, 0, 12, 13),
+(57, 0, 1, 14),
+(58, 0, 14, 14),
+(59, 0, 8, 14),
+(60, 0, 2, 15),
+(61, 0, 14, 15),
+(62, 0, 8, 15),
+(63, 0, 1, 16),
+(64, 0, 14, 16),
+(65, 0, 8, 16),
+(66, 0, 1, 19),
+(67, 0, 14, 19),
+(68, 0, 8, 19),
+(69, 0, 11, 19),
+(70, 0, 1, 18),
+(71, 0, 14, 18),
+(72, 0, 8, 18),
+(73, 0, 11, 18),
+(74, 0, 22, 18),
+(75, 0, 1, 20),
+(76, 0, 3, 20),
+(77, 0, 4, 20),
+(78, 0, 5, 20),
+(79, 0, 14, 20),
+(80, 0, 8, 20),
+(81, 0, 9, 20),
+(82, 0, 11, 20),
+(83, 0, 1, 21),
+(84, 0, 14, 21),
+(85, 0, 8, 21),
+(86, 0, 22, 21),
+(87, 0, 23, 21),
+(88, 0, 2, 22),
+(89, 0, 3, 22),
+(90, 0, 5, 22),
+(91, 0, 14, 22),
+(92, 0, 9, 22),
+(93, 0, 4, 22),
+(94, 0, 10, 22),
+(95, 0, 1, 23),
+(96, 0, 3, 23),
+(97, 0, 4, 23),
+(98, 0, 5, 23),
+(99, 0, 14, 23),
+(100, 0, 9, 23),
+(101, 0, 13, 23),
+(102, 0, 6, 23),
+(103, 0, 24, 23),
+(104, 0, 1, 4),
+(105, 0, 3, 4),
+(106, 0, 4, 4),
+(107, 0, 5, 4),
+(108, 0, 14, 4),
+(109, 0, 9, 4),
+(110, 0, 12, 4),
+(111, 0, 27, 4),
+(112, 0, 5, 9),
+(113, 0, 9, 9),
+(114, 0, 4, 9),
+(115, 0, 3, 9),
+(116, 0, 24, 9),
+(117, 0, 18, 9),
+(118, 0, 27, 9),
+(119, 0, 7, 9),
+(120, 0, 25, 9),
+(121, 0, 26, 9),
+(122, 0, 1, 9),
+(123, 0, 8, 9),
+(124, 0, 14, 9),
+(125, 0, 1, 3),
+(126, 0, 27, 3),
+(127, 0, 10, 3),
+(128, 0, 5, 3),
+(129, 0, 14, 3),
+(130, 0, 9, 3),
+(131, 0, 2, 3),
+(132, 0, 3, 3),
+(133, 0, 4, 3),
+(134, 0, 12, 3),
+(135, 0, 1, 1),
+(136, 0, 3, 1),
+(137, 0, 4, 1),
+(138, 0, 5, 1),
+(139, 0, 14, 1),
+(140, 0, 12, 1),
+(141, 0, 9, 1),
+(142, 0, 27, 5),
+(143, 0, 3, 5),
+(144, 0, 28, 5),
+(145, 0, 5, 5),
+(146, 0, 4, 2),
+(147, 0, 5, 2),
+(148, 0, 27, 2),
+(149, 0, 2, 2),
+(150, 0, 3, 2),
+(151, 0, 10, 2),
+(152, 0, 9, 2),
+(153, 0, 1, 2),
+(154, 0, 14, 2),
+(155, 0, 1, 17),
+(156, 0, 20, 17),
+(157, 0, 14, 17),
+(158, 0, 8, 17),
+(159, 0, 11, 17),
+(160, 0, 1, 28),
+(161, 0, 3, 28),
+(162, 0, 5, 28),
+(163, 0, 14, 28),
+(164, 0, 8, 28),
+(165, 0, 9, 28),
+(166, 0, 18, 25),
+(167, 0, 29, 25),
+(168, 0, 30, 25),
+(169, 0, 31, 25),
+(170, 0, 17, 25),
+(171, 0, 32, 25),
+(172, 0, 34, 27),
+(173, 0, 35, 27),
+(174, 0, 36, 27),
+(175, 0, 5, 27),
+(176, 0, 37, 27),
+(177, 0, 34, 26),
+(178, 0, 35, 26),
+(179, 0, 5, 26),
+(180, 0, 4, 24),
+(181, 0, 33, 24);
 
 -- --------------------------------------------------------
 
@@ -411,11 +410,10 @@ CREATE TABLE IF NOT EXISTS `product` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(25) DEFAULT NULL,
   `price` decimal(5,2) DEFAULT NULL,
-  `version` int(11) DEFAULT '0',
-  `share_number` int(11) DEFAULT NULL,
+  `version` int(11) NOT NULL,
   `category` varchar(25) DEFAULT NULL,
+  `share_number` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `UK_cs1mwlnde9i5eg2a8bh44lkpn` (`label`),
   UNIQUE KEY `UKlkl5hm0ed36aan92yhhquksjt` (`price`,`label`)
 ) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8;
 
@@ -423,35 +421,35 @@ CREATE TABLE IF NOT EXISTS `product` (
 -- Déchargement des données de la table `product`
 --
 
-INSERT INTO `product` (`type`, `id`, `label`, `price`, `version`, `share_number`, `category`) VALUES
-('basic', 1, 'Choux_Crème', '2.90', 0, NULL, 'Gateau'),
-('basic', 2, 'Religieuse', '2.80', 0, NULL, 'Viennoiserie'),
-('basic', 3, 'Mille_Feuille', '2.80', 0, NULL, 'Gateau'),
-('basic', 4, 'Tartelette_Framboise', '3.00', 0, NULL, 'Gateau'),
-('basic', 5, 'Macaron', '0.50', 0, NULL, 'Gateau'),
-('basic', 6, 'Croissant', '1.10', 0, NULL, 'Viennoiserie'),
-('basic', 7, 'Chocolatine', '1.20', 0, NULL, 'Viennoiserie'),
-('basic', 8, 'Pain_aux_Raisins', '1.40', 0, NULL, 'Viennoiserie'),
-('basic', 9, 'Fraisier', '3.10', 0, NULL, 'Gateau'),
-('basic', 10, 'Chausson_aux_pommes', '1.80', 0, NULL, 'Viennoiserie'),
-('basic', 11, 'Brioche_Suisse', '1.80', 0, NULL, 'Viennoiserie'),
-('basic', 12, 'Briochette_au_Chocolat', '1.40', 0, NULL, 'Viennoiserie'),
-('basic', 13, 'Canelé', '1.60', 0, NULL, 'Viennoiserie'),
-('basic', 14, 'Baguette_Classique', '1.00', 0, NULL, 'Pain'),
-('basic', 15, 'Baguette_Tradition', '1.20', 0, NULL, 'Pain'),
-('basic', 16, 'Pain_Campagne', '2.20', 0, NULL, 'Pain'),
-('basic', 17, 'Pain_Complet', '2.20', 0, NULL, 'Pain'),
-('basic', 18, 'Pain_6_Céréales', '2.20', 0, NULL, 'Pain'),
-('basic', 19, 'Baguette_Sésame', '1.80', 0, NULL, 'Pain'),
-('basic', 20, 'Pain_Burger', '1.50', 0, NULL, 'Pain'),
-('basic', 21, 'Pain_aux_noix', '3.00', 0, NULL, 'Pain'),
-('basic', 22, 'Eclair', '2.70', 0, NULL, 'Gateau'),
-('basic', 23, 'Paris_Brest', '2.80', 0, NULL, 'Gateau'),
-('basic', 24, 'Expresso', '2.00', 0, NULL, 'boisson'),
-('basic', 25, 'Jus_Fruits', '2.50', 0, NULL, 'boisson'),
-('basic', 26, 'The_Menthe', '1.50', 0, NULL, 'boisson'),
-('basic', 27, 'The_glace', '2.00', 0, NULL, 'boisson'),
-('basic', 28, 'Chouquette', '0.20', 0, NULL, 'viennoiserie');
+INSERT INTO `product` (`type`, `id`, `label`, `price`, `version`, `category`, `share_number`) VALUES
+('basic', 1, 'Choux_Crème', '2.90', 1, 'Gateau', NULL),
+('basic', 2, 'Religieuse', '2.80', 0, 'Viennoiserie', NULL),
+('basic', 3, 'Mille_Feuille', '2.80', 0, 'Gateau', NULL),
+('basic', 4, 'Tartelette_Framboise', '3.00', 0, 'Gateau', NULL),
+('basic', 5, 'Macaron', '0.50', 0, 'Gateau', NULL),
+('basic', 6, 'Croissant', '1.10', 0, 'Viennoiserie', NULL),
+('basic', 7, 'Chocolatine', '1.20', 0, 'Viennoiserie', NULL),
+('basic', 8, 'Pain_aux_Raisins', '1.40', 0, 'Viennoiserie', NULL),
+('basic', 9, 'Fraisier', '3.10', 0, 'Gateau', NULL),
+('basic', 10, 'Chausson_aux_pommes', '1.80', 0, 'Viennoiserie', NULL),
+('basic', 11, 'Brioche_Suisse', '1.80', 0, 'Viennoiserie', NULL),
+('basic', 12, 'Briochette_au_Chocolat', '1.40', 0, 'Viennoiserie', NULL),
+('basic', 13, 'Canelé', '1.60', 0, 'Viennoiserie', NULL),
+('basic', 14, 'Baguette_Classique', '1.00', 0, 'Pain', NULL),
+('basic', 15, 'Baguette_Tradition', '1.20', 0, 'Pain', NULL),
+('basic', 16, 'Pain_Campagne', '2.20', 0, 'Pain', NULL),
+('basic', 17, 'Pain_Complet', '2.20', 0, 'Pain', NULL),
+('basic', 18, 'Pain_6_Céréales', '2.20', 0, 'Pain', NULL),
+('basic', 19, 'Baguette_Sésame', '1.80', 0, 'Pain', NULL),
+('basic', 20, 'Pain_Burger', '1.50', 0, 'Pain', NULL),
+('basic', 21, 'Pain_aux_noix', '3.00', 0, 'Pain', NULL),
+('basic', 22, 'Eclair', '2.70', 0, 'Gateau', NULL),
+('basic', 23, 'Paris_Brest', '2.80', 0, 'Gateau', NULL),
+('basic', 24, 'Expresso', '2.00', 0, 'Boisson', NULL),
+('basic', 25, 'Jus_Fruits', '2.50', 0, 'Boisson', NULL),
+('basic', 26, 'The_Menthe', '1.50', 0, 'Boisson', NULL),
+('basic', 27, 'The_glace', '2.00', 0, 'Boisson', NULL),
+('basic', 28, 'Chouquette', '0.20', 0, 'Viennoiserie', NULL);
 
 -- --------------------------------------------------------
 
@@ -465,18 +463,18 @@ CREATE TABLE IF NOT EXISTS `withtout_account` (
   `email` varchar(50) DEFAULT NULL,
   `last_name` varchar(25) DEFAULT NULL,
   `first_name` varchar(25) DEFAULT NULL,
-  `version` int(11) DEFAULT NULL,
+  `version` int(11) NOT NULL,
   `command_numero` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FKdob2ycgta2211ce6fe41oy7mc` (`command_numero`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `withtout_account`
 --
 
 INSERT INTO `withtout_account` (`id`, `email`, `last_name`, `first_name`, `version`, `command_numero`) VALUES
-(2, 'odin.ragnar@hotmail.fr', 'Odin', 'Ragnar', 0, 2);
+(1, 'odin.ragnar@hotmail.fr', 'Odin', 'Ragnar', 0, 2);
 
 --
 -- Contraintes pour les tables déchargées
@@ -493,21 +491,21 @@ ALTER TABLE `command`
 --
 ALTER TABLE `command_line`
   ADD CONSTRAINT `FK63wx5vtqo2p1upm623em6aic` FOREIGN KEY (`command_id`) REFERENCES `command` (`numero`),
-  ADD CONSTRAINT `FKlkg0ltfcvxcdcn6ww7dse6qem` FOREIGN KEY (`product_label`) REFERENCES `product` (`label`);
+  ADD CONSTRAINT `FKexibn53w35ucgmrpyu3nt47dx` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`);
 
 --
 -- Contraintes pour la table `favorite_articles`
 --
 ALTER TABLE `favorite_articles`
-  ADD CONSTRAINT `FKjx8inxsdb180t84o3uj97rm5y` FOREIGN KEY (`customer_id`) REFERENCES `account` (`id`),
-  ADD CONSTRAINT `FKp5dp4oi1xmj3i1i7dt7e03ii2` FOREIGN KEY (`product_label`) REFERENCES `product` (`label`);
+  ADD CONSTRAINT `FK8ymrqp3evp7dvak8g2vjw7ne` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
+  ADD CONSTRAINT `FKjx8inxsdb180t84o3uj97rm5y` FOREIGN KEY (`customer_id`) REFERENCES `account` (`id`);
 
 --
 -- Contraintes pour la table `ingredient_line`
 --
 ALTER TABLE `ingredient_line`
-  ADD CONSTRAINT `FKk7fgi9mw6vpy4u928quqru5rd` FOREIGN KEY (`ingredient_label`) REFERENCES `ingredient` (`label`),
-  ADD CONSTRAINT `FKnbyonsb9ecj93iosvmj1fs4aw` FOREIGN KEY (`product_label`) REFERENCES `product` (`label`);
+  ADD CONSTRAINT `FKdu629s77exd2v9d7sfv157g4m` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`),
+  ADD CONSTRAINT `FKfw602n9nfuq3hifulp8e58gwl` FOREIGN KEY (`ingredient_id`) REFERENCES `ingredient` (`id`);
 
 --
 -- Contraintes pour la table `withtout_account`
