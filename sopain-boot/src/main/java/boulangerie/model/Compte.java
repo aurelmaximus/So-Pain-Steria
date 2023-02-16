@@ -1,17 +1,19 @@
 package boulangerie.model;
 import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Table(name = "account", uniqueConstraints = @UniqueConstraint(columnNames = { "last_name", "first_name" }))
@@ -21,24 +23,31 @@ public abstract class Compte {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
 	
 	@Version
+	@JsonView(Views.ViewBase.class)
 	private Integer version;
 	
 	@Column(name="email", length =50)
+	@JsonView(Views.ViewBase.class)
 	private String email;
 	
 	@Column(name="password", length =25)
+	@JsonView(Views.ViewBase.class)
 	private String password;
 	
 	@Column(name="last_name", length =25)
+	@JsonView(Views.ViewBase.class)
 	private String nom;
 	
 	@Column(name="first_name", length =25)
+	@JsonView(Views.ViewBase.class)
 	private String prenom;
 	
 	@Embedded
+	@JsonView(Views.ViewBase.class)
 	private Adresse adresse;
 	
 	
