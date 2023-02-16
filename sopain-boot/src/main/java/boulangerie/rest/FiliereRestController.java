@@ -17,87 +17,84 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import quest.model.Filiere;
-import quest.model.Matiere;
-import quest.model.Views;
-import quest.repository.FiliereRepository;
-import quest.repository.MatiereRepository;
+import boulangerie.model.Ingredient;
+import boulangerie.model.Views;
+import boulangerie.repository.IngredientRepository;
+
 
 @RestController
-@RequestMapping("/filiere")
-public class FiliereRestController {
+@RequestMapping("/ingredient")
+public class IngredientRestController {
 	@Autowired
-	private FiliereRepository filiereRepository;
-	@Autowired
-	private MatiereRepository matiereRepository;
+	private IngredientRepository ingredientRepository;
 
 	@GetMapping("")
-	@JsonView(Views.ViewFiliere.class)
-	public List<Filiere> findAll() {
-		List<Filiere> filieres = filiereRepository.findAll();
+	@JsonView(Views.ViewIngredient.class)
+	public List<Ingredient> findAll() {
+		List<Ingredient> ingredients = ingredientRepository.findAll();
 
-		return filieres;
+		return ingredients;
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewFiliere.class)
-	public Filiere findById(@PathVariable Integer id) {
-		Optional<Filiere> optFiliere = filiereRepository.findById(id);
+	@JsonView(Views.ViewIngredient.class)
+	public Ingredient findById(@PathVariable Integer id) {
+		Optional<Ingredient> optIngredient = ingredientRepository.findById(id);
 
-		if (optFiliere.isEmpty()) {
+		if (optIngredient.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 
-		return optFiliere.get();
+		return optIngredient.get();
 	}
 
 	@GetMapping("/{id}/detail")
-	@JsonView(Views.ViewFiliereWithStagiaires.class)
-	public Filiere detailById(@PathVariable Integer id) {
-		Optional<Filiere> optFiliere = filiereRepository.findByIdWithStagiaires(id);
+	@JsonView(Views.ViewIngredientWithStagiaires.class)
+	public Ingredient detailById(@PathVariable Integer id) {
+		Optional<Ingredient> optIngredient = ingredientRepository.findByIdWithStagiaires(id);
 
-		if (optFiliere.isEmpty()) {
+		if (optIngredient.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 
-		return optFiliere.get();
+		return optIngredient.get();
 	}
 	
 	@GetMapping("/{id}/matieres")
 	@JsonView(Views.ViewMatiere.class)
 	public List<Matiere> findAll(@PathVariable Integer id) {
-		List<Matiere> matieres = matiereRepository.findAllByFiliere(id);
+		List<Matiere> matieres = matiereRepository.findAllByIngredient(id);
 
 		return matieres;
 	}
 
 	@PostMapping("")
-	@JsonView(Views.ViewFiliere.class)
-	public Filiere create(@RequestBody Filiere filiere) {
-		filiere = filiereRepository.save(filiere);
+	@JsonView(Views.ViewIngredient.class)
+	public Ingredient create(@RequestBody Ingredient ingredient) {
+		ingredient = ingredientRepository.save(ingredient);
 
-		return filiere;
+		return ingredient;
 	}
 
 	@PutMapping("/{id}")
-	@JsonView(Views.ViewFiliere.class)
-	public Filiere update(@RequestBody Filiere filiere, @PathVariable Integer id) {
-		if (id != filiere.getId()) {
+	@JsonView(Views.ViewIngredient.class)
+	public Ingredient update(@RequestBody Ingredient ingredient, @PathVariable Integer id) {
+		if (id != ingredient.getId()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 
-		if (!filiereRepository.existsById(id)) {
+		if (!ingredientRepository.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 
-		filiere = filiereRepository.save(filiere);
+		ingredient = ingredientRepository.save(ingredient);
 
-		return filiere;
+		return ingredient;
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
-		filiereRepository.deleteById(id);
+		ingredientRepository.deleteById(id);
 	}
 
 }
