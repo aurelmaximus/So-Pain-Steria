@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+
 @Entity
 @DiscriminatorValue("basic")
 public class Basique extends Produit{
@@ -16,6 +19,7 @@ public class Basique extends Produit{
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "category", length = 25)
+	@JsonView(Views.ViewBase.class)
 	private Categorie categorie;
 	
 	

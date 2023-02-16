@@ -6,12 +6,16 @@ import javax.persistence.Column;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+
 
 @Entity
 @DiscriminatorValue("elaborate")
 public class Elabore extends Produit {
 
 	@Column(name = "share_number")
+	@JsonView(Views.ViewBase.class)
 	private Integer NbParts;
 	
 
