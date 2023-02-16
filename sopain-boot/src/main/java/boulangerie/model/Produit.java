@@ -18,6 +18,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
 import java.util.List;
 
 @Entity
@@ -28,21 +31,27 @@ public abstract class Produit implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
 	
 	@Version
+	@JsonView(Views.ViewBase.class)
 	private Integer version;
 	
 	@Column(name = "price", precision=5, scale=2)
+	@JsonView(Views.ViewBase.class)
 	private BigDecimal prix;
 	
 	@Column(name = "label", length = 25)
+	@JsonView(Views.ViewBase.class)
 	private String libelle;
 	
 	@OneToOne(mappedBy = "produit")
+	@JsonView(Views.ViewBase.class)
 	private ArticleFavoris articlefavoris;
 	
 	@OneToOne(mappedBy = "produit")
+	@JsonView(Views.ViewBase.class)
 	private LigneCommande ligne_commande;
 	
 	@OneToMany(mappedBy = "produit")

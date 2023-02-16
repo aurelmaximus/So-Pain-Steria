@@ -17,66 +17,66 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import boulangerie.model.Ingredient;
-import boulangerie.model.Produit;
+import boulangerie.model.Basique;
 import boulangerie.model.Views;
-import boulangerie.repository.IngredientRepository;
+import boulangerie.repository.BasiqueRepository;
+
 
 
 @RestController
-@RequestMapping("/ingredient")
-public class IngredientRestController {
+@RequestMapping("/basique")
+public class BasiqueRestController {
 	@Autowired
-	private IngredientRepository ingredientRepository;
+	private BasiqueRepository basiqueRepository;
 
 	@GetMapping("")
-	@JsonView(Views.ViewIngredient.class)
-	public List<Ingredient> findAll() {
-		List<Ingredient> ingredients = ingredientRepository.findAll();
+	@JsonView(Views.ViewBasique.class)
+	public List<Basique> findAll() {
+		List<Basique> basiques = basiqueRepository.findAll();
 
-		return ingredients;
+		return basiques;
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewIngredient.class)
-	public Ingredient findById(@PathVariable Integer id) {
-		Optional<Ingredient> optIngredient = ingredientRepository.findById(id);
+	@JsonView(Views.ViewBasique.class)
+	public Basique findById(@PathVariable Integer id) {
+		Optional<Basique> optBasique = basiqueRepository.findById(id);
 
-		if (optIngredient.isEmpty()) {
+		if (optBasique.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 
-		return optIngredient.get();
+		return optBasique.get();
 	}
 
 
 	@PostMapping("")
-	@JsonView(Views.ViewIngredient.class)
-	public Ingredient create(@RequestBody Ingredient ingredient) {
-		ingredient = ingredientRepository.save(ingredient);
+	@JsonView(Views.ViewBasique.class)
+	public Basique create(@RequestBody Basique ingredient) {
+		ingredient = basiqueRepository.save(ingredient);
 
 		return ingredient;
 	}
 
 	@PutMapping("/{id}")
-	@JsonView(Views.ViewIngredient.class)
-	public Ingredient update(@RequestBody Ingredient ingredient, @PathVariable Integer id) {
+	@JsonView(Views.ViewBasique.class)
+	public Basique update(@RequestBody Basique ingredient, @PathVariable Integer id) {
 		if (id != ingredient.getId()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 
-		if (!ingredientRepository.existsById(id)) {
+		if (!basiqueRepository.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 
-		ingredient = ingredientRepository.save(ingredient);
+		ingredient = basiqueRepository.save(ingredient);
 
 		return ingredient;
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
-		ingredientRepository.deleteById(id);
+		basiqueRepository.deleteById(id);
 	}
 
 }

@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name ="ingredient")
 
@@ -19,15 +21,19 @@ public class Ingredient implements Serializable   {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
 	
 	@Version
+	@JsonView(Views.ViewBase.class)
 	private Integer version;
 	
 	@Column(name="allergen", columnDefinition = "tinyint(1) default 0")
+	@JsonView(Views.ViewIngredient.class)
 	private boolean allergene;
 	
 	@Column(name="label", length = 25)
+	@JsonView(Views.ViewBase.class)
 	private String libelle;
 	
 

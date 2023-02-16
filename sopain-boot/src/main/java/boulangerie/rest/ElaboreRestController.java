@@ -17,66 +17,65 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import boulangerie.model.Ingredient;
-import boulangerie.model.Produit;
+import boulangerie.model.Elabore;
 import boulangerie.model.Views;
-import boulangerie.repository.IngredientRepository;
+import boulangerie.repository.ElaboreRepository;
 
 
 @RestController
-@RequestMapping("/ingredient")
-public class IngredientRestController {
+@RequestMapping("/elabore")
+public class ElaboreRestController {
 	@Autowired
-	private IngredientRepository ingredientRepository;
+	private ElaboreRepository elaboreRepository;
 
 	@GetMapping("")
-	@JsonView(Views.ViewIngredient.class)
-	public List<Ingredient> findAll() {
-		List<Ingredient> ingredients = ingredientRepository.findAll();
+	@JsonView(Views.ViewElabore.class)
+	public List<Elabore> findAll() {
+		List<Elabore> elabores = elaboreRepository.findAll();
 
-		return ingredients;
+		return elabores;
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewIngredient.class)
-	public Ingredient findById(@PathVariable Integer id) {
-		Optional<Ingredient> optIngredient = ingredientRepository.findById(id);
+	@JsonView(Views.ViewElabore.class)
+	public Elabore findById(@PathVariable Integer id) {
+		Optional<Elabore> optElabore = elaboreRepository.findById(id);
 
-		if (optIngredient.isEmpty()) {
+		if (optElabore.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 
-		return optIngredient.get();
+		return optElabore.get();
 	}
 
 
 	@PostMapping("")
-	@JsonView(Views.ViewIngredient.class)
-	public Ingredient create(@RequestBody Ingredient ingredient) {
-		ingredient = ingredientRepository.save(ingredient);
+	@JsonView(Views.ViewElabore.class)
+	public Elabore create(@RequestBody Elabore elabore) {
+		elabore = elaboreRepository.save(elabore);
 
-		return ingredient;
+		return elabore;
 	}
 
 	@PutMapping("/{id}")
-	@JsonView(Views.ViewIngredient.class)
-	public Ingredient update(@RequestBody Ingredient ingredient, @PathVariable Integer id) {
-		if (id != ingredient.getId()) {
+	@JsonView(Views.ViewElabore.class)
+	public Elabore update(@RequestBody Elabore elabore, @PathVariable Integer id) {
+		if (id != elabore.getId()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 
-		if (!ingredientRepository.existsById(id)) {
+		if (!elaboreRepository.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 
-		ingredient = ingredientRepository.save(ingredient);
+		elabore = elaboreRepository.save(elabore);
 
-		return ingredient;
+		return elabore;
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
-		ingredientRepository.deleteById(id);
+		elaboreRepository.deleteById(id);
 	}
 
 }
