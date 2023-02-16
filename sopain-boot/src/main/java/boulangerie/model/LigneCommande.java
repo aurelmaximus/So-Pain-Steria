@@ -13,29 +13,37 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Table(name = "command_line")
 public class LigneCommande{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
 	
 	@Version
+	@JsonView(Views.ViewBase.class)
 	private int version;
 	
 	@Column(name = "quantity" , length = 4)
+	@JsonView(Views.ViewBase.class)
 	private int qte;
 	
 	@Column(name = "total" , precision=5, scale=2)
+	@JsonView(Views.ViewBase.class)
 	private BigDecimal total;
 	
 	@ManyToOne
 	@JoinColumn(name = "command_id")
+	@JsonView(Views.ViewBase.class)
 	private Commande commande;
 	
 	@OneToOne
-	@JoinColumn(name = "product_id", referencedColumnName = "id")
+	@JoinColumn(name = "product_label", referencedColumnName = "label")
+	@JsonView(Views.ViewBase.class)
 	private Produit produit;
 
 	

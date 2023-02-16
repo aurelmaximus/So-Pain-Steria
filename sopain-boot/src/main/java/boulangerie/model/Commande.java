@@ -56,7 +56,8 @@ public class Commande {
 	
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
-	@JsonIgnore
+	@JsonView(Views.ViewBase.class)
+	
 	private Client client;
 
 	

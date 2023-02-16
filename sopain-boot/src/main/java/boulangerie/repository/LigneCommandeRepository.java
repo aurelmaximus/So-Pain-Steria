@@ -1,17 +1,11 @@
 package boulangerie.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
-import boulangerie.model.Client;
-import boulangerie.model.Commande;
-import boulangerie.model.EtatCommande;
+import boulangerie.model.LigneCommande;
 
 
-public interface LigneCommandeRepository extends JpaRepository<Commande,Integer> {
+public interface LigneCommandeRepository extends JpaRepository<LigneCommande,Integer> {
 
 //	List<Commande> findAllByClient(Client client);
 //	
