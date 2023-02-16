@@ -18,6 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import boulangerie.model.Ingredient;
+import boulangerie.model.Produit;
 import boulangerie.model.Views;
 import boulangerie.repository.IngredientRepository;
 
@@ -48,14 +49,6 @@ public class IngredientRestController {
 		return optIngredient.get();
 	}
 
-	
-	@GetMapping("/{id}/produits")
-	@JsonView(Views.ViewProduit.class)
-	public List<Produit> findAll(@PathVariable Integer id) {
-		List<Produit> produits = matiereRepository.findAllByIngredient(id);
-
-		return produits;
-	}
 
 	@PostMapping("")
 	@JsonView(Views.ViewIngredient.class)
