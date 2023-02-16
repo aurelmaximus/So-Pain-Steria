@@ -17,84 +17,73 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import boulangerie.model.Ingredient;
+import boulangerie.model.Filiere;
 import boulangerie.model.Views;
-import boulangerie.repository.IngredientRepository;
+import boulangerie.repository.FiliereRepository;
 
 
 @RestController
-@RequestMapping("/ingredient")
-public class IngredientRestController {
+@RequestMapping("/filiere")
+public class FiliereRestController {
 	@Autowired
-	private IngredientRepository ingredientRepository;
+	private FiliereRepository filiereRepository;
 
 	@GetMapping("")
-	@JsonView(Views.ViewIngredient.class)
-	public List<Ingredient> findAll() {
-		List<Ingredient> ingredients = ingredientRepository.findAll();
+	@JsonView(Views.ViewFiliere.class)
+	public List<Filiere> findAll() {
+		List<Filiere> filieres = filiereRepository.findAll();
 
-		return ingredients;
+		return filieres;
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewIngredient.class)
-	public Ingredient findById(@PathVariable Integer id) {
-		Optional<Ingredient> optIngredient = ingredientRepository.findById(id);
+	@JsonView(Views.ViewFiliere.class)
+	public Filiere findById(@PathVariable Integer id) {
+		Optional<Filiere> optFiliere = filiereRepository.findById(id);
 
-		if (optIngredient.isEmpty()) {
+		if (optFiliere.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 
-		return optIngredient.get();
+		return optFiliere.get();
 	}
 
-	@GetMapping("/{id}/detail")
-	@JsonView(Views.ViewIngredientWithStagiaires.class)
-	public Ingredient detailById(@PathVariable Integer id) {
-		Optional<Ingredient> optIngredient = ingredientRepository.findByIdWithStagiaires(id);
-
-		if (optIngredient.isEmpty()) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-		}
-
-		return optIngredient.get();
-	}
 	
 	@GetMapping("/{id}/matieres")
 	@JsonView(Views.ViewMatiere.class)
 	public List<Matiere> findAll(@PathVariable Integer id) {
-		List<Matiere> matieres = matiereRepository.findAllByIngredient(id);
+		List<Matiere> matieres = matiereRepository.findAllByFiliere(id);
 
 		return matieres;
 	}
 
 	@PostMapping("")
-	@JsonView(Views.ViewIngredient.class)
-	public Ingredient create(@RequestBody Ingredient ingredient) {
-		ingredient = ingredientRepository.save(ingredient);
+	@JsonView(Views.ViewFiliere.class)
+	public Filiere create(@RequestBody Filiere filiere) {
+		filiere = filiereRepository.save(filiere);
 
-		return ingredient;
+		return filiere;
 	}
 
 	@PutMapping("/{id}")
-	@JsonView(Views.ViewIngredient.class)
-	public Ingredient update(@RequestBody Ingredient ingredient, @PathVariable Integer id) {
-		if (id != ingredient.getId()) {
+	@JsonView(Views.ViewFiliere.class)
+	public Filiere update(@RequestBody Filiere filiere, @PathVariable Integer id) {
+		if (id != filiere.getId()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 
-		if (!ingredientRepository.existsById(id)) {
+		if (!filiereRepository.existsById(id)) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 
-		ingredient = ingredientRepository.save(ingredient);
+		filiere = filiereRepository.save(filiere);
 
-		return ingredient;
+		return filiere;
 	}
 
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
-		ingredientRepository.deleteById(id);
+		filiereRepository.deleteById(id);
 	}
 
 }

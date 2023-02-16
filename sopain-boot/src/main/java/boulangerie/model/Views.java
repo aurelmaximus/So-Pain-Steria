@@ -12,6 +12,27 @@ public class Views {
 	
 	public static class ViewElabore extends ViewProduit {
 	}
+	
+	public static class ViewIngredient extends ViewBase {
+	}
+	
+	public static class ViewLigneIngredient extends ViewBase {
+	}
+	
+	public static class ViewCommande extends ViewBase {
+	}
 
+	public static class ViewLigneCommande extends ViewBase {
+	}
+	
+	public static class ViewCompte extends ViewBase {
+	}
+	
+	public static class ViewEmploye extends ViewCompte {
+	}
+	
+	public static class ViewClient extends ViewCompte {
+	}
+	
 	
 }
