@@ -47,14 +47,15 @@ public abstract class Produit implements Serializable {
 	private String libelle;
 	
 	@OneToOne(mappedBy = "produit")
-	@JsonView(Views.ViewBase.class)
+	@JsonView(Views.ViewProduit.class)
 	private ArticleFavori articlefavoris;
 	
 	@OneToOne(mappedBy = "produit")
-	@JsonView(Views.ViewBase.class)
+	@JsonView(Views.ViewProduit.class)
 	private LigneCommande ligne_commande;
 	
 	@OneToMany(mappedBy = "produit")
+	@JsonView(Views.ViewProduitWithLigneIngredients.class)
 	private List<LigneIngredient> ligneIngredients= new ArrayList<>();
 	
 	
