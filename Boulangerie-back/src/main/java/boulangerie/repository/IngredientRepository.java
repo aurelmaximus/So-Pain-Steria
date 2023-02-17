@@ -11,9 +11,9 @@ import boulangerie.model.Ingredient;
 
 public interface IngredientRepository extends JpaRepository<Ingredient,Integer> {
 		
-	@Query("select i from Ingredient i left join fetch i.lignesIngredient where i.libelle=:libelle")
-	List<Ingredient> findAllByLibelleWithLigneIngredients(String libelle);
+	//@Query("select i from Ingredient i left join fetch i.lignesIngredient where i.libelle=:libelle")
+	//List<Ingredient> findAllByLibelleWithLigneIngredients(String libelle);
 	
-	@Query("select i from Ingredient i left join fetch i.ligneIngredients where i.libelle=:libelle")
-	List<Ingredient> findAllByLibelleWithLigneIngredients( @Param("libelle")String libelle);
+	//@Query("select i from Ingredient i left join fetch i.ligneIngredients where i.libelle=:libelle")
+	//List<Ingredient> findAllByLibelleWithLigneIngredients( @Param("libelle")String libelle);
 }

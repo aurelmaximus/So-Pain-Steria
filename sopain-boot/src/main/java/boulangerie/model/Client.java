@@ -25,9 +25,11 @@ public class Client extends Compte {
 	private int points;
 	
 	@OneToMany(mappedBy = "client")
+	@JsonView(Views.ViewClient.class)
 	private List<Commande> commandes = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "client")
+	@JsonView(Views.ViewClient.class)
 	private List<ArticleFavori> ArticlesFavoris = new ArrayList<>();
 
 	public Client() {
