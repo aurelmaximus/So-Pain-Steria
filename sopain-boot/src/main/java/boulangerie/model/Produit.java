@@ -55,7 +55,7 @@ public abstract class Produit implements Serializable {
 	private LigneCommande ligne_commande;
 	
 	@OneToMany(mappedBy = "produit")
-	@JsonView(Views.ViewProduitWithLigneIngredients.class)
+	@JsonView(Views.ViewProduit.class)
 	private List<LigneIngredient> ligneIngredients= new ArrayList<>();
 	
 	

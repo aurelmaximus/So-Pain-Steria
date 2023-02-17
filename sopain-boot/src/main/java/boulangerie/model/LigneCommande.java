@@ -42,7 +42,7 @@ public class LigneCommande{
 	private Commande commande;
 	
 	@OneToOne
-	@JoinColumn(name = "product_label", referencedColumnName = "label")
+	@JoinColumn(name = "product_id", referencedColumnName = "id")
 	@JsonView(Views.ViewBase.class)
 	private Produit produit;
 
