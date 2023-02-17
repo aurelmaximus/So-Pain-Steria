@@ -28,7 +28,7 @@ public class Client extends Compte {
 	private List<Commande> commandes = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "client")
-	private List<ArticleFavoris> ArticlesFavoris = new ArrayList<>();
+	private List<ArticleFavori> ArticlesFavoris = new ArrayList<>();
 
 	public Client() {
 		super();
@@ -61,12 +61,12 @@ public class Client extends Compte {
 	}
 
 
-	public List<ArticleFavoris> getArticlesFavoris() {
+	public List<ArticleFavori> getArticlesFavoris() {
 		return ArticlesFavoris;
 	}
 
 
-	public void setArticlesFavoris(List<ArticleFavoris> articlesFavoris) {
+	public void setArticlesFavoris(List<ArticleFavori> articlesFavoris) {
 		ArticlesFavoris = articlesFavoris;
 	}
 

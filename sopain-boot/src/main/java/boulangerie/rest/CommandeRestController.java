@@ -48,26 +48,6 @@ public class CommandeRestController {
 		return optCommande.get();
 	}
 
-//	@GetMapping("/{id}/detail")
-//	@JsonView(Views.ViewCommande.class)
-//	public Commande detailById(@PathVariable Integer id) {
-//		Optional<Commande> optCommande = commandeRepository.findByIdWithStagiaires(id);
-//
-//		if (optCommande.isEmpty()) {
-//			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-//		}
-//
-//		return optCommande.get();
-//	}
-	
-//	@GetMapping("/{id}/commandes")
-//	@JsonView(Views.ViewCommande.class)
-//	public List<Commande> findAll(@PathVariable Integer id) {
-//		List<Commande> commandes = commandeRepository.findAllByIngredient(id);
-//
-//		return commandes;
-//	}
-
 	@PostMapping("")
 	@JsonView(Views.ViewCommande.class)
 	public Commande create(@RequestBody Commande commande) {

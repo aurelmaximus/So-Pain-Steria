@@ -11,28 +11,34 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 
 @Entity
 @Table(name ="favorite_articles")
-public class ArticleFavoris {
+public class ArticleFavori {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(Views.ViewBase.class)
 	private Integer id;
 
 	@Version
+	@JsonView(Views.ViewBase.class)
 	private int version;
 
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
+	@JsonView(Views.ViewArticleFavoris.class)
 	private Client client;
 
 	
 	@OneToOne
 	@JoinColumn(name = "product_id", referencedColumnName = "id")
+	@JsonView(Views.ViewBase.class)
 	private Produit produit;
 
-	public ArticleFavoris() {
+	public ArticleFavori() {
 		super();
 	}
 	
@@ -62,7 +68,7 @@ public class ArticleFavoris {
 
 
 
-	public ArticleFavoris(Client client, Produit produit) {
+	public ArticleFavori(Client client, Produit produit) {
 		super();
 		this.client = client;
 		this.produit = produit;

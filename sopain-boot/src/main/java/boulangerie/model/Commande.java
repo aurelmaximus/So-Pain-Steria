@@ -18,7 +18,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
@@ -51,13 +50,12 @@ public class Commande {
 	private EtatCommande etatcommande;
 	
 	@OneToMany(mappedBy = "commande")
-	@JsonIgnore
+	@JsonView(Views.ViewCommandeWithLignes.class)
 	private List<LigneCommande> LigneCommandes = new ArrayList<>();
 	
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
-	@JsonView(Views.ViewBase.class)
-	
+	@JsonView(Views.ViewCommande.class)
 	private Client client;
 
 	

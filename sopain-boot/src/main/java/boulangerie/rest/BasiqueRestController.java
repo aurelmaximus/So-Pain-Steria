@@ -52,16 +52,16 @@ public class BasiqueRestController {
 
 	@PostMapping("")
 	@JsonView(Views.ViewBasique.class)
-	public Basique create(@RequestBody Basique ingredient) {
-		ingredient = basiqueRepository.save(ingredient);
+	public Basique create(@RequestBody Basique basique) {
+		basique = basiqueRepository.save(basique);
 
-		return ingredient;
+		return basique;
 	}
 
 	@PutMapping("/{id}")
 	@JsonView(Views.ViewBasique.class)
-	public Basique update(@RequestBody Basique ingredient, @PathVariable Integer id) {
-		if (id != ingredient.getId()) {
+	public Basique update(@RequestBody Basique basique, @PathVariable Integer id) {
+		if (id != basique.getId()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 
@@ -69,9 +69,9 @@ public class BasiqueRestController {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
 
-		ingredient = basiqueRepository.save(ingredient);
+		basique = basiqueRepository.save(basique);
 
-		return ingredient;
+		return basique;
 	}
 
 	@DeleteMapping("/{id}")

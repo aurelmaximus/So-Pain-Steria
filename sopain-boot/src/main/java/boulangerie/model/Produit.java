@@ -48,7 +48,7 @@ public abstract class Produit implements Serializable {
 	
 	@OneToOne(mappedBy = "produit")
 	@JsonView(Views.ViewBase.class)
-	private ArticleFavoris articlefavoris;
+	private ArticleFavori articlefavoris;
 	
 	@OneToOne(mappedBy = "produit")
 	@JsonView(Views.ViewBase.class)
@@ -111,12 +111,12 @@ public abstract class Produit implements Serializable {
 	}
 
 
-	public ArticleFavoris getArticlefavoris() {
+	public ArticleFavori getArticlefavoris() {
 		return articlefavoris;
 	}
 
 
-	public void setArticlefavoris(ArticleFavoris articlefavoris) {
+	public void setArticlefavoris(ArticleFavori articlefavoris) {
 		this.articlefavoris = articlefavoris;
 	}
 
