@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 16 fév. 2023 à 20:24
+-- Généré le : ven. 17 fév. 2023 à 12:02
 -- Version du serveur : 5.7.40
 -- Version de PHP : 8.0.26
 
@@ -102,14 +102,14 @@ CREATE TABLE IF NOT EXISTS `command_line` (
   PRIMARY KEY (`id`),
   KEY `FK63wx5vtqo2p1upm623em6aic` (`command_id`),
   KEY `FKexibn53w35ucgmrpyu3nt47dx` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `command_line`
 --
 
 INSERT INTO `command_line` (`id`, `quantity`, `total`, `version`, `command_id`, `product_id`) VALUES
-(2, 2, '2.40', 0, 2, 7);
+(1, 2, '20.00', 0, 1, 5);
 
 -- --------------------------------------------------------
 
