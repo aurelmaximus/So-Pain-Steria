@@ -41,5 +41,9 @@ public class Views {
 	public static class ViewClient extends ViewCompte {
 	}
 	
+	public static class ViewClientWithCommandes extends ViewClient {
+	}
 	
+	public static class ViewClientWithArticlesFavoris extends ViewClient {
+	}
 }

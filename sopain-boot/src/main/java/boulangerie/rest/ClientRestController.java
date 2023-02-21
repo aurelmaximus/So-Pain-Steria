@@ -22,6 +22,7 @@ import boulangerie.model.Client;
 import boulangerie.model.Views;
 import boulangerie.repository.ClientRepository;
 
+
 @RestController
 @RequestMapping("/client")
 public class ClientRestController {
@@ -43,6 +44,30 @@ public class ClientRestController {
 		@JsonView(Views.ViewClient.class)
 		public Client findById(@PathVariable Integer id) {
 			Optional<Client> optClient = clientRepository.findById(id);
+
+			if (optClient.isEmpty()) {
+				throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+			}
+
+			return optClient.get();
+		}
+		
+		@GetMapping("/{id}/commandes")
+		@JsonView(Views.ViewClientWithCommandes.class)
+		public Client commandeById(@PathVariable Integer id) {
+			Optional<Client> optClient = clientRepository.findByIdWithCommandes(id);
+
+			if (optClient.isEmpty()) {
+				throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+			}
+
+			return optClient.get();
+		}
+		
+		@GetMapping("/{id}/articlesfavoris")
+		@JsonView(Views.ViewClientWithArticlesFavoris.class)
+		public Client articlesfavorisById(@PathVariable Integer id) {
+			Optional<Client> optClient = clientRepository.findByIdWitharticlesfavori(id);
 
 			if (optClient.isEmpty()) {
 				throw new ResponseStatusException(HttpStatus.NOT_FOUND);

@@ -1,21 +1,28 @@
 package boulangerie.model;
 
 import javax.persistence.Embeddable;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.Column;
 
 @Embeddable
 public class Adresse {
 	
 	@Column(name="number", length =10)
+	@JsonView(Views.ViewBase.class)
 	private String numero;
 	
 	@Column(name="street", length =50)
+	@JsonView(Views.ViewBase.class)
 	private String voie;
 	
 	@Column(name="city", length =50)
+	@JsonView(Views.ViewBase.class)
 	private String ville;
 	
 	@Column(name="zip_code", length =10)
+	@JsonView(Views.ViewBase.class)
 	private String cp;
 	
 	
