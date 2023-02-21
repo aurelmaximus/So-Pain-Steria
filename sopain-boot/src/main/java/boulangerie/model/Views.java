@@ -20,13 +20,17 @@ public class Views {
 	public static class ViewIngredient extends ViewBase {
 	}
 	
+	public static class ViewCommandeWithLignesCommande extends ViewIngredient {
+	}
+	
+	
 	public static class ViewLigneIngredient extends ViewBase {
 	}
 	
 	public static class ViewCommande extends ViewBase {
 	}
 	
-	public static class ViewCommandeWithLignes extends ViewCommande {
+	public static class ViewIngredientWithLignesIngredient extends ViewCommande {
 	}
 
 	public static class ViewLigneCommande extends ViewBase {

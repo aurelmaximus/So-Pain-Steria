@@ -22,14 +22,13 @@ public class Client extends Compte {
 
 	
 	@Column(name="points")
+	@JsonView(Views.ViewBase.class)
 	private int points;
 	
-	//ICI
 	@OneToMany(mappedBy = "client")
 	@JsonView(Views.ViewClientWithCommandes.class)
 	private List<Commande> commandes = new ArrayList<>();
 	
-	//ICI
 	@OneToMany(mappedBy = "client")
 	@JsonView(Views.ViewClientWithArticlesFavoris.class)
 	private List<ArticleFavori> ArticlesFavoris = new ArrayList<>();
@@ -73,7 +72,5 @@ public class Client extends Compte {
 	public void setArticlesFavoris(List<ArticleFavori> articlesFavoris) {
 		ArticlesFavoris = articlesFavoris;
 	}
-
-
 	
 }

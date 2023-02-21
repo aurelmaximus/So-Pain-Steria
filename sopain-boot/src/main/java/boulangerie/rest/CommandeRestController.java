@@ -18,6 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import boulangerie.model.Commande;
+import boulangerie.model.Commande;
 import boulangerie.model.Views;
 import boulangerie.repository.CommandeRepository;
 
@@ -40,6 +41,18 @@ public class CommandeRestController {
 	@JsonView(Views.ViewCommande.class)
 	public Commande findById(@PathVariable Integer numero) {
 		Optional<Commande> optCommande = commandeRepository.findById(numero);
+
+		if (optCommande.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+
+		return optCommande.get();
+	}
+	
+	@GetMapping("/{numero}/ligne")
+	@JsonView(Views.ViewCommandeWithLignesCommande.class)
+	public Commande lignecommandeById(@PathVariable Integer numero) {
+		Optional<Commande> optCommande = commandeRepository.findByIdWithLigneCommande(numero);
 
 		if (optCommande.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);

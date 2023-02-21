@@ -50,7 +50,7 @@ public class Commande {
 	private EtatCommande etatcommande;
 	
 	@OneToMany(mappedBy = "commande")
-	@JsonView(Views.ViewCommandeWithLignes.class)
+	@JsonView(Views.ViewCommandeWithLignesCommande.class)
 	private List<LigneCommande> LigneCommandes = new ArrayList<>();
 	
 	@ManyToOne

@@ -29,7 +29,7 @@ public class Ingredient implements Serializable   {
 	private int version;
 	
 	@Column(name="allergen", columnDefinition = "tinyint(1) default 0")
-	@JsonView(Views.ViewIngredient.class)
+	@JsonView(Views.ViewBase.class)
 	private boolean allergene;
 	
 	@Column(name="label", length = 25)
@@ -38,6 +38,7 @@ public class Ingredient implements Serializable   {
 	
 
 	@OneToMany(mappedBy = "ingredient")
+	@JsonView(Views.ViewIngredientWithLignesIngredient.class)
 	private List<LigneIngredient> lignesIngredient= new ArrayList<>();
 	
 	
@@ -101,13 +102,6 @@ public class Ingredient implements Serializable   {
 	public void setVersion(Integer version) {
 		this.version = version;
 	}
-
-
-	@Override
-	public String toString() {
-		return "Ingredient [allergene=" + allergene + ", libelle=" + libelle + "]";
-	}
-
 
 
 }

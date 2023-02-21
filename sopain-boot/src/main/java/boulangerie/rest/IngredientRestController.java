@@ -18,7 +18,6 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import boulangerie.model.Ingredient;
-import boulangerie.model.Produit;
 import boulangerie.model.Views;
 import boulangerie.repository.IngredientRepository;
 
@@ -41,6 +40,18 @@ public class IngredientRestController {
 	@JsonView(Views.ViewIngredient.class)
 	public Ingredient findById(@PathVariable Integer id) {
 		Optional<Ingredient> optIngredient = ingredientRepository.findById(id);
+
+		if (optIngredient.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+
+		return optIngredient.get();
+	}
+	
+	@GetMapping("/{id}/ligne")
+	@JsonView(Views.ViewIngredientWithLignesIngredient.class)
+	public Ingredient commandeById(@PathVariable Integer id) {
+		Optional<Ingredient> optIngredient = ingredientRepository.findByIdWithLigneIngredients(id);
 
 		if (optIngredient.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);

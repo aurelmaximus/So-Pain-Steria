@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 17 fév. 2023 à 12:02
+-- Généré le : mar. 21 fév. 2023 à 18:27
 -- Version du serveur : 5.7.40
 -- Version de PHP : 8.0.26
 
@@ -133,8 +133,8 @@ CREATE TABLE IF NOT EXISTS `favorite_articles` (
 --
 
 INSERT INTO `favorite_articles` (`id`, `version`, `customer_id`, `product_id`) VALUES
-(1, 0, 1, 7),
-(2, 0, 1, 6);
+(1, 0, 5, 7),
+(2, 0, 5, 6);
 
 -- --------------------------------------------------------
 

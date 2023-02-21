@@ -38,12 +38,12 @@ public class LigneCommande{
 	
 	@ManyToOne
 	@JoinColumn(name = "command_id")
-	@JsonView(Views.ViewBase.class)
+	@JsonView(Views.ViewLigneCommande.class)
 	private Commande commande;
 	
 	@OneToOne
 	@JoinColumn(name = "product_id", referencedColumnName = "id")
-	@JsonView(Views.ViewBase.class)
+	@JsonView(Views.ViewLigneCommande.class)
 	private Produit produit;
 
 	

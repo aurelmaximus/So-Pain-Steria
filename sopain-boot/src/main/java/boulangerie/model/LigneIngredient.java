@@ -26,12 +26,12 @@ public class LigneIngredient {
 	
 	@ManyToOne
 	@JoinColumn(name = "ingredient_id", referencedColumnName = "id")
-	@JsonView(Views.ViewBase.class)
+	@JsonView(Views.ViewLigneIngredient.class)
 	private Ingredient ingredient;
 	
 	@ManyToOne
 	@JoinColumn(name = "product_id", referencedColumnName = "id")
-	@JsonView(Views.ViewBase.class)
+	@JsonView(Views.ViewLigneIngredient.class)
 	private Produit produit;
 
 

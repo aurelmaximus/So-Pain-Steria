@@ -35,7 +35,7 @@ public class ArticleFavori {
 	
 	@OneToOne
 	@JoinColumn(name = "product_id", referencedColumnName = "id")
-	@JsonView(Views.ViewBase.class)
+	@JsonView(Views.ViewArticleFavoris.class)
 	private Produit produit;
 
 	public ArticleFavori() {
