@@ -17,6 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import boulangerie.model.Basique;
 import boulangerie.model.Elabore;
 import boulangerie.model.Views;
 import boulangerie.repository.ElaboreRepository;
@@ -29,7 +30,7 @@ public class ElaboreRestController {
 	private ElaboreRepository elaboreRepository;
 
 	@GetMapping("")
-	@JsonView(Views.ViewElabore.class)
+	@JsonView(Views.ViewProduit.class)
 	public List<Elabore> findAll() {
 		List<Elabore> elabores = elaboreRepository.findAll();
 
@@ -37,7 +38,7 @@ public class ElaboreRestController {
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewElabore.class)
+	@JsonView(Views.ViewProduit.class)
 	public Elabore findById(@PathVariable Integer id) {
 		Optional<Elabore> optElabore = elaboreRepository.findById(id);
 
@@ -47,10 +48,23 @@ public class ElaboreRestController {
 
 		return optElabore.get();
 	}
+	
+	@GetMapping("/{id}/ligne")
+	@JsonView(Views.ViewCommandeWithLignesIngredient.class)
+	public Elabore ligneingredientById(@PathVariable Integer id) {
+		Optional<Elabore> optElabore = elaboreRepository.findByIdWithLigneIngredient(id);
+
+		if (optElabore.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+
+		return optElabore.get();
+	}
+
 
 
 	@PostMapping("")
-	@JsonView(Views.ViewElabore.class)
+	@JsonView(Views.ViewProduit.class)
 	public Elabore create(@RequestBody Elabore elabore) {
 		elabore = elaboreRepository.save(elabore);
 
@@ -58,7 +72,7 @@ public class ElaboreRestController {
 	}
 
 	@PutMapping("/{id}")
-	@JsonView(Views.ViewElabore.class)
+	@JsonView(Views.ViewProduit.class)
 	public Elabore update(@RequestBody Elabore elabore, @PathVariable Integer id) {
 		if (id != elabore.getId()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);

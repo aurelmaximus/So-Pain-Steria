@@ -18,6 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import boulangerie.model.Basique;
+import boulangerie.model.Commande;
 import boulangerie.model.Views;
 import boulangerie.repository.BasiqueRepository;
 
@@ -30,7 +31,7 @@ public class BasiqueRestController {
 	private BasiqueRepository basiqueRepository;
 
 	@GetMapping("")
-	@JsonView(Views.ViewBasique.class)
+	@JsonView(Views.ViewProduit.class)
 	public List<Basique> findAll() {
 		List<Basique> basiques = basiqueRepository.findAll();
 
@@ -38,7 +39,7 @@ public class BasiqueRestController {
 	}
 
 	@GetMapping("/{id}")
-	@JsonView(Views.ViewBasique.class)
+	@JsonView(Views.ViewProduit.class)
 	public Basique findById(@PathVariable Integer id) {
 		Optional<Basique> optBasique = basiqueRepository.findById(id);
 
@@ -48,10 +49,23 @@ public class BasiqueRestController {
 
 		return optBasique.get();
 	}
+	
+	@GetMapping("/{id}/ligne")
+	@JsonView(Views.ViewCommandeWithLignesIngredient.class)
+	public Basique ligneingredientById(@PathVariable Integer id) {
+		Optional<Basique> optBasique = basiqueRepository.findByIdWithLigneIngredient(id);
+
+		if (optBasique.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+
+		return optBasique.get();
+	}
+
 
 
 	@PostMapping("")
-	@JsonView(Views.ViewBasique.class)
+	@JsonView(Views.ViewProduit.class)
 	public Basique create(@RequestBody Basique basique) {
 		basique = basiqueRepository.save(basique);
 
@@ -59,7 +73,7 @@ public class BasiqueRestController {
 	}
 
 	@PutMapping("/{id}")
-	@JsonView(Views.ViewBasique.class)
+	@JsonView(Views.ViewProduit.class)
 	public Basique update(@RequestBody Basique basique, @PathVariable Integer id) {
 		if (id != basique.getId()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);

@@ -15,19 +15,16 @@ import com.fasterxml.jackson.annotation.JsonView;
 @DiscriminatorValue("basic")
 public class Basique extends Produit{
 
-
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "category", length = 25)
 	@JsonView(Views.ViewBase.class)
 	private Categorie categorie;
 	
-	
+
 	public Basique() {
 		super();
 	}
-
-
 
 	
 	public Basique(BigDecimal prix, String libelle,Categorie categorie) {
@@ -35,8 +32,6 @@ public class Basique extends Produit{
 		this.categorie=categorie;
 		
 	}
-
-
 
 
 	public Categorie getCategorie() {
@@ -48,14 +43,5 @@ public class Basique extends Produit{
 		this.categorie = categorie;
 	}
 
-
-
-
-	@Override
-	public String toString() {
-		return "Basique : "+ super.getLibelle() +" "+ super.getPrix() + " [categorie=" + categorie + "]";
-	}
-	
-	
 	
 }

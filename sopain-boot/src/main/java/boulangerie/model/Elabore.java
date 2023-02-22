@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import com.fasterxml.jackson.annotation.JsonView;
 
 
-
 @Entity
 @DiscriminatorValue("elaborate")
 public class Elabore extends Produit {
@@ -23,27 +22,21 @@ public class Elabore extends Produit {
 		super();
 	}
 
-
+	
 	public Elabore(BigDecimal prix, String libelle, Integer NbParts) {
 		super(prix, libelle);
 		this.NbParts=NbParts;
 	}
 
-
+	
 	public Integer getNbParts() {
 		return NbParts;
 	}
 
-
+	
 	public void setNbParts(Integer nbParts) {
 		NbParts = nbParts;
 	}
 
-
-	@Override
-	public String toString() {
-		return "Elabore : "+ super.getLibelle() +" "+ super.getPrix() + " [NbParts=" + NbParts + "]";
-	}
-
-
+	
 }

@@ -10,12 +10,9 @@ public class Views {
 	public static class ViewProduit extends ViewBase {
 	}
 	
-	public static class ViewBasique extends ViewProduit {
-	}
 	
-	public static class ViewElabore extends ViewProduit {
+	public static class ViewCommandeWithLignesIngredient extends ViewProduit {
 	}
-	
 	
 	public static class ViewIngredient extends ViewBase {
 	}
@@ -50,4 +47,5 @@ public class Views {
 	
 	public static class ViewClientWithArticlesFavoris extends ViewClient {
 	}
+	
 }
