@@ -9,7 +9,10 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { EmployeComponent } from './employe/employe.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CommandeComponent } from './commande/commande.component';
 import { AuthComponent } from './auth/auth.component';
+import { ClientComponent } from './client/client.component';
+import { EmployeGcComponent } from './employe-gc/employe-gc.component';
 
 import { HomeComponent } from './home/home.component';
 import { MaisonComponent } from './maison/maison.component';
@@ -18,6 +21,7 @@ import { CommandeComponent } from './commande/commande.component';
 import { PainComponent } from './pain/pain.component';
 import { ViennoiserieComponent } from './viennoiserie/viennoiserie.component';
 import { PatisserieComponent } from './patisserie/patisserie.component';
+
 
 
 @NgModule({
@@ -29,9 +33,10 @@ import { PatisserieComponent } from './patisserie/patisserie.component';
     HomeComponent,
     MaisonComponent,
     EmployeComponent,
-
-    AuthComponent,
-    CommandeComponent,
+    ClientComponent,
+   AuthComponent,
+    CommandeComponent
+    EmployeGcComponent,
     PainComponent,
     ViennoiserieComponent,
     PatisserieComponent

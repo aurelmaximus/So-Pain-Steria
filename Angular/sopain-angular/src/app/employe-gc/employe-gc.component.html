@@ -72,27 +72,33 @@
     </div>
     
     <div id="contentdroite">
-    <div class="card mt-3 commande">
-        <div class="card-header bg-success text-white display-6">Commandes en cours</div>
+    <div class="card mt-3 employeg">
+        <div class="card-header bg-success text-white display-6">Liste des employés</div>
         <div class="card-body">
             <table class="table">
                 <thead class="table-dark">
                     <tr>
-                        <th>Numero</th>
-                        <th>Version</th>
-                        <th>Date d'arrivé'</th>
-                        <th>Heure d'arrivé</th>
-                        <th>Statut de la commande</th>
+                        <th>Identifiant</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Email</th>
+                        <th>Numéro</th>
+                        <th>Voie</th>
+                        <th>Code Postal</th>
+                        <th>Ville</th>
                     </tr>
                 </thead>
                 
                 <tbody>
-                    <tr *ngFor="let com of listCommandes()">
-                    <td>{{com.numero}}</td>
-                    <td>{{com.version}}</td>
-                    <td>{{com.dateArrivee | date:"dd/MM/yyyy"}}</td>
-                    <td>{{com.heureArrive}}</td>
-                    <td>{{com.etatcommande }}</td>
+                    <tr *ngFor="let emp of listEmploye()">
+                    <td>{{emp.id}}</td>
+                    <td>{{emp.nom}}</td>
+                    <td>{{emp.prenom}}</td>
+                    <td>{{emp.email}}</td>
+                    <td>{{emp.adresse.numero}}</td>
+                    <td>{{emp.adresse.voie}}</td>
+                    <td>{{emp.adresse.cp}}</td>
+                    <td>{{emp.adresse.ville}}</td>
                     </tr>
                 </tbody>
               
@@ -100,34 +106,7 @@
         </div>
       
     </div>
-    
-    <div class="card mt-3 hcommande">
-        <div class="card-header bg-success text-white display-6">Historique de commande</div>
-        <div class="card-body">
-            <table class="table">
-                <thead class="table-dark">
-                    <tr>
-                      <th>Numero</th>
-                      <th>Version</th>
-                      <th>Date d'arrivé'</th>
-                      <th>Heure d'arrivé</th>
-                      <th>Statut de la commande</th>
-                    </tr>
-                </thead>
-    
-                <tbody>
-                  <tr *ngFor="let com of listCommandes()">
-                    <td>{{com.numero}}</td>
-                    <td>{{com.version}}</td>
-                    <td>{{com.dateArrivee | date:"dd/MM/yyyy"}}</td>
-                    <td>{{com.heureArrive}}</td>
-                    <td>{{com.etatcommande }}</td>
-                   </tr>
-                </tbody>
-    
-            </table>
-        </div>
-      
+     
     </div>
     </div>
     
@@ -136,4 +115,4 @@
     
     
     
-     -->
+    
