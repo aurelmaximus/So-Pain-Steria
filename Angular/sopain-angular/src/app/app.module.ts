@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommandeComponent } from './commande/commande.component';
 import { AuthComponent } from './auth/auth.component';
+import { ClientComponent } from './client/client.component';
 import { EmployeGcComponent } from './employe-gc/employe-gc.component';
 
 import { HomeComponent } from './home/home.component';
@@ -32,12 +33,10 @@ import { PatisserieComponent } from './patisserie/patisserie.component';
     HomeComponent,
     MaisonComponent,
     EmployeComponent,
-    AuthComponent,
-    CommandeComponent,
+    ClientComponent,
+   AuthComponent,
+    CommandeComponent
     EmployeGcComponent,
-
-    AuthComponent,
-    CommandeComponent,
     PainComponent,
     ViennoiserieComponent,
     PatisserieComponent

@@ -1,1 +1,69 @@
 <p>inscription works!</p>
+
+<body>
+
+
+    <div id="header">
+  
+  
+      <p>  <a target="_blank"  href="https://www.google.fr" >Connexion</a></p>
+      <p> | </p>
+      <p>  <a target="_blank"  href="https://www.google.fr" >Inscription </a></p>
+      <p> | </p>
+      <p>  <a target="_blank"  href="https://www.google.fr" > Accès au site </a></p>
+  
+    </div>
+  
+    <div class="logo" >
+      <img width="250" height="250" alt="Logo So'Pain Steria" src="assets\images\Logosansfond.png">
+    </div>
+  
+    <div id="content">
+  
+      <div class="form2">
+  
+        <form method="" action="">
+          <br>
+          <h3>Inscription</h3>
+          <br>
+  
+          <div><input  required placeholder="Nom *" id="Nom" type="text" title="Nom" class="form" /></div>
+  
+          <div><input  required placeholder="Prenom *" id="Prenom" type="text" title="Prenom" class="form"/></div>
+  
+          <div><input  placeholder="Numero " id="Numero" type="number" title="Numero" class="form"/></div>
+  
+          <div><input  required placeholder="Voie *" id="Voie" type="text" title="Voie" class="form"/></div>
+  
+          <div><input  required placeholder="Ville *" id="Ville" type="text" title="Ville" class="form"/></div>
+  
+          <div><input  required placeholder="Code Postal *" id="Code Postal" type="number" title="Code Postal" pattern="[0-9]{5}" class="form"/></div>
+  
+          <div><input  required placeholder="Email *" id="Email" type="email" title="Email" class="form"/></div>
+  
+          <div><input  required  pattern="[A-z0-9!@#$*?-]{8-25}" placeholder="Mot de passe *" id="Mot de passe" type="password" title="8 caractères minimum" class="form"/>
+            <span >
+              <i class="fa fa-eye-slash icon" id="show-password" onclick="DemasquePassword() "></i>
+            </span>
+          </div>
+  
+          <div class="btn">
+            <button  type="submit" class="btn btn-secondary">Je m'inscris</button>
+          </div>
+  
+        </form>
+      </div>
+  
+    </div>
+  
+  
+    <div id="footer">
+  
+  
+      <p>Copyright So'Pain Steria - Tous droits réservés - 2023 </p>
+  
+  
+    </div>
+  
+  
+  </body>

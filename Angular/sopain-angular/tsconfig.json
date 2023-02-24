@@ -8,6 +8,8 @@
     "strict": true,
     "noImplicitOverride": true,
     "strictNullChecks": false,
+    "emitDecoratorMetadata": true,
+
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
