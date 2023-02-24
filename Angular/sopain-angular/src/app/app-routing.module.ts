@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ClientComponent } from './client/client.component';
-import { AuthComponent } from './auth/auth.component';
 import { EmployeGcComponent } from './employe-gc/employe-gc.component';
 import { AuthComponent } from './auth/auth.component';
 import { EmployeComponent } from './employe/employe.component';
@@ -17,7 +16,7 @@ const routes: Routes = [
 {path: "client", component: ClientComponent},
 {path: "employe", component: EmployeComponent},
 {path: "auth", component: AuthComponent},
-{path: "", component: HomeComponent, pathMatch: 'full'}
+{path: "", component: HomeComponent, pathMatch: 'full'},
 {path: "patisserie", component: PatisserieComponent},
 {path: "viennoiserie", component: ViennoiserieComponent},
 {path: "employegc", component: EmployeGcComponent},
