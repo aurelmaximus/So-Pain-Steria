@@ -1,7 +1,7 @@
 #content
 {
     display:flex;
-    width:  1700px;
+    width:  1400px;
 }
 
 #contentdroite
@@ -10,7 +10,7 @@
     display: block;
 }
 
-.formateur{
+.employe{
 display: flex;
 justify-content: start;
 width: 450px;
@@ -38,6 +38,8 @@ text-align: center;
 .card1{
     width: 50%;
     height: 105px;
+    font-size: 14px;
+    text-align: center;
     
 }
 

@@ -30,7 +30,7 @@ import boulangerie.rest.dto.AuthDTO;
 @RestController
 @RequestMapping("/compte")
 @CrossOrigin("*")
-public class ComptetRestController2 {
+public class ComptetRestController {
 
 
 

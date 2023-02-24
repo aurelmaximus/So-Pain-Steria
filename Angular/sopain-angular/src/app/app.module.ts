@@ -10,8 +10,12 @@ import { EmployeComponent } from './employe/employe.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
+<<<<<<< HEAD
 import { HomeComponent } from './home/home.component';
 import { MaisonComponent } from './maison/maison.component';
+=======
+import { CommandeComponent } from './commande/commande.component';
+>>>>>>> develop
 
 @NgModule({
   declarations: [
@@ -22,6 +26,11 @@ import { MaisonComponent } from './maison/maison.component';
     HomeComponent,
     MaisonComponent,
     EmployeComponent,
+<<<<<<< HEAD
+=======
+    AuthComponent,
+    CommandeComponent
+>>>>>>> develop
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-export abstract class Compte {
+export class Compte {
     id: number; 
 	version: number;
     email: string;
@@ -6,6 +6,7 @@ export abstract class Compte {
     nom: string;
     prenom: string;
     adresse:Adresse;
+    type_compte: string;
  
     constructor(id?:number, version?: number , email?: string, password?: string, nom?: string, prenom?: string, adresse?:Adresse) {
         this.id = id;
@@ -43,3 +44,39 @@ export class Employe extends Compte {
        
     }
 }
+
+
+export class AuthDTO {
+    login: string;
+    password: string;
+
+    constructor(login?: string, password?: string) {
+        this.login = login;
+        this.password = password;
+    }
+}
+
+export class Commande {
+  
+    numero:number;
+    version: number;
+    dateArrivee:string;
+    heureArrive:string;
+    etatcommande:string;
+
+    constructor(numero?:number, version?: number, dateArrivee?:string ,heureArrive?:string, etatcommande?:string) {
+       this.numero=numero;
+       this.version=version;
+       this.dateArrivee=dateArrivee;
+       this.heureArrive=heureArrive;
+       this.etatcommande=etatcommande;
+      
+       
+    }
+}
+
+
+
+
+
+

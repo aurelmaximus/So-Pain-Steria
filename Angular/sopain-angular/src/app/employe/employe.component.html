@@ -1,88 +1,130 @@
 <div id="content">
-    <div class="card mt-3 formateur">
-        <div class="card-header bg-success text-white display-6 ">Information formateur</div>
-        <div class="card-body">
+    <div class="card mt-3 employe">
+        <div class="card-header bg-success text-white display-6 ">Information employe</div>
+        <div class="card-body" *ngFor="let emp of list()">
     
             <div name="1" class="card2">
             <div class="card card1">
                 <div class="card-body">
                   <h5 class="card-title">Identifiant</h5>
-                  <p class="card-text"></p>
+                  <p class="card-text">{{emp.id}}</p>
                 </div>
               </div>
     
               <div class="card card1">
                 <div class="card-body">
-                  <h5 class="card-title">Version</h5>
-                  <p class="card-text"></p>
+                  <h5 class="card-title">Nom</h5>
+                  <p class="card-text">{{emp.nom}}</p>
                 </div>
               </div>
             </div>
 
-            <div name="3" class="card2">
+            <div name="2" class="card2">
               <div class="card card1">
                 <div class="card-body">
                   <h5 class="card-title">Prénom</h5>
-                  <p class="card-text"></p>
+                  <p class="card-text">{{emp.prenom}}</p>
                 </div>
               </div>
     
               <div class="card card1">
                 <div class="card-body">
                   <h5 class="card-title">Email</h5>
-                  <p class="card-text"></p>
+                  <p class="card-text">{{emp.email}}</p>
                 </div>
               </div>
             </div>
-    
+
+
+            <div name="1" class="card2">
+              <div class="card card1">
+                  <div class="card-body">
+                    <h5 class="card-title">Numéro</h5>
+                    <p class="card-text">{{emp.adresse.numero}}</p>
+                  </div>
+                </div>
+      
+                <div class="card card1">
+                  <div class="card-body">
+                    <h5 class="card-title">Voie</h5>
+                    <p class="card-text">{{emp.adresse.voie}}</p>
+                  </div>
+                </div>
+              </div>
+  
+              <div name="2" class="card2">
+                <div class="card card1">
+                  <div class="card-body">
+                    <h5 class="card-title">Code Postal</h5>
+                    <p class="card-text">{{emp.adresse.cp}}</p>
+                  </div>
+                </div>
+      
+                <div class="card card1">
+                  <div class="card-body">
+                    <h5 class="card-title">Ville</h5>
+                    <p class="card-text">{{emp.adresse.ville}}</p>
+                  </div>
+                </div>
+              </div>
+    </div>
           
     </div>
     
     <div id="contentdroite">
     <div class="card mt-3 filiere">
-        <div class="card-header bg-success text-white display-6">Liste des filières référent</div>
+        <div class="card-header bg-success text-white display-6">Commandes en cours</div>
         <div class="card-body">
             <table class="table">
                 <thead class="table-dark">
                     <tr>
                         <th>Identifiant</th>
                         <th>Version</th>
-                        <th>Libelle</th>
-                        <th>Date de début</th>
-                        <th>Date de fin</th>
+                        <th>Numéro</th>
+                        <th>Date d'arrivé'</th>
+                        <th>Heure d'arrivé</th>
+                        <th>Statut de la commande</th>
                     </tr>
                 </thead>
-    
+                
                 <tbody>
-                    <tr>
-                       
-                    <tr>
+                    <tr *ngFor="let com of listCommandes()">
+                    <td>{{com.numero}}</td>
+                    <td>{{com.version}}</td>
+                    <td>{{com.dateArrivee | date:"dd/MM/yyyy"}}}</td>
+                    <td>{{com.heureArrive | date:"h:mm"}}</td>
+                    <td>{{com.etatcommande }}</td>
+                    </tr>
                 </tbody>
-    
+              
             </table>
         </div>
       
     </div>
     
     <div class="card mt-3 matiere">
-        <div class="card-header bg-success text-white display-6">Liste des matières</div>
+        <div class="card-header bg-success text-white display-6">Historique de commande</div>
         <div class="card-body">
             <table class="table">
                 <thead class="table-dark">
                     <tr>
-                        <th>Identifiant</th>
-                        <th>Version</th>
-                        <th>Libelle</th>
-                        <th>Quest</th>
+                      <th>Identifiant</th>
+                      <th>Version</th>
+                      <th>Numéro</th>
+                      <th>Date d'arrivé'</th>
+                      <th>Heure d'arrivé</th>
+                      <th>Statut de la commande</th>
                     </tr>
                 </thead>
     
                 <tbody>
-                    <tr >
-                      
-
-
-                    </tr>
+                  <tr *ngFor="let com of listCommandes()">
+                    <td>{{com.numero}}</td>
+                    <td>{{com.version}}</td>
+                    <td>{{com.dateArrivee | date:"dd/MM/yyyy"}}}</td>
+                    <td>{{com.heureArrive | date:"h:mm"}}</td>
+                    <td>{{com.etatcommande }}</td>
+                   </tr>
                 </tbody>
     
             </table>
@@ -91,7 +133,7 @@
     </div>
     </div>
     
-    </div>
+
     
     
     

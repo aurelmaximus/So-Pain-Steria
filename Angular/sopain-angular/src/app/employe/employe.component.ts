@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Employe } from '../model';
+import { CommandeHttpService } from '../commande/commande-http.service';
+import { Commande, Employe } from '../model';
 import { EmployeHttpService } from './employe-http.service';
 
 @Component({
@@ -14,13 +15,17 @@ export class EmployeComponent {
 
 
 
-  constructor(private employeService: EmployeHttpService) {
+  constructor(private employeService: EmployeHttpService,private commandeService: CommandeHttpService) {
   }
 
   list(): Array<Employe> {
     return this.employeService.findAll();
   }
 
+  
+  listCommandes(): Array<Commande> {
+    return this.commandeService.findAll();
+  }
  
 
 

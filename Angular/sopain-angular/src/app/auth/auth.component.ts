@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthDTO, Compte } from '../model';
+import { AuthService } from './auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -6,5 +8,20 @@ import { Component } from '@angular/core';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent {
+
+  connectedDTO: AuthDTO = new AuthDTO();
+
+  constructor(private authService: AuthService){
+
+  }
+
+  getConnected():Compte {
+    return this.authService.connected
+  }
+
+  seconnecter(): void {
+
+    this.authService.login(this.connectedDTO);
+  }
 
 }
