@@ -15,6 +15,9 @@ import { HomeComponent } from './home/home.component';
 import { MaisonComponent } from './maison/maison.component';
 
 import { CommandeComponent } from './commande/commande.component';
+import { PainComponent } from './pain/pain.component';
+import { ViennoiserieComponent } from './viennoiserie/viennoiserie.component';
+import { PatisserieComponent } from './patisserie/patisserie.component';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { CommandeComponent } from './commande/commande.component';
     EmployeComponent,
 
     AuthComponent,
-    CommandeComponent
+    CommandeComponent,
+    PainComponent,
+    ViennoiserieComponent,
+    PatisserieComponent
   ],
   imports: [
     BrowserModule,
