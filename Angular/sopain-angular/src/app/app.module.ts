@@ -20,7 +20,7 @@ import { MaisonComponent } from './maison/maison.component';
     FooterComponent,
     InscriptionComponent,
     HomeComponent,
-    MaisonComponent
+    MaisonComponent,
     EmployeComponent,
   ],
   imports: [
