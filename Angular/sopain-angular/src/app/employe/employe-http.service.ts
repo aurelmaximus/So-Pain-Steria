@@ -20,17 +20,17 @@ export class EmployeHttpService {
   }
 
   findById(id: number): Observable<Employe> {
-    return this.http.get<Formateur>("http://localhost:8888/employe/" + id);
+    return this.http.get<Employe>("http://localhost:8888/employe/" + id);
   }
 
-  create(formateur: Employe): void {
-    this.http.post<Formateur>("http://localhost:8888/employe", formateur).subscribe(resp => {
+  create(employe: Employe): void {
+    this.http.post<Employe>("http://localhost:8888/employe", employe).subscribe(resp => {
       this.load();
     });
   }
 
-  update(formateur: Employe): void {
-    this.http.put<Formateur>("http://localhost:8888/employe/" + employe.id, employe).subscribe(resp => {
+  update(employe: Employe): void {
+    this.http.put<Employe>("http://localhost:8888/employe/" + employe.id, employe).subscribe(resp => {
       this.load();
     });
   }
@@ -43,7 +43,7 @@ export class EmployeHttpService {
 
   private load(): void {
     this.http.get<Array<Employe>>("http://localhost:8888/employe").subscribe(resp => {
-      this.formateurs = resp;
+      this.employes = resp;
     });
   }
 
