@@ -9,7 +9,6 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { EmployeComponent } from './employe/employe.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { CommandeComponent } from './commande/commande.component';
 import { AuthComponent } from './auth/auth.component';
 import { ClientComponent } from './client/client.component';
 import { EmployeGcComponent } from './employe-gc/employe-gc.component';
@@ -35,7 +34,7 @@ import { PatisserieComponent } from './patisserie/patisserie.component';
     EmployeComponent,
     ClientComponent,
    AuthComponent,
-    CommandeComponent
+    CommandeComponent,
     EmployeGcComponent,
     PainComponent,
     ViennoiserieComponent,
