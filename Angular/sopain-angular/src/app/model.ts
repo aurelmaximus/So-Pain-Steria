@@ -55,3 +55,28 @@ export class AuthDTO {
         this.password = password;
     }
 }
+
+export class Commande {
+  
+    numero:number;
+    version: number;
+    dateArrivee:string;
+    heureArrive:string;
+    etatcommande:string;
+
+    constructor(numero?:number, version?: number, dateArrivee?:string ,heureArrive?:string, etatcommande?:string) {
+       this.numero=numero;
+       this.version=version;
+       this.dateArrivee=dateArrivee;
+       this.heureArrive=heureArrive;
+       this.etatcommande=etatcommande;
+      
+       
+    }
+}
+
+
+
+
+
+

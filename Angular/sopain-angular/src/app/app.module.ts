@@ -9,7 +9,6 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { EmployeComponent } from './employe/employe.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +18,7 @@ import { AuthComponent } from './auth/auth.component';
     InscriptionComponent,
     EmployeComponent,
     AuthComponent
+    CommandeComponent
   ],
   imports: [
     BrowserModule,
