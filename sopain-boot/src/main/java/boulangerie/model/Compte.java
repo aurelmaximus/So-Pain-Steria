@@ -1,5 +1,12 @@
 package boulangerie.model;
 import javax.persistence.Column;
+
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
+
+import quest.model.Views;
+
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Embedded;
@@ -15,11 +22,12 @@ import javax.persistence.Version;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+
 @Entity
 @Table(name = "account", uniqueConstraints = @UniqueConstraint(columnNames = { "last_name", "first_name" }))
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
-public abstract class Compte {
+public  class Compte {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,7 +57,20 @@ public abstract class Compte {
 	@Embedded
 	@JsonView(Views.ViewBase.class)
 	private Adresse adresse;
+
+	@JsonTypeInfo (use = JsonTypeInfo.Id.MINIMAL_CLASS, 
+			include = As.PROPERTY, property = "@class")
+	@JsonView(Views.ViewCompte.class)
+	private String type_compte;
 	
+	
+//	@JsonTypeInfo (use = JsonTypeInfo.Id.NAME, 
+//	include = As.PROPERTY, property = "type") @JsonSubTypes({
+//
+//		@JsonSubTypes.Type(value = Client.class, name = "square"),
+//		@JsonSubTypes.Type(value = Employe.class, name = "circle")
+//	})
+
 	
 	
 	public Compte() {

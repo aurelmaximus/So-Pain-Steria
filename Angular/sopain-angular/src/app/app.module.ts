@@ -9,6 +9,7 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { EmployeComponent } from './employe/employe.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { AuthComponent } from './auth/auth.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormsModule } from '@angular/forms';
     NavBarComponent,
     FooterComponent,
     InscriptionComponent,
-    EmployeComponent
+    EmployeComponent,
+    AuthComponent
   ],
   imports: [
     BrowserModule,
