@@ -1,0 +1,136 @@
+<div id="content">
+    <div class="card mt-3 formateur">
+        <div class="card-header bg-success text-white display-6 ">Information formateur</div>
+        <div class="card-body " *ngFor="let form of list()">
+    
+            <div name="1" class="card2">
+            <div class="card card1">
+                <div class="card-body">
+                  <h5 class="card-title">Identifiant</h5>
+                  <p class="card-text">{{form.id}}</p>
+                </div>
+              </div>
+    
+              <div class="card card1">
+                <div class="card-body">
+                  <h5 class="card-title">Version</h5>
+                  <p class="card-text">{{form.version}}</p>
+                </div>
+              </div>
+            </div>
+    
+            <div name="2" class="card2">
+              <div class="card card1">
+                <div class="card-body">
+                  <h5 class="card-title">Civilité</h5>
+                  <p class="card-text">{{form.civilite}}</p>
+                </div>
+              </div>
+    
+              <div class="card card1">
+                <div class="card-body">
+                  <h5 class="card-title">Nom</h5>
+                  <p class="card-text">{{form.nom}}</p>
+                </div>
+              </div>
+            </div>
+    
+            <div name="3" class="card2">
+              <div class="card card1">
+                <div class="card-body">
+                  <h5 class="card-title">Prénom</h5>
+                  <p class="card-text">{{form.prenom }}</p>
+                </div>
+              </div>
+    
+              <div class="card card1">
+                <div class="card-body">
+                  <h5 class="card-title">Email</h5>
+                  <p class="card-text">{{form.email}}</p>
+                </div>
+              </div>
+            </div>
+    
+            <div name="4" class="card2">
+              <div class="card card1">
+                <div class="card-body">
+                  <h5 class="card-title">Externe</h5>
+                  <p class="card-text">{{form.externe}}</p>
+                </div>
+              </div>
+    
+              <div class="card card1">
+                <div class="card-body">
+                  <h5 class="card-title">Experience</h5>
+                  <p class="card-text">{{form.experience}}</p>
+                </div>
+              </div>
+            </div>
+        </div>
+      
+    </div>
+    
+    <div id="contentdroite">
+    <div class="card mt-3 filiere">
+        <div class="card-header bg-success text-white display-6">Liste des filières référent</div>
+        <div class="card-body">
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Identifiant</th>
+                        <th>Version</th>
+                        <th>Libelle</th>
+                        <th>Date de début</th>
+                        <th>Date de fin</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr *ngFor="let fil of listFilieres()">
+                        <td>{{fil.id}}</td>
+                        <td>{{fil.version}}</td>
+                        <td>{{fil.libelle}}</td>
+                        <td>{{fil.debut | date:"dd/MM/yyyy"}}</td>
+                        <td>{{fil.fin | date:"dd/MM/yyyy"}}</td>
+                    <tr>
+                </tbody>
+    
+            </table>
+        </div>
+      
+    </div>
+    
+    <div class="card mt-3 matiere">
+        <div class="card-header bg-success text-white display-6">Liste des matières</div>
+        <div class="card-body">
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Identifiant</th>
+                        <th>Version</th>
+                        <th>Libelle</th>
+                        <th>Quest</th>
+                    </tr>
+                </thead>
+    
+                <tbody>
+                    <tr *ngFor="let form of listMatieres()">
+                        <td>{{form.id}}</td>
+                        <td>{{form.version}}</td>
+                        <td>{{form.libelle}}</td>
+                        <td>{{form.quest}}</td>
+                    </tr>
+                </tbody>
+    
+            </table>
+        </div>
+      
+    </div>
+    </div>
+    
+    </div>
+    
+    
+    
+    
+    

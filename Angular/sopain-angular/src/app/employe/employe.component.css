@@ -1,0 +1,51 @@
+#content
+{
+    display:flex;
+    width:  1700px;
+}
+
+#contentdroite
+{
+    padding-left: 40px;
+    display: block;
+}
+
+.formateur{
+display: flex;
+justify-content: start;
+width: 450px;
+height: 516px;
+font-size: 14px;
+text-align: center;
+
+
+}
+
+.filiere{
+    width: 900px;
+    height: 250px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.matiere{
+    width: 900px;
+    height: 250px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.card1{
+    width: 50%;
+    height: 105px;
+    
+}
+
+.card2{
+display: flex;
+
+}
+
+
+
+ 

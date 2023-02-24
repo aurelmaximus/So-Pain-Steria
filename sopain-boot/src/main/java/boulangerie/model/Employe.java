@@ -18,8 +18,8 @@ public class Employe extends Compte{
 	}
 
 	
-	public Employe(String login, String password, String nom, String prenom, Adresse adresse) {
-		super(login, password, nom, prenom, adresse);
+	public Employe(String email, String password, String nom, String prenom, Adresse adresse) {
+		super(email, password, nom, prenom, adresse);
 	}
 
 
