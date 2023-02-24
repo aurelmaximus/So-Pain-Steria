@@ -12,8 +12,10 @@ export class EmployeComponent {
 
 
   formEmploye: Employe = null;
+  formCommande: Commande = null;
 
-
+  etatcommande:boolean =false;
+  cache:boolean=true;
 
   constructor(private employeService: EmployeHttpService,private commandeService: CommandeHttpService) {
   }
@@ -26,7 +28,31 @@ export class EmployeComponent {
   listCommandes(): Array<Commande> {
     return this.commandeService.findAll();
   }
- 
+
+
+  appel(): void {
+   this.etatcommande=true;
+   this.cache=false;
+  }
+
+  cancel(): void {
+    this.etatcommande=false;
+    this.cache=true;
+  }
+
+  edit(numero: number): void {
+    this.commandeService.findById(numero).subscribe(response => {
+      console.log('response from findById', response);
+  
+      this.formCommande = response;
+      console.log('formCommande before update', this.formCommande);
+  
+      this.commandeService.update(this.formCommande);
+      console.log('formCommande afterupdate', this.formCommande);
+  
+      this.cancel();
+    });
+  }
 
 
 }

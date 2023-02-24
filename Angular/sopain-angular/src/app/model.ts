@@ -72,6 +72,7 @@ export class Commande {
     dateArrivee:string;
     heureArrive:string;
     etatcommande:string;
+    client:Client;
 
     constructor(numero?:number, version?: number, dateArrivee?:string ,heureArrive?:string, etatcommande?:string) {
        this.numero=numero;

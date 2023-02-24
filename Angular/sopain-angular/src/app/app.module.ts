@@ -12,11 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
 import { ClientComponent } from './client/client.component';
 import { EmployeGcComponent } from './employe-gc/employe-gc.component';
-
 import { HomeComponent } from './home/home.component';
 import { MaisonComponent } from './maison/maison.component';
-
-import { CommandeComponent } from './commande/commande.component';
 import { PainComponent } from './pain/pain.component';
 import { ViennoiserieComponent } from './viennoiserie/viennoiserie.component';
 import { PatisserieComponent } from './patisserie/patisserie.component';
@@ -33,7 +30,7 @@ import { PatisserieComponent } from './patisserie/patisserie.component';
     MaisonComponent,
     EmployeComponent,
     ClientComponent,
-   AuthComponent,
+    AuthComponent,
     CommandeComponent,
     EmployeGcComponent,
     PainComponent,

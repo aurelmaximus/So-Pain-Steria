@@ -74,25 +74,44 @@
     <div id="contentdroite">
     <div class="card mt-3 commande">
         <div class="card-header bg-success text-white display-6">Commandes en cours</div>
-        <div class="card-body">
+        <div class="card-body max">
             <table class="table">
                 <thead class="table-dark">
                     <tr>
                         <th>Numero</th>
-                        <th>Version</th>
-                        <th>Date d'arrivé'</th>
-                        <th>Heure d'arrivé</th>
+                        <th>Nom</th>
+                        <th>Prenom</th>
+                        <th>Date d'arrivée</th>
+                        <th>Heure d'arrivée</th>
                         <th>Statut de la commande</th>
+                        <th *ngIf="etatcommande">Nouveau statut</th>
+                        <th></th>
                     </tr>
                 </thead>
                 
                 <tbody>
                     <tr *ngFor="let com of listCommandes()">
                     <td>{{com.numero}}</td>
-                    <td>{{com.version}}</td>
+                    <td>{{com.client.nom}}</td>
+                    <td>{{com.client.prenom}}</td>
                     <td>{{com.dateArrivee | date:"dd/MM/yyyy"}}</td>
                     <td>{{com.heureArrive}}</td>
-                    <td>{{com.etatcommande }}</td>
+                    <td >{{com.etatcommande}}</td>
+                    <td *ngIf="etatcommande"> 
+                    <div >
+                      <select id="etatcommande" name="etatcommande" [(ngModel)]="com.etatcommande">
+                        <option value="EnCours">En Cours</option>
+                        <option value="Prete">Prete</option>
+                        <option value="Termine">Termine</option>
+                      </select>
+                    </div> 
+                    </td>
+                    <td>  <div class="btn-group btn-group-lg float-right" >
+                        <a class="btn btn-success" *ngIf="cache" (click)="appel()"><i class="bi bi-check-square-fill"></i></a>
+                        <a class="btn btn-success" *ngIf="etatcommande" (click)="edit(com.numero)"><i class="bi bi-check-square-fill"></i></a>
+                        <a class="btn btn-warning" *ngIf="etatcommande" (click)="cancel()"><i class="bi bi-backspace-fill"></i></a>
+                  </div></td>
+                    <td></td>
                     </tr>
                 </tbody>
               
@@ -103,14 +122,15 @@
     
     <div class="card mt-3 hcommande">
         <div class="card-header bg-success text-white display-6">Historique de commande</div>
-        <div class="card-body">
+        <div class="card-body max">
             <table class="table">
                 <thead class="table-dark">
                     <tr>
                       <th>Numero</th>
-                      <th>Version</th>
-                      <th>Date d'arrivé'</th>
-                      <th>Heure d'arrivé</th>
+                      <th>Nom</th>
+                      <th>Prenom</th>
+                      <th>Date d'arrivée</th>
+                      <th>Heure d'arrivée</th>
                       <th>Statut de la commande</th>
                     </tr>
                 </thead>
@@ -118,7 +138,8 @@
                 <tbody>
                   <tr *ngFor="let com of listCommandes()">
                     <td>{{com.numero}}</td>
-                    <td>{{com.version}}</td>
+                    <td>{{com.client.nom}}</td>
+                    <td>{{com.client.prenom}}</td>
                     <td>{{com.dateArrivee | date:"dd/MM/yyyy"}}</td>
                     <td>{{com.heureArrive}}</td>
                     <td>{{com.etatcommande }}</td>
@@ -131,9 +152,3 @@
     </div>
     </div>
     
-
-    
-    
-    
-    
-     -->

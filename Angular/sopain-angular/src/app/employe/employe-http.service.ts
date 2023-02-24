@@ -14,7 +14,6 @@ export class EmployeHttpService {
     this.load();
   }
 
-
   findAll(): Array<Employe> {
     return this.employes;
   }

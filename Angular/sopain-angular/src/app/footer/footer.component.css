@@ -1,0 +1,11 @@
+#footer
+{
+  display:flex;
+  justify-content:center;
+  align-items:end;
+  height:60px;
+  background-color:#edebe1;
+  font-family: Times New Roman, serif;
+  margin-top:25px;
+  margin-bottom:25px;
+}

@@ -9,18 +9,17 @@ import { Commande } from '../model';
 export class CommandeHttpService {
 
     commandes: Array<Commande> = new Array<Commande>();
-
+   
   constructor(private http: HttpClient) {
     this.load();
   }
-
 
   findAll(): Array<Commande> {
     return this.commandes;
   }
 
-  findById(id: number): Observable<Commande> {
-    return this.http.get<Commande>("http://localhost:8888/commande/" + id);
+  findById(numero: number): Observable<Commande> {
+    return this.http.get<Commande>("http://localhost:8888/commande/" + numero);
   }
 
   create(commande: Commande): void {

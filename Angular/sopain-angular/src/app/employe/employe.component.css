@@ -22,14 +22,14 @@ text-align: center;
 }
 
 .commande{
-    width: 900px;
+    width: 910px;
     height: 250px;
     font-size: 14px;
     text-align: center;
 }
 
 .hcommande{
-    width: 900px;
+    width: 910px;
     height: 250px;
     font-size: 14px;
     text-align: center;
@@ -48,6 +48,10 @@ display: flex;
 
 }
 
+.max{
+    max-height: 200px;
+    overflow: auto;
+}
 
 
  
