@@ -3,17 +3,17 @@
         <img id="imgacc" src="..\..\assets\images\Logosansfond.png" alt=""  width="100" >
       </a>
       <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="" class="nav-link px-2 link-secondary">Accueil</a></li>
-        <li><a href="" class="nav-link px-2 link-dark">Pâtisseries</a></li>
-        <li><a href="" class="nav-link px-2 link-dark">Pains</a></li>
-        <li><a href="" class="nav-link px-2 link-dark">Viennoiserie</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">La Maison</a></li>
+        <li><a [routerLink]="['']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" class="nav-link px-2 link-secondary">Accueil</a></li>
+        <li><a [routerLink]="['/patisserie']" routerLinkActive="active" class="nav-link px-2 link-dark">Pâtisseries</a></li>
+        <li><a [routerLink]="['/pain']" routerLinkActive="active" class="nav-link px-2 link-dark">Pains</a></li>
+        <li><a [routerLink]="['/viennoiserie']" routerLinkActive="active" class="nav-link px-2 link-dark">Viennoiserie</a></li>
+        <li><a [routerLink]="['/maison']" routerLinkActive="active" class="nav-link px-2 link-dark">La Maison</a></li>
       </ul>
 
 <div class="d-inline-flex">
       <div class="d-flex"><form class="w-100 me-3" role="search">
         <input type="search" class="form-control" placeholder="Search..." aria-label="Search"></form></div>
-      <div class="d-flex"> <button type="button" class="btn btn-outline-dark me-2">Login</button>
+      <div class="d-flex"> <button type="button" [routerLink]="['/auth']" routerLinkActive="active" class="btn btn-outline-dark me-2">Login</button>
         <button type="button" class="btn btn-dark">Sign-up</button></div>
       </div>
     </header>
