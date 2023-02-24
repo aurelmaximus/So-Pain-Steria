@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthComponent } from './auth/auth.component';
 import { EmployeComponent } from './employe/employe.component';
 
 const routes: Routes = [
-{path: "employe", component: EmployeComponent}
-
-
+{path: "employe", component: EmployeComponent},
+{path: "auth", component: AuthComponent}
 ];
 
 

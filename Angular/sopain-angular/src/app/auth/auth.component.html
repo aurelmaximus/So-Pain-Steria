@@ -1,1 +1,17 @@
-<p>auth works!</p>
+<div class="card mt-3">
+    <div class="card-header bg-primary text-white display-6">Connexion</div>
+    <div class="card-body">
+        <div class="form-group">
+            <label for="login">Identifiant:</label> <input type="text" class="form-control" id="login" name="login" [(ngModel)]="connectedDTO.login" />
+        </div>
+        <div class="form-group">
+            <label for="password">Mot de passe:</label> <input type="password" class="form-control" id="password" name="password" [(ngModel)]="connectedDTO.password"  />
+        </div>
+    </div>
+    <div class="card-footer">
+        <div class="btn-group btn-group-lg float-right">
+            <a class="btn btn-success" (click)="seconnecter()" (keyup.enter)="seconnecter()"><i class="bi bi-check-square-fill"></i></a>     
+            <a class="btn btn-warning" [routerLink]="['']" routerLinkActive="active"><i class="bi bi-backspace-fill"></i></a>
+        </div>
+    </div>
+</div>
