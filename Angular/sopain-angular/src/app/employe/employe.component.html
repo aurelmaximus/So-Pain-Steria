@@ -1,6 +1,6 @@
 <div id="content">
     <div class="card mt-3 employe">
-        <div class="card-header bg-success text-white display-6 ">Information employe</div>
+        <div class="card-header bg-success text-white display-6 ">Informations employé</div>
         <div class="card-body" *ngFor="let emp of list()">
     
             <div name="1" class="card2">
@@ -84,32 +84,24 @@
                         <th>Date d'arrivée</th>
                         <th>Heure d'arrivée</th>
                         <th>Statut de la commande</th>
-                        <th *ngIf="etatcommande">Nouveau statut</th>
+                        <th>Nouveau statut</th>
                         <th></th>
                     </tr>
                 </thead>
                 
                 <tbody>
-                    <tr *ngFor="let com of listCommandes()">
+                    <tr *ngFor="let com of listCommandesPastermine()">
                     <td>{{com.numero}}</td>
                     <td>{{com.client.nom}}</td>
                     <td>{{com.client.prenom}}</td>
                     <td>{{com.dateArrivee | date:"dd/MM/yyyy"}}</td>
                     <td>{{com.heureArrive}}</td>
                     <td >{{com.etatcommande}}</td>
-                    <td *ngIf="etatcommande"> 
-                    <div >
-                      <select id="etatcommande" name="etatcommande" [(ngModel)]="com.etatcommande">
-                        <option value="EnCours">En Cours</option>
-                        <option value="Prete">Prete</option>
-                        <option value="Termine">Termine</option>
-                      </select>
-                    </div> 
-                    </td>
-                    <td>  <div class="btn-group btn-group-lg float-right" >
-                        <a class="btn btn-success" *ngIf="cache" (click)="appel()"><i class="bi bi-check-square-fill"></i></a>
-                        <a class="btn btn-success" *ngIf="etatcommande" (click)="edit(com.numero)"><i class="bi bi-check-square-fill"></i></a>
-                        <a class="btn btn-warning" *ngIf="etatcommande" (click)="cancel()"><i class="bi bi-backspace-fill"></i></a>
+
+                    <td>  <div class="btn-group btn-group-lg float-right " >
+                        <a class="btn btn-warning bouton"  (click)="Encours(com.numero)"><i class="bi bi-check-square-fill"></i></a>
+                        <a class="btn btn-info bouton" (click)="Prete(com.numero)"><i class="bi bi-check-square-fill"></i></a>
+                        <a class="btn btn-success bouton" (click)="termine(com.numero)"><i class="bi bi-check-square-fill"></i></a>
                   </div></td>
                     <td></td>
                     </tr>
@@ -121,7 +113,7 @@
     </div>
     
     <div class="card mt-3 hcommande">
-        <div class="card-header bg-success text-white display-6">Historique de commande</div>
+        <div class="card-header bg-success text-white display-6">Historique des commandes</div>
         <div class="card-body max">
             <table class="table">
                 <thead class="table-dark">
@@ -132,17 +124,22 @@
                       <th>Date d'arrivée</th>
                       <th>Heure d'arrivée</th>
                       <th>Statut de la commande</th>
+                      <th>Nouveau statut</th>
                     </tr>
                 </thead>
     
                 <tbody>
-                  <tr *ngFor="let com of listCommandes()">
+                  <tr *ngFor="let com of listCommandestermine()">
                     <td>{{com.numero}}</td>
                     <td>{{com.client.nom}}</td>
                     <td>{{com.client.prenom}}</td>
                     <td>{{com.dateArrivee | date:"dd/MM/yyyy"}}</td>
                     <td>{{com.heureArrive}}</td>
                     <td>{{com.etatcommande }}</td>
+                    <td>  <div class="btn-group btn-group-lg float-right " >
+                      <a class="btn btn-warning bouton"  (click)="Encours(com.numero)"><i class="bi bi-check-square-fill"></i></a>
+                      <a class="btn btn-info bouton"  (click)="Prete(com.numero)"><i class="bi bi-check-square-fill"></i></a>
+                </div></td>
                    </tr>
                 </tbody>
     

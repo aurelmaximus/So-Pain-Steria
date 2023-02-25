@@ -7,7 +7,8 @@ import { Employe } from '../model';
   providedIn: 'root'
 })
 export class EmployegcHttpService {
-
+  
+  formEmploye: Employe = null;
     employes: Array<Employe> = new Array<Employe>();
 
   constructor(private http: HttpClient) {

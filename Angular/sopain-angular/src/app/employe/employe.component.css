@@ -53,5 +53,13 @@ display: flex;
     overflow: auto;
 }
 
+.bouton{
+   
+    --bs-btn-font-size: 0.90rem;
+    --bs-btn-padding-y: 0.30rem;
+    --bs-btn-padding-x: 0.70rem;
+}
+
+
 
  

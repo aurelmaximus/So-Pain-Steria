@@ -1,6 +1,6 @@
 <div id="content">
     <div class="card mt-3 employe">
-        <div class="card-header bg-success text-white display-6 ">Information employe</div>
+        <div class="card-header bg-success text-white display-6 ">Information employé</div>
         <div class="card-body" *ngFor="let emp of list()">
     
             <div name="1" class="card2">
@@ -86,6 +86,8 @@
                         <th>Voie</th>
                         <th>Code Postal</th>
                         <th>Ville</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 </thead>
                 
@@ -99,16 +101,79 @@
                     <td>{{emp.adresse.voie}}</td>
                     <td>{{emp.adresse.cp}}</td>
                     <td>{{emp.adresse.ville}}</td>
+                    <td>
+                    <div class="btn-group btn-group-sm " *ngIf="cache">
+                      <a class="btn btn-primary" (click)="edit(emp.id)"><i
+                              class="bi bi-pencil-square"></i></a>
+                      <a class="btn btn-danger" (click)="remove(emp.id)"><i class="bi bi-trash"></i></a>
+                    </div>
+                    </td>
+
                     </tr>
                 </tbody>
+
+                
               
+             
             </table>
-        </div>
+            <div class="card-footer">
+              <a class="btn btn-success btn-lg bouton" (click)="add()"> Ajouter un employé</a> 
+              &nbsp;  &nbsp; <a class="btn btn-success btn-lg bouton" (click)="modif()"> Modifier un employé</a>
+              &nbsp;  &nbsp; <a class="btn btn-warning btn-lg bouton" (click)="cancel()"> Annuler</a>
+            </div>
+        
+        
+         </div>
       
-    </div>
+      </div>
      
     </div>
+ </div>
+ 
+<div class="card mt-3" *ngIf="formEmploye">
+  <div class="card-header bg-success text-white display-6">Edition d'un Employé</div>
+  <div class="card-body">
+      <div class="form-group">
+          <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formEmploye.id" readonly/>
+      </div>
+
+      <div class="form-group">
+          <label for="nom">Nom:</label> <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formEmploye.nom" />
+      </div>
+      
+      <div class="form-group">
+          <label for="prenom">Prénom:</label> <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="formEmploye.prenom" />
+      </div>
+
+      <div class="form-group">
+        <label for="nom">Email:</label> <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formEmploye.email" />
     </div>
+
+    <div class="form-group">
+        <label for="prenom">Numéro:</label> <input type="text" class="form-control" id="numéro" name="numéro" [(ngModel)]="formEmploye.adresse.numero" />
+    </div>
+
+    <div class="form-group">
+      <label for="nom">Voie:</label> <input type="text" class="form-control" id="voie" name="voie" [(ngModel)]="formEmploye.adresse.voie" />
+  </div>
+
+  <div class="form-group">
+      <label for="prenom">Code Postal:</label> <input type="text" class="form-control" id="cp" name="cp" [(ngModel)]="formEmploye.adresse.cp" />
+  </div>
+
+  <div class="form-group">
+    <label for="prenom">Ville:</label> <input type="text" class="form-control" id="ville" name="ville" [(ngModel)]="formEmploye.adresse.ville" />
+</div>
+     
+  </div>
+  <div class="card-footer">
+      <div class="btn-group btn-group-lg float-right">
+          <a class="btn btn-success" (click)="save()"><i class="bi bi-check-square-fill">  valider</i>
+         </a>
+          <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace-fill"> Annuler</i></a>
+      </div>
+  </div>
+</div>
     
 
     

@@ -37,6 +37,7 @@ export class Adresse {
 }
 
 
+
 export class Employe extends Compte {
   
     constructor(id?:number, version?: number , email?: string, password?: string, nom?: string, prenom?: string, adresse?:Adresse) {
@@ -83,6 +84,12 @@ export class Commande {
       
        
     }
+}
+
+export enum EtatCommande {
+
+    EnCours,Prete,Termine
+
 }
 
 

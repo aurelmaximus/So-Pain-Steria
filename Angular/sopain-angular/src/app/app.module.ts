@@ -17,6 +17,7 @@ import { MaisonComponent } from './maison/maison.component';
 import { PainComponent } from './pain/pain.component';
 import { ViennoiserieComponent } from './viennoiserie/viennoiserie.component';
 import { PatisserieComponent } from './patisserie/patisserie.component';
+import { CommandeComponent } from './commande/commande.component';
 
 
 

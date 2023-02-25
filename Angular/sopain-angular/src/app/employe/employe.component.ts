@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommandeHttpService } from '../commande/commande-http.service';
-import { Commande, Employe } from '../model';
+import { Commande, Employe, EtatCommande } from '../model';
 import { EmployeHttpService } from './employe-http.service';
 
 @Component({
@@ -25,33 +25,77 @@ export class EmployeComponent {
   }
 
   
-  listCommandes(): Array<Commande> {
-    return this.commandeService.findAll();
+  listCommandesPastermine(): Array<Commande> {
+    return this.commandeService.findAllPasTermine();
   }
 
-
-  appel(): void {
-   this.etatcommande=true;
-   this.cache=false;
+  listCommandestermine(): Array<Commande> {
+    return this.commandeService.findAllTermine();
   }
+
 
   cancel(): void {
     this.etatcommande=false;
     this.cache=true;
   }
 
-  edit(numero: number): void {
-    this.commandeService.findById(numero).subscribe(response => {
-      console.log('response from findById', response);
-  
-      this.formCommande = response;
-      console.log('formCommande before update', this.formCommande);
-  
+  save(): void {
+    if(this.formCommande.numero) {
       this.commandeService.update(this.formCommande);
-      console.log('formCommande afterupdate', this.formCommande);
+    } else {
+      this.commandeService.create(this.formCommande);
+    }
+
+    this.cancel();
+  }
+ 
+Encours(numero: number): void {
+  this.commandeService.findById(numero).subscribe(response => {
+   
+    this.formCommande = response;
+   
+
+    this.formCommande.etatcommande = 'EnCours';
+   
+    this.save();
   
-      this.cancel();
-    });
+  });
+ 
+}
+
+Prete(numero: number): void {
+  this.commandeService.findById(numero).subscribe(response => {
+    
+    this.formCommande = response;
+    
+    if (confirm('Voulez-vous vraiment marquer cette commande comme Prete ?'))
+
+    this.formCommande.etatcommande = 'Prete';
+   
+    this.save();
+  
+  });
+ 
+}
+
+termine(numero: number): void {
+  this.commandeService.findById(numero).subscribe(response => {
+    
+    this.formCommande = response;
+    
+
+    this.formCommande.etatcommande = 'Termine';
+    
+    this.save();
+  
+  });
+ 
+}
+
+
+  avant(): void {
+   
+    
   }
 
 

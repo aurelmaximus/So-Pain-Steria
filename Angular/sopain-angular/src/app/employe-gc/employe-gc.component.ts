@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommandeHttpService } from '../commande/commande-http.service';
-import { Employe, Commande } from '../model';
+import { Employe, Compte, Adresse } from '../model';
 import { EmployegcHttpService } from './employe-gc.http.service';
 
 @Component({
@@ -11,7 +11,12 @@ import { EmployegcHttpService } from './employe-gc.http.service';
 export class EmployeGcComponent {
 
   formEmploye: Employe = null;
-
+  
+  cache:boolean=false;
+  
+  masquer:boolean=true;
+  
+  
 
 
   constructor(private employeService: EmployegcHttpService) {
@@ -26,8 +31,51 @@ export class EmployeGcComponent {
     return this.employeService.findAll();
   }
  
+  
+  add(): void {
+    
+    this.formEmploye = new Employe();
+    this.formEmploye.adresse = new Adresse();
+  
 
+  }
+
+  modif(): void {
+    this.cache=true;
+    this.masquer=false;
+  }
+  
+  save(): void {
+    if(this.formEmploye.id) {
+      this.employeService.update(this.formEmploye);
+    } else {
+      this.employeService.create(this.formEmploye);
+    }
+
+    this.cancel();
+  }
+
+  remove(id: number): void {
+    this.employeService.remove(id);
+  }
+
+  cancel(): void {
+    this.formEmploye = null;
+    this.cache=false;
+    
+  }
+
+  edit(id: number): void {
+    this.employeService.findById(id).subscribe(response => {
+      this.formEmploye = response;
+  
+      
+    });
+  }
 
 
 
 }
+
+
+
