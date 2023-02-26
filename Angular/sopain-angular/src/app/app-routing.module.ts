@@ -10,6 +10,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { PainComponent } from './pain/pain.component';
 import { PatisserieComponent } from './patisserie/patisserie.component';
 import { ViennoiserieComponent } from './viennoiserie/viennoiserie.component';
+import { NouscontacterComponent } from './nouscontacter/nouscontacter.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
 {path: "patisserie", component: PatisserieComponent},
 {path: "maison", component: MaisonComponent},
 {path: "auth", component: AuthComponent},
+{path: "Nous-Contacter", component: NouscontacterComponent},
 ];
 
 

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
-import { InscriptionComponent } from './inscription/inscription.component';
+
 import { EmployeComponent } from './employe/employe.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +18,7 @@ import { PainComponent } from './pain/pain.component';
 import { ViennoiserieComponent } from './viennoiserie/viennoiserie.component';
 import { PatisserieComponent } from './patisserie/patisserie.component';
 import { CommandeComponent } from './commande/commande.component';
+import { NouscontacterComponent } from './nouscontacter/nouscontacter.component';
 
 
 
@@ -26,7 +27,7 @@ import { CommandeComponent } from './commande/commande.component';
     AppComponent,
     NavBarComponent,
     FooterComponent,
-    InscriptionComponent,
+  
     HomeComponent,
     MaisonComponent,
     EmployeComponent,
@@ -36,7 +37,8 @@ import { CommandeComponent } from './commande/commande.component';
     EmployeGcComponent,
     PainComponent,
     ViennoiserieComponent,
-    PatisserieComponent
+    PatisserieComponent,
+    NouscontacterComponent
   ],
   imports: [
     BrowserModule,

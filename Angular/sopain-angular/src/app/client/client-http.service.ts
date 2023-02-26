@@ -18,7 +18,7 @@ export class ClientHttpService {
     return this.clients;
   }
 
-
+ 
 
   findById(id: number): Observable<Client> {
     return this.http.get<Client>("http://localhost:8888/client/" + id);
