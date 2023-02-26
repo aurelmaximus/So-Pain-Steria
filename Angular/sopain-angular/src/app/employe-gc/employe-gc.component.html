@@ -1,6 +1,6 @@
 <div id="content">
     <div class="card mt-3 employe">
-        <div class="card-header bg-success text-white display-6 ">Information employé</div>
+        <div class="card-header entete display-6 ">Information employé</div>
         <div class="card-body" *ngFor="let emp of list()">
     
             <div name="1" class="card2">
@@ -73,7 +73,7 @@
     
     <div id="contentdroite">
     <div class="card mt-3 employeg">
-        <div class="card-header bg-success text-white display-6">Liste des employés</div>
+        <div class="card-header entete display-6">Liste des employés</div>
         <div class="card-body">
             <table class="table">
                 <thead class="table-dark">
@@ -117,9 +117,9 @@
              
             </table>
             <div class="card-footer">
-              <a class="btn btn-success btn-lg bouton" (click)="add()"> Ajouter un employé</a> 
-              &nbsp;  &nbsp; <a class="btn btn-success btn-lg bouton" (click)="modif()"> Modifier un employé</a>
-              &nbsp;  &nbsp; <a class="btn btn-warning btn-lg bouton" (click)="cancel()"> Annuler</a>
+              <a class="btn  btn-lg bouton bouton2" (click)="add()"> Ajouter un employé</a> 
+              &nbsp;  &nbsp; <a class="btn btn-lg bouton bouton2" (click)="modif()"> Modifier un employé</a>
+              &nbsp;  &nbsp; <a class="btn bouton3 btn-lg bouton " (click)="cancel()"> Annuler</a>
             </div>
         
         
@@ -131,46 +131,54 @@
  </div>
  
 <div class="card mt-3" *ngIf="formEmploye">
-  <div class="card-header bg-success text-white display-6">Edition d'un Employé</div>
+  <div class="card-header entete display-6">Edition d'un Employé</div>
   <div class="card-body">
-      <div class="form-group">
-          <label for="id">Identifiant:</label> <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formEmploye.id" readonly/>
-      </div>
-
-      <div class="form-group">
-          <label for="nom">Nom:</label> <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formEmploye.nom" />
-      </div>
-      
-      <div class="form-group">
-          <label for="prenom">Prénom:</label> <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="formEmploye.prenom" />
-      </div>
-
-      <div class="form-group">
-        <label for="nom">Email:</label> <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formEmploye.email" />
+    <div class="form-group">
+      <label for="id">Identifiant:</label> 
+      <input type="number" class="form-control" id="id" name="id" [(ngModel)]="formEmploye.id" readonly required />
+  </div>
+  
+  <div class="form-group">
+      <label for="nom">Nom:</label> 
+      <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formEmploye.nom" required />
+    </div>
+  
+  <div class="form-group">
+      <label for="prenom">Prénom:</label> 
+      <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="formEmploye.prenom" required />
+  </div>
+  
+  <div class="form-group">
+      <label for="email">Email:</label> 
+      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formEmploye.email" required />
+  </div>
+  
+  <div class="form-group">
+      <label for="numero">Numéro:</label> 
+      <input type="text" class="form-control" id="numero" name="numero" [(ngModel)]="formEmploye.adresse.numero" required />
+  </div>
+  
+  <div class="form-group">
+      <label for="voie">Voie:</label> 
+      <input type="text" class="form-control" id="voie" name="voie" [(ngModel)]="formEmploye.adresse.voie" required />
+  </div>
+  
+  <div class="form-group">
+      <label for="cp">Code Postal:</label> 
+      <input type="text" class="form-control" id="cp" name="cp" [(ngModel)]="formEmploye.adresse.cp" required />
     </div>
 
-    <div class="form-group">
-        <label for="prenom">Numéro:</label> <input type="text" class="form-control" id="numéro" name="numéro" [(ngModel)]="formEmploye.adresse.numero" />
-    </div>
-
-    <div class="form-group">
-      <label for="nom">Voie:</label> <input type="text" class="form-control" id="voie" name="voie" [(ngModel)]="formEmploye.adresse.voie" />
-  </div>
-
   <div class="form-group">
-      <label for="prenom">Code Postal:</label> <input type="text" class="form-control" id="cp" name="cp" [(ngModel)]="formEmploye.adresse.cp" />
-  </div>
-
-  <div class="form-group">
-    <label for="prenom">Ville:</label> <input type="text" class="form-control" id="ville" name="ville" [(ngModel)]="formEmploye.adresse.ville" />
+    <label for="prenom">Ville:</label>
+     <input type="text" class="form-control" id="ville" name="ville" [(ngModel)]="formEmploye.adresse.ville" />
 </div>
      
   </div>
   <div class="card-footer">
       <div class="btn-group btn-group-lg float-right">
-          <a class="btn btn-success" (click)="save()"><i class="bi bi-check-square-fill">  valider</i>
+          <a class="btn bouton2" (click)="save()"><i class="bi bi-check-square-fill">  valider</i>
          </a>
-          <a class="btn btn-warning" (click)="cancel()"><i class="bi bi-backspace-fill"> Annuler</i></a>
+          <a class="btn bouton3" (click)="cancel()"><i class="bi bi-backspace-fill"> Annuler</i></a>
       </div>
   </div>
 </div>

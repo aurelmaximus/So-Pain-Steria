@@ -92,11 +92,6 @@ termine(numero: number): void {
  
 }
 
-
-  avant(): void {
-   
-    
-  }
-
+ 
 
 }

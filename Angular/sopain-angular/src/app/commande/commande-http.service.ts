@@ -15,23 +15,34 @@ export class CommandeHttpService {
     this.load();
   }
 
+  findAll(): Array<Commande> {
+    return this.commandes;
+  }
+
   findAllPasTermine(): Array<Commande> {
     return this.commandes
       .filter(commande => commande.etatcommande === 'EnCours' || commande.etatcommande === 'Prete')
       .sort((a, b) => {
+        const dateA = new Date(`${a.dateArrivee} ${a.heureArrive}`);
+        const dateB = new Date(`${b.dateArrivee} ${b.heureArrive}`);
         if (a.etatcommande === 'EnCours' && b.etatcommande === 'Prete') {
           return -1;
         } else if (a.etatcommande === 'Prete' && b.etatcommande === 'EnCours') {
-          return 1; 
+          return 1;
         } else {
-          return 0; 
+          return dateA.getTime() - dateB.getTime();
         }
       });
-      
   }
 
   findAllTermine(): Array<Commande> {
-    return this.commandes.filter(commande => commande.etatcommande === 'Termine');
+    return this.commandes
+      .filter(commande => commande.etatcommande === 'Termine')
+      .sort((a, b) => {
+        const dateA = new Date(`${a.dateArrivee} ${a.heureArrive}`);
+        const dateB = new Date(`${b.dateArrivee} ${b.heureArrive}`);
+        return dateB.getTime() - dateA.getTime();
+      });
   }
 
   findById(numero: number): Observable<Commande> {

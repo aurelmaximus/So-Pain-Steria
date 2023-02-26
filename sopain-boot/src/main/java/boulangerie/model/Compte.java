@@ -12,6 +12,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
+import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
@@ -43,6 +44,7 @@ public  class Compte {
 	
 	@Column(name="last_name", length =25)
 	@JsonView(Views.ViewBase.class)
+	@NotBlank(message = "le nom est obligatoire")
 	private String nom;
 	
 	@Column(name="first_name", length =25)

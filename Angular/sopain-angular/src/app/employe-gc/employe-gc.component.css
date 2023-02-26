@@ -46,6 +46,28 @@ display: flex;
     font-size: 17px;
 }
 
+.entete{
+    
+    background-color: #d8cac1;
+    color: black;
+    
+    }
+
+.bouton2{
+
+        background-color: #cdc8bf;
+        color: black;
+        
+}
+
+.bouton3{
+
+        background-color: #e8794d;
+        color: black;
+        
+}
+
+    
 
 
  

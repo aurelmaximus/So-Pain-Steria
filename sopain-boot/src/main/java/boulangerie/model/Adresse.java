@@ -1,6 +1,7 @@
 package boulangerie.model;
 
 import javax.persistence.Embeddable;
+import javax.validation.constraints.Pattern;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
@@ -23,6 +24,7 @@ public class Adresse {
 	
 	@Column(name="zip_code", length =10)
 	@JsonView(Views.ViewBase.class)
+	@Pattern(regexp = "^([0-9]{2}|2[abAB])[0-9]{3}$", message="code postal invalide")
 	private String cp;
 	
 	

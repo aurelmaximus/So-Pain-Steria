@@ -1,20 +1,20 @@
 <div id="content">
     <div class="card mt-3 employe">
-        <div class="card-header entete display-6 ">Informations employé</div>
-        <div class="card-body" *ngFor="let emp of list()">
+        <div class="card-header entete display-6 ">Mes Informations client</div>
+        <div class="card-body" *ngFor="let cli of list()">
     
             <div name="1" class="card2">
             <div class="card card1">
                 <div class="card-body">
-                  <h5 class="card-title">Identifiant</h5>
-                  <p class="card-text">{{emp.id}}</p>
+                  <h5 class="card-title">Nom</h5>
+                  <p class="card-text">{{cli.nom}}</p>
                 </div>
               </div>
     
               <div class="card card1">
                 <div class="card-body">
-                  <h5 class="card-title">Nom</h5>
-                  <p class="card-text">{{emp.nom}}</p>
+                  <h5 class="card-title">Prénom</h5>
+                  <p class="card-text">{{cli.prenom}}</p>
                 </div>
               </div>
             </div>
@@ -22,15 +22,15 @@
             <div name="2" class="card2">
               <div class="card card1">
                 <div class="card-body">
-                  <h5 class="card-title">Prénom</h5>
-                  <p class="card-text">{{emp.prenom}}</p>
+                  <h5 class="card-title">Email</h5>
+                  <p class="card-text">{{cli.email}}</p>
                 </div>
               </div>
     
               <div class="card card1">
                 <div class="card-body">
-                  <h5 class="card-title">Email</h5>
-                  <p class="card-text">{{emp.email}}</p>
+                  <h5 class="card-title">Mot de passe</h5>
+                  <p class="card-text">{{cli.password}}</p>
                 </div>
               </div>
             </div>
@@ -40,14 +40,14 @@
               <div class="card card1">
                   <div class="card-body">
                     <h5 class="card-title">Numéro</h5>
-                    <p class="card-text">{{emp.adresse.numero}}</p>
+                    <p class="card-text">{{cli.adresse.numero}}</p>
                   </div>
                 </div>
       
                 <div class="card card1">
                   <div class="card-body">
                     <h5 class="card-title">Voie</h5>
-                    <p class="card-text">{{emp.adresse.voie}}</p>
+                    <p class="card-text">{{cli.adresse.voie}}</p>
                   </div>
                 </div>
               </div>
@@ -56,14 +56,14 @@
                 <div class="card card1">
                   <div class="card-body">
                     <h5 class="card-title">Code Postal</h5>
-                    <p class="card-text">{{emp.adresse.cp}}</p>
+                    <p class="card-text">{{cli.adresse.cp}}</p>
                   </div>
                 </div>
       
                 <div class="card card1">
                   <div class="card-body">
                     <h5 class="card-title">Ville</h5>
-                    <p class="card-text">{{emp.adresse.ville}}</p>
+                    <p class="card-text">{{cli.adresse.ville}}</p>
                   </div>
                 </div>
               </div>
@@ -78,13 +78,10 @@
             <table class="table">
                 <thead class="table-dark">
                     <tr>
-                        <th>Numero</th>
-                        <th>Nom</th>
-                        <th>Prenom</th>
+                        <th>Numero de commande</th>
                         <th>Date d'arrivée</th>
                         <th>Heure d'arrivée</th>
                         <th>Statut de la commande</th>
-                        <th>Nouveau statut</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -92,17 +89,9 @@
                 <tbody>
                     <tr *ngFor="let com of listCommandesPastermine()">
                     <td>{{com.numero}}</td>
-                    <td>{{com.client.nom}}</td>
-                    <td>{{com.client.prenom}}</td>
                     <td>{{com.dateArrivee | date:"dd/MM/yyyy"}}</td>
                     <td>{{com.heureArrive}}</td>
                     <td >{{com.etatcommande}}</td>
-
-                    <td>  <div class="btn-group btn-group-lg float-right " >
-                        <a class="btn cours bouton"  (click)="Encours(com.numero)"><i class="bi bi-check-square-fill"></i></a>
-                        <a class="btn prete bouton" (click)="Prete(com.numero)"><i class="bi bi-check-square-fill"></i></a>
-                        <a class="btn termine bouton" (click)="termine(com.numero)"><i class="bi bi-check-square-fill"></i></a>
-                  </div></td>
                     <td></td>
                     </tr>
                 </tbody>
@@ -118,28 +107,19 @@
             <table class="table">
                 <thead class="table-dark">
                     <tr>
-                      <th>Numero</th>
-                      <th>Nom</th>
-                      <th>Prenom</th>
-                      <th>Date d'arrivée</th>
+                      <th>Numero de commande</th>
+                      <th>Date de commande</th>
                       <th>Heure d'arrivée</th>
                       <th>Statut de la commande</th>
-                      <th>Nouveau statut</th>
                     </tr>
                 </thead>
     
                 <tbody>
                   <tr *ngFor="let com of listCommandestermine()">
                     <td>{{com.numero}}</td>
-                    <td>{{com.client.nom}}</td>
-                    <td>{{com.client.prenom}}</td>
                     <td>{{com.dateArrivee | date:"dd/MM/yyyy"}}</td>
                     <td>{{com.heureArrive}}</td>
                     <td>{{com.etatcommande }}</td>
-                    <td>  <div class="btn-group btn-group-lg float-right " >
-                      <a class="btn cours bouton"  (click)="Encours(com.numero)"><i class="bi bi-check-square-fill"></i></a>
-                      <a class="btn prete bouton"  (click)="Prete(com.numero)"><i class="bi bi-check-square-fill"></i></a>
-                </div></td>
                    </tr>
                 </tbody>
     

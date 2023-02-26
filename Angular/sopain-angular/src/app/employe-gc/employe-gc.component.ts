@@ -13,14 +13,13 @@ export class EmployeGcComponent {
   formEmploye: Employe = null;
   
   cache:boolean=false;
-  
   masquer:boolean=true;
-  
-  
 
 
   constructor(private employeService: EmployegcHttpService) {
   }
+
+
 
   list(): Array<Employe> {
     return this.employeService.findAll();
@@ -44,8 +43,10 @@ export class EmployeGcComponent {
     this.cache=true;
     this.masquer=false;
   }
-  
+
+
   save(): void {
+
     if(this.formEmploye.id) {
       this.employeService.update(this.formEmploye);
     } else {
