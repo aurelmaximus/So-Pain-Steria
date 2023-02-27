@@ -10,9 +10,9 @@ import { ClientHttpService } from './client-http.service';
 })
 export class ClientComponent {
 
-  formClient: Client = null
-  form : boolean = true;
-  page2 : boolean = false;
+  formClient: Client = null;
+  // form : boolean = true;
+  // page2 : boolean = false;
 
   constructor(private clientService: ClientHttpService) {
     this.formClient = new Client();
@@ -42,10 +42,10 @@ export class ClientComponent {
       this.clientService.create(this.formClient);
     }
 
-     this.form=false;
-     this.page2=true;
+    //  this.form=false;
+    //  this.page2=true;
 
-     setTimeout(function(){window.location.replace("http://localhost:4200/")},3000);
+    //  setTimeout(function(){window.location.replace("http://localhost:4200/")},3000);
       
 
   }
