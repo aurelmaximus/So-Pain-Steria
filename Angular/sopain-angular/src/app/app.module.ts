@@ -18,6 +18,7 @@ import { PainComponent } from './pain/pain.component';
 import { ViennoiserieComponent } from './viennoiserie/viennoiserie.component';
 import { PatisserieComponent } from './patisserie/patisserie.component';
 import { CommandeComponent } from './commande/commande.component';
+import { PanierComponent } from './panier/panier.component';
 import { NouscontacterComponent } from './nouscontacter/nouscontacter.component';
 import { CompteclientComponent } from './compteclient/compteclient.component';
 
@@ -34,6 +35,8 @@ import { CompteclientComponent } from './compteclient/compteclient.component';
     EmployeComponent,
     ClientComponent,
     AuthComponent,
+    CommandeComponent,
+    PanierComponent,
     CommandeComponent,
     EmployeGcComponent,
     PainComponent,

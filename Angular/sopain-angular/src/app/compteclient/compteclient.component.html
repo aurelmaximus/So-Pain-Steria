@@ -89,7 +89,7 @@
                 <tbody>
                     <tr *ngFor="let com of listCommandesPastermine()">
                     <td>{{com.numero}}</td>
-                    <td>{{com.dateArrivee | date:"dd/MM/yyyy"}}</td>
+                    <td>{{com.dateArrivee }}</td>
                     <td>{{com.heureArrive}}</td>
                     <td >{{com.etatcommande}}</td>
                     <td></td>
@@ -117,7 +117,7 @@
                 <tbody>
                   <tr *ngFor="let com of listCommandestermine()">
                     <td>{{com.numero}}</td>
-                    <td>{{com.dateArrivee | date:"dd/MM/yyyy"}}</td>
+                    <td>{{com.dateArrivee }}</td>
                     <td>{{com.heureArrive}}</td>
                     <td>{{com.etatcommande }}</td>
                    </tr>

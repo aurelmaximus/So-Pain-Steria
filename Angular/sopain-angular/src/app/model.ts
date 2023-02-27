@@ -6,7 +6,7 @@ export class Compte {
     nom: string;
     prenom: string;
     adresse:Adresse;
-    type_compte: string;
+    type: string;
  
     constructor(id?:number, version?: number , email?: string, password?: string, nom?: string, prenom?: string, adresse?:Adresse) {
         this.id = id;

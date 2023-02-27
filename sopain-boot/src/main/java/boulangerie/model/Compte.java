@@ -14,6 +14,7 @@ import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 import javax.validation.constraints.NotBlank;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 import com.fasterxml.jackson.annotation.JsonView;
@@ -23,6 +24,13 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Table(name = "account", uniqueConstraints = @UniqueConstraint(columnNames = { "last_name", "first_name" }))
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
+@JsonTypeInfo (use = JsonTypeInfo.Id.MINIMAL_CLASS, 
+include = As.PROPERTY, property  = "type") @JsonSubTypes({
+
+	@JsonSubTypes.Type(value = Client.class, name = "customer"),
+	@JsonSubTypes.Type(value = Employe.class, name = "employe")
+})
+
 public  class Compte {
 	
 	@Id
@@ -55,10 +63,9 @@ public  class Compte {
 	@JsonView(Views.ViewBase.class)
 	private Adresse adresse;
 
-	@JsonTypeInfo (use = JsonTypeInfo.Id.MINIMAL_CLASS, 
-			include = As.PROPERTY, property = "@class")
-	@JsonView(Views.ViewCompte.class)
-	private String type_compte;
+
+	//@JsonView(Views.ViewCompte.class)
+	//private String type;
 	
 	
 //	@JsonTypeInfo (use = JsonTypeInfo.Id.NAME, 
