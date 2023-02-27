@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+  import { Component } from '@angular/core';
 import { CommandeHttpService } from '../commande/commande-http.service';
 import { Employe, Compte, Adresse } from '../model';
 import { EmployegcHttpService } from './employe-gc.http.service';

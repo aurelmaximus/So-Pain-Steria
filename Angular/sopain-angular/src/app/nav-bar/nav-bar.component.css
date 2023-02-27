@@ -1,14 +1,4 @@
 
-#header
-{
-  position: relative;
-  text-align: center;
-  width: 80%;
-  margin-left: 10%;
-  margin-right:  10%;
-}
-
-
 
 @media (min-width: 768px) {
 	.bd-placeholder-img-lg {
@@ -58,3 +48,12 @@ border-radius:35%
 	white-space: nowrap;
 	-webkit-overflow-scrolling: touch;
   }
+
+.logo{
+margin-left: 100px;
+
+}
+
+.connexion{
+	margin-right: 100px;
+}
