@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Employe } from '../model';
+import { AuthService } from '../auth/auth.service';
+import { Compte, Employe } from '../model';
 
 @Injectable({
   providedIn: 'root'
@@ -9,8 +10,9 @@ import { Employe } from '../model';
 export class EmployeHttpService {
 
     employes: Array<Employe> = new Array<Employe>();
+    currentCompte : Compte;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private auth: AuthService) {
     this.load();
   }
 
@@ -40,10 +42,13 @@ export class EmployeHttpService {
     });
   }
 
-  private load(): void {
-    this.http.get<Array<Employe>>("http://localhost:8888/employe").subscribe(resp => {
-      this.employes = resp;
-    });
+  findByIdEmp(id: number): Observable<Compte> {
+    return this.http.get<Compte>("http://localhost:8888/compte/" + id);
   }
 
+  private load(): void {
+    this.findByIdEmp(this.auth.connected.id).subscribe(resp => {
+      this.currentCompte=resp;
+    });
+  }
 }

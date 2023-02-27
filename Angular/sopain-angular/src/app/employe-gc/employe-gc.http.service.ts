@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 import { Employe } from '../model';
 
 @Injectable({
@@ -8,10 +9,11 @@ import { Employe } from '../model';
 })
 export class EmployegcHttpService {
   
-  formEmploye: Employe = null;
-    employes: Array<Employe> = new Array<Employe>();
 
-  constructor(private http: HttpClient) {
+    employes: Array<Employe> = new Array<Employe>();
+    currentEmploye : Employe;
+
+  constructor(private http: HttpClient, private auth: AuthService) {
     this.load();
   }
 
@@ -42,9 +44,13 @@ export class EmployegcHttpService {
     });
   }
 
+  findByIdEmp(id: number): Observable<Employe> {
+    return this.http.get<Employe>("http://localhost:8888/employe/" + id);
+  }
+
   private load(): void {
-    this.http.get<Array<Employe>>("http://localhost:8888/employe").subscribe(resp => {
-      this.employes = resp;
+    this.findByIdEmp(this.auth.connected.id).subscribe(resp => {
+      this.currentEmploye=resp;
     });
   }
 

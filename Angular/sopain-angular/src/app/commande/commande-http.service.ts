@@ -75,12 +75,5 @@ export class CommandeHttpService {
     });
   }
 
-  private loadEtatcommande(): void {
-    this.http.get<Array<string>>("http://localhost:8888/etatcommandes").subscribe(resp => {
-      resp.forEach(civ => {
-        this.etatcommandes.set(civ, civ);
-      });
-    });
-  }
 
 }

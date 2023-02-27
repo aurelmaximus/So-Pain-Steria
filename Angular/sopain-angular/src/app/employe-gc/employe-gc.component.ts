@@ -75,6 +75,9 @@ export class EmployeGcComponent {
   }
 
 
+  employeconnecte(): Employe {
+    return this.employeService.currentEmploye;
+  }
 
 }
 

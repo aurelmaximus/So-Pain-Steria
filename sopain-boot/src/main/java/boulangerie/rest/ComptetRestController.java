@@ -19,11 +19,8 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import boulangerie.model.Compte;
-import boulangerie.model.Employe;
 import boulangerie.model.Views;
-import boulangerie.repository.ClientRepository;
 import boulangerie.repository.CompteRepository;
-import boulangerie.repository.EmployeRepository;
 import boulangerie.rest.dto.AuthDTO;
 
 
@@ -36,10 +33,7 @@ public class ComptetRestController {
 
 	@Autowired
 	private CompteRepository compteRepository;
-	@Autowired
-	private EmployeRepository empRepository;
-	@Autowired
-	private ClientRepository clientRepository;
+
 
 	@GetMapping("")
 	@JsonView(Views.ViewCompte.class)

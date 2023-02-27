@@ -92,6 +92,35 @@ export enum EtatCommande {
 
 }
 
+export class Produit {
+    id: number; 
+	version: number;
+    prix:number;
+    libelle:string;
+
+    constructor(id?:number, version?: number, prix?:number, libelle?:string) {
+        this.id = id;
+        this.version = version;
+        this.prix = prix;
+        this.libelle = libelle;
+       
+    }
+}
+
+export class Basique extends Produit {
+   
+    categorie:string;
+
+    constructor(id?:number, version?: number, prix?:number, libelle?:string, categorie?:string) {
+        super(id,version,prix,libelle);
+
+    this.categorie=categorie;
+    
+    }
+
+
+}
+
 
 
 
