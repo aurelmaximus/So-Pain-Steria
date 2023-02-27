@@ -26,7 +26,7 @@ export class AuthService {
       this.connected=resp;
 
     
-    if(this.connected.email) {
+    if(this.connected.id!=0) {
       this.logged=true;
     }
     else this.logged=false;
@@ -53,8 +53,8 @@ export class AuthService {
   logout():void {
     this.connected = new Compte();
     this.logged=false;
-    this.router.navigate(['']);
-    sessionStorage.clear;
+    this.idConnected=0;
+    sessionStorage.clear();
     this.router.navigate(['/maison']);
   }
 
