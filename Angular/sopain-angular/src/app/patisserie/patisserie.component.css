@@ -1,3 +1,4 @@
+
 .bd-placeholder-img {
   font-size: 1.125rem;
   text-anchor: middle;
@@ -55,3 +56,32 @@
   transform: translate(-50%,-50%);
   -webkit-overflow-scrolling: touch;
 }
+/* for animation */
+figure {
+  position: relative;
+}
+
+figcaption {
+  position: absolute;
+  inset: 2px;
+  display: none;
+}
+
+figure:hover figcaption {
+  display: flex;
+}
+
+
+/* for visualization only */
+figure {
+  display: inline-block;
+}
+
+figcaption {
+  padding: 1em;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+

@@ -16,11 +16,21 @@ import { NouscontacterComponent } from './nouscontacter/nouscontacter.component'
 
 
 const routes: Routes = [
-{path: "client", component: ClientComponent},
-{path: "employe", component: EmployeComponent},
-{path: "auth", component: AuthComponent},
-{path: "panier", component: PanierComponent}
-];
+  {path: "client", component: ClientComponent},
+  {path: "employe", component: EmployeComponent},
+  {path: "auth", component: AuthComponent},
+  {path: "", component: HomeComponent, pathMatch: 'full'},
+  {path: "patisserie", component: PatisserieComponent},
+  {path: "viennoiserie", component: ViennoiserieComponent},
+  {path: "employegc", component: EmployeGcComponent},
+  {path: "pain", component: PainComponent},
+  {path: "viennoiserie", component: ViennoiserieComponent},
+  {path: "patisserie", component: PatisserieComponent},
+  {path: "maison", component: MaisonComponent},
+  {path: "auth", component: AuthComponent},
+  {path: "Nous-Contacter", component: NouscontacterComponent},
+  {path: "compteclient", component: CompteclientComponent},
+  ];
 
 
 @NgModule({
