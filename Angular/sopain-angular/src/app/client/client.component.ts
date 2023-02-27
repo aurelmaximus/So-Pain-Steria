@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Client } from '../model';
+import { Adresse, Client } from '../model';
 import { ClientHttpService } from './client-http.service';
 
 
@@ -9,9 +9,14 @@ import { ClientHttpService } from './client-http.service';
   styleUrls: ['./client.component.css']
 })
 export class ClientComponent {
-  formClient: Client = undefined;
+
+  formClient: Client = null
+  form : boolean = true;
+  page2 : boolean = false;
 
   constructor(private clientService: ClientHttpService) {
+    this.formClient = new Client();
+    this.formClient.adresse = new Adresse();
   }
 
   list(): Array<Client> {
@@ -20,6 +25,7 @@ export class ClientComponent {
 
   add(): void {
     this.formClient = new Client();
+    this.formClient.adresse = new Adresse();
   }
 
   edit(id: number): void {
@@ -29,14 +35,21 @@ export class ClientComponent {
   }
 
   save(): void {
+
     if(this.formClient.id) { // UPDATE
       this.clientService.update(this.formClient);
     } else { // CREATE
       this.clientService.create(this.formClient);
     }
 
-    this.cancel();
+     this.form=false;
+     this.page2=true;
+
+     setTimeout(function(){window.location.replace("http://localhost:4200/")},3000);
+      
+
   }
+
 
   remove(id: number): void {
     this.clientService.remove(id);

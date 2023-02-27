@@ -25,6 +25,7 @@ import { EmployeGpComponent } from './employe-gp/employe-gp.component';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
