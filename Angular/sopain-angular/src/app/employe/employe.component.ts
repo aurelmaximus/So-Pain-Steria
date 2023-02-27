@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommandeHttpService } from '../commande/commande-http.service';
-import { Commande, Employe, EtatCommande } from '../model';
+import { Commande, Compte, Employe, EtatCommande } from '../model';
 import { EmployeHttpService } from './employe-http.service';
 
 @Component({
@@ -91,6 +91,10 @@ termine(numero: number): void {
   });
  
 }
+
+employeconnecte(): Compte {
+    return this.employeService.currentCompte;
+  }
 
  
 

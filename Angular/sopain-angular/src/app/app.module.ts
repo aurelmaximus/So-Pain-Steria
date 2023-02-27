@@ -21,6 +21,7 @@ import { CommandeComponent } from './commande/commande.component';
 import { PanierComponent } from './panier/panier.component';
 import { NouscontacterComponent } from './nouscontacter/nouscontacter.component';
 import { CompteclientComponent } from './compteclient/compteclient.component';
+import { EmployeGpComponent } from './employe-gp/employe-gp.component';
 
 
 
@@ -43,7 +44,8 @@ import { CompteclientComponent } from './compteclient/compteclient.component';
     ViennoiserieComponent,
     PatisserieComponent,
     NouscontacterComponent,
-    CompteclientComponent
+    CompteclientComponent,
+    EmployeGpComponent
   ],
   imports: [
     BrowserModule,

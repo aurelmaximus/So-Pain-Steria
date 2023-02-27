@@ -1,0 +1,157 @@
+<div id="content">
+    <div class="card mt-3 employe">
+        <div class="card-header entete display-6 ">Information employé</div>
+        <div class="card-body" *ngFor="let emp of list()">
+    
+            <div name="1" class="card2">
+            <div class="card card1">
+                <div class="card-body">
+                  <h5 class="card-title">Nom</h5>
+                  <p class="card-text">{{emp.nom}}</p>
+                </div>
+              </div>
+    
+              <div class="card card1">
+                <div class="card-body">
+                  <h5 class="card-title">Prénom</h5>
+                  <p class="card-text">{{emp.prenom}}</p>
+                </div>
+              </div>
+            </div>
+
+            <div name="2" class="card2">
+              <div class="card card1">
+                <div class="card-body">
+                  <h5 class="card-title">Email</h5>
+                  <p class="card-text">{{emp.email}}</p>
+                </div>
+              </div>
+    
+              <div class="card card1">
+                <div class="card-body">
+                  <h5 class="card-title">Mot de passe</h5>
+                  <p class="card-text">{{emp.password}}</p>
+                </div>
+              </div>
+            </div>
+
+
+            <div name="1" class="card2">
+              <div class="card card1">
+                  <div class="card-body">
+                    <h5 class="card-title">Numéro</h5>
+                    <p class="card-text">{{emp.adresse.numero}}</p>
+                  </div>
+                </div>
+      
+                <div class="card card1">
+                  <div class="card-body">
+                    <h5 class="card-title">Voie</h5>
+                    <p class="card-text">{{emp.adresse.voie}}</p>
+                  </div>
+                </div>
+              </div>
+  
+              <div name="2" class="card2">
+                <div class="card card1">
+                  <div class="card-body">
+                    <h5 class="card-title">Code Postal</h5>
+                    <p class="card-text">{{emp.adresse.cp}}</p>
+                  </div>
+                </div>
+      
+                <div class="card card1">
+                  <div class="card-body">
+                    <h5 class="card-title">Ville</h5>
+                    <p class="card-text">{{emp.adresse.ville}}</p>
+                  </div>
+                </div>
+              </div>
+    </div>
+          
+    </div>
+    
+    <div id="contentdroite">
+    <div class="card mt-3 employeg">
+        <div class="card-header entete display-6">Liste des produits</div>
+        <div class="card-body max">
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Identifiant</th>
+                        <th>Catégorie</th>
+                        <th>Libelle</th>
+                        <th>Prix</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr *ngFor="let bas of listBasique()">
+                    <td>{{bas.id}}</td>
+                    <td>{{bas.categorie}}</td>
+                    <td>{{bas.libelle}}</td>
+                    <td>{{bas.prix}}</td>
+                    <td>
+                    <div class="btn-group btn-group-sm " *ngIf="cache">
+                      <a class="btn btn-primary" (click)="edit(bas.id)"><i
+                              class="bi bi-pencil-square"></i></a>
+                      <a class="btn btn-danger" (click)="remove(bas.id)"><i class="bi bi-trash"></i></a>
+                    </div>
+                    </td>
+
+                    </tr>
+                </tbody>
+
+             
+            </table>
+         </div>
+
+         <div class="card-footer">
+            <a class="btn  btn-lg bouton bouton2" (click)="add()"> Ajouter un produit</a> 
+            &nbsp;  &nbsp; <a class="btn btn-lg bouton bouton2" (click)="modif()"> Modifier un produit</a>
+            &nbsp;  &nbsp; <a class="btn bouton3 btn-lg bouton " (click)="cancel()"> Annuler</a>
+          </div>
+
+      </div>
+     
+    </div>
+ </div>
+ 
+ 
+<div class="card mt-3" *ngIf="formBasique">
+  <div class="card-header entete display-6">Edition d'un Produit</div>
+  <div class="card-body">
+
+  <div class="form-group">
+      <label for="categorie">Catégorie:</label> 
+      <input type="text" class="form-control" id="categorie" name="categorie" [(ngModel)]="formBasique.categorie" required />
+  </div>
+  
+  <div class="form-group">
+      <label for="email">Libelle:</label> 
+      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formBasique.libelle" required />
+  </div>
+
+  <div class="form-group">
+    <label for="password">Prix:</label> 
+    <input type="text" class="form-control" id="password" name="password" [(ngModel)]="formBasique.prix" required />
+</div>
+
+  </div>
+  <div class="card-footer">
+      <div class="btn-group btn-group-lg float-right">
+          <a class="btn bouton2" (click)="save()"><i class="bi bi-check-square-fill">  valider</i>
+         </a>
+          <a class="btn bouton3" (click)="cancel()"><i class="bi bi-backspace-fill"> Annuler</i></a>
+      </div>
+  </div>
+</div>
+    
+
+    
+    
+    
+    
+    
