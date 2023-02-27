@@ -93,37 +93,8 @@ public class ComptetRestController {
 
 	@PostMapping("/auth")
 	public Compte auth(@RequestBody AuthDTO authDTO) {
-//		Optional<Object> optCompte = Optional.empty();
-//		Compte compte = null;
-//		//System.out.println((compteRepository.findByEmail(authDTO.getLogin()).get().getType_compte()));
-//		if (compteRepository.findByEmail(authDTO.getLogin()).get().getType_compte().equalsIgnoreCase("employe")) {
-//
-//			Optional<Employe> optEmploye= empRepository.findByEmailAndPassword(authDTO.getLogin(), authDTO.getPassword());
-//			compte = optEmploye.get();
-//		}
-//
-//		if(optCompte.isEmpty()) {
-//			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-//		}
-//
-//		return compte;	
-		//	}
-//		Compte compte = null;
+
 		Optional<Compte> optCompte = compteRepository.findByEmailAndPassword(authDTO.getLogin(), authDTO.getPassword());
-//
-//		if(optCompte.isEmpty()) {
-//			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-//		}
-//		
-//		if(!empRepository.findById(optCompte.get().getId()).isEmpty()) {
-//			compte = (optCompte.get();
-//		}
-//		
-//		else if(!empRepository.findById(optCompte.get().getId()).isEmpty()) {
-//			compte = optCompte.get();
-//		}
-//
-//		return optCompte.get();	
 		
 				
 		if(optCompte.isEmpty()) {

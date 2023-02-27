@@ -31,7 +31,7 @@ export class AuthService {
       this.logged = true;
       this.router.navigate(['/']);
       console.log(this.connected.nom + " de type " + this.connected.type.slice(1) + " est connecté !!!!");
-      //this.router.navigate(['/accueil'+this.connected.type.slice(1).toLowerCase()]);
+      this.router.navigate(['/'+this.connected.type.slice(1).toLowerCase()]);
     })
   }
 

@@ -19,11 +19,8 @@ import { ViennoiserieComponent } from './viennoiserie/viennoiserie.component';
 import { PatisserieComponent } from './patisserie/patisserie.component';
 import { CommandeComponent } from './commande/commande.component';
 import { PanierComponent } from './panier/panier.component';
-<<<<<<< Updated upstream
 import { NouscontacterComponent } from './nouscontacter/nouscontacter.component';
-=======
 import { CompteclientComponent } from './compteclient/compteclient.component';
->>>>>>> Stashed changes
 
 
 
@@ -39,17 +36,14 @@ import { CompteclientComponent } from './compteclient/compteclient.component';
     ClientComponent,
     AuthComponent,
     CommandeComponent,
-    PanierComponent
+    PanierComponent,
     CommandeComponent,
     EmployeGcComponent,
     PainComponent,
     ViennoiserieComponent,
     PatisserieComponent,
-<<<<<<< Updated upstream
-    NouscontacterComponent
-=======
+    NouscontacterComponent,
     CompteclientComponent
->>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
