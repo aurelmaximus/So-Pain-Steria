@@ -25,11 +25,13 @@ export class AuthService {
 
   login(dto: AuthDTO):void {
     console.log(dto);
-    this.http.post<Compte>("http://localhost:8888/utilisateur/auth", dto).subscribe(resp => {
+    this.http.post<Compte>("http://localhost:8888/compte/auth", dto).subscribe(resp => {
       this.connected = resp;
       console.log(this.connected.nom);
       this.logged = true;
-      this.router.navigate(['/accueil'+this.connected.type_compte]);
+      this.router.navigate(['/']);
+      console.log(this.connected.nom + " de type " + this.connected.type.slice(1) + " est connecté !!!!");
+      //this.router.navigate(['/accueil'+this.connected.type.slice(1).toLowerCase()]);
     })
   }
 

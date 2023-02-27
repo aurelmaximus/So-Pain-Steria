@@ -1,7 +1,6 @@
 package boulangerie.rest;
 
 import java.util.List;
-
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +18,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import boulangerie.model.Client;
 import boulangerie.model.Compte;
+import boulangerie.model.Employe;
 import boulangerie.model.Views;
 import boulangerie.repository.ClientRepository;
 import boulangerie.repository.CompteRepository;
+import boulangerie.repository.EmployeRepository;
 import boulangerie.rest.dto.AuthDTO;
 
 
@@ -36,6 +36,10 @@ public class ComptetRestController {
 
 	@Autowired
 	private CompteRepository compteRepository;
+	@Autowired
+	private EmployeRepository empRepository;
+	@Autowired
+	private ClientRepository clientRepository;
 
 	@GetMapping("")
 	@JsonView(Views.ViewCompte.class)
@@ -44,8 +48,8 @@ public class ComptetRestController {
 
 		return comptes;
 	}
-	
-	
+
+
 	@GetMapping("/{id}")
 	@JsonView(Views.ViewCompte.class)
 	public Compte findById(@PathVariable Integer id) {
@@ -57,7 +61,7 @@ public class ComptetRestController {
 
 		return optCompte.get();
 	}
-	
+
 	@PostMapping("")
 	@JsonView(Views.ViewCompte.class)
 	public Compte create(@RequestBody Compte compte) {
@@ -86,11 +90,42 @@ public class ComptetRestController {
 	public void delete(@PathVariable Integer id) {
 		compteRepository.deleteById(id);
 	}
-	
+
 	@PostMapping("/auth")
 	public Compte auth(@RequestBody AuthDTO authDTO) {
+//		Optional<Object> optCompte = Optional.empty();
+//		Compte compte = null;
+//		//System.out.println((compteRepository.findByEmail(authDTO.getLogin()).get().getType_compte()));
+//		if (compteRepository.findByEmail(authDTO.getLogin()).get().getType_compte().equalsIgnoreCase("employe")) {
+//
+//			Optional<Employe> optEmploye= empRepository.findByEmailAndPassword(authDTO.getLogin(), authDTO.getPassword());
+//			compte = optEmploye.get();
+//		}
+//
+//		if(optCompte.isEmpty()) {
+//			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//		}
+//
+//		return compte;	
+		//	}
+//		Compte compte = null;
 		Optional<Compte> optCompte = compteRepository.findByEmailAndPassword(authDTO.getLogin(), authDTO.getPassword());
-	
+//
+//		if(optCompte.isEmpty()) {
+//			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+//		}
+//		
+//		if(!empRepository.findById(optCompte.get().getId()).isEmpty()) {
+//			compte = (optCompte.get();
+//		}
+//		
+//		else if(!empRepository.findById(optCompte.get().getId()).isEmpty()) {
+//			compte = optCompte.get();
+//		}
+//
+//		return optCompte.get();	
+		
+				
 		if(optCompte.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 		}
