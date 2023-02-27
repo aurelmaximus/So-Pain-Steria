@@ -31,6 +31,7 @@ const routes: Routes = [
 {path: "Nous-Contacter", component: NouscontacterComponent},
 {path: "compteclient", component: CompteclientComponent},
 {path: "employegp", component: EmployeGpComponent},
+
 ];
 
 

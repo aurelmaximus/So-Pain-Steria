@@ -92,7 +92,7 @@
                 </thead>
                 
                 <tbody>
-                    <tr *ngFor="let emp of listEmploye()">
+                    <tr *ngFor="let emp of list()">
                     <td>{{emp.nom}}</td>
                     <td>{{emp.prenom}}</td>
                     <td>{{emp.email}}</td>
@@ -112,9 +112,7 @@
                     </tr>
                 </tbody>
 
-                
-              
-             
+                 
             </table>
             <div class="card-footer">
               <a class="btn  btn-lg bouton bouton2" (click)="add()"> Ajouter un employé</a> 
@@ -136,64 +134,91 @@
   <div class="card-body">
 
   <div class="form-group">
-      <label for="nom">Nom:</label> 
-      <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formEmploye.nom" required #nom="ngModel"/>
-      <div *ngIf="nom.invalid && (nom.pristine)"
-      class="alert">
-    <span *ngIf="nom.errors?.['required']">
-      Name is required.
-    </span>
-  </div>
+    <label for="nom">Nom:</label> 
+    <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formEmploye.nom" required #nom="ngModel" (input)="validateForm()"/>
+    <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="alert alert-danger">
+      <div *ngIf="nom.errors['required']">
+        Le nom est obligatoire.
+      </div>
     </div>
-
-  <div class="form-group">
-      <label for="prenom">Prénom:</label> 
-      <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="formEmploye.prenom" required />
   </div>
+  <div class="form-group">
+    <label for="prenom">Prénom:</label> 
+    <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="formEmploye.prenom" required #prenom="ngModel" (input)="validateForm()" />
+    <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="alert alert-danger">
+      <div *ngIf="prenom.errors['required']">
+        Le prénom est obligatoire.
+      </div>
+    </div>
+  </div> 
   
   <div class="form-group">
-      <label for="email">Email:</label> 
-      <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formEmploye.email" required />
-  </div>
+    <label for="email">Email:</label> 
+    <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formEmploye.email" required #email="ngModel" (input)="validateForm()"/>
+    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+        <div *ngIf="email.errors['required']">
+            L'email est obligatoire.
+        </div>
+        <div *ngIf="email.errors['email']">
+            L'email doit être au format valide.
+        </div>
+    </div>
+</div>
 
-  <div class="form-group">
-    <label for="password">Mot de passe:</label> 
-    <input type="text" class="form-control" id="password" name="password" [(ngModel)]="formEmploye.password" required />
+<div class="form-group">
+  <label for="password">Mot de passe:</label> 
+  <input type="text" class="form-control" id="password" name="password" [(ngModel)]="formEmploye.password" required #password="ngModel" (input)="validateForm()" />
+  <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+      <div *ngIf="password.errors['required']">
+          Le mot de passe est obligatoire.
+      </div>
+  </div>
 </div>
   
   <div class="form-group">
       <label for="numero">Numéro:</label> 
-      <input type="text" class="form-control" id="numero" name="numero" [(ngModel)]="formEmploye.adresse.numero" required />
+      <input type="text" class="form-control" id="numero" name="numero" [(ngModel)]="formEmploye.adresse.numero" />
   </div>
   
   <div class="form-group">
-      <label for="voie">Voie:</label> 
-      <input type="text" class="form-control" id="voie" name="voie" [(ngModel)]="formEmploye.adresse.voie" required />
-  </div>
-  
-  <div class="form-group">
-      <label for="cp">Code Postal:</label> 
-      <input type="text" class="form-control" id="cp" name="cp" [(ngModel)]="formEmploye.adresse.cp" required />
+    <label for="voie">Voie:</label> 
+    <input type="text" class="form-control" id="voie" name="voie" [(ngModel)]="formEmploye.adresse.voie" required #voie="ngModel" (input)="validateForm()" />
+    <div *ngIf="voie.invalid && (voie.dirty || voie.touched)" class="alert alert-danger">
+        <div *ngIf="voie.errors['required']">
+            La voie est obligatoire.
+        </div>
     </div>
+</div>
+  
+<div class="form-group">
+  <label for="cp">Code Postal:</label> 
+  <input type="text" class="form-control" id="cp" name="cp" [(ngModel)]="formEmploye.adresse.cp" required #cp="ngModel" (input)="validateForm()" />
+  <div *ngIf="cp.invalid && (cp.dirty || cp.touched)" class="alert alert-danger">
+      <div *ngIf="cp.errors['required']">
+          Le code postal est obligatoire.
+      </div>
+  </div>
+</div>
 
-  <div class="form-group">
-    <label for="ville">Ville:</label>
-     <input type="text" class="form-control" id="ville" name="ville" [(ngModel)]="formEmploye.adresse.ville" />
+<div class="form-group">
+  <label for="ville">Ville:</label>
+  <input type="text" class="form-control" id="ville" name="ville" [(ngModel)]="formEmploye.adresse.ville" required #ville="ngModel" (input)="validateForm()"/>
+  <div *ngIf="ville.invalid && (ville.dirty || ville.touched)" class="alert alert-danger">
+      <div *ngIf="ville.errors['required']">
+          La ville est obligatoire.
+      </div>
+  </div>
 </div>
      
   </div>
   <div class="card-footer">
       <div class="btn-group btn-group-lg float-right">
-          <a class="btn bouton2" (click)="save()"><i class="bi bi-check-square-fill">  valider</i>
-         </a>
+          <button class="btn bouton2" (click)="save()" [disabled]="!isFormValid"><i class="bi bi-check-square-fill">  valider</i>
+          </button>
           <a class="btn bouton3" (click)="cancel()"><i class="bi bi-backspace-fill"> Annuler</i></a>
       </div>
   </div>
 </div>
     
 
-    
-    
-    
-    
     

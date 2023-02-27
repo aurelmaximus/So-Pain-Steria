@@ -25,7 +25,12 @@ export class EmployegpHttpService {
   }
 
   findAllBasiques(): Array<Basique> {
+    
+
+    this.basiques.sort((a, b) => (a.categorie < b.categorie) ? 1 : -1);
+  
     return this.basiques;
+
   }
 
   findById(id: number): Observable<Basique> {
