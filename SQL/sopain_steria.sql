@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 21 fév. 2023 à 18:27
+-- Généré le : lun. 27 fév. 2023 à 17:24
 -- Version du serveur : 5.7.40
 -- Version de PHP : 8.0.26
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `account` (
   `points` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UKravrcdl4ml7ghtfxdr2nx9hyw` (`last_name`,`first_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `account`
@@ -56,7 +56,8 @@ INSERT INTO `account` (`type`, `id`, `zip_code`, `number`, `city`, `street`, `em
 ('employe', 2, '69000', '8', 'Lyon', 'Rue du magicien', 'cedric.devillers@gmail.com', 'Cedric', 'cedric', 'Devillers', 0, 0),
 ('employe', 3, '33000', '12', 'Bordeaux', 'Rue cyber', 'farah.benaissa@gmail.com', 'Farah', 'farah', 'Benaissa', 0, 0),
 ('employe', 4, '69000', '7bis', 'Lyon', 'Rue ignister', 'youssef.talmat@gmail.com', 'Youssef', 'youssef', 'Talmat', 0, 0),
-('customer', 5, '33000', '1', 'Bordeaux', 'Rue de la victoire', 'prune.pommier@gmail.com', 'prune', 'peche', 'pommier', 0, 0);
+('customer', 5, '33000', '1', 'Bordeaux', 'Rue de la victoire', 'prune.pommier@gmail.com', 'prune', 'peche', 'pommier', 0, 0),
+('customer', 6, '75000', '777', 'Paris', 'Rue des Ansériformes', 'jordaninou.tpt@gmail.com', 'Abidou', 'coincoin', 'Jordaninou', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -75,15 +76,19 @@ CREATE TABLE IF NOT EXISTS `command` (
   `customer_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`numero`),
   KEY `FK4adexdu0ttc9l217n3ydn7199` (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `command`
 --
 
 INSERT INTO `command` (`numero`, `arrived_date`, `command_status`, `arrived_hour`, `on_site`, `version`, `customer_id`) VALUES
-(1, '2023-01-31', 'Termine', '14:30:00', 0, 0, 5),
-(2, '2023-01-27', 'EnCours', '16:55:00', 0, 0, NULL);
+(1, '2023-01-31', 'EnCours', '12:30:00', 0, 1, 5),
+(2, '2023-01-31', 'Prete', '16:55:00', 0, 1, 6),
+(3, '2023-01-31', 'Termine', '11:30:00', 0, 0, 5),
+(4, '2023-01-27', 'EnCours', '12:55:00', 0, 0, 6),
+(5, '2023-01-31', 'Termine', '13:30:00', 0, 0, 6),
+(6, '2023-01-27', 'Prete', '18:55:00', 0, 1, 6);
 
 -- --------------------------------------------------------
 
@@ -422,33 +427,33 @@ CREATE TABLE IF NOT EXISTS `product` (
 --
 
 INSERT INTO `product` (`type`, `id`, `label`, `price`, `version`, `category`, `share_number`) VALUES
-('basic', 1, 'Choux_Crème', '2.90', 1, 'Gateau', NULL),
+('basic', 1, 'Choux Crème', '2.90', 2, 'Gateau', NULL),
 ('basic', 2, 'Religieuse', '2.80', 0, 'Viennoiserie', NULL),
-('basic', 3, 'Mille_Feuille', '2.80', 0, 'Gateau', NULL),
-('basic', 4, 'Tartelette_Framboise', '3.00', 0, 'Gateau', NULL),
+('basic', 3, 'Mille Feuille', '2.80', 1, 'Gateau', NULL),
+('basic', 4, 'Tartelette Framboise', '3.00', 1, 'Gateau', NULL),
 ('basic', 5, 'Macaron', '0.50', 0, 'Gateau', NULL),
 ('basic', 6, 'Croissant', '1.10', 0, 'Viennoiserie', NULL),
 ('basic', 7, 'Chocolatine', '1.20', 0, 'Viennoiserie', NULL),
-('basic', 8, 'Pain_aux_Raisins', '1.40', 0, 'Viennoiserie', NULL),
+('basic', 8, 'Pain aux Raisins', '1.40', 1, 'Viennoiserie', NULL),
 ('basic', 9, 'Fraisier', '3.10', 0, 'Gateau', NULL),
-('basic', 10, 'Chausson_aux_pommes', '1.80', 0, 'Viennoiserie', NULL),
-('basic', 11, 'Brioche_Suisse', '1.80', 0, 'Viennoiserie', NULL),
-('basic', 12, 'Briochette_au_Chocolat', '1.40', 0, 'Viennoiserie', NULL),
+('basic', 10, 'Chausson aux pommes', '1.80', 1, 'Viennoiserie', NULL),
+('basic', 11, 'Brioche Suisse', '1.80', 1, 'Viennoiserie', NULL),
+('basic', 12, 'Briochette au Chocolat', '1.40', 1, 'Viennoiserie', NULL),
 ('basic', 13, 'Canelé', '1.60', 0, 'Viennoiserie', NULL),
-('basic', 14, 'Baguette_Classique', '1.00', 0, 'Pain', NULL),
-('basic', 15, 'Baguette_Tradition', '1.20', 0, 'Pain', NULL),
-('basic', 16, 'Pain_Campagne', '2.20', 0, 'Pain', NULL),
-('basic', 17, 'Pain_Complet', '2.20', 0, 'Pain', NULL),
-('basic', 18, 'Pain_6_Céréales', '2.20', 0, 'Pain', NULL),
-('basic', 19, 'Baguette_Sésame', '1.80', 0, 'Pain', NULL),
-('basic', 20, 'Pain_Burger', '1.50', 0, 'Pain', NULL),
-('basic', 21, 'Pain_aux_noix', '3.00', 0, 'Pain', NULL),
+('basic', 14, 'Baguette Classique', '1.00', 1, 'Pain', NULL),
+('basic', 15, 'Baguette Tradition', '1.20', 1, 'Pain', NULL),
+('basic', 16, 'Pain Campagne', '2.20', 1, 'Pain', NULL),
+('basic', 17, 'Pain Complet', '2.20', 1, 'Pain', NULL),
+('basic', 18, 'Pain 6 Céréales', '2.20', 1, 'Pain', NULL),
+('basic', 19, 'Baguette Sésame', '1.80', 1, 'Pain', NULL),
+('basic', 20, 'Pain Burger', '1.50', 1, 'Pain', NULL),
+('basic', 21, 'Pain aux noix', '3.00', 1, 'Pain', NULL),
 ('basic', 22, 'Eclair', '2.70', 0, 'Gateau', NULL),
-('basic', 23, 'Paris_Brest', '2.80', 0, 'Gateau', NULL),
+('basic', 23, 'Paris Brest', '2.80', 1, 'Gateau', NULL),
 ('basic', 24, 'Expresso', '2.00', 0, 'Boisson', NULL),
-('basic', 25, 'Jus_Fruits', '2.50', 0, 'Boisson', NULL),
-('basic', 26, 'The_Menthe', '1.50', 0, 'Boisson', NULL),
-('basic', 27, 'The_glace', '2.00', 0, 'Boisson', NULL),
+('basic', 25, 'Jus Fruits', '2.50', 1, 'Boisson', NULL),
+('basic', 26, 'The Menthe', '1.50', 1, 'Boisson', NULL),
+('basic', 27, 'The glace', '2.00', 1, 'Boisson', NULL),
 ('basic', 28, 'Chouquette', '0.20', 0, 'Viennoiserie', NULL);
 
 -- --------------------------------------------------------

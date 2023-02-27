@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
-import { Basique, Employe, Produit } from '../model';
+import { Basique, Compte, Employe, Produit } from '../model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,10 @@ export class EmployegpHttpService {
 
     employes: Array<Employe> = new Array<Employe>();
     basiques: Array<Basique> = new Array<Basique>();
-    currentEmploye : Employe;
+    
+    currentCompte : Compte;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient,private auth: AuthService) {
     this.load();
   }
 
@@ -49,14 +50,20 @@ export class EmployegpHttpService {
     });
   }
 
+  findByIdEmp(id: number): Observable<Compte> {
+    return this.http.get<Compte>("http://localhost:8888/compte/" + id);
+  }
+
   private load(): void {
-    this.http.get<Array<Employe>>("http://localhost:8888/employe").subscribe(resp => {
-      this.employes = resp;
+      this.findByIdEmp(this.auth.connected.id).subscribe(resp => {
+      this.currentCompte=resp;
     });
 
     this.http.get<Array<Basique>>("http://localhost:8888/basique").subscribe(resp => {
       this.basiques = resp;
     });
   }
+
+  
 
 }
