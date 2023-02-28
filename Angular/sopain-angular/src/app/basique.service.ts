@@ -25,11 +25,11 @@ export class BasiqueService {
   }
 
   findByCat(cat: string): Observable<Array<Basique>> {
-    return this.http.get<Array<Basique>>("http://localhost:8888/basique/categorie" + cat);
+    return this.http.get<Array<Basique>>("http://localhost:8888/basique/categorie/" + cat);
   }
 
   findByLib(libelle: string): Observable<Basique> {
-    return this.http.get<Basique>("http://localhost:8888/basique/libelle" + libelle);
+    return this.http.get<Basique>("http://localhost:8888/basique/libelle/" + libelle);
   }
 
   create(basique: Basique): void {

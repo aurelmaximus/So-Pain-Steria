@@ -97,12 +97,16 @@ export class Produit {
 	version: number;
     prix:number;
     libelle:string;
+    description: string;
+    image_ref: string;
 
-    constructor(id?:number, version?: number, prix?:number, libelle?:string) {
+    constructor(id?:number, version?: number, prix?:number, libelle?:string, description?:string, image_ref?:string) {
         this.id = id;
         this.version = version;
         this.prix = prix;
         this.libelle = libelle;
+        this.description=description;
+        this.image_ref=image_ref;
        
     }
 }

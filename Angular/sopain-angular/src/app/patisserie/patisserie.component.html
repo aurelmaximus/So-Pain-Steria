@@ -21,157 +21,25 @@
 
 
 
-            <div class="col">
+            <div class="col" *ngFor="let pat of patisseries">
               <div class="card shadow-sm">
-                <figure><div class="bg-image hover-zoom"><img src="..\..\assets\images\cream-puffs-427181_1920.jpg" class="w-100" alt="Choux Crème" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.
-                </div></div><figcaption>Choux Crème</figcaption></figure>
+                <figure><div class="bg-image hover-zoom"><img src="{{pat.image_ref}}" class="w-100" alt="Choux Crème" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.
+                </div></div><figcaption>{{pat.libelle}}</figcaption></figure>
                 <div class="card-body">
-                  <p class="card-text"> <h4>Choux Crème</h4>
-                    <i>À base de crème fouettée enrobée d'une pâte à choux légère, ces choux à la crème sont de petits délices qui s’apprécient à toutes les occasions. </i><br>
-                    Étiquettes: Gluten,Lait,Oeufs<br><br><br>
+                  <p class="card-text"> <h4>{{pat.libelle}}</h4>
+                    {{pat.description}}
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
                       <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
                     </div>
-                    <small class="text-muted">2,90 €</small>
+                    <small class="text-muted">{{pat.prix}}</small>
                   </div>
                 </div>
               </div>
             </div>
-
-            <div class="col">
-            <div class="card shadow-sm">
-              <figure><div class="bg-image hover-zoom"><img src="..\..\assets\images\tarteframboise2.webp" class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.
-              </div></div><figcaption>Tartelette Framboise</figcaption></figure>
-              <div class="card-body">
-                <p class="card-text">
-                  <h4>Tartelette Framboise</h4>
-                  <i> Pâtisserie subtilement vanillée, accompagnée de framboises fraîches.</i><br><br>
-                  Existe en version individuelle et à partager.<br>
-                  Pâte Sucrée à la Fleur de Sel, Compotée de Framboises, crème Madame (crème pâtissière et crème fouettée) Framboises Fraîches.
-                  <br>Etiquette: Gluten, Oeufs, Lait
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary"data-toggle="collapse" data-target="#texte-cache">Voir</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
-                  </div>
-                  <small class="text-muted">2,90 €</small>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-    
-               
-
-         
-          <div class="col">
-            <div class="card shadow-sm">
-              <figure><div class="bg-image hover-zoom"><img src="..\..\assets\images\eclair3.webp" class="w-100" alt="Eclair" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.
-              </div></div><figcaption>Eclair au Chocolat</figcaption></figure>
-              <div class="card-body">
-                <p class="card-text"><h4>Eclair au Chocolat</h4>
-                  <i>Son craquelin de pâte sablée & son crémeux au chocolat noir 66% de cacao vont vous faire chavirer en toute simplicité.</i><br><br>
-                    Étiquettes: Gluten,Lait,Oeufs,Soja
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
-                  </div>
-                  <small class="text-muted">1,60 €</small>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-         
-
-  
-  
-          <div class="col">
-            <div class="card shadow-sm">
-              <figure><div class="bg-image hover-zoom"><img src="..\..\assets\images\parisbrest.png" class="w-100" alt="Paris Brest" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.
-              </div></div><figcaption>Paris Brest</figcaption></figure>
-              <div class="card-body">
-                <p class="card-text">
-                  <h4>Paris Brest</h4>
-                  <i>Pâte à choux croquante et crème mousseline pralinée onctueuse. Laissez-vous séduire par sa forme en couronne élégante et sa saveur subtile de noisette grillée.</i><br><br>
-                  Étiquettes:Gluten,Lait,Oeufs,Noix<br><br><br>
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
-                  </div>
-                  <small class="text-muted">1,80 €</small>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-  
-          <div class="col">
-            <div class="card shadow-sm">
-              <figure><div class="bg-image hover-zoom"><img src="..\..\assets\images\macarons.jpeg" class="w-100" alt="Macarons" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.
-              </div></div><figcaption>Macarons</figcaption></figure>
-              <div class="card-body">
-                <p class="card-text">
-                  <h4>Macarons</h4>
-                  <i>Coque croquante et  ganache onctueuse à la saveur intense de noisette grillée, pour une expérience gustative unique en son genre.</i><br><br>
-                  Étiquettes : Gluten,Lait,Oeufs,Noix
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
-                  </div>
-                  <small class="text-muted">0,50 €</small>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-  
-          <div class="col">
-            <div class="card shadow-sm">
-              <figure><div class="bg-image hover-zoom"><img src="..\..\assets\images\fraisier.webp" class="w-100" alt="Briochette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.
-              </div></div><figcaption>Fraisier</figcaption></figure>
-              <div class="card-body">
-                <p class="card-text"><h4>Fraisier</h4>
-                  <i>Sa génoise légèrement imbibée de sirop de fraise et sa crème mousseline vanillée sauront vous charmer en toute délicatesse, pour un plaisir gustatif absolu."</i><br>
-                  Étiquettes : Gluten, Lait, Oeufs
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
-                  </div>
-                  <small class="text-muted">3,10 €</small>
-                </div>
-              </div>
-            </div>
-          </div>
-  
-  
-          <div class="col">
-            <div class="card shadow-sm">
-              <figure><div class="bg-image hover-zoom"><img src="..\..\assets\images\millefeuille2.jpeg" class="w-100" alt="Millefeuille" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.
-              </div></div><figcaption>Millefeuille</figcaption></figure>
-              <div class="card-body">
-                <p class="card-text">
-                  <h4>Millefeuille</h4>
-                  <i>Pâte Feuilletée, Ganache Montée vanille, Caramel Tendre à la fleur de Sel</i>
-                    Comment résister à son feuilletage si finement croustillant et à sa crème légère ?
-                    <br><br>
-                    <br>Étiquettes: Gluten,Lait,Oeufs
-                <div class="d-flex justify-content-between align-items-center">
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
-                  </div>
-                  <small class="text-muted">2,80 €</small>
-                </div>
-              </div>
-            </div>
-          </div>
-         
-  
+        </div>
+      </div>
+    </div>
+    </div>
   
