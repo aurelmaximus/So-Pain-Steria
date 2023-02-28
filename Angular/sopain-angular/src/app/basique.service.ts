@@ -23,11 +23,14 @@ export class BasiqueService {
     return this.http.get<Basique>("http://localhost:8888/basique/" + id);
   }
 
-  create(basique: Basique): void {
-    this.http.post<Basique>("http://localhost:8888/basique", basique).subscribe(resp => {
-  findByLib(libelle: string): Observable<Basique> {
-    return this.http.get<Basique>("http://localhost:8888/basique/" + libelle);
+ findByLib(libelle: string): Observable<Basique> {
+    return this.http.get<Basique>("http://localhost:8888/basique/libelle" + libelle);
   }
+
+  create(basique: Basique): void {
+    this.http.post<Basique>("http://localhost:8888/basique/libelle", basique).subscribe(resp => {
+
+ 
       this.load();
     });
   }

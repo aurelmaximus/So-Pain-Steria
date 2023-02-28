@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { BasiqueService } from '../basique.service';
+import { Basique } from '../model';
 
 @Component({
   selector: 'app-pain',
@@ -12,10 +14,6 @@ export class PainComponent {
 
   constructor(private basiqueService: BasiqueService)  { }
 
-getBasique(): void {
-  this.basiqueService.findByLib(this.libelle).subscribe(data => {
-    this.prix = data.prix; 
-  });
 
-}
+
 }
