@@ -21,8 +21,8 @@ Sa signature ? Des cuissons marquées qui donnent de belles croûtes caramélis�
           </div></div><figcaption>{{pain.libelle}}</figcaption></figure>
           <div class="card-body">
             <p class="card-text"> <h4>{{pain.libelle}}</h4>
-              {{pain.description}}
-            <div class="d-flex justify-content-between align-items-center">
+              <span [innerHTML]="pain.description"></span>
+              <div class="d-flex justify-content-between align-items-center">
               <div class="btn-group">
                 <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
                 <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
