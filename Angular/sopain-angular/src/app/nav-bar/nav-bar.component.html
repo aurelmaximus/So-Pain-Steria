@@ -13,6 +13,7 @@
         <li><a [routerLink]="['/pain']" routerLinkActive="active" class="nav-link px-2 link-dark">Pain</a></li>
         <li><a [routerLink]="['/viennoiserie']" routerLinkActive="active" class="nav-link px-2 link-dark">Viennoiserie</a></li>
         <li><a [routerLink]="['/client']" *ngIf="isClient()"  routerLinkActive="active" class="nav-link px-2 link-dark">Mon Compte</a></li>
+        <button class="btn btn-sm btn-outline-secondary" *ngIf="isClient()" type="button" [routerLink]="['/panier']"  routerLinkActive="active">Mon Panier</button>
         <li><a [routerLink]="['/employe']" *ngIf="isEmploye()" routerLinkActive="active" class="nav-link px-2 link-dark">Gestion commandes</a></li>
         <li><a [routerLink]="['/employegc']" *ngIf="isEmploye()" routerLinkActive="active" class="nav-link px-2 link-dark">Gestion comptes</a></li>
         <li><a [routerLink]="['/employegp']" *ngIf="isEmploye()" routerLinkActive="active" class="nav-link px-2 link-dark">Gestion produits</a></li>
