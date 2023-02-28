@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BasiqueService } from '../basique.service';
 import { Basique } from '../model';
+import { PanierService } from '../panier/panier.service';
 
 @Component({
   selector: 'app-pain',
@@ -12,7 +13,7 @@ export class PainComponent {
   pains: Array<Basique> = new Array<Basique>();
   pain: Basique = new Basique();
 
-  constructor(private basiqueService: BasiqueService)  { 
+  constructor(private basiqueService: BasiqueService, private panierServ: PanierService)  { 
   this.findPains();
   }
 
@@ -32,7 +33,10 @@ export class PainComponent {
     });
   }
 
-
+  addToCart(bas: Basique) {
+    this.panierServ.addToCart(bas);
+    window.alert(bas.libelle + ' a été ajouté au panier!');
+  }
    
 }
 
