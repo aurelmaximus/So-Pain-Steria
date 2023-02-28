@@ -9,7 +9,7 @@ import { Basique, Compte, Employe, Produit } from '../model';
 })
 export class EmployegpHttpService {
   
-    recherche:string;
+  
     employes: Array<Employe> = new Array<Employe>();
     basiques: Array<Basique> = new Array<Basique>();
     
@@ -25,10 +25,6 @@ export class EmployegpHttpService {
   }
 
   findAllBasiques(): Array<Basique> {
-    
-    if(this.recherche) {
-      return this.basiques.filter(c => c.libelle.indexOf(this.recherche) != -1);
-    } 
     
     this.basiques.sort((a, b) => (a.categorie < b.categorie) ? 1 : -1);
   
@@ -71,6 +67,7 @@ export class EmployegpHttpService {
       this.basiques = resp;
     });
   }
+  
 
   
 
