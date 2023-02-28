@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { Client } from '../model';
 
 @Component({
   selector: 'app-nav-bar',
@@ -7,6 +8,9 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent {
+thathome : boolean = true;
+thatclient : boolean = false;
+thatemploye : boolean =false;
 
   constructor(private authServ: AuthService){
 
@@ -14,6 +18,7 @@ export class NavBarComponent {
 
   isConnected(): boolean {
     return this.authServ.logged;
+  
   }
 
   unConnect(): void{
