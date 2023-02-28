@@ -9,6 +9,8 @@ public class Views {
 	
 	public static class ViewProduit extends ViewBase {
 	}
+	public static class ViewLib extends ViewBase {
+	}
 	
 	
 	public static class ViewCommandeWithLignesIngredient extends ViewProduit {

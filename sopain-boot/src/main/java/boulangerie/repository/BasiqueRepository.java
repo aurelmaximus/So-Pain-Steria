@@ -14,4 +14,7 @@ public interface BasiqueRepository extends JpaRepository<Basique,Integer>{
 	@Query("select distinct b from Basique b left join fetch b.ligneIngredients where b.id=:id")
 	Optional<Basique> findByIdWithLigneIngredient(@Param("id") Integer id);
 
+	@Query("select distinct b from Basique b where b.libelle=:label")
+	Optional<Basique> findByLib(@Param("label")String libelle);
+
 }

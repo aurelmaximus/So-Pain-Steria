@@ -52,6 +52,18 @@ public class BasiqueRestController {
 		return optBasique.get();
 	}
 	
+	@GetMapping("/libelle/{libelle}")
+	@JsonView(Views.ViewLib.class)
+	public Basique findByLib(@PathVariable String libelle) {
+		Optional<Basique> optBasique = basiqueRepository.findByLib(libelle);
+
+		if (optBasique.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+		}
+
+		return optBasique.get();
+	}
+	
 	@GetMapping("/{id}/ligne")
 	@JsonView(Views.ViewCommandeWithLignesIngredient.class)
 	public Basique ligneingredientById(@PathVariable Integer id) {
