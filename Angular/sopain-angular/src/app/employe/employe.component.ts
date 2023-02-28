@@ -92,8 +92,8 @@ termine(numero: number): void {
  
 }
 
-employeconnecte(): Compte {
-    return this.employeService.currentCompte;
+employeconnecte(): Employe {
+    return this.employeService.currentEmploye;
   }
 
  

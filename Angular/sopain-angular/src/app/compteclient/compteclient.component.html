@@ -67,8 +67,12 @@
                   </div>
                 </div>
               </div>
+
+             
     </div>
-          
+    <div class="card-footer">
+      <a class="btn btn-lg bouton bouton2" (click)="edit(clientconnecte().id)"> Modifier mes informations</a>
+    </div>
     </div>
     
     <div id="contentdroite">
@@ -127,5 +131,101 @@
         </div>
       
     </div>
+  </div>
+</div>
+
+    <div class="card mt-3 formu" *ngIf="formClient">
+      <div class="card-header entete display-6">Modifier mes informations</div>
+      <div class="card-body">
+        
+      <div class="form-group">
+        <label for="nom">Nom:</label> 
+        <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formClient.nom" required #nom="ngModel"/>
+        <div *ngIf="nom.invalid && (nom.dirty || nom.touched)" class="alert alert-danger">
+          <div *ngIf="nom.errors['required']">
+            Le nom est obligatoire.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="prenom">Prénom:</label> 
+        <input type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="formClient.prenom" required #prenom="ngModel" />
+        <div *ngIf="prenom.invalid && (prenom.dirty || prenom.touched)" class="alert alert-danger">
+          <div *ngIf="prenom.errors['required']">
+            Le prénom est obligatoire.
+          </div>
+        </div>
+      </div> 
+      
+      <div class="form-group">
+        <label for="email">Email:</label> 
+        <input type="email" class="form-control" id="email" name="email" [(ngModel)]="formClient.email" required #email="ngModel"/>
+        <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+            <div *ngIf="email.errors['required']">
+                L'email est obligatoire.
+            </div>
+            <div *ngIf="email.errors['email']">
+                L'email doit être au format valide.
+            </div>
+        </div>
     </div>
+    
+    <div class="form-group">
+      <label for="password">Mot de passe:</label> 
+      <input type="text" class="form-control" id="password" name="password" [(ngModel)]="formClient.password" required #password="ngModel" />
+      <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+          <div *ngIf="password.errors['required']">
+              Le mot de passe est obligatoire.
+          </div>
+      </div>
+    </div>
+      
+      <div class="form-group">
+          <label for="numero">Numéro:</label> 
+          <input type="text" class="form-control" id="numero" name="numero" [(ngModel)]="formClient.adresse.numero" />
+      </div>
+      
+      <div class="form-group">
+        <label for="voie">Voie:</label> 
+        <input type="text" class="form-control" id="voie" name="voie" [(ngModel)]="formClient.adresse.voie" required #voie="ngModel" />
+        <div *ngIf="voie.invalid && (voie.dirty || voie.touched)" class="alert alert-danger">
+            <div *ngIf="voie.errors['required']">
+                La voie est obligatoire.
+            </div>
+        </div>
+    </div>
+      
+    <div class="form-group">
+      <label for="cp">Code Postal:</label> 
+      <input type="text" class="form-control" id="cp" name="cp" [(ngModel)]="formClient.adresse.cp" required #cp="ngModel" />
+      <div *ngIf="cp.invalid && (cp.dirty || cp.touched)" class="alert alert-danger">
+          <div *ngIf="cp.errors['required']">
+              Le code postal est obligatoire.
+          </div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="ville">Ville:</label>
+      <input type="text" class="form-control" id="ville" name="ville" [(ngModel)]="formClient.adresse.ville" required #ville="ngModel"/>
+      <div *ngIf="ville.invalid && (ville.dirty || ville.touched)" class="alert alert-danger">
+          <div *ngIf="ville.errors['required']">
+              La ville est obligatoire.
+          </div>
+      </div>
+    </div>
+         
+      </div>
+      <div class="card-footer">
+          <div class="btn-group btn-group-lg float-right">
+              <button class="btn bouton2" (click)="save()"><i class="bi bi-check-square-fill">  valider</i>
+              </button>
+              <a class="btn bouton3" (click)="cancel()"><i class="bi bi-backspace-fill"> Annuler</i></a>
+          </div>
+      </div>
+    </div>
+
+
+  
+  
     

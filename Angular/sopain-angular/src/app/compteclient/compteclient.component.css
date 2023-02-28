@@ -14,7 +14,7 @@
 display: flex;
 justify-content: start;
 width: 450px;
-height: 516px;
+height: 565px;
 font-size: 14px;
 text-align: center;
 
@@ -30,7 +30,7 @@ text-align: center;
 
 .hcommande{
     width: 910px;
-    height: 250px;
+    height: 300px;
     font-size: 14px;
     text-align: center;
 }
@@ -49,7 +49,7 @@ display: flex;
 }
 
 .max{
-    max-height: 200px;
+    max-height: 250px;
     overflow: auto;
 }
 
@@ -86,9 +86,25 @@ display: flex;
  }
 
 
+.bouton2{
+
+        background-color: #cdc8bf;
+        color: black;
+        
+}
 
 
+.bouton3{
 
+    background-color: #e8794d;
+    color: black;
+    
+}
+
+.formu{
+    width: 1400px;
+
+}
 
 
 
