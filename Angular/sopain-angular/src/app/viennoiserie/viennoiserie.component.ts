@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BasiqueService } from '../basique.service';
-import { Basique } from '../model';
+import { Basique, Produit } from '../model';
+import { PanierService } from '../panier/panier.service';
 
 @Component({
   selector: 'app-viennoiserie',
@@ -12,7 +13,7 @@ export class ViennoiserieComponent {
   viens: Array<Basique> = new Array<Basique>();
   vien: Basique = new Basique();
 
-  constructor(private basiqueService: BasiqueService)  { 
+  constructor(private basiqueService: BasiqueService, private panierServ: PanierService)  { 
   this.findViens();
   }
 
@@ -32,7 +33,10 @@ export class ViennoiserieComponent {
     });
   }
 
-
+  addToCart(bas: Basique) {
+    this.panierServ.addToCart(bas);
+    window.alert(bas.libelle + ' a été ajouté au panier!');
+  }
    
 }
 

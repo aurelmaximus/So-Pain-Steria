@@ -34,9 +34,9 @@ export class PatisserieComponent {
     });
   }
 
-  addToCart(produit: Produit) {
-    this.panierServ.addToCart(produit);
-    window.alert(produit.libelle + ' a été ajouté au panier!');
+  addToCart(bas: Basique) {
+    this.panierServ.addToCart(bas);
+    window.alert(bas.libelle + ' a été ajouté au panier!');
   }
 }
 
