@@ -67,6 +67,11 @@ display: flex;
         
 }
 
+.max{
+    max-height: 390px;
+    overflow: auto;
+}
+
     
 
 

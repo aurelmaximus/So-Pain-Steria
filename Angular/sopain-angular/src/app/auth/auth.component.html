@@ -1,4 +1,90 @@
-  <html>
+
+
+
+<section class="text-center text-lg-start">
+  <style>
+    .cascading-right {
+      margin-right: -50px;
+    }
+
+    @media (max-width: 991.98px) {
+      .cascading-right {
+        margin-right: 0;
+      }
+    }
+  </style>
+
+  <!-- Jumbotron -->
+  <div class="container py-4">
+    <div class="row g-0 align-items-center">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <div class="card cascading-right" style="
+            background: hsla(0, 0%, 100%, 0.55);
+            backdrop-filter: blur(30px);
+            ">
+          <div class="card-body p-5 shadow-5 text-center">
+            <h2 class="fw-bold mb-5">Connexion</h2>
+            <form>
+              
+
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example3">Adresse email </label>
+                <input placeholder="Email "  type="email" title="Email" class="form-control" id="login" name="login" [(ngModel)]="connectedDTO.login"/>
+
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example4">Mot de passe</label>
+                <input type="password" required class="form-control" id="password" name="password" pattern="[A-z0-9!@#$&*?-]{4,8}" placeholder="Mot de passe " type="password" title="4 a 8 caracteres" [(ngModel)]="connectedDTO.password"  />
+
+              </div>
+
+             
+             
+             <br>
+             
+
+              <!-- Submit button -->
+              
+              <div class="btn-group">
+                      
+                      <button type="submit" class="btn btn-success btn-block mb-4" (click)="seconnecter()"> Se connecter</button>
+                      
+                     
+                      <button type="submit" class="btn btn-dark btn-block mb-4" [routerLink]="['']">  Retour  </button>
+                      
+              </div>
+
+              <br>
+              <a href="http://localhost:4200/client" class="link-primary">Crée un compte </a>
+              
+             
+                
+              
+            
+
+              <!-- Register buttons -->
+              
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mb-5 mb-lg-0">
+        <img src="..\..\assets\images\22.jpg" class="w-100 rounded-4 shadow-4"
+          alt="" />
+      </div>
+    </div>
+  </div>
+  <!-- Jumbotron -->
+</section>
+<!-- Section: Design Block -->
+
+
+
+  <!-- <html>
   <div class="logo" >
     <a> <img width="250" height="250" alt="Logo So'Pain Steria" src="..\..\assets\images\Logosansfond.png"></a>
   </div>
@@ -27,5 +113,8 @@
   </div>
   
   </div>
-  </html>
+  </html> -->
   
+
+
+<!-- Section: Design Block -->

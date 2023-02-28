@@ -11,12 +11,14 @@ import { ClientHttpService } from './client-http.service';
 export class ClientComponent {
 
   formClient: Client = null;
+  isFormValid: boolean = false;
   // form : boolean = true;
   // page2 : boolean = false;
 
   constructor(private clientService: ClientHttpService) {
     this.formClient = new Client();
     this.formClient.adresse = new Adresse();
+    this.formClient.type = 'client';
   }
 
   list(): Array<Client> {
@@ -36,6 +38,7 @@ export class ClientComponent {
 
   save(): void {
 
+  
     if(this.formClient.id) { // UPDATE
       this.clientService.update(this.formClient);
     } else { // CREATE
@@ -57,5 +60,12 @@ export class ClientComponent {
 
   cancel(): void {
     this.formClient = null;
+  }
+  validateForm(): void {
+    this.isFormValid = true;
+  
+    if (!this.formClient.nom || !this.formClient.prenom || !this.formClient.adresse.voie || !this.formClient.adresse.cp || !this.formClient.adresse.ville) {
+      this.isFormValid = false;
+    }
   }
 }

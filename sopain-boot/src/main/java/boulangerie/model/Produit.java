@@ -58,6 +58,14 @@ public abstract class Produit implements Serializable {
 	@JsonView(Views.ViewCommandeWithLignesIngredient.class)
 	private List<LigneIngredient> ligneIngredients= new ArrayList<>();
 	
+	@Column(name = "description", length = 25)
+	@JsonView(Views.ViewProduit.class)
+	private String description;
+	
+	@Column(name = "image_ref", length = 25)
+	@JsonView(Views.ViewProduit.class)
+	private String image_ref;
+	
 	
 	public Produit() {
 		super();

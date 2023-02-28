@@ -103,7 +103,7 @@ public class BasiqueRestController {
 		return basique;
 	}
 	
-	@GetMapping("/catagorie/{catString}")
+	@GetMapping("/categorie/{catString}")
 	@JsonView(Views.ViewProduit.class)
 	public List<Basique> findByCategorie(@PathVariable String catString) {
 		Categorie cat = Categorie.valueOf(catString.substring(0, 1).toUpperCase() + catString.substring(1));

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Commande } from '../model';
+import { Client, Commande } from '../model';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +42,37 @@ export class CommandeHttpService {
         const dateA = new Date(`${a.dateArrivee} ${a.heureArrive}`);
         const dateB = new Date(`${b.dateArrivee} ${b.heureArrive}`);
         return dateB.getTime() - dateA.getTime();
+      });
+  }
+
+  findAllclientEncours(client: Client): Array<Commande> {
+    return this.commandes
+      .filter(commande => commande.client.id === client.id && (commande.etatcommande === 'EnCours' || commande.etatcommande === 'Prete'))
+      .sort((a, b) => {
+        const dateA = new Date(`${a.dateArrivee} ${a.heureArrive}`);
+        const dateB = new Date(`${b.dateArrivee} ${b.heureArrive}`);
+        if (a.etatcommande === 'Prete'  && b.etatcommande === 'EnCours') {
+          return -1;
+        } else if (a.etatcommande === 'EnCours' && b.etatcommande === 'Prete' ) {
+          return 1;
+        } else {
+          return dateA.getTime() - dateB.getTime();
+        }
+      });
+  }
+  findAllclienttermine(client: Client): Array<Commande> {
+    return this.commandes
+      .filter(commande => commande.client.id === client.id && (commande.etatcommande === 'Termine'))
+      .sort((a, b) => {
+        const dateA = new Date(`${a.dateArrivee} ${a.heureArrive}`);
+        const dateB = new Date(`${b.dateArrivee} ${b.heureArrive}`);
+        if (a.etatcommande === 'EnCours' && b.etatcommande === 'Prete') {
+          return -1;
+        } else if (a.etatcommande === 'Prete' && b.etatcommande === 'EnCours') {
+          return 1;
+        } else {
+          return dateA.getTime() - dateB.getTime();
+        }
       });
   }
 
