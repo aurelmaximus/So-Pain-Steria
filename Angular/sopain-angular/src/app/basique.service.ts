@@ -23,18 +23,17 @@ export class BasiqueService {
     return this.http.get<Basique>("http://localhost:8888/basique/" + id);
   }
 
+  create(basique: Basique): void {
+    this.http.post<Basique>("http://localhost:8888/basique", basique).subscribe(resp => {
   findByLib(libelle: string): Observable<Basique> {
     return this.http.get<Basique>("http://localhost:8888/basique/" + libelle);
   }
-
-  create(basqiue: Basique): void {
-    this.http.post<Basique>("http://localhost:8888/basique", basqiue).subscribe(resp => {
       this.load();
     });
   }
 
-  update(basqiue: Basique): void {
-    this.http.put<Basique>("http://localhost:8888/basique/" + basqiue.id, basqiue).subscribe(resp => {
+  update(basique: Basique): void {
+    this.http.put<Basique>("http://localhost:8888/basique/" + basique.id, basique).subscribe(resp => {
       this.load();
     });
   }

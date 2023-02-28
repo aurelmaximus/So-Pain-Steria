@@ -19,6 +19,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import boulangerie.model.Basique;
+import boulangerie.model.Categorie;
 import boulangerie.model.Commande;
 import boulangerie.model.Views;
 import boulangerie.repository.BasiqueRepository;
@@ -101,7 +102,16 @@ public class BasiqueRestController {
 
 		return basique;
 	}
+	
+	@GetMapping("/catagorie/{catString}")
+	@JsonView(Views.ViewProduit.class)
+	public List<Basique> findByCategorie(@PathVariable String catString) {
+		Categorie cat = Categorie.valueOf(catString.substring(0, 1).toUpperCase() + catString.substring(1));
+		List<Basique> basiques = basiqueRepository.findByCategorie(cat);
 
+		return basiques;
+	}
+;
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable Integer id) {
 		basiqueRepository.deleteById(id);
