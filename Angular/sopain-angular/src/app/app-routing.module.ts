@@ -20,7 +20,7 @@ const routes: Routes = [
 {path: "inscriptionclient", component: ClientComponent},
 {path: "employe", component: EmployeComponent},
 {path: "auth", component: AuthComponent},
-{path: "", component: HomeComponent, pathMatch: 'full'},
+{path: "", component: MaisonComponent, pathMatch: 'full'},
 {path: "patisserie", component: PatisserieComponent},
 {path: "viennoiserie", component: ViennoiserieComponent},
 {path: "employegc", component: EmployeGcComponent},
