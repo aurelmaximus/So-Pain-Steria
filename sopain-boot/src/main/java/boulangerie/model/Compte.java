@@ -24,10 +24,10 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Table(name = "account", uniqueConstraints = @UniqueConstraint(columnNames = { "last_name", "first_name" }))
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
-@JsonTypeInfo (use = JsonTypeInfo.Id.MINIMAL_CLASS, 
+@JsonTypeInfo (use = JsonTypeInfo.Id.NAME, 
 include = As.PROPERTY, property  = "type") @JsonSubTypes({
 
-	@JsonSubTypes.Type(value = Client.class, name = "customer"),
+	@JsonSubTypes.Type(value = Client.class, name = "client"),
 	@JsonSubTypes.Type(value = Employe.class, name = "employe")
 })
 

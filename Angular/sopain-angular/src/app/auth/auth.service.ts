@@ -43,10 +43,10 @@ export class AuthService {
       console.log(this.connected.nom);
       
       this.logged = true;
-      console.log(this.connected.nom + " ID: " + this.connected.id.toString() + " de type " + this.connected.type.slice(1) + " est connecté !!!!");
+      console.log(this.connected.nom + " ID: " + this.connected.id.toString() + " de type " + this.connected.type + " est connecté !!!!");
       sessionStorage.setItem('idtemp', this.connected.id.toString());
 
-      this.router.navigate(['/'+this.connected.type.slice(1).toLowerCase()]);
+      this.router.navigate(['/'+this.connected.type]);
     })
   }
 
