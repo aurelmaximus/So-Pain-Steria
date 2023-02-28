@@ -9,8 +9,8 @@ import { EmployegpHttpService } from './employe-gp.http.service';
 })
 export class EmployeGpComponent {
 
-
-
+  recherche:string;
+  
   formBasique: Basique = null;
 
   cache:boolean=false;
@@ -27,7 +27,12 @@ export class EmployeGpComponent {
 
   
   listBasique(): Array<Basique> {
-    return this.employeService.findAllBasiques();
+    if (this.recherche) {
+      return this.employeService.findAllBasiques()
+        .filter(b => b.libelle.toLowerCase().includes(this.recherche.toLowerCase()));
+    } else {
+      return this.employeService.findAllBasiques();
+    }
   }
  
   
@@ -75,6 +80,7 @@ export class EmployeGpComponent {
   employeconnecte(): Employe {
     return this.employeService.currentEmploye;
   }
+
 
 
 }
