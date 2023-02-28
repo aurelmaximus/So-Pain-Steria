@@ -36,20 +36,15 @@ export class EmployeGcComponent {
 
   save(): void {
     this.formEmploye.type = 'employe';
-
-    if (this.isFormValid) {
-      
+  
+    if (this.validateForm()) {
       if (this.formEmploye.id) {
-        
         this.employeService.update(this.formEmploye);
-        
       } else {
-       
         this.employeService.create(this.formEmploye);
       }
-  }
-  this.cancel();
-
+      this.cancel();
+    }
   }
   
   cancel(): void {
@@ -75,15 +70,15 @@ export class EmployeGcComponent {
     return this.employeService.currentEmploye;
   }
 
-validateForm(): void {
-  this.isFormValid = false;
-
-  if (this.formEmploye.nom || this.formEmploye.prenom ||this.formEmploye.email || this.formEmploye.password || this.formEmploye.adresse.voie || this.formEmploye.adresse.cp || this.formEmploye.adresse.ville) {
-    this.isFormValid = true;
+  validateForm(): boolean {
+    let isFormValid = true;
+  
+    if (!this.formEmploye.nom || !this.formEmploye.prenom || !this.formEmploye.email || !this.formEmploye.password || !this.formEmploye.adresse.voie || !this.formEmploye.adresse.cp || !this.formEmploye.adresse.ville) {
+      isFormValid = false;
+    }
+  
+    return isFormValid;
   }
-   
-}
-
   
 }
 
