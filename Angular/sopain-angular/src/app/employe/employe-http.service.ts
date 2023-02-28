@@ -10,7 +10,7 @@ import { Compte, Employe } from '../model';
 export class EmployeHttpService {
 
     employes: Array<Employe> = new Array<Employe>();
-    currentCompte : Compte;
+    currentEmploye : Employe;
 
   constructor(private http: HttpClient,private auth: AuthService) {
     this.load();
@@ -42,13 +42,13 @@ export class EmployeHttpService {
     });
   }
 
-  findByIdEmp(id: number): Observable<Compte> {
-    return this.http.get<Compte>("http://localhost:8888/compte/" + id);
+  findByIdEmp(id: number): Observable<Employe> {
+    return this.http.get<Employe>("http://localhost:8888/employe/" + id);
   }
 
   private load(): void {
     this.findByIdEmp(this.auth.connected.id).subscribe(resp => {
-      this.currentCompte=resp;
+      this.currentEmploye=resp;
     });
   }
 }

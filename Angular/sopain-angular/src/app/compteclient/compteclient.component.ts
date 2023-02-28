@@ -10,8 +10,14 @@ import { CompteclientHttpService } from './compteclient-http.service';
 })
 export class CompteclientComponent {
 
+  formClient: Client = null;
+  isFormValid: boolean = false;
+
+
+
   constructor(private compteclientService: CompteclientHttpService,private commandeService: CommandeHttpService) {
   }
+
 
   list(): Array<Client> {
     return this.compteclientService.findAll();
@@ -29,12 +35,35 @@ export class CompteclientComponent {
   }
 
   cancel(): void {
-    
+    this.formClient = null;
   }
 
   clientconnecte(): Client {
     return this.compteclientService.currentclient;
   }
 
+  save(): void {
+    
+      if (this.formClient.id) {
+        
+        this.compteclientService.update(this.formClient);
+        
+      } else {
+       
+        this.compteclientService.create(this.formClient);
+      }
+  
+  this.cancel();
+  }
+
+  edit(id: number): void {
+    this.compteclientService.findById(id).subscribe(response => {
+      this.formClient = response;
+  
+      
+    });
+  }
+
+ 
 
 }

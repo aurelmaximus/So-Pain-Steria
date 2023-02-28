@@ -13,7 +13,7 @@ export class EmployegpHttpService {
     employes: Array<Employe> = new Array<Employe>();
     basiques: Array<Basique> = new Array<Basique>();
     
-    currentCompte : Compte;
+    currentEmploye : Employe;
 
   constructor(private http: HttpClient,private auth: AuthService) {
     this.load();
@@ -58,13 +58,13 @@ export class EmployegpHttpService {
     });
   }
 
-  findByIdEmp(id: number): Observable<Compte> {
-    return this.http.get<Compte>("http://localhost:8888/compte/" + id);
+  findByIdEmp(id: number): Observable<Employe> {
+    return this.http.get<Employe>("http://localhost:8888/employe/" + id);
   }
 
   private load(): void {
       this.findByIdEmp(this.auth.connected.id).subscribe(resp => {
-      this.currentCompte=resp;
+      this.currentEmploye=resp;
     });
 
     this.http.get<Array<Basique>>("http://localhost:8888/basique").subscribe(resp => {

@@ -72,8 +72,8 @@ export class EmployeGpComponent {
   }
 
 
-  employeconnecte(): Compte {
-    return this.employeService.currentCompte;
+  employeconnecte(): Employe {
+    return this.employeService.currentEmploye;
   }
 
 
