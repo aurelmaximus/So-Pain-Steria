@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { BasiqueService } from '../basique.service';
-import { Basique } from '../model';
+import { Basique, Produit } from '../model';
+import { PanierService } from '../panier/panier.service';
 
 @Component({
   selector: 'app-patisserie',
@@ -12,7 +13,8 @@ export class PatisserieComponent {
   patisseries: Array<Basique> = new Array<Basique>();
   pat: Basique = new Basique();
 
-  constructor(private basiqueServ: BasiqueService) {
+
+  constructor(private basiqueServ: BasiqueService, private panierServ: PanierService) {
     this.findPatisseries();
   }
 
@@ -32,6 +34,10 @@ export class PatisserieComponent {
     });
   }
 
-
-   
+  addToCart(produit: Produit) {
+    this.panierServ.addToCart(produit);
+    window.alert(produit.libelle + ' a été ajouté au panier!');
+  }
 }
+
+  
