@@ -1,0 +1,50 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Basique } from './model';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class BasiqueService {
+
+  basiques: Array<Basique> = new Array<Basique>();
+
+  constructor(private http: HttpClient) {
+    this.load();
+  }
+
+  findAll(): Array<Basique> {
+    return this.basiques;
+  }
+
+
+  findById(id: number): Observable<Basique> {
+    return this.http.get<Basique>("http://localhost:8888/basqiue/" + id);
+  }
+
+  create(basqiue: Basique): void {
+    this.http.post<Basique>("http://localhost:8888/basqiue", basqiue).subscribe(resp => {
+      this.load();
+    });
+  }
+
+  update(basqiue: Basique): void {
+    this.http.put<Basique>("http://localhost:8888/basqiue/" + basqiue.id, basqiue).subscribe(resp => {
+      this.load();
+    });
+  }
+
+  remove(id: number): void {
+    this.http.delete<void>("http://localhost:8888/basqiue/" + id).subscribe(resp => {
+      this.load();
+    });
+  }
+
+  private load(): void {
+    this.http.get<Array<Basique>>("http://localhost:8888/basqiue").subscribe(resp => {
+      this.basiques = resp;
+    });
+  }
+
+}

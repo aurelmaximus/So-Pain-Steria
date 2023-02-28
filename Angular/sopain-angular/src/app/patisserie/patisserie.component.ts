@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { BasiqueService } from '../basique.service';
+import { Basique } from '../model';
 
 @Component({
   selector: 'app-patisserie',
@@ -7,4 +9,12 @@ import { Component } from '@angular/core';
 })
 export class PatisserieComponent {
 
+  constructor(private basiqueServ: BasiqueService) {
+
+  }
+
+  list(): Array<Basique> {
+    return this.basiqueServ.findAll();
+  }
+   
 }

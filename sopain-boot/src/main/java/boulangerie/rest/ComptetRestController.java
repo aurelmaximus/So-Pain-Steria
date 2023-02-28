@@ -86,6 +86,7 @@ public class ComptetRestController {
 	}
 
 	@PostMapping("/auth")
+	@JsonView(Views.ViewCompte.class)
 	public Compte auth(@RequestBody AuthDTO authDTO) {
 
 		Optional<Compte> optCompte = compteRepository.findByEmailAndPassword(authDTO.getLogin(), authDTO.getPassword());
