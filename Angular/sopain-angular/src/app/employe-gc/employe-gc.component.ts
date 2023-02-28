@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+  import { Component } from '@angular/core';
 import { CommandeHttpService } from '../commande/commande-http.service';
 import { Employe, Compte, Adresse } from '../model';
 import { EmployegcHttpService } from './employe-gc.http.service';
@@ -13,7 +13,8 @@ export class EmployeGcComponent {
   formEmploye: Employe = null;
   
   cache:boolean=false;
-  masquer:boolean=true;
+  isFormValid: boolean = false;
+  
 
 
   constructor(private employeService: EmployegcHttpService) {
@@ -24,47 +25,39 @@ export class EmployeGcComponent {
   list(): Array<Employe> {
     return this.employeService.findAll();
   }
-
-  
-  listEmploye(): Array<Employe> {
-    return this.employeService.findAll();
-  }
- 
   
   add(): void {
     
     this.formEmploye = new Employe();
     this.formEmploye.adresse = new Adresse();
-  
-
   }
 
   modif(): void {
     this.cache=true;
-    this.masquer=false;
   }
 
-
   save(): void {
-
-    if(this.formEmploye.id) {
-      this.employeService.update(this.formEmploye);
-    } else {
-      this.employeService.create(this.formEmploye);
+    if (this.isFormValid) {
+      if (this.formEmploye.id) {
+        this.employeService.update(this.formEmploye);
+      } else {
+        this.employeService.create(this.formEmploye);
+      }
+  
+      this.cancel();
     }
-
-    this.cancel();
+  }
+  
+  cancel(): void {
+    this.formEmploye = null;
+    this.cache=false;
+    
   }
 
   remove(id: number): void {
     this.employeService.remove(id);
   }
 
-  cancel(): void {
-    this.formEmploye = null;
-    this.cache=false;
-    
-  }
 
   edit(id: number): void {
     this.employeService.findById(id).subscribe(response => {
@@ -79,6 +72,15 @@ export class EmployeGcComponent {
     return this.employeService.currentEmploye;
   }
 
+validateForm(): void {
+  this.isFormValid = true;
+
+  if (!this.formEmploye.nom || !this.formEmploye.prenom || !this.formEmploye.adresse.voie || !this.formEmploye.adresse.cp || !this.formEmploye.adresse.ville) {
+    this.isFormValid = false;
+  }
+}
+
+  
 }
 
 

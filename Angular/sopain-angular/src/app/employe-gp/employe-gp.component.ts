@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Employe, Basique } from '../model';
+import { Employe, Basique, Compte } from '../model';
 import { EmployegpHttpService } from './employe-gp.http.service';
 
 @Component({
@@ -71,8 +71,8 @@ export class EmployeGpComponent {
   }
 
 
-  employeconnecte(): Employe {
-    return this.employeService.currentEmploye;
+  employeconnecte(): Compte {
+    return this.employeService.currentCompte;
   }
 
 }

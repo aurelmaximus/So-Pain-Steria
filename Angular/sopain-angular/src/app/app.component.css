@@ -1,8 +1,11 @@
 .content{
 
-margin-left: 50px;
-margin-right: 50px;
-max-width: 1401px;
-
+padding-left: 50px;
+padding-right: 50px;
+max-width: 1520px;
 }
 
+.text{
+
+	font-family: montserrat-bold;
+}

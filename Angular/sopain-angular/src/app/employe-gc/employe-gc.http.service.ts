@@ -52,6 +52,10 @@ export class EmployegcHttpService {
     this.findByIdEmp(this.auth.connected.id).subscribe(resp => {
       this.currentEmploye=resp;
     });
+
+    this.http.get<Array<Employe>>("http://localhost:8888/employe").subscribe(resp => {
+      this.employes = resp;
+    });
   }
 
 }

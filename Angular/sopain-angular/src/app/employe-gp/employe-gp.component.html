@@ -1,20 +1,20 @@
 <div id="content">
     <div class="card mt-3 employe">
         <div class="card-header entete display-6 ">Information employé</div>
-        <div class="card-body" *ngFor="let emp of list()">
+        <div class="card-body">
     
             <div name="1" class="card2">
             <div class="card card1">
                 <div class="card-body">
                   <h5 class="card-title">Nom</h5>
-                  <p class="card-text">{{emp.nom}}</p>
+                  <p class="card-text">{{employeconnecte().nom}}</p>
                 </div>
               </div>
     
               <div class="card card1">
                 <div class="card-body">
                   <h5 class="card-title">Prénom</h5>
-                  <p class="card-text">{{emp.prenom}}</p>
+                  <p class="card-text">{{employeconnecte().prenom}}</p>
                 </div>
               </div>
             </div>
@@ -23,14 +23,14 @@
               <div class="card card1">
                 <div class="card-body">
                   <h5 class="card-title">Email</h5>
-                  <p class="card-text">{{emp.email}}</p>
+                  <p class="card-text">{{employeconnecte().email}}</p>
                 </div>
               </div>
     
               <div class="card card1">
                 <div class="card-body">
                   <h5 class="card-title">Mot de passe</h5>
-                  <p class="card-text">{{emp.password}}</p>
+                  <p class="card-text">{{employeconnecte().password}}</p>
                 </div>
               </div>
             </div>
@@ -40,14 +40,14 @@
               <div class="card card1">
                   <div class="card-body">
                     <h5 class="card-title">Numéro</h5>
-                    <p class="card-text">{{emp.adresse.numero}}</p>
+                    <p class="card-text">{{employeconnecte().adresse.numero}}</p>
                   </div>
                 </div>
       
                 <div class="card card1">
                   <div class="card-body">
                     <h5 class="card-title">Voie</h5>
-                    <p class="card-text">{{emp.adresse.voie}}</p>
+                    <p class="card-text">{{employeconnecte().adresse.voie}}</p>
                   </div>
                 </div>
               </div>
@@ -56,14 +56,14 @@
                 <div class="card card1">
                   <div class="card-body">
                     <h5 class="card-title">Code Postal</h5>
-                    <p class="card-text">{{emp.adresse.cp}}</p>
+                    <p class="card-text">{{employeconnecte().adresse.cp}}</p>
                   </div>
                 </div>
       
                 <div class="card card1">
                   <div class="card-body">
                     <h5 class="card-title">Ville</h5>
-                    <p class="card-text">{{emp.adresse.ville}}</p>
+                    <p class="card-text">{{employeconnecte().adresse.ville}}</p>
                   </div>
                 </div>
               </div>
@@ -126,8 +126,13 @@
 
   <div class="form-group">
       <label for="categorie">Catégorie:</label> 
-      <input type="text" class="form-control" id="categorie" name="categorie" [(ngModel)]="formBasique.categorie" required />
-  </div>
+      <select class="form-control" id="categorie" name="categorie" [(ngModel)]="formBasique.categorie" required>
+        <option value="Pain">Pain</option>
+        <option value="Viennoiserie">Viennoiserie</option>
+        <option value="Boisson">Boisson</option>
+        <option value="Gateau">Gateau</option>
+       </select>
+    </div>
   
   <div class="form-group">
       <label for="email">Libelle:</label> 
