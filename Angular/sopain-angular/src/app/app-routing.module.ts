@@ -17,7 +17,7 @@ import { PanierComponent } from './panier/panier.component';
 
 
 const routes: Routes = [
-{path: "client", component: ClientComponent},
+{path: "inscriptionclient", component: ClientComponent},
 {path: "employe", component: EmployeComponent},
 {path: "auth", component: AuthComponent},
 {path: "", component: HomeComponent, pathMatch: 'full'},
@@ -30,7 +30,7 @@ const routes: Routes = [
 {path: "maison", component: MaisonComponent},
 {path: "auth", component: AuthComponent},
 {path: "Nous-Contacter", component: NouscontacterComponent},
-{path: "compteclient", component: CompteclientComponent},
+{path: "client", component: CompteclientComponent},
 {path: "employegp", component: EmployeGpComponent},
 {path: "panier", component: PanierComponent}
 ];

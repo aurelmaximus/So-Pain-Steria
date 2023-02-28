@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth/auth.service';
 import { Client } from '../model';
 
 @Injectable({
@@ -9,8 +10,9 @@ import { Client } from '../model';
 export class CompteclientHttpService {
 
     clients: Array<Client> = new Array<Client>();
+    currentclient: Client;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private auth: AuthService) {
     this.load();
   }
 
@@ -41,9 +43,13 @@ export class CompteclientHttpService {
     });
   }
 
+  findByIdCli(id: number): Observable<Client> {
+    return this.http.get<Client>("http://localhost:8888/client/" + id);
+  }
+
   private load(): void {
-    this.http.get<Array<Client>>("http://localhost:8888/client").subscribe(resp => {
-      this.clients = resp;
+    this.findByIdCli(this.auth.connected.id).subscribe(resp => {
+      this.currentclient=resp;
     });
   }
 

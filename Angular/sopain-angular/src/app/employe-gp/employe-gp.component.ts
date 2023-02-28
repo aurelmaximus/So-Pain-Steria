@@ -9,7 +9,8 @@ import { EmployegpHttpService } from './employe-gp.http.service';
 })
 export class EmployeGpComponent {
 
-  
+
+
   formBasique: Basique = null;
 
   cache:boolean=false;
@@ -74,6 +75,7 @@ export class EmployeGpComponent {
   employeconnecte(): Compte {
     return this.employeService.currentCompte;
   }
+
 
 }
 

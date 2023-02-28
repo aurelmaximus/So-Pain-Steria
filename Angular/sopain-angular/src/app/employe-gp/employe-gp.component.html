@@ -75,6 +75,7 @@
     <div class="card mt-3 employeg">
         <div class="card-header entete display-6">Liste des produits</div>
         <div class="card-body max">
+          
             <table class="table">
                 <thead class="table-dark">
                     <tr>
@@ -86,7 +87,7 @@
                         <th></th>
                     </tr>
                 </thead>
-                
+                <!-- <input type="text" class="form-control" [(ngModel)]="recherche" /> -->
                 <tbody>
                     <tr *ngFor="let bas of listBasique()">
                     <td>{{bas.id}}</td>

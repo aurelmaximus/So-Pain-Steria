@@ -16,11 +16,9 @@ export class EmployeGcComponent {
   isFormValid: boolean = false;
   
 
-
   constructor(private employeService: EmployegcHttpService) {
+
   }
-
-
 
   list(): Array<Employe> {
     return this.employeService.findAll();
@@ -37,21 +35,26 @@ export class EmployeGcComponent {
   }
 
   save(): void {
+    this.formEmploye.type = 'employe';
+
     if (this.isFormValid) {
+      
       if (this.formEmploye.id) {
+        
         this.employeService.update(this.formEmploye);
+        
       } else {
+       
         this.employeService.create(this.formEmploye);
       }
-  
-      this.cancel();
-    }
+  }
+  this.cancel();
+
   }
   
   cancel(): void {
     this.formEmploye = null;
     this.cache=false;
-    
   }
 
   remove(id: number): void {
@@ -73,11 +76,12 @@ export class EmployeGcComponent {
   }
 
 validateForm(): void {
-  this.isFormValid = true;
+  this.isFormValid = false;
 
-  if (!this.formEmploye.nom || !this.formEmploye.prenom || !this.formEmploye.adresse.voie || !this.formEmploye.adresse.cp || !this.formEmploye.adresse.ville) {
-    this.isFormValid = false;
+  if (this.formEmploye.nom || this.formEmploye.prenom ||this.formEmploye.email || this.formEmploye.password || this.formEmploye.adresse.voie || this.formEmploye.adresse.cp || this.formEmploye.adresse.ville) {
+    this.isFormValid = true;
   }
+   
 }
 
   

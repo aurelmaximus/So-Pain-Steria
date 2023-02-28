@@ -18,19 +18,23 @@ export class CompteclientComponent {
   }
 
    
-  listCommandesPastermine(): Array<Commande> {
-    return this.commandeService.findAllPasTermine();
+  listCommandesEnCours(): Array<Commande> {
+    const client = this.clientconnecte();
+    return client?.id ? this.commandeService.findAllclientEncours(client) : [];
   }
 
-  listCommandestermine(): Array<Commande> {
-    return this.commandeService.findAllTermine();
+  listCommandesTermine(): Array<Commande> {
+    const client = this.clientconnecte();
+    return client?.id ? this.commandeService.findAllclienttermine(client) : [];
   }
 
   cancel(): void {
     
   }
 
-
+  clientconnecte(): Client {
+    return this.compteclientService.currentclient;
+  }
 
 
 }

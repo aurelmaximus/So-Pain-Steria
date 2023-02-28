@@ -25,9 +25,9 @@ export class Adresse {
     numero:number;
     voie:string;
     ville:string;
-    cp:number;
+    cp:string;
 
-    constructor(numero?:number, voie?:string, ville?:string, cp?:number) {
+    constructor(numero?:number, voie?:string, ville?:string, cp?:string) {
        this.numero=numero;
        this.voie=voie;
        this.ville=ville;

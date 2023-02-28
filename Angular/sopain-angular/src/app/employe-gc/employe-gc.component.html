@@ -74,7 +74,7 @@
     <div id="contentdroite">
     <div class="card mt-3 employeg">
         <div class="card-header entete display-6">Liste des employés</div>
-        <div class="card-body">
+        <div class="card-body max">
             <table class="table">
                 <thead class="table-dark">
                     <tr>
@@ -114,15 +114,15 @@
 
                  
             </table>
-            <div class="card-footer">
+          
+        
+        
+         </div>
+        <div class="card-footer">
               <a class="btn  btn-lg bouton bouton2" (click)="add()"> Ajouter un employé</a> 
               &nbsp;  &nbsp; <a class="btn btn-lg bouton bouton2" (click)="modif()"> Modifier un employé</a>
               &nbsp;  &nbsp; <a class="btn bouton3 btn-lg bouton " (click)="cancel()"> Annuler</a>
             </div>
-        
-        
-         </div>
-      
       </div>
      
     </div>
@@ -132,7 +132,7 @@
 <div class="card mt-3" *ngIf="formEmploye">
   <div class="card-header entete display-6">Edition d'un Employé</div>
   <div class="card-body">
-
+    
   <div class="form-group">
     <label for="nom">Nom:</label> 
     <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formEmploye.nom" required #nom="ngModel" (input)="validateForm()"/>
