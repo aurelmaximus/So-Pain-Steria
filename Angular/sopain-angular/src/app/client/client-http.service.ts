@@ -16,6 +16,7 @@ export class ClientHttpService {
     
     
   }
+  
 
   findAll(): Array<Client> {
     return this.clients;
