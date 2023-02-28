@@ -14,146 +14,26 @@ Sa signature ? Des cuissons marquées qui donnent de belles croûtes caramélis�
     <div class="container">
 
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
-          <div class="card shadow-sm">
-            <figure><div class="bg-image hover-zoom"><img src="..\..\assets\images\baguetteclassique.jpeg" class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.</div></div>
-              <figcaption>Baguette Classique</figcaption></figure>
-            <div class="card-body">
-              <h4>Baguette Classique</h4>
-              <p class="card-text">pain.description</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
-                </div>
-                <small class="text-muted">1,20 €  </small>
+
+      <div class="col" *ngFor="let pain of pains">
+        <div class="card shadow-sm">
+          <figure><div class="bg-image hover-zoom"><img src="{{pain.image_ref}}" class="w-100" alt="Choux Crème" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.
+          </div></div><figcaption>{{pain.libelle}}</figcaption></figure>
+          <div class="card-body">
+            <p class="card-text"> <h4>{{pain.libelle}}</h4>
+              {{pain.description}}
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
+                <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
               </div>
+              <small class="text-muted">{{pain.prix | currency:'EUR'}}</small>
             </div>
           </div>
         </div>
-
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <figure><div class="bg-image hover-zoom"><img src="..\..\assets\images\complet.jpg"
-              class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.
-              </div></div><figcaption>Pain Complet</figcaption></figure>
-            <div class="card-body"><h4>Pain complet</h4>
-              <p class="card-text">Mie dense et nourrissante ainsi qu'une saveur riche et authentique. Avec son goût rustique et sa texture satisfaisante, notre pain complet sera parfait pour accompagner vos repas sains et savoureux.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
-                </div>
-                <small class="text-muted">1,70 € </small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <figure><div class="bg-image hover-zoom"><img src="..\..\assets\images\graines.jpg" class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.</div></div>
-              <figcaption>Pain aux Noix</figcaption></figure>
-            <div class="card-body"> <h4>Pain aux Noix</h4>
-              <p class="card-text">Que vous le dégustiez nature, grillé ou accompagné d'un fromage fin, ce pain artisanal aux noix saura vous combler à chaque bouchée.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
-                </div>
-                <small class="text-muted">1,70 €</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <figure><div class="bg-image hover-zoom"><img src="..\..\assets\images\burger.jpg"
-              class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="true"><div class="centered">.
-              </div></div><figcaption>Pain Burger</figcaption></figure>
-            <div class="card-body">
-              <h4>Pain Burger</h4>
-              <p class="card-text">Frais et moelleux, spécialement conçu pour préparer vos burgers.
-                Avec sa mie aérée et son extérieur légèrement croustillant, il saura vous faire fondre de plaisir à chaque bouchée.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
-                </div>
-                <small class="text-muted">1,70 €</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        
-        <div class="col">
-          <div class="card shadow-sm">
-            <figure><div class="bg-image hover-zoom"><img src="..\..\assets\images\painn.jpeg"
-              class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.
-              </div></div><figcaption>Pain Campagne</figcaption></figure>
-            <div class="card-body"><h4>Pain Campagne</h4>
-              <p class="card-text">Délice artisanal, préparé avec des ingrédients soigneusement sélectionnés pour vous offrir une mie moelleuse, aérée et savoureuse, ainsi qu'une croûte croustillante et rustique. </p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
-                </div>
-                <small class="text-muted">1,70 €</small>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <div class="col">
-          <div class="card shadow-sm">
-            <figure><div class="bg-image hover-zoom"><img src="...\..\assets\images\sesame.jpg "
-              class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <div class="centered"></div></div><figcaption>Baguette Sésame</figcaption></figure>
-            <div class="card-body"><h4>Baguette Sésame</h4>
-              <p class="card-text">Combinaison parfaite de la saveur subtile des graines de sésame et d'une mie moelleuse et légère. Avec son extérieur croustillant et son goût unique, notre pain sésame apportera une touche de raffinement à tous vos sandwichs et plats.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
-                </div>
-                <small class="text-muted">1,70 €</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-        <div class="col">
-          <div class="card shadow-sm">
-            <figure><div class="bg-image hover-zoom"><img src="..\..\assets\images\pexels-mariana-kurnyk-1775035.jpg" class="w-100" alt="baguette" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"><div class="centered">.</div></div><figcaption>Baguette 6 Céréales</figcaption></figure>
-            <div class="card-body">
-              <h4>Pain 6 Céréales</h4>
-              <p class="card-text">Le délicieux pain 6 Céréales, <br>agrémentée de graines de sésame, pavot, millet, lin blond et lin brun.<br></p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Voir</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
-                </div>
-                <small class="text-muted">1,80 €</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-
-
-       
-
-
-
-
-
-
+      </div>
+  </div>
+</div>
 
 
 
