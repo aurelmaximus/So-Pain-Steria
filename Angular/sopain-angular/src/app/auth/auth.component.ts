@@ -22,6 +22,13 @@ export class AuthComponent {
   seconnecter(): void {
 
     this.authService.login(this.connectedDTO);
+    //this.reloadPage();
   }
+
+  reloadPage() {
+    setTimeout(()=>{
+      window.location.reload();
+    }, 100);
+}
 
 }

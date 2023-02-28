@@ -21,6 +21,20 @@ thatemploye : boolean =false;
   
   }
 
+  isClient(): boolean {
+    if(this.authServ.connected.type=="client") {
+      return true;
+    }
+    else return false;
+  }
+
+  isEmploye(): boolean {
+    if(this.authServ.connected.type=="employe") {
+      return true;
+    }
+    else return false;
+  }
+
   unConnect(): void{
     this.authServ.logout();
 

@@ -47,6 +47,7 @@ export class AuthService {
       sessionStorage.setItem('idtemp', this.connected.id.toString());
 
       this.router.navigate(['/'+this.connected.type]);
+      
     })
   }
 
@@ -55,7 +56,14 @@ export class AuthService {
     this.logged=false;
     this.idConnected=0;
     sessionStorage.clear();
+    this.reloadPage();
     this.router.navigate(['/maison']);
+  }
+
+  reloadPage() {
+    setTimeout(()=>{
+      window.location.reload();
+    }, 100);
   }
 
   findById(id: number): Observable<Compte> {
