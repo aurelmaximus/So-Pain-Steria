@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 01 mars 2023 à 09:12
+-- Généré le : mer. 01 mars 2023 à 09:55
 -- Version du serveur : 5.7.40
 -- Version de PHP : 8.0.26
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `account` (
   `points` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UKravrcdl4ml7ghtfxdr2nx9hyw` (`last_name`,`first_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `account`
@@ -132,15 +132,23 @@ CREATE TABLE IF NOT EXISTS `favorite_articles` (
   PRIMARY KEY (`id`),
   KEY `FKjx8inxsdb180t84o3uj97rm5y` (`customer_id`),
   KEY `FK8ymrqp3evp7dvak8g2vjw7ne` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `favorite_articles`
 --
 
 INSERT INTO `favorite_articles` (`id`, `version`, `customer_id`, `product_id`) VALUES
-(1, 0, 5, 7),
-(2, 0, 5, 6);
+(1, 0, 6, 2),
+(2, 0, 6, 4),
+(3, 0, 6, 7),
+(4, 0, 6, 10),
+(5, 0, 6, 16),
+(6, 0, 6, 19),
+(7, 0, 6, 22),
+(8, 0, 5, 7),
+(9, 0, 5, 18),
+(10, 0, 5, 21);
 
 -- --------------------------------------------------------
 
@@ -236,7 +244,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `image_ref` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UKlkl5hm0ed36aan92yhhquksjt` (`price`,`label`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `product`
