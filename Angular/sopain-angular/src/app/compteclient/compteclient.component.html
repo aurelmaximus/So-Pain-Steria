@@ -7,14 +7,14 @@
             <div class="card card1">
                 <div class="card-body">
                   <h5 class="card-title">Nom</h5>
-                  <p class="card-text">{{clientconnecte().nom}}</p>
+                  <p class="card-text">{{clientconnecte()?.nom}}</p>
                 </div>
               </div>
     
               <div class="card card1">
                 <div class="card-body">
                   <h5 class="card-title">Prénom</h5>
-                  <p class="card-text">{{clientconnecte().prenom}}</p>
+                  <p class="card-text">{{clientconnecte()?.prenom}}</p>
                 </div>
               </div>
             </div>
@@ -23,14 +23,14 @@
               <div class="card card1">
                 <div class="card-body">
                   <h5 class="card-title">Email</h5>
-                  <p class="card-text">{{clientconnecte().email}}</p>
+                  <p class="card-text">{{clientconnecte()?.email}}</p>
                 </div>
               </div>
     
               <div class="card card1">
                 <div class="card-body">
                   <h5 class="card-title">Mot de passe</h5>
-                  <p class="card-text">{{clientconnecte().password}}</p>
+                  <p class="card-text">{{clientconnecte()?.password}}</p>
                 </div>
               </div>
             </div>
@@ -40,14 +40,14 @@
               <div class="card card1">
                   <div class="card-body">
                     <h5 class="card-title">Numéro</h5>
-                    <p class="card-text">{{clientconnecte().adresse.numero}}</p>
+                    <p class="card-text">{{clientconnecte()?.adresse.numero}}</p>
                   </div>
                 </div>
       
                 <div class="card card1">
                   <div class="card-body">
                     <h5 class="card-title">Voie</h5>
-                    <p class="card-text">{{clientconnecte().adresse.voie}}</p>
+                    <p class="card-text">{{clientconnecte()?.adresse.voie}}</p>
                   </div>
                 </div>
               </div>
@@ -56,14 +56,14 @@
                 <div class="card card1">
                   <div class="card-body">
                     <h5 class="card-title">Code Postal</h5>
-                    <p class="card-text">{{clientconnecte().adresse.cp}}</p>
+                    <p class="card-text">{{clientconnecte()?.adresse.cp}}</p>
                   </div>
                 </div>
       
                 <div class="card card1">
                   <div class="card-body">
                     <h5 class="card-title">Ville</h5>
-                    <p class="card-text">{{clientconnecte().adresse.ville}}</p>
+                    <p class="card-text">{{clientconnecte()?.adresse.ville}}</p>
                   </div>
                 </div>
               </div>
@@ -71,7 +71,7 @@
              
     </div>
     <div class="card-footer">
-      <a class="btn btn-lg bouton bouton2" (click)="edit(clientconnecte().id)"> Modifier mes informations</a>
+      <a class="btn btn-lg bouton bouton2" (click)="edit(clientconnecte()?.id)"> Modifier mes informations</a>
     </div>
     </div>
     

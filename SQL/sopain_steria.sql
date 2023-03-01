@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 01 mars 2023 à 09:55
+-- Généré le : mer. 01 mars 2023 à 23:07
 -- Version du serveur : 5.7.40
 -- Version de PHP : 8.0.26
 
@@ -77,19 +77,154 @@ CREATE TABLE IF NOT EXISTS `command` (
   `customer_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`numero`),
   KEY `FK4adexdu0ttc9l217n3ydn7199` (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=177 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `command`
 --
 
 INSERT INTO `command` (`numero`, `arrived_date`, `command_status`, `arrived_hour`, `on_site`, `version`, `customer_id`) VALUES
-(1, '2023-01-31', 'EnCours', '12:30:00', 0, 1, 5),
+(1, '2023-01-31', 'Termine', '12:30:00', 0, 2, 5),
 (2, '2023-01-31', 'Prete', '16:55:00', 0, 1, 6),
 (3, '2023-01-31', 'Prete', '11:30:00', 0, 1, 5),
-(4, '2023-01-27', 'EnCours', '12:55:00', 0, 2, 6),
-(5, '2023-01-31', 'Termine', '13:30:00', 0, 2, 6),
-(6, '2023-01-27', 'Termine', '18:55:00', 0, 2, 6);
+(4, '2023-01-27', 'Termine', '12:55:00', 0, 3, 6),
+(5, '2023-01-31', 'EnCours', '13:30:00', 0, 5, 6),
+(6, '2023-01-27', 'EnCours', '18:55:00', 0, 3, 6),
+(42, NULL, 'Panier', NULL, 0, 0, NULL),
+(43, NULL, 'Panier', NULL, 0, 0, 6),
+(44, NULL, 'Panier', NULL, 0, 0, NULL),
+(45, NULL, 'Panier', NULL, 0, 0, NULL),
+(46, NULL, 'Panier', NULL, 0, 0, NULL),
+(47, NULL, 'Panier', NULL, 0, 0, NULL),
+(48, NULL, 'Panier', NULL, 0, 0, NULL),
+(49, NULL, 'Panier', NULL, 0, 0, NULL),
+(50, NULL, 'Panier', NULL, 0, 0, 6),
+(51, NULL, 'Panier', NULL, 0, 0, NULL),
+(52, NULL, 'Panier', NULL, 0, 0, 6),
+(53, NULL, 'Panier', NULL, 0, 0, NULL),
+(54, NULL, 'Panier', NULL, 0, 0, NULL),
+(55, NULL, 'Panier', NULL, 0, 0, NULL),
+(56, NULL, 'Panier', NULL, 0, 0, NULL),
+(57, NULL, 'Panier', NULL, 0, 0, NULL),
+(58, NULL, 'Panier', NULL, 0, 0, 6),
+(59, NULL, 'Panier', NULL, 0, 0, NULL),
+(60, NULL, 'Panier', NULL, 0, 0, 6),
+(61, NULL, 'Panier', NULL, 0, 0, NULL),
+(62, NULL, 'Panier', NULL, 0, 0, NULL),
+(63, NULL, 'Panier', NULL, 0, 0, 6),
+(64, NULL, 'Panier', NULL, 0, 0, NULL),
+(65, NULL, 'Panier', NULL, 0, 0, NULL),
+(66, NULL, 'Panier', NULL, 0, 0, NULL),
+(67, NULL, 'Panier', NULL, 0, 0, 6),
+(68, NULL, 'Panier', NULL, 0, 0, NULL),
+(69, NULL, 'Panier', NULL, 0, 0, NULL),
+(70, NULL, 'Panier', NULL, 0, 0, 6),
+(71, NULL, 'Panier', NULL, 0, 0, NULL),
+(72, NULL, 'Panier', NULL, 0, 0, 6),
+(73, NULL, 'Panier', NULL, 0, 0, NULL),
+(74, NULL, 'Panier', NULL, 0, 0, NULL),
+(75, NULL, 'Panier', NULL, 0, 0, NULL),
+(76, NULL, 'Panier', NULL, 0, 0, 6),
+(77, NULL, 'Panier', NULL, 0, 0, NULL),
+(78, NULL, 'Panier', NULL, 0, 0, 6),
+(79, NULL, 'Panier', NULL, 0, 0, NULL),
+(80, NULL, 'Panier', NULL, 0, 0, 6),
+(81, NULL, 'Panier', NULL, 0, 0, NULL),
+(82, NULL, 'Panier', NULL, 0, 0, NULL),
+(83, NULL, 'Panier', NULL, 0, 0, NULL),
+(84, NULL, 'Panier', NULL, 0, 0, NULL),
+(85, NULL, 'Panier', NULL, 0, 0, NULL),
+(86, NULL, 'Panier', NULL, 0, 0, NULL),
+(87, NULL, 'Panier', NULL, 0, 0, NULL),
+(88, NULL, 'Panier', NULL, 0, 0, 6),
+(89, NULL, 'Panier', NULL, 0, 0, NULL),
+(90, NULL, 'Panier', NULL, 0, 0, 6),
+(91, NULL, 'Panier', NULL, 0, 0, NULL),
+(92, NULL, 'Panier', NULL, 0, 0, NULL),
+(93, NULL, 'Panier', NULL, 0, 0, 6),
+(94, NULL, 'Panier', NULL, 0, 0, NULL),
+(95, NULL, 'Panier', NULL, 0, 0, NULL),
+(96, NULL, 'Panier', NULL, 0, 0, 6),
+(97, NULL, 'Panier', NULL, 0, 0, NULL),
+(98, NULL, 'Panier', NULL, 0, 0, NULL),
+(99, NULL, 'Panier', NULL, 0, 0, 6),
+(100, NULL, 'Panier', NULL, 0, 0, NULL),
+(101, NULL, 'Panier', NULL, 0, 0, NULL),
+(102, NULL, 'Panier', NULL, 0, 0, NULL),
+(103, NULL, 'Panier', NULL, 0, 0, NULL),
+(104, NULL, 'Panier', NULL, 0, 0, NULL),
+(105, NULL, 'Panier', NULL, 0, 0, NULL),
+(106, NULL, 'Panier', NULL, 0, 0, NULL),
+(107, NULL, 'Panier', NULL, 0, 0, 6),
+(108, NULL, 'Panier', NULL, 0, 0, NULL),
+(109, NULL, 'Panier', NULL, 0, 0, NULL),
+(110, NULL, 'Panier', NULL, 0, 0, NULL),
+(111, NULL, 'Panier', NULL, 0, 0, NULL),
+(112, NULL, 'Panier', NULL, 0, 0, NULL),
+(113, NULL, 'Panier', NULL, 0, 0, NULL),
+(114, NULL, 'Panier', NULL, 0, 0, 6),
+(115, NULL, 'Panier', NULL, 0, 0, NULL),
+(116, NULL, 'Panier', NULL, 0, 0, 6),
+(117, NULL, 'Panier', NULL, 0, 0, NULL),
+(118, NULL, 'Panier', NULL, 0, 0, NULL),
+(119, NULL, 'Panier', NULL, 0, 0, NULL),
+(120, NULL, 'Panier', NULL, 0, 0, NULL),
+(121, NULL, 'Panier', NULL, 0, 0, NULL),
+(122, NULL, 'Panier', NULL, 0, 0, NULL),
+(123, NULL, 'Panier', NULL, 0, 0, 6),
+(124, NULL, 'Panier', NULL, 0, 0, NULL),
+(125, NULL, 'Panier', NULL, 0, 0, NULL),
+(126, NULL, 'Panier', NULL, 0, 0, NULL),
+(127, NULL, 'Panier', NULL, 0, 0, NULL),
+(128, NULL, 'Panier', NULL, 0, 0, NULL),
+(129, NULL, 'Panier', NULL, 0, 0, NULL),
+(130, NULL, 'Panier', NULL, 0, 0, NULL),
+(131, NULL, 'Panier', NULL, 0, 0, NULL),
+(132, NULL, 'Panier', NULL, 0, 0, NULL),
+(133, NULL, 'Panier', NULL, 0, 0, NULL),
+(134, NULL, 'Panier', NULL, 0, 0, NULL),
+(135, NULL, 'Panier', NULL, 0, 0, NULL),
+(136, NULL, 'Panier', NULL, 0, 0, NULL),
+(137, NULL, 'Panier', NULL, 0, 0, NULL),
+(138, NULL, 'Panier', NULL, 0, 0, NULL),
+(139, NULL, 'Panier', NULL, 0, 0, NULL),
+(140, NULL, 'Panier', NULL, 0, 0, 6),
+(141, NULL, 'Panier', NULL, 0, 0, NULL),
+(142, NULL, 'Panier', NULL, 0, 0, NULL),
+(143, NULL, 'Panier', NULL, 0, 0, NULL),
+(144, NULL, 'Panier', NULL, 0, 0, NULL),
+(145, NULL, 'Panier', NULL, 0, 0, NULL),
+(146, NULL, 'Panier', NULL, 0, 0, NULL),
+(147, NULL, 'Panier', NULL, 0, 0, NULL),
+(148, NULL, 'Panier', NULL, 0, 0, NULL),
+(149, NULL, 'Panier', NULL, 0, 0, NULL),
+(150, NULL, 'Panier', NULL, 0, 0, NULL),
+(151, NULL, 'Panier', NULL, 0, 0, NULL),
+(152, NULL, 'Panier', NULL, 0, 0, 6),
+(153, NULL, 'Panier', NULL, 0, 0, NULL),
+(154, NULL, 'Panier', NULL, 0, 0, NULL),
+(155, NULL, 'Panier', NULL, 0, 0, NULL),
+(156, NULL, 'Panier', NULL, 0, 0, NULL),
+(157, NULL, 'Panier', NULL, 0, 0, 6),
+(158, NULL, 'Panier', NULL, 0, 0, NULL),
+(159, NULL, 'Panier', NULL, 0, 0, NULL),
+(160, NULL, 'Panier', NULL, 0, 0, NULL),
+(161, NULL, 'Panier', NULL, 0, 0, NULL),
+(162, NULL, 'Panier', NULL, 0, 0, NULL),
+(163, NULL, 'Panier', NULL, 0, 0, NULL),
+(164, NULL, 'Panier', NULL, 0, 0, NULL),
+(165, NULL, 'Panier', NULL, 0, 0, NULL),
+(166, NULL, 'Panier', NULL, 0, 0, NULL),
+(167, NULL, 'Panier', NULL, 0, 0, NULL),
+(168, NULL, 'Panier', NULL, 0, 0, NULL),
+(169, NULL, 'Panier', NULL, 0, 0, NULL),
+(170, NULL, 'Panier', NULL, 0, 0, NULL),
+(171, NULL, 'Panier', NULL, 0, 0, NULL),
+(172, NULL, 'Panier', NULL, 0, 0, NULL),
+(173, NULL, 'Panier', NULL, 0, 0, NULL),
+(174, NULL, 'Panier', NULL, 0, 0, 6),
+(175, NULL, 'Panier', NULL, 0, 0, NULL),
+(176, NULL, 'Panier', NULL, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -132,23 +267,17 @@ CREATE TABLE IF NOT EXISTS `favorite_articles` (
   PRIMARY KEY (`id`),
   KEY `FKjx8inxsdb180t84o3uj97rm5y` (`customer_id`),
   KEY `FK8ymrqp3evp7dvak8g2vjw7ne` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `favorite_articles`
 --
 
 INSERT INTO `favorite_articles` (`id`, `version`, `customer_id`, `product_id`) VALUES
-(1, 0, 6, 2),
-(2, 0, 6, 4),
-(3, 0, 6, 7),
-(4, 0, 6, 10),
-(5, 0, 6, 16),
-(6, 0, 6, 19),
-(7, 0, 6, 22),
-(8, 0, 5, 7),
-(9, 0, 5, 18),
-(10, 0, 5, 21);
+(1, 0, 6, 1),
+(2, 0, 5, 6),
+(11, 0, 6, 16),
+(12, 0, 6, 22);
 
 -- --------------------------------------------------------
 
@@ -244,35 +373,34 @@ CREATE TABLE IF NOT EXISTS `product` (
   `image_ref` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UKlkl5hm0ed36aan92yhhquksjt` (`price`,`label`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `product`
 --
 
 INSERT INTO `product` (`type`, `id`, `label`, `price`, `version`, `category`, `share_number`, `description`, `image_ref`) VALUES
-('basic', 1, 'Choux Crème', '2.90', 2, 'Gateau', NULL, ' <i>À base de crème fouettée enrobée d\'une pâte à choux légère, ces choux à la crème sont de petits délices qui s’apprécient à toutes les occasions. </i><br>\n                    Étiquettes: Gluten,Lait,Oeufs<br><br><br>', '..\\..\\assets\\images\\cream-puffs-427181_1920.jpg'),
-('basic', 2, 'Canelé', '2.99', 1, 'Viennoiserie', NULL, '<i>Texture croustillante à l\'extérieur et moelleuse à l\'intérieur des canelés, une douceur bordelaise incontournable.</i><br><br>\n                Pâte Feuilletée,Pépite de Chocolat,Crème Pâtissière.<br>\n                Étiquettes: Gluten,Lait,Oeufs', '..\\..\\assets\\images\\canele.jpg'),
-('basic', 3, 'Mille Feuille', '2.80', 1, 'Gateau', NULL, ' <i>Pâte Feuilletée, Ganache Montée vanille, Caramel Tendre à la fleur de Sel</i>\n                    Comment résister à son feuilletage si finement croustillant et à sa crème légère ?\n                    <br><br>\n                    <br>Étiquettes: Gluten,Lait,Oeufs', '..\\..\\assets\\images\\millefeuille2.jpeg'),
-('basic', 4, 'Tartelette Framboise', '3.00', 1, 'Gateau', NULL, '<i> Pâtisserie subtilement vanillée, accompagnée de framboises fraîches.</i><br><br>\n                  Existe en version individuelle et à partager.<br>\n                  Pâte Sucrée à la Fleur de Sel, Compotée de Framboises, crème Madame (crème pâtissière et crème fouettée) Framboises Fraîches.\n                  <br>Etiquette: Gluten, Oeufs, Lait', '..\\..\\assets\\images\\tarteframboise2.webp'),
-('basic', 5, 'Macaron', '0.50', 0, 'Gateau', NULL, '<i>Coque croquante et  ganache onctueuse à la saveur intense de noisette grillée, pour une expérience gustative unique en son genre.</i><br><br>\n                  Étiquettes : Gluten,Lait,Oeufs,Noix', '..\\..\\assets\\images\\macarons.jpeg'),
-('basic', 6, 'Croissant', '1.10', 0, 'Viennoiserie', NULL, '<i>Le croissant traditionnel par excellence.</i><br><br>\n              Pâte feuilletée,2 barres de chocolat noir 66%<br>\n              Étiquettes: Gluten,Lait,Oeufs<br><br><br><br>', '..\\..\\assets\\images\\croissant2.jpg'),
-('basic', 7, 'Chocolatine', '1.20', 0, 'Viennoiserie', NULL, '<i>Son feuilletage et ses barrettes de chocolat sont à croquer.</i><br><br>\n                2 barres de chocolat noir 66%<br>\n                Étiquettes: Gluten,Lait,Oeufs<br><br><br>', '..\\..\\assets\\images\\chocolatine.jpeg'),
-('basic', 8, 'Pain aux Raisins', '1.40', 1, 'Viennoiserie', NULL, '<i>Feuilleté au Beurre pur agrémenté de raisins blonds sur leur lit de crème pâtissière légère vanillée.</i><br><br>\n                Pâte Feuilletée, Raisin,Crème Pâtissière<br>\n                Étiquettes:Arachides,Fruits à coques,Gluten,Lait,Oeufs<br><br>', '..\\..\\assets\\images\\painauxraisins2.jpeg'),
-('basic', 9, 'Fraisier', '3.10', 0, 'Gateau', NULL, ' <i>Sa génoise légèrement imbibée de sirop de fraise et sa crème mousseline vanillée sauront vous charmer en toute délicatesse, pour un plaisir gustatif absolu.\"</i><br>\n                  Étiquettes : Gluten, Lait, Oeufs', '..\\..\\assets\\images\\fraisier.webp'),
-('basic', 10, 'Chausson aux pommes', '1.80', 1, 'Viennoiserie', NULL, '<i>Le chausson aux pommes traditionnel relevé d’une vanille gourmande.</i><br><br>\n                Pâte Feuilletée, Composée de Pommes Fraiche<br>\n                Étiquettes:Gluten,Lait,Oeufs<br><br><br>', '..\\..\\assets\\images\\chaussonauxpommes2.jpeg'),
-('basic', 11, 'Brioche Suisse', '1.80', 1, 'Viennoiserie', NULL, '<i>La délicieuse brioche suisse, avec son moelleux incomparable et son cœur de crème pâtissière fondante qui vous fera craquer à chaque bouchée.</i><br><br>\n                Pâte Feuilletée,Pépite de Chocolat,Crème Pâtissière.<br>\n                Étiquettes : Gluten,Lait,Oeufs', '..\\..\\assets\\images\\brioche-suisse.jpeg'),
-('basic', 13, 'Canelé', '1.60', 0, 'Viennoiserie', NULL, ' <i>Texture croustillante à l\'extérieur et moelleuse à l\'intérieur des canelés, une douceur bordelaise incontournable.</i><br><br>\n                Pâte Feuilletée,Pépite de Chocolat,Crème Pâtissière.<br>\n                Étiquettes: Gluten,Lait,Oeufs', '..\\..\\assets\\images\\canele.jpg'),
-('basic', 14, 'Baguette Classique', '1.00', 1, 'Pain', NULL, 'Notre baguette classique est cuite dans notre four à sole comme tous les autres pains.<br>\n                Elle a une mie blanche, plus compacte et plus dense que la baguette 6 céréales et sa croûte est plus fine.', '..\\..\\assets\\images\\baguetteclassique.jpeg'),
-('basic', 15, 'Baguette Tradition', '1.20', 1, 'Pain', NULL, 'Une baguette aux saveurs riches, ancrée dans notre savoir-faire.<br>', '..\\..\\assets\\images\\BaguetteTradition.jpeg'),
-('basic', 16, 'Pain Campagne', '2.20', 1, 'Pain', NULL, 'Délice artisanal, préparé avec des ingrédients soigneusement sélectionnés pour vous offrir une mie moelleuse, aérée et savoureuse, ainsi qu\'une croûte croustillante et rustique.', '..\\..\\assets\\images\\painn.jpeg'),
-('basic', 17, 'Pain Complet', '2.20', 1, 'Pain', NULL, 'Mie dense et nourrissante ainsi qu\'une saveur riche et authentique. Avec son goût rustique et sa texture satisfaisante, notre pain complet sera parfait pour accompagner vos repas sains et savoureux.', '..\\..\\assets\\images\\complet.jpg'),
-('basic', 18, 'Pain 6 Céréales', '2.20', 1, 'Pain', NULL, 'Le délicieux pain 6 Céréales, <br>agrémentée de graines de sésame, pavot, millet, lin blond et lin brun.<br>', '..\\..\\assets\\images\\pexels-mariana-kurnyk-1775035.jpg'),
-('basic', 19, 'Baguette Sésame', '1.80', 1, 'Pain', NULL, 'Combinaison parfaite de la saveur subtile des graines de sésame et d\'une mie moelleuse et légère. Avec son extérieur croustillant et son goût unique, notre pain sésame apportera une touche de raffinement à tous vos sandwichs et plats.', '..\\..\\assets\\images\\sesame.jpg'),
-('basic', 20, 'Pain Burger', '1.50', 1, 'Pain', NULL, 'Frais et moelleux, spécialement conçu pour préparer vos burgers.\n                Avec sa mie aérée et son extérieur légèrement croustillant, il saura vous faire fondre de plaisir à chaque bouchée.', '..\\..\\assets\\images\\burger.jpg'),
-('basic', 21, 'Pain aux noix', '3.00', 1, 'Pain', NULL, 'Que vous le dégustiez nature, grillé ou accompagné d\'un fromage fin, ce pain artisanal aux noix saura vous combler à chaque bouchée.', '..\\..\\assets\\images\\graines.jpg'),
-('basic', 22, 'Eclair', '2.70', 4, 'Gateau', NULL, ' <i>Son craquelin de pâte sablée & son crémeux au chocolat noir 66% de cacao vont vous faire chavirer en toute simplicité.</i><br><br>\n                    Étiquettes: Gluten,Lait,Oeufs,Soja', '..\\..\\assets\\images\\eclair3.webp'),
-('basic', 23, 'Paris Brest', '2.80', 1, 'Gateau', NULL, ' <i>Pâte à choux croquante et crème mousseline pralinée onctueuse. Laissez-vous séduire par sa forme en couronne élégante et sa saveur subtile de noisette grillée.</i><br><br>\n                  Étiquettes:Gluten,Lait,Oeufs,Noix<br><br><br>', '..\\..\\assets\\images\\parisbrest.png');
+('basic', 1, 'Choux Crème', '2.90', 3, 'Gateau', NULL, ' <i>À base de crème fouettée enrobée d\'une pâte à choux légère, ces choux à la crème sont de petits délices qui s’apprécient à toutes les occasions. </i><br>\n                    Étiquettes: Gluten,Lait,Oeufs<br><br><br>', 'cream-puffs-427181_1920.jpg'),
+('basic', 2, 'Canelé', '2.99', 1, 'Viennoiserie', NULL, '<i>Texture croustillante à l\'extérieur et moelleuse à l\'intérieur des canelés, une douceur bordelaise incontournable.</i><br><br>\n                Pâte Feuilletée,Pépite de Chocolat,Crème Pâtissière.<br>\n                Étiquettes: Gluten,Lait,Oeufs', 'canele.jpg'),
+('basic', 3, 'Mille Feuille', '2.80', 2, 'Gateau', NULL, ' <i>Pâte Feuilletée, Ganache Montée vanille, Caramel Tendre à la fleur de Sel</i>\n                    Comment résister à son feuilletage si finement croustillant et à sa crème légère ?\n                    <br><br>\n                    <br>Étiquettes: Gluten,Lait,Oeufs', 'millefeuille2.jpeg'),
+('basic', 4, 'Tartelette Framboise', '3.00', 1, 'Gateau', NULL, '<i> Pâtisserie subtilement vanillée, accompagnée de framboises fraîches.</i><br><br>\n                  Existe en version individuelle et à partager.<br>\n                  Pâte Sucrée à la Fleur de Sel, Compotée de Framboises, crème Madame (crème pâtissière et crème fouettée) Framboises Fraîches.\n                  <br>Etiquette: Gluten, Oeufs, Lait', 'tarteframboise2.webp'),
+('basic', 5, 'Macaron', '0.50', 0, 'Gateau', NULL, '<i>Coque croquante et  ganache onctueuse à la saveur intense de noisette grillée, pour une expérience gustative unique en son genre.</i><br><br>\n                  Étiquettes : Gluten,Lait,Oeufs,Noix', 'macarons.jpeg'),
+('basic', 6, 'Croissant', '1.10', 1, 'Viennoiserie', NULL, '<i>Le croissant traditionnel par excellence.</i><br><br>\n              Pâte feuilletée,2 barres de chocolat noir 66%<br>\n              Étiquettes: Gluten,Lait,Oeufs<br><br><br><br>', 'croissant2.jpg'),
+('basic', 7, 'Chocolatine', '1.20', 1, 'Viennoiserie', NULL, '<i>Son feuilletage et ses barrettes de chocolat sont à croquer.</i><br><br>\n                2 barres de chocolat noir 66%<br>\n                Étiquettes: Gluten,Lait,Oeufs<br><br><br>', 'chocolatine.jpeg'),
+('basic', 8, 'Pain aux Raisins', '1.40', 2, 'Viennoiserie', NULL, '<i>Feuilleté au Beurre pur agrémenté de raisins blonds sur leur lit de crème pâtissière légère vanillée.</i><br><br>\n                Pâte Feuilletée, Raisin,Crème Pâtissière<br>\n                Étiquettes:Arachides,Fruits à coques,Gluten,Lait,Oeufs<br><br>', 'painauxraisins2.jpeg'),
+('basic', 9, 'Fraisier', '3.10', 1, 'Gateau', NULL, ' <i>Sa génoise légèrement imbibée de sirop de fraise et sa crème mousseline vanillée sauront vous charmer en toute délicatesse, pour un plaisir gustatif absolu.\"</i><br>\n                  Étiquettes : Gluten, Lait, Oeufs', 'fraisier.webp'),
+('basic', 10, 'Chausson aux pommes', '1.80', 2, 'Viennoiserie', NULL, '<i>Le chausson aux pommes traditionnel relevé d’une vanille gourmande.</i><br><br>\n                Pâte Feuilletée, Composée de Pommes Fraiche<br>\n                Étiquettes:Gluten,Lait,Oeufs<br><br><br>', 'chaussonauxpommes2.jpeg'),
+('basic', 11, 'Brioche Suisse', '1.80', 2, 'Viennoiserie', NULL, '<i>La délicieuse brioche suisse, avec son moelleux incomparable et son cœur de crème pâtissière fondante qui vous fera craquer à chaque bouchée.</i><br><br>\n                Pâte Feuilletée,Pépite de Chocolat,Crème Pâtissière.<br>\n                Étiquettes : Gluten,Lait,Oeufs', 'brioche-suisse.jpeg'),
+('basic', 14, 'Baguette Classique', '1.00', 1, 'Pain', NULL, 'Notre baguette classique est cuite dans notre four à sole comme tous les autres pains.<br>\n                Elle a une mie blanche, plus compacte et plus dense que la baguette 6 céréales et sa croûte est plus fine.', 'baguetteclassique.jpeg'),
+('basic', 15, 'Baguette Tradition', '1.20', 2, 'Pain', NULL, 'Une baguette aux saveurs riches, ancrée dans notre savoir-faire.<br>', 'BaguetteTradition.jpeg'),
+('basic', 16, 'Pain Campagne', '2.20', 1, 'Pain', NULL, 'Délice artisanal, préparé avec des ingrédients soigneusement sélectionnés pour vous offrir une mie moelleuse, aérée et savoureuse, ainsi qu\'une croûte croustillante et rustique.', 'painn.jpeg'),
+('basic', 17, 'Pain Complet', '2.20', 1, 'Pain', NULL, 'Mie dense et nourrissante ainsi qu\'une saveur riche et authentique. Avec son goût rustique et sa texture satisfaisante, notre pain complet sera parfait pour accompagner vos repas sains et savoureux.', 'complet.jpg'),
+('basic', 18, 'Pain 6 Céréales', '2.20', 1, 'Pain', NULL, 'Le délicieux pain 6 Céréales, <br>agrémentée de graines de sésame, pavot, millet, lin blond et lin brun.<br>', 'pexels-mariana-kurnyk-1775035.jpg'),
+('basic', 19, 'Baguette Sésame', '1.80', 2, 'Pain', NULL, 'Combinaison parfaite de la saveur subtile des graines de sésame et d\'une mie moelleuse et légère. Avec son extérieur croustillant et son goût unique, notre pain sésame apportera une touche de raffinement à tous vos sandwichs et plats.', 'sesame.jpg'),
+('basic', 20, 'Pain Burger', '1.50', 2, 'Pain', NULL, 'Frais et moelleux, spécialement conçu pour préparer vos burgers.\n                Avec sa mie aérée et son extérieur légèrement croustillant, il saura vous faire fondre de plaisir à chaque bouchée.', 'burger.jpg'),
+('basic', 21, 'Pain aux noix', '3.00', 2, 'Pain', NULL, 'Que vous le dégustiez nature, grillé ou accompagné d\'un fromage fin, ce pain artisanal aux noix saura vous combler à chaque bouchée.', 'graines.jpg'),
+('basic', 22, 'Eclair', '2.70', 5, 'Gateau', NULL, ' <i>Son craquelin de pâte sablée & son crémeux au chocolat noir 66% de cacao vont vous faire chavirer en toute simplicité.</i><br><br>\n                    Étiquettes: Gluten,Lait,Oeufs,Soja', 'eclair3.webp'),
+('basic', 23, 'Paris Brest', '2.80', 2, 'Gateau', NULL, ' <i>Pâte à choux croquante et crème mousseline pralinée onctueuse. Laissez-vous séduire par sa forme en couronne élégante et sa saveur subtile de noisette grillée.</i><br><br>\n                  Étiquettes:Gluten,Lait,Oeufs,Noix<br><br><br>', 'parisbrest.png');
 
 -- --------------------------------------------------------
 

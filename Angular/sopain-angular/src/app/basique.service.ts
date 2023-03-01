@@ -19,8 +19,6 @@ export class BasiqueService {
     return this.basiques;
   }
 
-
-
   findById(id: number): Observable<Basique> {
     return this.http.get<Basique>("http://localhost:8888/basique/" + id);
   }

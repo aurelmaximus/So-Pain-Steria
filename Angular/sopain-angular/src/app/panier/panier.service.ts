@@ -112,4 +112,4 @@ isSameProductInPanier(produit: Produit):number[] {
     });
   }
 }
-}
+

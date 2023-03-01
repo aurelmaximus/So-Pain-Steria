@@ -15,23 +15,39 @@ export class ArticlefavorisComponent {
   favoris: boolean = false;
 
 
-  constructor(private articlefavoriservice: ArticleFavorisHttpService, private basiqueServ: BasiqueService, private panierServ: PanierService,private basiqueService: BasiqueService) {  
+  constructor(private articlefavoriservice: ArticleFavorisHttpService, private panierServ: PanierService,private basiqueService: BasiqueService) {  
   }
-
-  list(): Array<Basique> {
+  
+  listfavoris(): Array<Basique> {
     const clientConnecte = this.articlefavoriservice.currentclient;
   
     // Récupérer tous les produits
-    const basiques = this.basiqueServ.findAll();
+    const basiques: Array<Basique> = this.basiqueService.findAll();
     console.log('Tous les produits:', basiques);
   
     // Filtrer les articles favoris du client connecté
-    const articleFavorisClient = this.articlefavoriservice.articlefavoris.filter((articleFavori) => articleFavori.client.id === clientConnecte.id);
-    console.log('Articles favoris du client:', articleFavorisClient);
+    // this.articlefavoriservice.articlefavoris
+    let articleFavoris = new Array<Basique>();
+    
+    const articleFavorisClient = this.articlefavoriservice.articlefavoris.filter((articleFavori: ArticleFavori) => articleFavori.client.id === clientConnecte.id);
+    for(let fav of articleFavorisClient) {
+      
+      articleFavoris.push(basiques.find((article: Basique) => article.id === fav.basique.id))
+    }
+    console.log('Articles favoris du client:', articleFavoris);
   
-    return basiques;
+  
+    return articleFavoris;
   }
 
+  listarticlefavoris(): Array<ArticleFavori> {
+   
+    const client = this.clientconnecte();
+ 
+    const articlesFavoris = client?.id ? this.articlefavoriservice.findAll() : [];
+  
+    return articlesFavoris;
+}
 
   findAll(): Array<Basique> {
     return this.produits;

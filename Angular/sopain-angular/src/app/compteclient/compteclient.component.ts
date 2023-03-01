@@ -12,8 +12,6 @@ export class CompteclientComponent {
 
   formClient: Client = null;
   isFormValid: boolean = false;
-  Points : number = 0;
-
 
 
 
