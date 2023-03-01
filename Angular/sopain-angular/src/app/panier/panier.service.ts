@@ -20,7 +20,7 @@ export class PanierService {
       this.panier.etatcommande="Panier";
       this.panier.client=this.compteClientServ.currentclient;
       this.panier.lignesCommande = new Array<LigneCommande>();
-      this.commServ.create(this.panier);
+      this.createPanier(this.panier);
     }
     else this.load();
 
@@ -89,5 +89,12 @@ isSameProductInPanier(produit: Produit):number[] {
 
   private load(): void {
     this.panier = this.commServ.findPanierClient(this.compteClientServ.currentclient)[0];
+  }
+
+  createPanier(commande: Commande): void {
+    this.http.post<Commande>("http://localhost:8888/commande", commande).subscribe(resp => {
+      this.panier=resp;
+      this.panier.lignesCommande=new Array<LigneCommande>();
+    });
   }
 }
