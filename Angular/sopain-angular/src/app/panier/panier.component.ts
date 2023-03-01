@@ -52,12 +52,11 @@ export class PanierComponent {
   }
 
   pay() {
-    // Rediriger vers le site tiers de vérification de paiement
-    window.location.href = "https://www.example.com/payment";  }
+      //ajouter articles aux commandes
+      window.location.href = "http://localhost:4200/client"; }
 
 
     validate() {
-      // Rediriger vers le site tiers de vérification de paiement
       //ajouter articles aux commandes
       window.location.href = "http://localhost:4200/client";  }
 
