@@ -104,12 +104,12 @@
           <form>
             <div class="form-group" *ngIf="showText" class="container py-5 h-10">
               <label for="date">Choisissez le jour de retrait de votre commande : </label>
-              <input type="date" id="date" name="date" class="form-control" required  >
+              <input type="date" id="date" name="date" class="form-control"  [(ngModel)]="panier.dateArrivee" required >
             </div>
             
             <div class="form-group" *ngIf="showText" class="container py-5 h-10">
               <label for="time">Choisissez l'heure de retrait de votre commande :</label>
-              <input type="time" id="time" name="time" class="form-control" required>
+              <input type="time" id="time" name="time" class="form-control" [(ngModel)]="panier.heureArrive" required>
             </div>
             
             <form  >
