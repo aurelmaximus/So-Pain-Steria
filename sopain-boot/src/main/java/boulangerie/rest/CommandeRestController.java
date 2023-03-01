@@ -51,7 +51,7 @@ public class CommandeRestController {
 		return optCommande.get();
 	}
 	
-	@GetMapping("/{numero}/lignes")
+	@GetMapping("/lignes/{numero}")
 	@JsonView(Views.ViewCommandeWithLignesCommande.class)
 	public Commande lignecommandeById(@PathVariable Integer numero) {
 		Optional<Commande> optCommande = commandeRepository.findByIdWithLigneCommande(numero);

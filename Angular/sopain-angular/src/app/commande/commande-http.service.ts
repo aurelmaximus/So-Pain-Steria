@@ -81,13 +81,14 @@ export class CommandeHttpService {
   }
 
   findByIdWithLignes(numero: number): Observable<Commande> {
-    return this.http.get<Commande>("http://localhost:8888/commande/" + numero +"/lignes");
+    return this.http.get<Commande>("http://localhost:8888/commande/lignes" + numero);
   }
 
 
   create(commande: Commande): void {
     this.http.post<Commande>("http://localhost:8888/commande", commande).subscribe(resp => {
       this.load();
+      commande=resp;
     });
   }
 
