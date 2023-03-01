@@ -14,6 +14,7 @@ export class EmployeGpComponent {
   formBasique: Basique = null;
 
   cache:boolean=false;
+  isFormValid: boolean = false;
 
 
   constructor(private employeService: EmployegpHttpService) {
@@ -80,6 +81,17 @@ export class EmployeGpComponent {
   employeconnecte(): Employe {
     return this.employeService.currentEmploye;
   }
+
+  validateForm(): boolean {
+    let isFormValid = true;
+  
+    if (!this.formBasique.categorie || !this.formBasique.libelle || !this.formBasique.prix) {
+      isFormValid = false;
+    }
+  
+    return isFormValid;
+  }
+  
 
 
 
