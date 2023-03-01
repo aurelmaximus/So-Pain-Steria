@@ -55,3 +55,12 @@
   transform: translate(-50%,-50%);
   -webkit-overflow-scrolling: touch;
 }
+
+
+#texte_cache{
+display:none;
+}
+
+#horaires{
+  display:none;
+  }

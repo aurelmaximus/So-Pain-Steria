@@ -23,6 +23,7 @@ import { NouscontacterComponent } from './nouscontacter/nouscontacter.component'
 import { CompteclientComponent } from './compteclient/compteclient.component';
 import { EmployeGpComponent } from './employe-gp/employe-gp.component';
 import { ArticlefavorisComponent } from './articlefavoris/articlefavoris.component';
+import { MerciComponent } from './merci/merci.component';
 
 
 
@@ -49,6 +50,7 @@ import { ArticlefavorisComponent } from './articlefavoris/articlefavoris.compone
     CompteclientComponent,
     EmployeGpComponent,
     ArticlefavorisComponent,
+    MerciComponent,
   ],
   imports: [
     BrowserModule,
