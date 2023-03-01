@@ -2,7 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthDTO,Compte } from '../model';
+import { ClientComponent } from '../client/client.component';
+import { AuthDTO,Client,Compte } from '../model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class AuthService {
   utilisateurs:  Array<Compte> = new Array<Compte>();
   role: Array<string>;
   logged: boolean;
+  
 
   constructor(private http: HttpClient, private router: Router) {
     

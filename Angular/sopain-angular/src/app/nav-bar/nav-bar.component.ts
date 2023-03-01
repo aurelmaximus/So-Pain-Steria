@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { CompteclientHttpService } from '../compteclient/compteclient-http.service';
+
 
 @Component({
   selector: 'app-nav-bar',
@@ -11,7 +13,7 @@ thathome : boolean = true;
 thatclient : boolean = false;
 thatemploye : boolean =false;
 
-  constructor(private authServ: AuthService){
+  constructor(private authServ: AuthService ){
 
   }
 

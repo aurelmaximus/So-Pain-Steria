@@ -14,10 +14,10 @@
         <li><a [routerLink]="['/viennoiserie']" routerLinkActive="active" class="nav-link px-2 link-dark">Viennoiserie</a></li>
         <li><a [routerLink]="['/client']" *ngIf="isClient()"  routerLinkActive="active" class="nav-link px-2 link-dark">Mon Compte</a></li>
         <button class="btn btn-sm btn-outline-secondary" *ngIf="isClient()" type="button" [routerLink]="['/panier']"  routerLinkActive="active">Mon Panier</button>
-        <li><a [routerLink]="['/articlefavoris']" *ngIf="isClient()" routerLinkActive="active" class="nav-link px-2 link-dark">Mes favoris</a></li>
         <li><a [routerLink]="['/employe']" *ngIf="isEmploye()" routerLinkActive="active" class="nav-link px-2 link-dark">Gestion commandes</a></li>
         <li><a [routerLink]="['/employegc']" *ngIf="isEmploye()" routerLinkActive="active" class="nav-link px-2 link-dark">Gestion comptes</a></li>
         <li><a [routerLink]="['/employegp']" *ngIf="isEmploye()" routerLinkActive="active" class="nav-link px-2 link-dark">Gestion produits</a></li>
+        <li><a [routerLink]="['/articlefavoris']" *ngIf="isEmploye()" routerLinkActive="active" class="nav-link px-2 link-dark">Mes favoris</a></li>
         <li><a [routerLink]="['/Nous-Contacter']" routerLinkActive="active" class="nav-link px-2 link-dark">Nous Contacter</a></li>
       </ul>
     </div>
@@ -28,11 +28,29 @@
       <div class="d-flex" *ngIf="!isConnected()"> 
         <button type="button" [routerLink]="['/auth']" routerLinkActive="active" class="btn btn-outline-dark me-2">Login</button>
         <button type="button" [routerLink]="['/inscriptionclient']" routerLinkActive="active" class="btn btn-dark">Sign-up</button></div>
+        
       </div>
+     
       <div class="d-flex" *ngIf="isConnected()"> 
-        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 align-items-center">
-        <li>Chez {{getAuthServ().connected.nom }}</li>
-        <li><button type="button"  (click)="unConnect()" type="button" class="btn btn-basic"><img src="..\..\assets\images\logout.png" alt=""  width="15"></button></li>
-      </ul>
-      </div>
-    </header>
+        <div class="container">
+          <div>
+            <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 align-items-center">
+            <li>Chez {{getAuthServ().connected.nom }}</li>
+            <li><button type="button"  (click)="unConnect()" type="button" class="btn btn-basic"><img src="..\..\assets\images\logout.png" alt=""  width="15"></button></li>
+          </ul>
+          </div>
+        <div  *ngIf="isClient()" >
+          <span class="d-block"> Solde So-Points :  <img src="..\..\assets\images\44.jpg" alt=""   width="25"></span>
+        </div>
+      </div> 
+     
+      
+      
+      
+    </div>
+      
+</header>
+
+
+
+

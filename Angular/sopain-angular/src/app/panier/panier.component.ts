@@ -54,16 +54,12 @@ export class PanierComponent {
 
   pay() {
       //ajouter articles aux commandes
-      window.location.href = "http://localhost:4200/client"; }
+      this.router.navigate(['/client']);}
 
-  //  this.clientServ.findById(this.authServ.connected.id).subscribe(resp=>{
-  //    this.client =resp;
-  //    //this.commServ.findPanierClient(this.client);
-  // })
 
     validate() {
       //ajouter articles aux commandes
-      window.location.href = "http://localhost:4200/client";  }
+      this.router.navigate(['/client']);}
 
 }
 

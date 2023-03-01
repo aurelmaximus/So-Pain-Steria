@@ -12,10 +12,13 @@ export class CompteclientComponent {
 
   formClient: Client = null;
   isFormValid: boolean = false;
+  Points : number = 0;
+
 
 
 
   constructor(private compteclientService: CompteclientHttpService,private commandeService: CommandeHttpService) {
+
   }
 
 
