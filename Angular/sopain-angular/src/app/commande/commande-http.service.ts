@@ -60,6 +60,7 @@ export class CommandeHttpService {
         }
       });
   }
+  
   findAllclienttermine(client: Client): Array<Commande> {
     return this.commandes
       .filter(commande => commande.client.id === client.id && (commande.etatcommande === 'Termine'))

@@ -32,7 +32,7 @@ public class Client extends Compte {
 	
 	@OneToMany(mappedBy = "client")
 	@JsonView(Views.ViewClientWithArticlesFavoris.class)
-	private List<ArticleFavori> ArticlesFavoris = new ArrayList<>();
+	private List<ArticleFavori> articlesFavoris = new ArrayList<>();
 
 	public Client() {
 		super();
@@ -66,12 +66,12 @@ public class Client extends Compte {
 
 
 	public List<ArticleFavori> getArticlesFavoris() {
-		return ArticlesFavoris;
+		return articlesFavoris;
 	}
 
 
 	public void setArticlesFavoris(List<ArticleFavori> articlesFavoris) {
-		ArticlesFavoris = articlesFavoris;
+		this.articlesFavoris = articlesFavoris;
 	}
 	
 }
