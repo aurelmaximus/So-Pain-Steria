@@ -16,7 +16,7 @@ export class PanierService {
 
   constructor(private http: HttpClient, private router: Router, private compteClientServ: CompteclientHttpService, private basiqueServ: BasiqueService, private ligneCoServ: LigneCommandeService, private commServ: CommandeHttpService) { 
 
-    if (this.panier.client==null) {
+    if(this.panier.lignesCommande==null || this.panier.lignesCommande==undefined) {
       this.panier.etatcommande="Panier";
       this.panier.client=this.compteClientServ.currentclient;
       this.panier.lignesCommande = new Array<LigneCommande>();
@@ -34,7 +34,7 @@ export class PanierService {
         let ligneCo:LigneCommande = new LigneCommande();
         ligneCo.produit=produit;
         this.panier.lignesCommande.push(ligneCo);
-        this.commServ.update(this.panier);
+        this.updatePanier(this.panier);
         //this.ligneCoServ.create(lc);
 
   });}
@@ -66,19 +66,19 @@ isSameProductInPanier(produit: Produit):number[] {
   getTotal():number {
     let tot:number=0;
 
+
     if (this.panier.lignesCommande.length>0) {
-
+      
       this.panier.lignesCommande.forEach( (ligne) => {
-
-      tot+=ligne.produit.prix * ligne.qte;
-      ligne.total=tot;
+      ligne.total=0;
+      tot+=ligne.produit.prix*ligne.qte;
+      ligne.total+=tot;
       //this.commServ.update(this.panier);
 
       //this.ligneCoServ.update(ligne);
     });}
 
-    
- 
+    this.updatePanier(this.panier);  
     return tot;
   }
 
@@ -101,5 +101,15 @@ isSameProductInPanier(produit: Produit):number[] {
       this.panier=resp;
       this.panier.lignesCommande=new Array<LigneCommande>();
     });
+  }
+
+  
+  updatePanier(commande: Commande): void {
+    this.http.put<Commande>("http://localhost:8888/commande/" + commande.numero, commande).subscribe(resp => {
+      console.log('Panier mis à jour', commande);
+      this.panier=resp;
+      
+    });
+  }
 }
 }
