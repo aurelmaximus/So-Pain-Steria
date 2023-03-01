@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { FooterComponent } from './footer/footer.component';
-
 import { EmployeComponent } from './employe/employe.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -23,7 +22,6 @@ import { NouscontacterComponent } from './nouscontacter/nouscontacter.component'
 import { CompteclientComponent } from './compteclient/compteclient.component';
 import { EmployeGpComponent } from './employe-gp/employe-gp.component';
 import { ArticlefavorisComponent } from './articlefavoris/articlefavoris.component';
-import { MerciComponent } from './merci/merci.component';
 
 
 
@@ -50,7 +48,6 @@ import { MerciComponent } from './merci/merci.component';
     CompteclientComponent,
     EmployeGpComponent,
     ArticlefavorisComponent,
-    MerciComponent,
   ],
   imports: [
     BrowserModule,
