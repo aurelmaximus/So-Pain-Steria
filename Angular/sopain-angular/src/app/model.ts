@@ -66,6 +66,8 @@ export class AuthDTO {
     }
 }
 
+
+
 export class Commande {
   
     numero:number;
@@ -122,10 +124,24 @@ export class Basique extends Produit {
     
     }
 
-
 }
 
+export class ArticleFavori {
+    id: number; 
+    version: number;
+    client:Client;
+    basique:Basique;
+   
 
+    constructor(id?:number, version?: number, client?:Client, basique?:Basique) {
+        this.id = id;
+        this.version = version;
+        this.client=client;
+        this.basique=basique;
+       
+       
+    }
+}
 
 
 
