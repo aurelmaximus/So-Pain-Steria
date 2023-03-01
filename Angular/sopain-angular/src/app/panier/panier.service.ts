@@ -72,7 +72,7 @@ isSameProductInPanier(produit: Produit):number[] {
 
       tot+=ligne.produit.prix * ligne.qte;
       ligne.total=tot;
-      this.commServ.update(this.panier);
+      //this.commServ.update(this.panier);
 
       //this.ligneCoServ.update(ligne);
     });}
