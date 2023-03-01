@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { BasiqueService } from '../basique.service';
-import { Basique } from '../model';
+import { ArticleFavori, Basique, Client } from '../model';
 import { PanierService } from '../panier/panier.service';
+import { ArticleFavorisHttpService } from './articlefavorishttp.service';
 
 @Component({
   selector: 'app-articlefavoris',
@@ -10,65 +11,39 @@ import { PanierService } from '../panier/panier.service';
 })
 export class ArticlefavorisComponent {
 
-  patisseries: Array<Basique> = new Array<Basique>();
-  pat: Basique = new Basique();
-
-  viens: Array<Basique> = new Array<Basique>();
-  vien: Basique = new Basique();
-
-  pains: Array<Basique> = new Array<Basique>();
-  pain: Basique = new Basique();
+  produits: Array<Basique> = new Array<Basique>();
+  favoris: boolean = false;
 
 
-  constructor(private basiqueServ: BasiqueService, private panierServ: PanierService,private basiqueService: BasiqueService) {
-    this.findPatisseries();
-    this.findViens();
-    this.findPains();
+  constructor(private articlefavoriservice: ArticleFavorisHttpService, private basiqueServ: BasiqueService, private panierServ: PanierService,private basiqueService: BasiqueService) {  
   }
 
   list(): Array<Basique> {
-    return this.basiqueServ.findAll();
+    const clientConnecte = this.articlefavoriservice.currentclient;
+  
+    // Récupérer tous les produits
+    const basiques = this.basiqueServ.findAll();
+    console.log('Tous les produits:', basiques);
+  
+    // Filtrer les articles favoris du client connecté
+    const articleFavorisClient = this.articlefavoriservice.articlefavoris.filter((articleFavori) => articleFavori.client.id === clientConnecte.id);
+    console.log('Articles favoris du client:', articleFavorisClient);
+  
+    return basiques;
   }
 
-  findPatisseries(): void {
-    this.basiqueServ.findByCat('gateau').subscribe(resp => {
-      this.patisseries = resp;
-    });
-  }
 
-  findPatByLib(lib: string) {
-    this.basiqueServ.findByLib(lib).subscribe(response => {
-      this.pat = response;
-    });
+  findAll(): Array<Basique> {
+    return this.produits;
   }
-
+  
   addToCart(bas: Basique) {
     this.panierServ.addToCart(bas);
     window.alert(bas.libelle + ' a été ajouté au panier!');
   }
 
-  findViens(): void {
-    this.basiqueService.findByCat('viennoiserie').subscribe(resp => {
-      this.viens = resp;
-    });
+  clientconnecte(): Client {
+    return this.articlefavoriservice.currentclient;
   }
 
-  findVienByLib(lib: string) {
-    this.basiqueService.findByLib(lib).subscribe(response => {
-      this.vien = response;
-    });
-  }
-
-  findPains(): void {
-    this.basiqueService.findByCat('pain').subscribe(resp => {
-      this.pains = resp;
-    });
-  }
-
-  findPainByLib(lib: string) {
-    this.basiqueService.findByLib(lib).subscribe(response => {
-      this.pain = response;
-    });
-  }
-  
 }

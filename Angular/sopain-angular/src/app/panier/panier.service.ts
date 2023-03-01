@@ -90,11 +90,16 @@ isSameProductInPanier(produit: Produit):number[] {
   private load(): void {
     this.panier = this.commServ.findPanierClient(this.compteClientServ.currentclient)[0];
   }
+  
+  //create(panier: Commande): void {
+   // this.http.post<Commande>("http://localhost:8888/commande", panier).subscribe(resp => {
+    //  this.load();
+   // });
 
-  createPanier(commande: Commande): void {
-    this.http.post<Commande>("http://localhost:8888/commande", commande).subscribe(resp => {
+  createPanier(panier: Commande): void {
+    this.http.post<Commande>("http://localhost:8888/commande", panier).subscribe(resp => {
       this.panier=resp;
       this.panier.lignesCommande=new Array<LigneCommande>();
     });
-  }
+}
 }

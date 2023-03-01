@@ -23,7 +23,8 @@ export class PanierComponent {
   client: Client = new Client();
   panier:Commande = new Commande();
 
-  constructor(private http: HttpClient, private router: Router, private panierServ: PanierService, private clientServ: ClientHttpService, private authServ: AuthService, private commServ: CommandeHttpService, private ligneCoServ: LigneCommandeService) {
+  constructor(private http: HttpClient, private router: Router, private panierServ: PanierService, private clientServ: ClientHttpService, 
+    private authServ: AuthService, private commServ: CommandeHttpService, private ligneCoServ: LigneCommandeService) {
     //this.load();
     this.panier = this.panierServ.getItems();
     }
@@ -54,11 +55,17 @@ export class PanierComponent {
 
   pay() {
       //ajouter articles aux commandes
+      this.panier.etatcommande="EnCours"
+      this.commServ.create(this.panier)
+
       this.router.navigate(['/client']);}
 
 
     validate() {
       //ajouter articles aux commandes
+      this.panier.etatcommande="EnCours"
+      this.commServ.create(this.panier)
+
       this.router.navigate(['/client']);}
 
 }

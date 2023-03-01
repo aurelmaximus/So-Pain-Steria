@@ -139,6 +139,16 @@ public class Commande {
 	}
 
 
+	public List<LigneCommande> getLigneCommandes() {
+		return ligneCommandes;
+	}
+
+
+	public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
+		this.ligneCommandes = ligneCommandes;
+	}
+
+
 	public void setSurPlace(boolean surPlace) {
 		this.surPlace = surPlace;
 	}
@@ -150,7 +160,6 @@ public class Commande {
 				+ ", surPlace=" + surPlace + ", etatcommande=" + etatcommande + ", LigneCommandes=" + ligneCommandes
 				+ ", client=" + client + "]";
 	}
-	
 	
 
 
