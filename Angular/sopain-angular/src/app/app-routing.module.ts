@@ -14,6 +14,7 @@ import { CompteclientComponent } from './compteclient/compteclient.component';
 import { NouscontacterComponent } from './nouscontacter/nouscontacter.component';
 import { EmployeGpComponent } from './employe-gp/employe-gp.component';
 import { PanierComponent } from './panier/panier.component';
+import { ArticlefavorisComponent } from './articlefavoris/articlefavoris.component';
 
 
 const routes: Routes = [
@@ -32,7 +33,8 @@ const routes: Routes = [
 {path: "Nous-Contacter", component: NouscontacterComponent},
 {path: "client", component: CompteclientComponent},
 {path: "employegp", component: EmployeGpComponent},
-{path: "panier", component: PanierComponent}
+{path: "panier", component: PanierComponent},
+{path: "articlefavoris", component: ArticlefavorisComponent}
 ];
 
 

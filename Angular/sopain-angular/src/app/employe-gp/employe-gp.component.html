@@ -149,8 +149,7 @@
   </div>
   <div class="card-footer">
       <div class="btn-group btn-group-lg float-right">
-          <a class="btn bouton2" (click)="save()"><i class="bi bi-check-square-fill">  valider</i>
-         </a>
+         <button class="btn bouton2" (click)="save()" [disabled]="!validateForm()"><i class="bi bi-check-square-fill">  valider</i></button>
           <a class="btn bouton3" (click)="cancel()"><i class="bi bi-backspace-fill"> Annuler</i></a>
       </div>
   </div>
