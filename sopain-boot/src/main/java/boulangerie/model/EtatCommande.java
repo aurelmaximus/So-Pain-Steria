@@ -2,6 +2,6 @@ package boulangerie.model;
 
 public enum EtatCommande {
 
-	EnCours,Prete,Termine;
+	EnCours,Prete,Termine, Panier;
 	
 }

@@ -31,7 +31,6 @@ import { ArticlefavorisComponent } from './articlefavoris/articlefavoris.compone
     AppComponent,
     NavBarComponent,
     FooterComponent,
-  
     HomeComponent,
     MaisonComponent,
     EmployeComponent,

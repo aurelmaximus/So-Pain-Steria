@@ -55,6 +55,10 @@
   transform: translate(-50%,-50%);
   -webkit-overflow-scrolling: touch;
 }
+.h-100.h-custom{
+  background-image: url("..\..\assets\images\22.jpg");
+
+}
 
 
 #texte_cache{

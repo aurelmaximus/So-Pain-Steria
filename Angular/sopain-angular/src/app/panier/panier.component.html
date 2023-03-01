@@ -19,19 +19,19 @@
                   <div class="p-5">
                     <div class="d-flex justify-content-between align-items-center mb-5">
                       <h1 class="fw-bold mb-0 text-black">Mes articles</h1>
-                      <h6 class="mb-0 text-muted">{{articles.length}} articles</h6>
+                      <h6 class="mb-0 text-muted">{{panier.lignesCommande.length}} articles</h6>
                     </div>
                     <hr class="my-4">
 
-                    <div class="row mb-4 d-flex justify-content-between align-items-center" *ngFor="let prod of articles">
+                    <div class="row mb-4 d-flex justify-content-between align-items-center" *ngFor="let ligne of panier.lignesCommande">
                       <div class="col-md-2 col-lg-2 col-xl-2">
                         <img
-                        src="{{prod.image_ref}}"
-                        class="img-fluid rounded-3" alt="{{prod.libelle}}">
+                        src="{{ligne.produit.image_ref}}"
+                        class="img-fluid rounded-3" alt="{{ligne.produit.libelle}}">
                       </div>
                       <div class="col-md-3 col-lg-3 col-xl-3">
                        <!--  <h6 class="text-muted" *ngIf="isBasique(prod)"> {{prod.categorie}}</h6> -->
-                        <h6 class="text-black mb-0">{{prod.libelle}}</h6>
+                        <h6 class="text-black mb-0">{{ligne.produit.libelle}}</h6>
                       </div>
                       <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
                         <button class="btn btn-link px-2"
@@ -39,7 +39,7 @@
                         <i class="fas fa-minus"></i>
                       </button>
 
-                      <input id="form1" min="0" name="quantity" value="1" type="number"
+                      <input id="form1" min="0" name="quantity" value="{{ligne.qte}}" type="number"
                       class="form-control form-control-sm" />
 
                       <button class="btn btn-link px-2"
@@ -48,7 +48,7 @@
                     </button>
                   </div>
                   <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                    <h6 class="mb-0">{{prod.prix | currency:'EUR'}}</h6>
+                    <h6 class="mb-0">{{ligne.produit.prix | currency:'EUR'}}</h6>
                   </div>
                   <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                     <a href="#!" class="text-muted"><i class="fas fa-times"></i></a>
@@ -70,7 +70,7 @@
           <hr class="my-4">
 
           <div class="d-flex justify-content-between mb-4">
-            <h5 class="text-uppercase">{{articles.length}} artciles</h5>
+            <h5 class="text-uppercase">{{panier.lignesCommande.length}} artciles</h5>
             <h5>{{getTotal() | currency:'EUR'}}</h5>
           </div>
 

@@ -18,6 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import boulangerie.model.Commande;
 import boulangerie.model.LigneCommande;
 import boulangerie.model.Views;
 import boulangerie.repository.LigneCommandeRepository;
@@ -49,8 +50,7 @@ public class LigneCommandeRestController {
 
 		return optLigneCommande.get();
 	}
-
-
+	
 	@PostMapping("")
 	@JsonView(Views.ViewLigneCommande.class)
 	public LigneCommande create(@RequestBody LigneCommande ligneCommande) {

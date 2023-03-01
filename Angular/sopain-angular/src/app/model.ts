@@ -76,13 +76,15 @@ export class Commande {
     heureArrive:string;
     etatcommande:string;
     client:Client;
+    lignesCommande: Array<LigneCommande>;
 
-    constructor(numero?:number, version?: number, dateArrivee?:string ,heureArrive?:string, etatcommande?:string) {
+    constructor(numero?:number, version?: number, dateArrivee?:string ,heureArrive?:string, etatcommande?:string, lignesCommande?:Array<LigneCommande>) {
        this.numero=numero;
        this.version=version;
        this.dateArrivee=dateArrivee;
        this.heureArrive=heureArrive;
        this.etatcommande=etatcommande;
+       this.lignesCommande=lignesCommande;
       
        
     }
@@ -91,6 +93,27 @@ export class Commande {
 export enum EtatCommande {
 
     EnCours,Prete,Termine
+
+}
+
+export class LigneCommande {
+
+    id:number;
+    version:number;
+    qte:number;
+    total:number;
+    commande:Commande;
+    produit:Produit;
+
+    constructor(id?:number, version?:number, qte?:number, total?:number, commande?:Commande, produit?:Produit) {
+
+        this.id==id;
+        this.version=version;
+        this.qte=qte;
+        this.total=total;
+        this.commande=commande;
+        this.produit=produit;
+    }
 
 }
 

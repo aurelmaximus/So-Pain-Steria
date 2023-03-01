@@ -3,11 +3,13 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth/auth.service';
 import { ClientHttpService } from '../client/client-http.service';
-import { Basique, Client, Produit } from '../model';
+import { CommandeHttpService } from '../commande/commande-http.service';
+import { LigneCommandeService } from '../ligne-commande.service';
+import { Basique, Client, Commande, Produit } from '../model';
 import { PanierService } from './panier.service';
 
 @Component({
-  selector: 'panier',
+  selector: 'app-panier',
   templateUrl: './panier.component.html',
   styleUrls: ['./panier.component.css']
 })
@@ -19,8 +21,12 @@ export class PanierComponent {
   cardNumber: string;
 
   client: Client = new Client();
-  articles: Array<Produit> = new Array<Produit>();
+  panier:Commande = new Commande();
 
+  constructor(private http: HttpClient, private router: Router, private panierServ: PanierService, private clientServ: ClientHttpService, private authServ: AuthService, private commServ: CommandeHttpService, private ligneCoServ: LigneCommandeService) {
+    //this.load();
+    this.panier = this.panierServ.getItems();
+    }
   toggleText() {
     this.showText = !this.showText;
   } 
@@ -35,13 +41,8 @@ export class PanierComponent {
     this.showText2 = true;
   }
 
-  constructor(private http: HttpClient, private router: Router, private panierServ: PanierService, private clientServ: ClientHttpService, private authServ: AuthService) {
-    this.clientServ.findById(this.authServ.connected.id).subscribe(resp=>{
-      this.client =resp;
-    });
+  
 
-    this.articles = this.panierServ.getItems();
-  }
 
   isBasique(produit: Produit): boolean{
     return produit instanceof Basique ? true : false;
@@ -55,6 +56,10 @@ export class PanierComponent {
       //ajouter articles aux commandes
       window.location.href = "http://localhost:4200/client"; }
 
+  //  this.clientServ.findById(this.authServ.connected.id).subscribe(resp=>{
+  //    this.client =resp;
+  //    //this.commServ.findPanierClient(this.client);
+  // })
 
     validate() {
       //ajouter articles aux commandes

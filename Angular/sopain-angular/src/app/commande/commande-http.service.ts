@@ -80,6 +80,11 @@ export class CommandeHttpService {
     return this.http.get<Commande>("http://localhost:8888/commande/" + numero);
   }
 
+  findByIdWithLignes(numero: number): Observable<Commande> {
+    return this.http.get<Commande>("http://localhost:8888/commande/" + numero +"/lignes");
+  }
+
+
   create(commande: Commande): void {
     this.http.post<Commande>("http://localhost:8888/commande", commande).subscribe(resp => {
       this.load();
@@ -105,6 +110,12 @@ export class CommandeHttpService {
       this.commandes = resp;
     });
   }
+
+  findPanierClient(cli: Client): Array<Commande> {
+    return this.commandes
+      .filter(commande => commande.client.id === cli.id && (commande.etatcommande === 'Panier'));
+  }
+
 
 
 }
