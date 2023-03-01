@@ -85,7 +85,7 @@ export class EmployeGpComponent {
   validateForm(): boolean {
     let isFormValid = true;
   
-    if (!this.formBasique.categorie || !this.formBasique.libelle || !this.formBasique.prix) {
+    if (!this.formBasique.categorie || !this.formBasique.libelle || !this.formBasique.prix || !this.formBasique.description || !this.formBasique.image_ref) {
       isFormValid = false;
     }
   

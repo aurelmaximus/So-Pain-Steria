@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Basique } from './model';
+import { Basique, Client, Commande } from './model';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +18,7 @@ export class BasiqueService {
   findAll(): Array<Basique> {
     return this.basiques;
   }
+
 
 
   findById(id: number): Observable<Basique> {
