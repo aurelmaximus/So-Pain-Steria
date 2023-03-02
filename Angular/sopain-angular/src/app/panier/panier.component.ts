@@ -61,7 +61,7 @@ export class PanierComponent {
       this.panier.etatcommande="EnCours";
       this.commServ.update(this.panier);
       this.panierServ.clearCart();
-      this.router.navigate(['/client']);}
+      this.router.navigate(['/']);}
 
 
     validate() {
@@ -69,7 +69,7 @@ export class PanierComponent {
       this.panier.etatcommande="EnCours";
       this.commServ.create(this.panier);
       this.panierServ.clearCart();
-      this.router.navigate(['/client']);}
+      this.router.navigate(['/']);}
 
 }
 

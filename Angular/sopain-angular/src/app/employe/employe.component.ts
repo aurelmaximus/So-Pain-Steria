@@ -68,6 +68,12 @@ Encours(numero: number): void {
  
 }
 
+ligneco(numero: number): void {
+
+ this.lignecommande=true;
+
+}
+
 Prete(numero: number): void {
   this.commandeService.findById(numero).subscribe(response => {
     

@@ -61,7 +61,7 @@ export class AuthService {
       });
     }
 
-    this.router.navigate(['/'+this.connected.type]);
+    this.router.navigate(['/']);
 
 
     })

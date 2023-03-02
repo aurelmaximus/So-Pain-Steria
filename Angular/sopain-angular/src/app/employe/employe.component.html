@@ -99,6 +99,7 @@
                     <td >{{com.etatcommande}}</td>
 
                     <td>  <div class="btn-group btn-group-lg float-right " >
+                      <!-- <a class="btn cours bouton"  (click)="ligneco(com.numero)"><i class="bi bi-check-square-fill"></i></a> -->
                         <a class="btn cours bouton"  (click)="Encours(com.numero)"><i class="bi bi-check-square-fill"></i></a>
                         <a class="btn prete bouton" (click)="Prete(com.numero)"><i class="bi bi-check-square-fill"></i></a>
                         <a class="btn termine bouton" (click)="termine(com.numero)"><i class="bi bi-check-square-fill"></i></a>
@@ -112,7 +113,40 @@
       
     </div>
     
-    <div class="card mt-3 hcommande">
+    <!-- <div class="card mt-3 hcommande" *ngIf="lignecommande">
+      <div class="card-header entete display-6">Detail de la commande</div>
+      <div class="card-body max">
+          <table class="table">
+              <thead class="table-dark">
+                  <tr>
+                    <th>Numero</th>
+                    <th>Quantité</th>
+                    <th>Prix Total </th>
+                    <th>Produit</th>
+                  </tr>
+              </thead>
+  
+              <tbody>
+                <tr *ngFor="let ligne of lignes">
+                  <td>{{ligne.id}}</td>
+                  <td>{{ligne.qte}}</td>
+                  <td>{{ligne.total}}</td>
+                  <td>{{ligne.produit.libelle}}</td>
+                 </tr>
+              </tbody>
+              <div class="card-footer">
+              &nbsp;  &nbsp; <a class="btn bouton3 btn-lg bouton " (click)="commandefermer()"> Annuler</a>
+            </div>
+            </table>
+          <div>
+           
+          </div>
+    </div>
+      </div> -->
+    
+  
+
+    <div class="card mt-3 hcommande" >
         <div class="card-header entete display-6">Historique des commandes</div>
         <div class="card-body max">
             <table class="table">
@@ -148,33 +182,9 @@
       
     </div>
 
-    <div class="card mt-3 hcommande" >
-      <div class="card-header entete display-6">Detail de la commande</div>
-      <div class="card-body max">
-          <table class="table">
-              <thead class="table-dark">
-                  <tr>
-                    <th>Numero</th>
-                    <th>Quantité</th>
-                    <th>Prix Total </th>
-                    <th>Produit</th>
-                  </tr>
-              </thead>
-  
-              <tbody>
-                <tr *ngFor="let ligne of lignes">
-                  <td>{{ligne.id}}</td>
-                  <td>{{ligne.qte}}</td>
-                  <td>{{ligne.total}}</td>
-                  <td>{{ligne.produit.libelle}}</td>
-                  <td></td>
-                 </tr>
-              </tbody>
-  
-          </table>
-      </div>
-    
+   
   </div>
-
     </div>
+    
+
     
