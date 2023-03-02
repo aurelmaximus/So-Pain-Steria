@@ -45,7 +45,7 @@
              
                 <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example99">Mot de Passe</label>
-                  <input type="password" id="form3Example99" required class="form-control form-control-lg" [(ngModel)]="formClient.password"/>
+                  <input type="password" id="form3Example99" required class="form-control form-control-lg" [(ngModel)]="formClient.password" [autofocus]="" />
                   
                 </div>
 
@@ -85,7 +85,7 @@
 
                 <div class="d-flex justify-content-end pt-3">
                   
-                  <button type="button"   class="btn btn-success btn-lg ms-2" [routerLink]="['/maison']" routerLinkActive="active"  (click)="save()" >S'inscrire</button>
+                  <button type="button"   class="btn btn-success btn-lg ms-2" [routerLink]="['/maison']" routerLinkActive="active" (click)="save()"  [disabled]="!validateForm()" >S'inscrire</button>
                  
                 </div>
 

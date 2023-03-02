@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { CompteclientHttpService } from '../compteclient/compteclient-http.service';
+import { CompteclientComponent } from '../compteclient/compteclient.component';
+import { Client } from '../model';
 
 
 @Component({
@@ -14,8 +16,12 @@ thatclient : boolean = false;
 thatemploye : boolean =false;
 count = 0;
 
-  constructor(private authServ: AuthService ){
+  constructor(private authServ: AuthService , private compteclientService: CompteclientHttpService ){
 
+  }
+  
+  clientconnecte(): Client {
+    return this.compteclientService.currentclient;
   }
 
   isConnected(): boolean {
@@ -45,6 +51,5 @@ count = 0;
   getAuthServ(): AuthService {
       return this.authServ;
   }
-
 
 }

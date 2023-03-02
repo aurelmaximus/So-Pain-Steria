@@ -10,7 +10,7 @@ import boulangerie.model.LigneCommande;
 
 public interface LigneCommandeRepository extends JpaRepository<LigneCommande,Integer> {
 
-	List<LigneCommande> findAllByCommande(Commande commande);
+//	List<LigneCommande> findAllByCommande(Commande commande);
 	
 //	@Query("select c from Commande c where  c.etatCommande = :et")
 //	List<Commande> findAllByEtatCommande(@Param("et") EtatCommande etatC);
