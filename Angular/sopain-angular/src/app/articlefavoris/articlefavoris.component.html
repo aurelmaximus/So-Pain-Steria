@@ -27,7 +27,7 @@
                       <div class="btn-group">
                         <button type="button" class="btn btn-sm btn-outline-secondary" *ngIf="favoris"> </button>
                         <button type="button" class="btn btn-sm btn-outline-secondary" >Supprimer des favoris</button>
-                        <button type="button" (click)="addToCart(pat, 1)" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
+                        <button type="button" (click)="addToCart(pat.basique,1)" class="btn btn-sm btn-outline-secondary">Ajouter au Panier</button>
                       </div>
                       <small class="text-muted">{{pat.basique.prix | currency:'EUR'}}</small>
                     </div>
