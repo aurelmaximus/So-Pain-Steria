@@ -22,19 +22,19 @@ export class PanierService {
 
 
 
-  addToCart(produit: Produit, quantite:number) {
+  addToCart(pro: Produit, quantite:number) {
 
 
     let ligneCo:LigneCommande = new LigneCommande();
    
 
-    if (this.isSameProductInPanier(produit)==-1) {
+    if (this.isSameProductInPanier(pro)==-1) {
 
         ligneCo.commande=this.panier;
         ligneCo.qte=quantite;
         
-        this.basiqueServ.findById(produit.id).subscribe(response => {
-          produit.type='basique';
+        this.basiqueServ.findById(pro.id).subscribe(response => {
+          // pro.type='basique';
           ligneCo.produit=response;
           this.ligneCoServ.create(ligneCo);
 
@@ -51,12 +51,17 @@ export class PanierService {
           this.lignes.push(ligneCo);
           
           console.log(this.lignes)
+
+          this.ligneCoServ.findAllByCommandeId(this.panier.numero).subscribe(resp=>{
+            this.lignes=resp;
+          });
+            
          
         });
     }
     // Si produit déjà présent
     else {
-      let pos =this.isSameProductInPanier(produit); // Récupère la position de la LigneCommande ayant le même produit
+      let pos =this.isSameProductInPanier(pro); // Récupère la position de la LigneCommande ayant le même produit
 
       // Récupère la LigneCommande en base
         this.ligneCoServ.findById(this.lignes[pos].id).subscribe(response => {
@@ -75,6 +80,11 @@ export class PanierService {
           console.log("Quantité de " + ligneCo.produit.libelle + " dans le panier: " + this.panier.lignesCommande[pos].qte);
           //this.updatePanier(this.panier);
           //this.panier.lignesCommande[pos].qte++;
+
+          this.ligneCoServ.findAllByCommandeId(this.panier.numero).subscribe(resp=>{
+            this.lignes=resp;
+          });
+            
       
   
     });
@@ -84,11 +94,6 @@ export class PanierService {
 
  }
 
-  this.updatePanier(this.panier);
-  this.ligneCoServ.findAllByCommandeId(this.panier.numero).subscribe(resp=>{
-    this.lignes=resp;
-  });
-    
 
 }
 
@@ -96,7 +101,7 @@ export class PanierService {
 isSameProductInPanier(produit: Produit):number {
   let pos:number=-1;
   let i:number=-1;
-  if(this.lignes.length >0){ 
+  if(this.lignes.length >=0){ 
   this.lignes.forEach( (ligne) => {
     i++;
   if (ligne.produit===produit) {
@@ -119,10 +124,10 @@ isSameProductInPanier(produit: Produit):number {
       
       this.lignes.forEach( (ligne) => {
       ligne.total=0;
-      tot+=ligne.produit.prix*ligne.qte;
-      ligne.total+=tot;
+      
+      ligne.total=ligne.produit.prix*ligne.qte;;
       //this.commServ.update(this.panier);
-
+      tot+=ligne.total;
       //this.ligneCoServ.update(ligne);
     });}
 

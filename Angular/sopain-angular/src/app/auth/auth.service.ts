@@ -55,6 +55,7 @@ export class AuthService {
         this.panierServ.findPanierByIdClientOrCreate(this.connected.id).subscribe(resp => {
         console.log('Panier importé ou créé');
         this.panierServ.panier=resp;
+        this.panierServ.panier.client=this.connected;
         this.panierServ.panier.lignesCommande=new Array<LigneCommande>();
         
       });

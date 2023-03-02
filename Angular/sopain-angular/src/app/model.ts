@@ -49,7 +49,6 @@ export class Employe extends Compte {
 
 export class Client extends Compte{
 
-    points : number;
     
 constructor(id?:number, version?: number , email?: string, password?: string, nom?: string, prenom?: string, adresse?:Adresse) {
     super(id, version,email, password, nom, prenom, adresse);

@@ -60,7 +60,7 @@ export class PanierComponent {
       //ajouter articles aux commandes
       this.panier.etatcommande="EnCours";
       this.commServ.update(this.panier);
-
+      this.panierServ.clearCart();
       this.router.navigate(['/client']);}
 
 
@@ -68,7 +68,7 @@ export class PanierComponent {
       //ajouter articles aux commandes
       this.panier.etatcommande="EnCours";
       this.commServ.create(this.panier);
-
+      this.panierServ.clearCart();
       this.router.navigate(['/client']);}
 
 }
