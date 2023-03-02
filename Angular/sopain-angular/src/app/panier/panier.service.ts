@@ -14,6 +14,7 @@ import { Basique, Commande, LigneCommande, Produit } from '../model';
 export class PanierService {
 
   panier:Commande = new Commande();
+  lignes: Array<LigneCommande> = new Array<LigneCommande>();
 
   constructor(private http: HttpClient, private router: Router, private basiqueServ: BasiqueService, private ligneCoServ: LigneCommandeService, private commServ: CommandeHttpService) { 
   }
@@ -41,7 +42,7 @@ export class PanierService {
           this.findByIdWithLignes(this.panier.numero).subscribe(response => {   //Récupère le panier avec les LigneCommande
             this.panier=response;
             
-            console.log("Taille du panier : " + this.panier.lignesCommande.length);
+           //console.log("Taille du panier : " + this.panier.lignesCommande.length);
             console.log("Nouvel article ajouté : " + ligneCo.produit.libelle);
   
           });
@@ -53,7 +54,7 @@ export class PanierService {
       let pos =this.isSameProductInPanier(produit)[1]; // Récupère la position de la LigneCommande ayant le même produit
 
       // Récupère la LigneCommande en base
-      this.ligneCoServ.findById(this.panier.lignesCommande[pos].id).subscribe(response => {
+        this.ligneCoServ.findById(this.panier.lignesCommande[pos].id).subscribe(response => {
         ligneCo=response;
         ligneCo.qte=this.panier.lignesCommande[pos].qte + quantite; // Ajoute la quantité pour la LigneCommande    
                      
@@ -65,7 +66,7 @@ export class PanierService {
           this.panier=response;
   
           //this.panier.lignesCommande.push(ligneCo);
-          console.log("Taille du panier : " + this.panier.lignesCommande.length)
+          //console.log("Taille du panier : " + this.panier.lignesCommande.length)
           console.log("Quantité de " + ligneCo.produit.libelle + " dans le panier: " + this.panier.lignesCommande[pos].qte);
           //this.updatePanier(this.panier);
           //this.panier.lignesCommande[pos].qte++;
@@ -79,6 +80,9 @@ export class PanierService {
  }
 
   this.updatePanier(this.panier);
+  this.ligneCoServ.findAllByCommandeId(this.panier.numero).subscribe(resp=>{
+    this.lignes=resp;
+  });
     
 
 }

@@ -11,13 +11,18 @@ export class LigneCommandeService {
   ligneCommandes: Array<LigneCommande> = new Array<LigneCommande>();
 
   constructor(private http: HttpClient) {
-    this.load();
+    //this.load();
 
    }
 
    findById(id: number): Observable<LigneCommande> {
     return this.http.get<LigneCommande>("http://localhost:8888/lignecommande/" + id);
   }
+
+  findAllByCommandeId(idCommande: number) : Observable<Array<LigneCommande>> {
+    return this.http.get<Array<LigneCommande>>("http://localhost:8888/lignecommande/commande/" + idCommande);
+}
+
 
   create(ligneCo: LigneCommande): void {
     this.http.post<LigneCommande>("http://localhost:8888/lignecommande", ligneCo).subscribe(resp => {

@@ -19,11 +19,11 @@
                   <div class="p-5">
                     <div class="d-flex justify-content-between align-items-center mb-5">
                       <h1 class="fw-bold mb-0 text-black">Mes articles</h1>
-                      <h6 class="mb-0 text-muted">{{panier.lignesCommande?.length}} articles</h6>
+                      <h6 class="mb-0 text-muted">{{lignes.length}} articles</h6>
                     </div>
                     <hr class="my-4">
 
-                    <div class="row mb-4 d-flex justify-content-between align-items-center" *ngFor="let ligne of panier.lignesCommande">
+                    <div class="row mb-4 d-flex justify-content-between align-items-center" *ngFor="let ligne of lignes">
                       <div class="col-md-2 col-lg-2 col-xl-2">
                         <img
                         src="{{ligne.produit.image_ref}}"
@@ -70,7 +70,7 @@
           <hr class="my-4">
 
           <div class="d-flex justify-content-between mb-4">
-            <h5 class="text-uppercase">{{panier.lignesCommande.length}} artciles</h5>
+            <h5 class="text-uppercase">{{lignes.length}} artciles</h5>
             <h5>{{getTotal() | currency:'EUR'}}</h5>
           </div>
 

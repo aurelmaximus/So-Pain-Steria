@@ -5,7 +5,7 @@ import { AuthService } from '../auth/auth.service';
 import { ClientHttpService } from '../client/client-http.service';
 import { CommandeHttpService } from '../commande/commande-http.service';
 import { LigneCommandeService } from '../ligne-commande.service';
-import { Basique, Client, Commande, Produit } from '../model';
+import { Basique, Client, Commande, LigneCommande, Produit } from '../model';
 import { PanierService } from './panier.service';
 
 @Component({
@@ -21,7 +21,8 @@ export class PanierComponent {
   cardNumber: string;
 
   client: Client = new Client();
-  panier:Commande = new Commande();
+  panier: Commande = new Commande();
+  lignes: Array<LigneCommande> = new Array<LigneCommande>();
 
   constructor(private http: HttpClient, private router: Router, private panierServ: PanierService, private clientServ: ClientHttpService, 
     private authServ: AuthService, private commServ: CommandeHttpService, private ligneCoServ: LigneCommandeService) {
@@ -39,7 +40,8 @@ export class PanierComponent {
   }
 
   ngOnInit() {
-    this.panier = this.panierServ.getItems();
+    this.lignes = this.panierServ.lignes;
+    this.panier = this.panierServ.panier;
     this.showText2 = true;
   }
 
@@ -56,16 +58,16 @@ export class PanierComponent {
 
   pay() {
       //ajouter articles aux commandes
-      this.panier.etatcommande="EnCours"
-      this.commServ.create(this.panier)
+      this.panier.etatcommande="EnCours";
+      this.commServ.update(this.panier);
 
       this.router.navigate(['/client']);}
 
 
     validate() {
       //ajouter articles aux commandes
-      this.panier.etatcommande="EnCours"
-      this.commServ.create(this.panier)
+      this.panier.etatcommande="EnCours";
+      this.commServ.create(this.panier);
 
       this.router.navigate(['/client']);}
 

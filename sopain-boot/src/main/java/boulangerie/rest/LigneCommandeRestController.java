@@ -51,6 +51,14 @@ public class LigneCommandeRestController {
 		return optLigneCommande.get();
 	}
 	
+	@GetMapping("/commande/{numCom}")
+	@JsonView(Views.ViewLigneCommande.class)
+	public List<LigneCommande> findAllByCommandeId(@PathVariable Integer numCom) {
+		List<LigneCommande> ligneCommandes = ligneCommandeRepository.findAllByCommandeId(numCom);
+
+		return ligneCommandes;
+	}
+	
 	@PostMapping("")
 	@JsonView(Views.ViewLigneCommande.class)
 	public LigneCommande create(@RequestBody LigneCommande ligneCommande) {
