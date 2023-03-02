@@ -26,7 +26,7 @@ export class PanierComponent {
   constructor(private http: HttpClient, private router: Router, private panierServ: PanierService, private clientServ: ClientHttpService, 
     private authServ: AuthService, private commServ: CommandeHttpService, private ligneCoServ: LigneCommandeService) {
     //this.load();
-    this.panier = this.panierServ.getItems();
+
     }
   toggleText() {
     this.showText = !this.showText;
@@ -39,6 +39,7 @@ export class PanierComponent {
   }
 
   ngOnInit() {
+    this.panier = this.panierServ.getItems();
     this.showText2 = true;
   }
 

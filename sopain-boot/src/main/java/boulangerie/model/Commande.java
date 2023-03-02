@@ -157,7 +157,7 @@ public class Commande {
 	@Override
 	public String toString() {
 		return "Commande [numero=" + numero + ", dateArrivee=" + dateArrivee + ", heureArrive=" + heureArrive
-				+ ", surPlace=" + surPlace + ", etatcommande=" + etatcommande + ", LigneCommandes=" + ligneCommandes
+				+ ", surPlace=" + surPlace + ", etatcommande=" + etatcommande + ", ligneCommandes=" + ligneCommandes
 				+ ", client=" + client + "]";
 	}
 	

@@ -1,5 +1,6 @@
 package boulangerie.rest;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,9 +19,12 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import boulangerie.model.Client;
 import boulangerie.model.Commande;
+import boulangerie.model.EtatCommande;
 import boulangerie.model.Commande;
 import boulangerie.model.Views;
+import boulangerie.repository.ClientRepository;
 import boulangerie.repository.CommandeRepository;
 
 
@@ -30,6 +34,8 @@ import boulangerie.repository.CommandeRepository;
 public class CommandeRestController {
 	@Autowired
 	private CommandeRepository commandeRepository;
+	@Autowired
+	private ClientRepository clientRepository;
 
 	@GetMapping("")
 	@JsonView(Views.ViewCommande.class)
@@ -62,6 +68,33 @@ public class CommandeRestController {
 
 		return optCommande.get();
 	}
+	
+	@GetMapping("/panier/{idClient}")
+	@JsonView(Views.ViewCommandeWithLignesCommande.class)
+	public Commande panierByClientIdOrCreate(@PathVariable Integer idClient) {
+		Optional<Commande> optCommande = commandeRepository.findByIdAndEtatCommandeWithLigneCommande(idClient, EtatCommande.Panier);
+
+		if (optCommande.isEmpty()) {
+			Client cli = clientRepository.findById(idClient).get();
+			cli = clientRepository.save(cli);
+			
+			Commande panier = new Commande();
+			panier.setClient(cli);
+			panier.setEtatcommande(EtatCommande.Panier);
+			panier = commandeRepository.save(panier);
+			
+			//cli.getCommandes().add(panier);
+			
+			
+			return panier;
+			
+		}
+		
+		else
+		return optCommande.get();
+		
+	}
+	
 
 	@PostMapping("")
 	@JsonView(Views.ViewCommande.class)

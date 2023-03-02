@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { LigneCommande } from './model';
 
 @Injectable({
@@ -13,6 +14,10 @@ export class LigneCommandeService {
     this.load();
 
    }
+
+   findById(id: number): Observable<LigneCommande> {
+    return this.http.get<LigneCommande>("http://localhost:8888/lignecommande/" + id);
+  }
 
   create(ligneCo: LigneCommande): void {
     this.http.post<LigneCommande>("http://localhost:8888/lignecommande", ligneCo).subscribe(resp => {
