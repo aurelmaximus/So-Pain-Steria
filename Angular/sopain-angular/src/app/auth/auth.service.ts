@@ -38,14 +38,7 @@ export class AuthService {
 
   }
 
-  PointsBonus(): number{
-     
-    if(this.connected instanceof Client){
-      this.pt=this.connected.points
-           
-      }
-    return this.pt
-  } 
+  
 
 
   login(dto: AuthDTO):void {
