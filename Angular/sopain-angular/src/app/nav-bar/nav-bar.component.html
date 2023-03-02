@@ -1,5 +1,6 @@
 
-<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom  ">
+<header class=" ">
+
      <div class="navbar fixed-top navbar-expand-lg navbar-light bg-light d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom ">
   <div>
   <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
@@ -37,13 +38,15 @@
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 align-items-center">
             <li>Chez {{getAuthServ().connected.nom }}</li>
             <li><button type="button"  (click)="unConnect()" type="button" class="btn btn-basic"><img src="..\..\assets\images\logout.png" alt=""  width="15"></button></li>
+            <li>  <button  style="background-color: lightgreen;" class="btn btn-sm btn-outline-secondary" *ngIf="isClient()" type="button" [routerLink]="['/panier']"  routerLinkActive="active">
+              <i class="bi bi-basket custom-basket-icon"></i>  
+            </button></li>
           </ul>
+          
           </div>
-          <div style="text-align: end;">
-         <button  style="background-color: lightgreen;" class="btn btn-sm btn-outline-secondary" *ngIf="isClient()" type="button" [routerLink]="['/panier']"  routerLinkActive="active">
-            <i class="bi bi-basket custom-basket-icon"></i>  
-          </button>
-        </div>
+          <!-- <div style="text-align: end;">
+       
+        </div> -->
         <!-- <div  *ngIf="isClient()" >
           <span class="d-block"> Solde So-Points : {{clientconnecte().points}} <img src="..\..\assets\images\44.jpg" alt=""   width="25"></span>
         </div> -->
