@@ -17,6 +17,8 @@ export class EmployeComponent {
 
   etatcommande:boolean =false;
   cache:boolean=true;
+  lignecommande:boolean =false;
+  lignes: Array<LigneCommande> = new Array<LigneCommande>();
 
   constructor(private employeService: EmployeHttpService,private commandeService: CommandeHttpService) {
   }

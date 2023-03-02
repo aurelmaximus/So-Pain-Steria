@@ -148,7 +148,7 @@
       
     </div>
 
-    <!-- <div class="card mt-3 hcommande">
+    <div class="card mt-3 hcommande" >
       <div class="card-header entete display-6">Detail de la commande</div>
       <div class="card-body max">
           <table class="table">
@@ -162,11 +162,11 @@
               </thead>
   
               <tbody>
-                <tr *ngFor="let lcom of listligneCommandes()">
-                  <td>{{lcom.id}}</td>
-                  <td>{{lcom.qte}}</td>
-                  <td>{{lcom.total}}</td>
-                  <td>{{lcom.produit.libelle}}</td>
+                <tr *ngFor="let ligne of lignes">
+                  <td>{{ligne.id}}</td>
+                  <td>{{ligne.qte}}</td>
+                  <td>{{ligne.total}}</td>
+                  <td>{{ligne.produit.libelle}}</td>
                   <td></td>
                  </tr>
               </tbody>
@@ -174,7 +174,7 @@
           </table>
       </div>
     
-  </div> -->
+  </div>
 
     </div>
     

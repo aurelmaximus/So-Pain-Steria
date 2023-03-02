@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 01 mars 2023 à 23:07
+-- Généré le : jeu. 02 mars 2023 à 16:27
 -- Version du serveur : 5.7.40
 -- Version de PHP : 8.0.26
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `account` (
   `points` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UKravrcdl4ml7ghtfxdr2nx9hyw` (`last_name`,`first_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `account`
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `account` (
 
 INSERT INTO `account` (`type`, `id`, `zip_code`, `number`, `city`, `street`, `email`, `last_name`, `password`, `first_name`, `version`, `points`) VALUES
 ('employe', 1, '33000', '4', 'Bordeaux', 'Rue du dragon blanc', 'aurelien.bulme@gmail.com', 'Aurélien', 'Croki19', 'Bulme', 0, 0),
-('employe', 2, '69000', '8', 'Lyon', 'Rue du magicien', 'cedric.devillers@gmail.com', 'Cedric', 'cedric', 'Devillers', 0, 0),
+('employe', 2, '69000', '8', 'Lyon', 'Rue du sorcier', 'cedric.devillers@gmail.com', 'Cedric', 'cedric', 'Devillers', 1, 0),
 ('employe', 3, '33000', '12', 'Bordeaux', 'Rue cyber', 'farah.benaissa@gmail.com', 'Farah', 'farah', 'Benaissa', 0, 0),
 ('employe', 4, '69000', '7bis', 'Lyon', 'Rue ignister', 'youssef.talmat@gmail.com', 'Youssef', 'youssef', 'Talmat', 2, 0),
 ('customer', 5, '33000', '1', 'Bordeaux', 'Rue de la victoire', 'prune.pommier@gmail.com', 'prune', 'peche', 'pommier', 0, 0),
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `command` (
   `customer_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`numero`),
   KEY `FK4adexdu0ttc9l217n3ydn7199` (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=177 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `command`
@@ -86,145 +86,9 @@ CREATE TABLE IF NOT EXISTS `command` (
 INSERT INTO `command` (`numero`, `arrived_date`, `command_status`, `arrived_hour`, `on_site`, `version`, `customer_id`) VALUES
 (1, '2023-01-31', 'Termine', '12:30:00', 0, 2, 5),
 (2, '2023-01-31', 'Prete', '16:55:00', 0, 1, 6),
-(3, '2023-01-31', 'Prete', '11:30:00', 0, 1, 5),
+(3, '2023-01-31', 'Prete', '11:30:00', 0, 1, 6),
 (4, '2023-01-27', 'Termine', '12:55:00', 0, 3, 6),
-(5, '2023-01-31', 'EnCours', '13:30:00', 0, 5, 6),
-(6, '2023-01-27', 'EnCours', '18:55:00', 0, 3, 6),
-(42, NULL, 'Panier', NULL, 0, 0, NULL),
-(43, NULL, 'Panier', NULL, 0, 0, 6),
-(44, NULL, 'Panier', NULL, 0, 0, NULL),
-(45, NULL, 'Panier', NULL, 0, 0, NULL),
-(46, NULL, 'Panier', NULL, 0, 0, NULL),
-(47, NULL, 'Panier', NULL, 0, 0, NULL),
-(48, NULL, 'Panier', NULL, 0, 0, NULL),
-(49, NULL, 'Panier', NULL, 0, 0, NULL),
-(50, NULL, 'Panier', NULL, 0, 0, 6),
-(51, NULL, 'Panier', NULL, 0, 0, NULL),
-(52, NULL, 'Panier', NULL, 0, 0, 6),
-(53, NULL, 'Panier', NULL, 0, 0, NULL),
-(54, NULL, 'Panier', NULL, 0, 0, NULL),
-(55, NULL, 'Panier', NULL, 0, 0, NULL),
-(56, NULL, 'Panier', NULL, 0, 0, NULL),
-(57, NULL, 'Panier', NULL, 0, 0, NULL),
-(58, NULL, 'Panier', NULL, 0, 0, 6),
-(59, NULL, 'Panier', NULL, 0, 0, NULL),
-(60, NULL, 'Panier', NULL, 0, 0, 6),
-(61, NULL, 'Panier', NULL, 0, 0, NULL),
-(62, NULL, 'Panier', NULL, 0, 0, NULL),
-(63, NULL, 'Panier', NULL, 0, 0, 6),
-(64, NULL, 'Panier', NULL, 0, 0, NULL),
-(65, NULL, 'Panier', NULL, 0, 0, NULL),
-(66, NULL, 'Panier', NULL, 0, 0, NULL),
-(67, NULL, 'Panier', NULL, 0, 0, 6),
-(68, NULL, 'Panier', NULL, 0, 0, NULL),
-(69, NULL, 'Panier', NULL, 0, 0, NULL),
-(70, NULL, 'Panier', NULL, 0, 0, 6),
-(71, NULL, 'Panier', NULL, 0, 0, NULL),
-(72, NULL, 'Panier', NULL, 0, 0, 6),
-(73, NULL, 'Panier', NULL, 0, 0, NULL),
-(74, NULL, 'Panier', NULL, 0, 0, NULL),
-(75, NULL, 'Panier', NULL, 0, 0, NULL),
-(76, NULL, 'Panier', NULL, 0, 0, 6),
-(77, NULL, 'Panier', NULL, 0, 0, NULL),
-(78, NULL, 'Panier', NULL, 0, 0, 6),
-(79, NULL, 'Panier', NULL, 0, 0, NULL),
-(80, NULL, 'Panier', NULL, 0, 0, 6),
-(81, NULL, 'Panier', NULL, 0, 0, NULL),
-(82, NULL, 'Panier', NULL, 0, 0, NULL),
-(83, NULL, 'Panier', NULL, 0, 0, NULL),
-(84, NULL, 'Panier', NULL, 0, 0, NULL),
-(85, NULL, 'Panier', NULL, 0, 0, NULL),
-(86, NULL, 'Panier', NULL, 0, 0, NULL),
-(87, NULL, 'Panier', NULL, 0, 0, NULL),
-(88, NULL, 'Panier', NULL, 0, 0, 6),
-(89, NULL, 'Panier', NULL, 0, 0, NULL),
-(90, NULL, 'Panier', NULL, 0, 0, 6),
-(91, NULL, 'Panier', NULL, 0, 0, NULL),
-(92, NULL, 'Panier', NULL, 0, 0, NULL),
-(93, NULL, 'Panier', NULL, 0, 0, 6),
-(94, NULL, 'Panier', NULL, 0, 0, NULL),
-(95, NULL, 'Panier', NULL, 0, 0, NULL),
-(96, NULL, 'Panier', NULL, 0, 0, 6),
-(97, NULL, 'Panier', NULL, 0, 0, NULL),
-(98, NULL, 'Panier', NULL, 0, 0, NULL),
-(99, NULL, 'Panier', NULL, 0, 0, 6),
-(100, NULL, 'Panier', NULL, 0, 0, NULL),
-(101, NULL, 'Panier', NULL, 0, 0, NULL),
-(102, NULL, 'Panier', NULL, 0, 0, NULL),
-(103, NULL, 'Panier', NULL, 0, 0, NULL),
-(104, NULL, 'Panier', NULL, 0, 0, NULL),
-(105, NULL, 'Panier', NULL, 0, 0, NULL),
-(106, NULL, 'Panier', NULL, 0, 0, NULL),
-(107, NULL, 'Panier', NULL, 0, 0, 6),
-(108, NULL, 'Panier', NULL, 0, 0, NULL),
-(109, NULL, 'Panier', NULL, 0, 0, NULL),
-(110, NULL, 'Panier', NULL, 0, 0, NULL),
-(111, NULL, 'Panier', NULL, 0, 0, NULL),
-(112, NULL, 'Panier', NULL, 0, 0, NULL),
-(113, NULL, 'Panier', NULL, 0, 0, NULL),
-(114, NULL, 'Panier', NULL, 0, 0, 6),
-(115, NULL, 'Panier', NULL, 0, 0, NULL),
-(116, NULL, 'Panier', NULL, 0, 0, 6),
-(117, NULL, 'Panier', NULL, 0, 0, NULL),
-(118, NULL, 'Panier', NULL, 0, 0, NULL),
-(119, NULL, 'Panier', NULL, 0, 0, NULL),
-(120, NULL, 'Panier', NULL, 0, 0, NULL),
-(121, NULL, 'Panier', NULL, 0, 0, NULL),
-(122, NULL, 'Panier', NULL, 0, 0, NULL),
-(123, NULL, 'Panier', NULL, 0, 0, 6),
-(124, NULL, 'Panier', NULL, 0, 0, NULL),
-(125, NULL, 'Panier', NULL, 0, 0, NULL),
-(126, NULL, 'Panier', NULL, 0, 0, NULL),
-(127, NULL, 'Panier', NULL, 0, 0, NULL),
-(128, NULL, 'Panier', NULL, 0, 0, NULL),
-(129, NULL, 'Panier', NULL, 0, 0, NULL),
-(130, NULL, 'Panier', NULL, 0, 0, NULL),
-(131, NULL, 'Panier', NULL, 0, 0, NULL),
-(132, NULL, 'Panier', NULL, 0, 0, NULL),
-(133, NULL, 'Panier', NULL, 0, 0, NULL),
-(134, NULL, 'Panier', NULL, 0, 0, NULL),
-(135, NULL, 'Panier', NULL, 0, 0, NULL),
-(136, NULL, 'Panier', NULL, 0, 0, NULL),
-(137, NULL, 'Panier', NULL, 0, 0, NULL),
-(138, NULL, 'Panier', NULL, 0, 0, NULL),
-(139, NULL, 'Panier', NULL, 0, 0, NULL),
-(140, NULL, 'Panier', NULL, 0, 0, 6),
-(141, NULL, 'Panier', NULL, 0, 0, NULL),
-(142, NULL, 'Panier', NULL, 0, 0, NULL),
-(143, NULL, 'Panier', NULL, 0, 0, NULL),
-(144, NULL, 'Panier', NULL, 0, 0, NULL),
-(145, NULL, 'Panier', NULL, 0, 0, NULL),
-(146, NULL, 'Panier', NULL, 0, 0, NULL),
-(147, NULL, 'Panier', NULL, 0, 0, NULL),
-(148, NULL, 'Panier', NULL, 0, 0, NULL),
-(149, NULL, 'Panier', NULL, 0, 0, NULL),
-(150, NULL, 'Panier', NULL, 0, 0, NULL),
-(151, NULL, 'Panier', NULL, 0, 0, NULL),
-(152, NULL, 'Panier', NULL, 0, 0, 6),
-(153, NULL, 'Panier', NULL, 0, 0, NULL),
-(154, NULL, 'Panier', NULL, 0, 0, NULL),
-(155, NULL, 'Panier', NULL, 0, 0, NULL),
-(156, NULL, 'Panier', NULL, 0, 0, NULL),
-(157, NULL, 'Panier', NULL, 0, 0, 6),
-(158, NULL, 'Panier', NULL, 0, 0, NULL),
-(159, NULL, 'Panier', NULL, 0, 0, NULL),
-(160, NULL, 'Panier', NULL, 0, 0, NULL),
-(161, NULL, 'Panier', NULL, 0, 0, NULL),
-(162, NULL, 'Panier', NULL, 0, 0, NULL),
-(163, NULL, 'Panier', NULL, 0, 0, NULL),
-(164, NULL, 'Panier', NULL, 0, 0, NULL),
-(165, NULL, 'Panier', NULL, 0, 0, NULL),
-(166, NULL, 'Panier', NULL, 0, 0, NULL),
-(167, NULL, 'Panier', NULL, 0, 0, NULL),
-(168, NULL, 'Panier', NULL, 0, 0, NULL),
-(169, NULL, 'Panier', NULL, 0, 0, NULL),
-(170, NULL, 'Panier', NULL, 0, 0, NULL),
-(171, NULL, 'Panier', NULL, 0, 0, NULL),
-(172, NULL, 'Panier', NULL, 0, 0, NULL),
-(173, NULL, 'Panier', NULL, 0, 0, NULL),
-(174, NULL, 'Panier', NULL, 0, 0, 6),
-(175, NULL, 'Panier', NULL, 0, 0, NULL),
-(176, NULL, 'Panier', NULL, 0, 0, NULL);
+(5, '2023-01-31', 'EnCours', '13:30:00', 0, 5, 6);
 
 -- --------------------------------------------------------
 
@@ -243,14 +107,7 @@ CREATE TABLE IF NOT EXISTS `command_line` (
   PRIMARY KEY (`id`),
   KEY `FK63wx5vtqo2p1upm623em6aic` (`command_id`),
   KEY `FKexibn53w35ucgmrpyu3nt47dx` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `command_line`
---
-
-INSERT INTO `command_line` (`id`, `quantity`, `total`, `version`, `command_id`, `product_id`) VALUES
-(1, 2, '20.00', 0, 1, 5);
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -373,7 +230,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `image_ref` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UKlkl5hm0ed36aan92yhhquksjt` (`price`,`label`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `product`
