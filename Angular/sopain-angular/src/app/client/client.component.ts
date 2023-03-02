@@ -38,12 +38,13 @@ export class ClientComponent {
 
   save(): void {
 
-  
+    if (this.validateForm()) {
     if(this.formClient.id) { // UPDATE
       this.clientService.update(this.formClient);
     } else { // CREATE
       this.clientService.create(this.formClient);
     }
+  }
 
     //  this.form=false;
     //  this.page2=true;
@@ -61,11 +62,15 @@ export class ClientComponent {
   cancel(): void {
     this.formClient = null;
   }
-  validateForm(): void {
-    this.isFormValid = true;
+
+  validateForm(): boolean {
+    let isFormValid = true;
   
-    if (!this.formClient.nom || !this.formClient.prenom || !this.formClient.adresse.voie || !this.formClient.adresse.cp || !this.formClient.adresse.ville) {
-      this.isFormValid = false;
+    if (!this.formClient.nom || !this.formClient.prenom || !this.formClient.email || !this.formClient.password || !this.formClient.adresse.voie || !this.formClient.adresse.cp || !this.formClient.adresse.ville) {
+      isFormValid = false;
     }
+  
+    return isFormValid;
   }
+ 
 }

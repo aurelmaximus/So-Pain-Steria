@@ -15,7 +15,8 @@ export class AuthService {
   utilisateurs:  Array<Compte> = new Array<Compte>();
   role: Array<string>;
   logged: boolean;
-  
+ 
+  pt : number;
 
   constructor(private http: HttpClient, private router: Router) {
     
@@ -36,6 +37,15 @@ export class AuthService {
   })
 
   }
+
+  PointsBonus(): number{
+     
+    if(this.connected instanceof Client){
+      this.pt=this.connected.points
+           
+      }
+    return this.pt
+  } 
 
 
   login(dto: AuthDTO):void {

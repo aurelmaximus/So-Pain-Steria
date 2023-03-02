@@ -4,7 +4,7 @@ import { Employe, Compte, Adresse } from '../model';
 import { EmployegcHttpService } from './employe-gc.http.service';
 
 @Component({
-  selector: 'app-employe-gc',
+  selector: 'app-employe-gc , [autofocus]',
   templateUrl: './employe-gc.component.html',
   styleUrls: ['./employe-gc.component.css']
 })

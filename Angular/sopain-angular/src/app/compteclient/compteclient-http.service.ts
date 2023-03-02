@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
-import { Client } from '../model';
+import { Adresse, Client } from '../model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +14,7 @@ export class CompteclientHttpService {
 
   constructor(private http: HttpClient, private auth: AuthService) {
     this.load();
+   
   }
 
   findAll(): Array<Client> {
