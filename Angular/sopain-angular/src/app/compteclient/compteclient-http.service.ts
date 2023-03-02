@@ -49,7 +49,7 @@ export class CompteclientHttpService {
   }
 
   private load(): void {
-    this.findByIdCli(this.auth.connected.id).subscribe(resp => {
+    this.findByIdCli(this.auth.idConnected).subscribe(resp => {
       this.currentclient=resp;
     });
     
