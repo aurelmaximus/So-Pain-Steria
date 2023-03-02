@@ -47,13 +47,13 @@ export class CommandeHttpService {
 
   findAllclientEncours(client: Client): Array<Commande> {
     return this.commandes
-      .filter(commande => commande.client.id === client.id && (commande.etatcommande === 'EnCours' || commande.etatcommande === 'Prete'))
+    .filter(commande => commande.etatcommande === 'EnCours' || commande.etatcommande === 'Prete')
       .sort((a, b) => {
         const dateA = new Date(`${a.dateArrivee} ${a.heureArrive}`);
         const dateB = new Date(`${b.dateArrivee} ${b.heureArrive}`);
-        if (a.etatcommande === 'Prete'  && b.etatcommande === 'EnCours') {
+        if (a.etatcommande === 'EnCours' && b.etatcommande === 'Prete') {
           return -1;
-        } else if (a.etatcommande === 'EnCours' && b.etatcommande === 'Prete' ) {
+        } else if (a.etatcommande === 'Prete' && b.etatcommande === 'EnCours') {
           return 1;
         } else {
           return dateA.getTime() - dateB.getTime();
@@ -67,13 +67,7 @@ export class CommandeHttpService {
       .sort((a, b) => {
         const dateA = new Date(`${a.dateArrivee} ${a.heureArrive}`);
         const dateB = new Date(`${b.dateArrivee} ${b.heureArrive}`);
-        if (a.etatcommande === 'EnCours' && b.etatcommande === 'Prete') {
-          return -1;
-        } else if (a.etatcommande === 'Prete' && b.etatcommande === 'EnCours') {
-          return 1;
-        } else {
-          return dateA.getTime() - dateB.getTime();
-        }
+        return dateB.getTime() - dateA.getTime();
       });
   }
 

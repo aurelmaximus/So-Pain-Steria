@@ -49,7 +49,8 @@ export class EmployeGpComponent {
 
 
   save(): void {
-
+    this.formBasique.type = 'basique';
+    
     if(this.formBasique.id) {
       this.employeService.update(this.formBasique);
     } else {
