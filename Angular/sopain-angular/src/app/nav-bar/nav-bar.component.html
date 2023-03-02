@@ -38,8 +38,8 @@
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0 align-items-center">
             <li>Chez {{getAuthServ().connected.nom }}</li>
             <li><button type="button"  (click)="unConnect()" type="button" class="btn btn-basic"><img src="..\..\assets\images\logout.png" alt=""  width="15"></button></li>
-            <li>  <button  style="background-color: lightgreen;" class="btn btn-sm btn-outline-secondary" *ngIf="isClient()" type="button" [routerLink]="['/panier']"  routerLinkActive="active">
-              <i class="bi bi-basket custom-basket-icon"></i>  
+            <li>  <button  class="btn btn-sm btn-outline-link rounded-circle" *ngIf="isClient()" type="button" [routerLink]="['/panier']"  routerLinkActive="active">
+              <img src="..\..\assets\images\panier.png" alt="" width="50" height="50">  
             </button></li>
           </ul>
           

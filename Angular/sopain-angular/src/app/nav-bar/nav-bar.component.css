@@ -58,7 +58,12 @@ margin-left: 100px;
 	margin-right: 100px;
 }
 
-.custom-basket-icon {
-	font-size: 1.3rem;
-  }
+
   
+  
+  .img-thumbnail:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #cfdbe9;
+	opacity: 50;
+
+}
