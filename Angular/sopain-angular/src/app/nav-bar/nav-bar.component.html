@@ -1,6 +1,7 @@
 
-<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-     <div>
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom  ">
+     <div class="navbar fixed-top navbar-expand-lg navbar-light bg-light d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom ">
+  <div>
   <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
         <img id="imgacc" class="logo" src="..\..\assets\images\Logosansfond.png" alt=""  width="100" >
       </a>
@@ -27,9 +28,7 @@
       <div class="d-flex" *ngIf="!isConnected()"> 
         <button type="button" [routerLink]="['/auth']" routerLinkActive="active" class="btn btn-outline-dark me-2">Login</button>
         <button type="button" [routerLink]="['/inscriptionclient']" routerLinkActive="active" class="btn btn-dark">Sign-up</button></div>
-        <button class="btn btn-sm btn-outline-secondary" *ngIf="isClient()" type="button" [routerLink]="['/panier']"  routerLinkActive="active">
-          <i class="bi bi-basket custom-basket-icon"></i>  
-        </button>
+       
       </div>
      
       <div class="d-flex" *ngIf="isConnected()"> 
@@ -40,6 +39,11 @@
             <li><button type="button"  (click)="unConnect()" type="button" class="btn btn-basic"><img src="..\..\assets\images\logout.png" alt=""  width="15"></button></li>
           </ul>
           </div>
+          <div style="text-align: end;">
+         <button  style="background-color: lightgreen;" class="btn btn-sm btn-outline-secondary" *ngIf="isClient()" type="button" [routerLink]="['/panier']"  routerLinkActive="active">
+            <i class="bi bi-basket custom-basket-icon"></i>  
+          </button>
+        </div>
         <!-- <div  *ngIf="isClient()" >
           <span class="d-block"> Solde So-Points : {{clientconnecte().points}} <img src="..\..\assets\images\44.jpg" alt=""   width="25"></span>
         </div> -->
@@ -49,6 +53,7 @@
       
       
     </div>
+  </div>
       
 </header>
 
