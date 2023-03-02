@@ -26,35 +26,40 @@ export class PanierService {
 
 
     let ligneCo:LigneCommande = new LigneCommande();
-    
+   
 
-    if (this.isSameProductInPanier(produit)[0]==0) {
+    if (this.isSameProductInPanier(produit)==-1) {
 
         ligneCo.commande=this.panier;
         ligneCo.qte=quantite;
         
         this.basiqueServ.findById(produit.id).subscribe(response => {
+          produit.type='basique';
           ligneCo.produit=response;
           this.ligneCoServ.create(ligneCo);
 
-          this.panier.lignesCommande.push(ligneCo);
+          // this.panier.lignesCommande.push(ligneCo);
           //this.updatePanier(this.panier);
-          this.findByIdWithLignes(this.panier.numero).subscribe(response => {   //Récupère le panier avec les LigneCommande
-            this.panier=response;
+          // this.findByIdWithLignes(this.panier.numero).subscribe(response => {   //Récupère le panier avec les LigneCommande
+          //   this.panier=response;
             
            //console.log("Taille du panier : " + this.panier.lignesCommande.length);
-            console.log("Nouvel article ajouté : " + ligneCo.produit.libelle);
+            // console.log("Nouvel article ajouté : " + ligneCo.produit.libelle);
   
-          });
+          // });
 
+          this.lignes.push(ligneCo);
+          
+          console.log(this.lignes)
          
-  });}
+        });
+    }
     // Si produit déjà présent
     else {
-      let pos =this.isSameProductInPanier(produit)[1]; // Récupère la position de la LigneCommande ayant le même produit
+      let pos =this.isSameProductInPanier(produit); // Récupère la position de la LigneCommande ayant le même produit
 
       // Récupère la LigneCommande en base
-        this.ligneCoServ.findById(this.panier.lignesCommande[pos].id).subscribe(response => {
+        this.ligneCoServ.findById(this.lignes[pos].id).subscribe(response => {
         ligneCo=response;
         ligneCo.qte=this.panier.lignesCommande[pos].qte + quantite; // Ajoute la quantité pour la LigneCommande    
                      
@@ -88,18 +93,18 @@ export class PanierService {
 }
 
 
-isSameProductInPanier(produit: Produit):number[] {
-  let count:number=0;
+isSameProductInPanier(produit: Produit):number {
   let pos:number=-1;
-  if(this.panier.lignesCommande.length >0){ 
-  this.panier.lignesCommande.forEach( (ligne) => {
+  let i:number=-1;
+  if(this.lignes.length >0){ 
+  this.lignes.forEach( (ligne) => {
+    i++;
   if (ligne.produit===produit) {
-    count++;
+    pos=i;
   }
-  pos++;
 });}
 
-  return [count,pos];
+  return pos;
 }
 
   getItems() {
@@ -110,9 +115,9 @@ isSameProductInPanier(produit: Produit):number[] {
     let tot:number=0;
 
 
-    if (this.panier.lignesCommande.length>0) {
+    if (this.lignes.length>0) {
       
-      this.panier.lignesCommande.forEach( (ligne) => {
+      this.lignes.forEach( (ligne) => {
       ligne.total=0;
       tot+=ligne.produit.prix*ligne.qte;
       ligne.total+=tot;
@@ -121,12 +126,12 @@ isSameProductInPanier(produit: Produit):number[] {
       //this.ligneCoServ.update(ligne);
     });}
 
-    this.updatePanier(this.panier);  
+    // this.updatePanier(this.panier);  
     return tot;
   }
 
   clearCart() {
-    this.panier.lignesCommande =[];
+    this.lignes =[];
     return this.panier;
   }
 

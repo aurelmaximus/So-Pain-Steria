@@ -26,7 +26,6 @@ export class ArticlefavorisComponent {
     console.log('Tous les produits:', basiques);
   
     // Filtrer les articles favoris du client connecté
-    // this.articlefavoriservice.articlefavoris
     let articleFavoris = new Array<Basique>();
     
     const articleFavorisClient = this.articlefavoriservice.articlefavoris.filter((articleFavori: ArticleFavori) => articleFavori.client.id === clientConnecte.id);

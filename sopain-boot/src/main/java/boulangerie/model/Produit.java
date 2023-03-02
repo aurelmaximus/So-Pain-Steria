@@ -19,7 +19,11 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
+import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
 import java.util.List;
 
@@ -27,6 +31,13 @@ import java.util.List;
 @Table(name = "product", uniqueConstraints = @UniqueConstraint(columnNames = { "price", "label" }))
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "type", discriminatorType = DiscriminatorType.STRING)
+@JsonTypeInfo (use = JsonTypeInfo.Id.NAME, 
+include = As.PROPERTY, property  = "type") 
+@JsonSubTypes({
+
+	@Type(value = Basique.class, name = "basique"),
+	@Type(value = Elabore.class, name = "elabore")
+})
 public abstract class Produit implements Serializable {
 
 	@Id

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
 import { CommandeHttpService } from '../commande/commande-http.service';
-import { Commande, Compte, Employe, EtatCommande } from '../model';
+import { Commande, Compte, Employe, EtatCommande, LigneCommande } from '../model';
 import { EmployeHttpService } from './employe-http.service';
 
 @Component({
@@ -32,6 +33,8 @@ export class EmployeComponent {
   listCommandestermine(): Array<Commande> {
     return this.commandeService.findAllTermine();
   }
+
+ 
 
 
   cancel(): void {

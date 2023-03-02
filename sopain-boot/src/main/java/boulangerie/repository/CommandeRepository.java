@@ -14,10 +14,10 @@ import boulangerie.model.EtatCommande;
 
 public interface CommandeRepository extends JpaRepository<Commande,Integer> {
 
-@Query("select distinct c from Commande c left join fetch c.ligneCommandes where c.id=:id")
+@Query("select distinct c from Commande c left join fetch c.lignesCommande where c.id=:id")
 Optional<Commande> findByIdWithLigneCommande(@Param("id") Integer id);
 
-@Query("select distinct c from Commande c left join fetch c.ligneCommandes where c.client.id=?1 and c.etatcommande=?2")
+@Query("select distinct c from Commande c left join fetch c.lignesCommande where c.client.id=?1 and c.etatcommande=?2")
 Optional<Commande> findByIdAndEtatCommandeWithLigneCommande(Integer id, EtatCommande etat);
 
 

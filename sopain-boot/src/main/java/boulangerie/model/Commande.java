@@ -51,7 +51,7 @@ public class Commande {
 	
 	@OneToMany(mappedBy = "commande")
 	@JsonView(Views.ViewCommandeWithLignesCommande.class)
-	private List<LigneCommande> ligneCommandes = new ArrayList<>();
+	private List<LigneCommande> lignesCommande = new ArrayList<>();
 	
 	@ManyToOne
 	@JoinColumn(name = "customer_id")
@@ -139,13 +139,13 @@ public class Commande {
 	}
 
 
-	public List<LigneCommande> getLigneCommandes() {
-		return ligneCommandes;
+	public List<LigneCommande> getLignesCommande() {
+		return lignesCommande;
 	}
 
 
-	public void setLigneCommandes(List<LigneCommande> ligneCommandes) {
-		this.ligneCommandes = ligneCommandes;
+	public void setLigneCommandes(List<LigneCommande> lignesCommande) {
+		this.lignesCommande = lignesCommande;
 	}
 
 
@@ -157,7 +157,7 @@ public class Commande {
 	@Override
 	public String toString() {
 		return "Commande [numero=" + numero + ", dateArrivee=" + dateArrivee + ", heureArrive=" + heureArrive
-				+ ", surPlace=" + surPlace + ", etatcommande=" + etatcommande + ", ligneCommandes=" + ligneCommandes
+				+ ", surPlace=" + surPlace + ", etatcommande=" + etatcommande + ", ligneCommandes=" + lignesCommande
 				+ ", client=" + client + "]";
 	}
 	

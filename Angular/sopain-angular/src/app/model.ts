@@ -126,6 +126,7 @@ export class Produit {
     libelle:string;
     description: string;
     image_ref: string;
+    type: string;
 
     constructor(id?:number, version?: number, prix?:number, libelle?:string, description?:string, image_ref?:string) {
         this.id = id;
