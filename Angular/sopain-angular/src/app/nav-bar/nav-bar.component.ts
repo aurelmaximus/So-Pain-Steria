@@ -12,6 +12,7 @@ export class NavBarComponent {
 thathome : boolean = true;
 thatclient : boolean = false;
 thatemploye : boolean =false;
+count = 0;
 
   constructor(private authServ: AuthService ){
 
@@ -44,4 +45,6 @@ thatemploye : boolean =false;
   getAuthServ(): AuthService {
       return this.authServ;
   }
+
+
 }
