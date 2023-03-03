@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 02 mars 2023 à 16:27
+-- Généré le : ven. 03 mars 2023 à 09:15
 -- Version du serveur : 5.7.40
 -- Version de PHP : 8.0.26
 
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `account` (
   `points` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UKravrcdl4ml7ghtfxdr2nx9hyw` (`last_name`,`first_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `account`
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `account` (
 
 INSERT INTO `account` (`type`, `id`, `zip_code`, `number`, `city`, `street`, `email`, `last_name`, `password`, `first_name`, `version`, `points`) VALUES
 ('employe', 1, '33000', '4', 'Bordeaux', 'Rue du dragon blanc', 'aurelien.bulme@gmail.com', 'Aurélien', 'Croki19', 'Bulme', 0, 0),
-('employe', 2, '69000', '8', 'Lyon', 'Rue du sorcier', 'cedric.devillers@gmail.com', 'Cedric', 'cedric', 'Devillers', 1, 0),
+('employe', 2, '75000', '8', 'Paris', 'Rue du sorcier', 'cedric.devillers@gmail.com', 'Cedric', 'cedric', 'Devillers', 2, 0),
 ('employe', 3, '33000', '12', 'Bordeaux', 'Rue cyber', 'farah.benaissa@gmail.com', 'Farah', 'farah', 'Benaissa', 0, 0),
 ('employe', 4, '69000', '7bis', 'Lyon', 'Rue ignister', 'youssef.talmat@gmail.com', 'Youssef', 'youssef', 'Talmat', 2, 0),
 ('customer', 5, '33000', '1', 'Bordeaux', 'Rue de la victoire', 'prune.pommier@gmail.com', 'prune', 'peche', 'pommier', 0, 0),
@@ -77,18 +77,19 @@ CREATE TABLE IF NOT EXISTS `command` (
   `customer_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`numero`),
   KEY `FK4adexdu0ttc9l217n3ydn7199` (`customer_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `command`
 --
 
 INSERT INTO `command` (`numero`, `arrived_date`, `command_status`, `arrived_hour`, `on_site`, `version`, `customer_id`) VALUES
-(1, '2023-01-31', 'Termine', '12:30:00', 0, 2, 5),
-(2, '2023-01-31', 'Prete', '16:55:00', 0, 1, 6),
-(3, '2023-01-31', 'Prete', '11:30:00', 0, 1, 6),
-(4, '2023-01-27', 'Termine', '12:55:00', 0, 3, 6),
-(5, '2023-01-31', 'EnCours', '13:30:00', 0, 5, 6);
+(1, '2023-03-03', 'Prete', '14:35:00', 0, 4, 5),
+(2, '2023-03-03', 'EnCours', '14:30:00', 0, 3, 6),
+(3, '2023-03-03', 'Prete', '14:45:00', 0, 1, 13),
+(4, '2023-01-27', 'Termine', '12:55:00', 0, 8, 6),
+(5, '2023-01-31', 'Termine', '13:30:00', 0, 7, 6),
+(98, '2023-03-03', 'EnCours', '16:00:00', 0, 1, 13);
 
 -- --------------------------------------------------------
 
@@ -107,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `command_line` (
   PRIMARY KEY (`id`),
   KEY `FK63wx5vtqo2p1upm623em6aic` (`command_id`),
   KEY `FKexibn53w35ucgmrpyu3nt47dx` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -124,17 +125,7 @@ CREATE TABLE IF NOT EXISTS `favorite_articles` (
   PRIMARY KEY (`id`),
   KEY `FKjx8inxsdb180t84o3uj97rm5y` (`customer_id`),
   KEY `FK8ymrqp3evp7dvak8g2vjw7ne` (`product_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
-
---
--- Déchargement des données de la table `favorite_articles`
---
-
-INSERT INTO `favorite_articles` (`id`, `version`, `customer_id`, `product_id`) VALUES
-(1, 0, 6, 1),
-(2, 0, 5, 6),
-(11, 0, 6, 16),
-(12, 0, 6, 22);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -243,21 +234,22 @@ INSERT INTO `product` (`type`, `id`, `label`, `price`, `version`, `category`, `s
 ('basic', 4, 'Tartelette Framboise', '3.00', 1, 'Gateau', NULL, '<i> Pâtisserie subtilement vanillée, accompagnée de framboises fraîches.</i><br><br>\n                  Existe en version individuelle et à partager.<br>\n                  Pâte Sucrée à la Fleur de Sel, Compotée de Framboises, crème Madame (crème pâtissière et crème fouettée) Framboises Fraîches.\n                  <br>Etiquette: Gluten, Oeufs, Lait', 'tarteframboise2.webp'),
 ('basic', 5, 'Macaron', '0.50', 0, 'Gateau', NULL, '<i>Coque croquante et  ganache onctueuse à la saveur intense de noisette grillée, pour une expérience gustative unique en son genre.</i><br><br>\n                  Étiquettes : Gluten,Lait,Oeufs,Noix', 'macarons.jpeg'),
 ('basic', 6, 'Croissant', '1.10', 1, 'Viennoiserie', NULL, '<i>Le croissant traditionnel par excellence.</i><br><br>\n              Pâte feuilletée,2 barres de chocolat noir 66%<br>\n              Étiquettes: Gluten,Lait,Oeufs<br><br><br><br>', 'croissant2.jpg'),
-('basic', 7, 'Chocolatine', '1.20', 1, 'Viennoiserie', NULL, '<i>Son feuilletage et ses barrettes de chocolat sont à croquer.</i><br><br>\n                2 barres de chocolat noir 66%<br>\n                Étiquettes: Gluten,Lait,Oeufs<br><br><br>', 'chocolatine.jpeg'),
+('basic', 7, 'Pain aux chocolat', '10.99', 9, 'Viennoiserie', NULL, 'Son feuilletage et ses barrettes de chocolat sont à croquer.\n<br>\n<br>\n   2 barres de chocolat noir 66%\n   Étiquettes: Gluten,Lait,Oeufs\n<br>\n<br>\n<br>\n', 'chocolatine.jpeg'),
 ('basic', 8, 'Pain aux Raisins', '1.40', 2, 'Viennoiserie', NULL, '<i>Feuilleté au Beurre pur agrémenté de raisins blonds sur leur lit de crème pâtissière légère vanillée.</i><br><br>\n                Pâte Feuilletée, Raisin,Crème Pâtissière<br>\n                Étiquettes:Arachides,Fruits à coques,Gluten,Lait,Oeufs<br><br>', 'painauxraisins2.jpeg'),
-('basic', 9, 'Fraisier', '3.10', 1, 'Gateau', NULL, ' <i>Sa génoise légèrement imbibée de sirop de fraise et sa crème mousseline vanillée sauront vous charmer en toute délicatesse, pour un plaisir gustatif absolu.\"</i><br>\n                  Étiquettes : Gluten, Lait, Oeufs', 'fraisier.webp'),
+('basic', 9, 'dsgfhghxdf', '2.99', 2, 'Viennoiserie', NULL, '<i>Texture croustillante à l\'extérieur et moelleuse à l\'intérieur des canelés, une douceur bordelaise incontournable.</i><br><br>\n                Pâte Feuilletée,Pépite de Chocolat,Crème Pâtissière.<br>\n                Étiquettes: Gluten,Lait,Oeufs', 'canele.jpg'),
 ('basic', 10, 'Chausson aux pommes', '1.80', 2, 'Viennoiserie', NULL, '<i>Le chausson aux pommes traditionnel relevé d’une vanille gourmande.</i><br><br>\n                Pâte Feuilletée, Composée de Pommes Fraiche<br>\n                Étiquettes:Gluten,Lait,Oeufs<br><br><br>', 'chaussonauxpommes2.jpeg'),
 ('basic', 11, 'Brioche Suisse', '1.80', 2, 'Viennoiserie', NULL, '<i>La délicieuse brioche suisse, avec son moelleux incomparable et son cœur de crème pâtissière fondante qui vous fera craquer à chaque bouchée.</i><br><br>\n                Pâte Feuilletée,Pépite de Chocolat,Crème Pâtissière.<br>\n                Étiquettes : Gluten,Lait,Oeufs', 'brioche-suisse.jpeg'),
 ('basic', 14, 'Baguette Classique', '1.00', 1, 'Pain', NULL, 'Notre baguette classique est cuite dans notre four à sole comme tous les autres pains.<br>\n                Elle a une mie blanche, plus compacte et plus dense que la baguette 6 céréales et sa croûte est plus fine.', 'baguetteclassique.jpeg'),
 ('basic', 15, 'Baguette Tradition', '1.20', 2, 'Pain', NULL, 'Une baguette aux saveurs riches, ancrée dans notre savoir-faire.<br>', 'BaguetteTradition.jpeg'),
-('basic', 16, 'Pain Campagne', '2.20', 1, 'Pain', NULL, 'Délice artisanal, préparé avec des ingrédients soigneusement sélectionnés pour vous offrir une mie moelleuse, aérée et savoureuse, ainsi qu\'une croûte croustillante et rustique.', 'painn.jpeg'),
+('basic', 16, 'Pain Campagne', '2.99', 3, 'Pain', NULL, 'Délice artisanal, préparé avec des ingrédients soigneusement sélectionnés pour vous offrir une mie moelleuse, aérée et savoureuse, ainsi qu\'une croûte croustillante et rustique.', 'painn.jpeg'),
 ('basic', 17, 'Pain Complet', '2.20', 1, 'Pain', NULL, 'Mie dense et nourrissante ainsi qu\'une saveur riche et authentique. Avec son goût rustique et sa texture satisfaisante, notre pain complet sera parfait pour accompagner vos repas sains et savoureux.', 'complet.jpg'),
 ('basic', 18, 'Pain 6 Céréales', '2.20', 1, 'Pain', NULL, 'Le délicieux pain 6 Céréales, <br>agrémentée de graines de sésame, pavot, millet, lin blond et lin brun.<br>', 'pexels-mariana-kurnyk-1775035.jpg'),
 ('basic', 19, 'Baguette Sésame', '1.80', 2, 'Pain', NULL, 'Combinaison parfaite de la saveur subtile des graines de sésame et d\'une mie moelleuse et légère. Avec son extérieur croustillant et son goût unique, notre pain sésame apportera une touche de raffinement à tous vos sandwichs et plats.', 'sesame.jpg'),
 ('basic', 20, 'Pain Burger', '1.50', 2, 'Pain', NULL, 'Frais et moelleux, spécialement conçu pour préparer vos burgers.\n                Avec sa mie aérée et son extérieur légèrement croustillant, il saura vous faire fondre de plaisir à chaque bouchée.', 'burger.jpg'),
 ('basic', 21, 'Pain aux noix', '3.00', 2, 'Pain', NULL, 'Que vous le dégustiez nature, grillé ou accompagné d\'un fromage fin, ce pain artisanal aux noix saura vous combler à chaque bouchée.', 'graines.jpg'),
 ('basic', 22, 'Eclair', '2.70', 5, 'Gateau', NULL, ' <i>Son craquelin de pâte sablée & son crémeux au chocolat noir 66% de cacao vont vous faire chavirer en toute simplicité.</i><br><br>\n                    Étiquettes: Gluten,Lait,Oeufs,Soja', 'eclair3.webp'),
-('basic', 23, 'Paris Brest', '2.80', 2, 'Gateau', NULL, ' <i>Pâte à choux croquante et crème mousseline pralinée onctueuse. Laissez-vous séduire par sa forme en couronne élégante et sa saveur subtile de noisette grillée.</i><br><br>\n                  Étiquettes:Gluten,Lait,Oeufs,Noix<br><br><br>', 'parisbrest.png');
+('basic', 23, 'Paris Brest', '2.80', 2, 'Gateau', NULL, ' <i>Pâte à choux croquante et crème mousseline pralinée onctueuse. Laissez-vous séduire par sa forme en couronne élégante et sa saveur subtile de noisette grillée.</i><br><br>\n                  Étiquettes:Gluten,Lait,Oeufs,Noix<br><br><br>', 'parisbrest.png'),
+('basic', 24, 'aaaaaaaaaaaa', '2.99', 0, 'Viennoiserie', NULL, '<i>Texture croustillante à l\'extérieur et moelleuse à l\'intérieur des canelés, une douceur bordelaise incontournable.</i><br><br>\n                Pâte Feuilletée,Pépite de Chocolat,Crème Pâtissière.<br>\n                Étiquettes: Gluten,Lait,Oeufs', 'canele.jpg');
 
 -- --------------------------------------------------------
 
